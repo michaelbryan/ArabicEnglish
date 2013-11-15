@@ -12,16 +12,16 @@ class HomeScreen(FloatLayout):
 
 	def __init__(self, **kwargs):
 		searchbar = TextInput()
-
+		welcomelabel = Label()
 		super(HomeScreen, self).__init__(**kwargs)
 		#self.rows = 3
 		#welcomelabel = Label(text='Bedouin Translater')
 		#self.add_widget(welcomelabel)
-		translatebutton = Button(text='Translate')
-		self.add_widget(translatebutton)
+		#translatebutton = Button(text='Translate')
+		#self.add_widget(translatebutton)
 		#funnybutton = Button(text='funny')
 		#weirdbutton = Button(test='weird')
-			
+		#welcomelabel = Label()
 			
 
 
