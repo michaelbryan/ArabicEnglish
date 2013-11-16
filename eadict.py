@@ -1,5 +1,6 @@
 import sys
 import re
+import itertools
 
 all_entries = {}
 
@@ -369,16 +370,18 @@ def reverse_regex_search(search_term):
 	        hamza_above_filtered = list(filter((hamza_above).__ne__, maddah_filtered))
 	        hamza_below_filtered = list(filter((hamza_below).__ne__, hamza_above_filtered))
 	        important_arabic_letters = hamza_below_filtered
+	        ial = important_arabic_letters
 	        print important_arabic_letters
-	        n_letters = len(important_arabic_letters)
-	        print n_letters
-	        #n_inserts = n_letters
-	        arabic_regex_list = n_letters.insert(, '.*')
+	        filler = '.*'
+	        arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
+			#arabic_regex_list = list(itertools.chain.from_iterable(zip(important_arabic_letters, [filler] * len(important_arabic_letters))))
 	        print arabic_regex_list
 	        arabic_regex = "".join(arabic_regex_list)
 	        print arabic_regex
 	        #list.insert(index, obj)
 			#arabic_regex = re.sub()
+			#<.*>
+
 		
 
 
