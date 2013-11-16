@@ -330,32 +330,68 @@ def search_entries(search_term):
                 for entry in all_entries[search_term]:
                         print "Found via english: %s" % entry.retrieve_arabic()
                 return True
-        '''
-        regex_search_term = get_regex_term(search_term)
-        if regex_search_term in all_entries.keys():
-        		for entry in all_entries[search_term]:
-          				print "Did you mean: %s" % entry.retrieve_english()
+        
+        if regex_search(search_term):
         		return True
-        		'''
+        		
         matched_entries = reverse_search_entries(search_term)
         if len(matched_entries) > 0:
                 for entry in matched_entries:
                         print "Found via arabic: %s" % entry.retrieve_english()
                 return True
+
+        if reverse_regex_search(search_term):
+        		return True
+
         else:
                 print "The word \"%s\" was not found." % search_term
                 return False
-'''
+
+def reverse_regex_search(search_term):
+		fatha = "\xd9\x8e"
+		damma = "\xd9\x8f"
+	        kasra = "\xd9\x90"
+	        shadda = "\xd9\x91"
+	        sukun = "\xd9\x92"
+	        maddah = "\xd9\x93"
+	        hamza_above = "\xd9\x94"
+	        hamza_below = "\xd9\x95"
+	        broken_unicode = list(search_term)
+	        print broken_unicode
+	        arabic_letters = [i+j for i,j in zip(broken_unicode[::2],broken_unicode[1::2])]
+	        print arabic_letters
+	        fatha_filtered = list(filter((fatha).__ne__, arabic_letters))
+	        damma_filtered = list(filter((damma).__ne__, fatha_filtered))
+	        kasra_filtered = list(filter((kasra).__ne__, damma_filtered))
+	        shadda_filtered = list(filter((shadda).__ne__, kasra_filtered))
+	        sukun_filtered = list(filter((sukun).__ne__, shadda_filtered))
+	        maddah_filtered = list(filter((maddah).__ne__, sukun_filtered))
+	        hamza_above_filtered = list(filter((hamza_above).__ne__, maddah_filtered))
+	        hamza_below_filtered = list(filter((hamza_below).__ne__, hamza_above_filtered))
+	        important_arabic_letters = hamza_below_filtered
+	        print important_arabic_letters
+	        n_letters = len(important_arabic_letters)
+	        print n_letters
+	        #n_inserts = n_letters
+	        arabic_regex_list = n_letters.insert(, '.*')
+	        print arabic_regex_list
+	        arabic_regex = "".join(arabic_regex_list)
+	        print arabic_regex
+	        #list.insert(index, obj)
+			#arabic_regex = re.sub()
+		
+
+
 def get_regex_term(search_term):
-		print "regex_search:", search_term
-        regex = ".*" + search_term + ".*"
-        compiled_regex = re.compile(regex)
-        return compiled_regex
-        '''
+		#print "regex_search:", search_term
+	        regex = search_term
+	        compiled_regex = re.compile(regex)
+	        return compiled_regex
+        
 
 def regex_search(regex):
 		print "regex_search:", regex
-        	compiled_regex = re.compile(regex)
+    		compiled_regex = re.compile(regex, re.I)
 
 		'''
 		someWords = ["work", "woooden puppet", "glass", "worrm", "computer", "widow"]
@@ -364,11 +400,16 @@ def regex_search(regex):
 		print word
 		'''
         
-    	for key in all_entries.keys():
-                for entry in all_entries[key]:
-                        if compiled_regex.search(entry.english):
-                                print entry.retrieve_english()
-        						
+	    	for key in all_entries.keys():
+	                for entry in all_entries[key]:
+	                        if compiled_regex.search(entry.english):
+	                                print "Did you mean:"
+	                                print entry.retrieve_english()
+        	'''
+        					else:
+        							print regex + " also not found."
+        							return False
+        							'''
 
 def read_dict(my_file_name):
         file_handler = open(my_file_name, 'r')
@@ -399,7 +440,7 @@ def main(name_of_file, search_term):
         read_dict(name_of_file)
         search_entries(search_term)
 
-        regex_search('grab.*')
+        #regex_search('grab/*')
 
         #verbs = []
         #for key in all_entries.keys():
