@@ -278,6 +278,12 @@ class Entry:
                 english_string = self.english
                 return english_string
 
+        def retrieve_just_arabic(self):
+                arabic_string = "\n"
+                arabic_string += self.arabic + "\n"
+                arabic_string += self.part_of_speech + "\n"
+                return arabic_string
+
         def retrieve_arabic(self):
                 arabic_string = "\n"
                 arabic_string += self.arabic + "\n"
@@ -318,13 +324,14 @@ class Entry:
                 else:
                         return False
 
-        def regex_search_fields(self, compiled_regex):
-                if compiled_regex.findall(self.arabic, re.U): '''or compiled_regex.search(self.plural): or \
-                        compiled_regex.search(self.alt_plural): or compiled_regex.search(self.fem_sing): or \
-                        compiled_regex.search(self.fem_plural):'''
-                return True
-                '''else:
-                        return False'''
+        def regex_search_fields(self, compiled_regex, arabic_regex):
+                if compiled_regex.search(self.arabic):
+                #or compiled_regex.search(self.plural): or \
+                        #compiled_regex.search(self.alt_plural): or compiled_regex.search(self.fem_sing): or \
+                        #compiled_regex.search(self.fem_plural):
+                        return True
+                else:
+                        return False
 
 def reverse_search_entries(search_term):
         matched_entries = []
@@ -336,11 +343,11 @@ def reverse_search_entries(search_term):
 
 def reverse_search_entries_regex(arabic_regex):
         regex_matched_entries = []
-        compiled_regex = re.compile(arabic_regex, re.U)
+        compiled_regex = re.compile(arabic_regex)
         print compiled_regex
         for english, list_of_entries in all_entries.items():
                 for entry in list_of_entries:
-                        if entry.regex_search_fields(compiled_regex):
+                        if entry.regex_search_fields(compiled_regex, arabic_regex):
                                 regex_matched_entries.append(entry)
         return regex_matched_entries
         
@@ -361,9 +368,9 @@ def search_entries(search_term):
 
         arabic_regex = arabic_regex_term(search_term)
         regex_matched_entries = reverse_search_entries_regex(arabic_regex)
-        if len(matched_entries) > 0:
+        if len(regex_matched_entries) > 0:
                 for entry in regex_matched_entries:
-                        print "Did you mean: %s" % entry.arabic
+                        print "Did you mean: %s" % entry.retrieve_just_arabic()
                 return True
 
         else:
