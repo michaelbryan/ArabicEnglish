@@ -318,6 +318,14 @@ class Entry:
                 else:
                         return False
 
+        def regex_search_fields(self, compiled_regex):
+                if compiled_regex.findall(self.arabic, re.U): '''or compiled_regex.search(self.plural): or \
+                        compiled_regex.search(self.alt_plural): or compiled_regex.search(self.fem_sing): or \
+                        compiled_regex.search(self.fem_plural):'''
+                return True
+                '''else:
+                        return False'''
+
 def reverse_search_entries(search_term):
         matched_entries = []
         for english, list_of_entries in all_entries.items():
@@ -326,6 +334,16 @@ def reverse_search_entries(search_term):
                                 matched_entries.append(entry)
         return matched_entries
 
+def reverse_search_entries_regex(arabic_regex):
+        regex_matched_entries = []
+        compiled_regex = re.compile(arabic_regex, re.U)
+        print compiled_regex
+        for english, list_of_entries in all_entries.items():
+                for entry in list_of_entries:
+                        if entry.regex_search_fields(compiled_regex):
+                                regex_matched_entries.append(entry)
+        return regex_matched_entries
+        
 def search_entries(search_term):
         if search_term in all_entries.keys():
                 for entry in all_entries[search_term]:
@@ -341,14 +359,18 @@ def search_entries(search_term):
                         print "Found via arabic: %s" % entry.retrieve_english()
                 return True
 
-        if reverse_regex_search(search_term):
-        		return True
+        arabic_regex = arabic_regex_term(search_term)
+        regex_matched_entries = reverse_search_entries_regex(arabic_regex)
+        if len(matched_entries) > 0:
+                for entry in regex_matched_entries:
+                        print "Did you mean: %s" % entry.arabic
+                return True
 
         else:
                 print "The word \"%s\" was not found." % search_term
                 return False
 
-def reverse_regex_search(search_term):
+def arabic_regex_term(search_term):
 		fatha = "\xd9\x8e"
 		damma = "\xd9\x8f"
 	        kasra = "\xd9\x90"
@@ -372,15 +394,21 @@ def reverse_regex_search(search_term):
 	        important_arabic_letters = hamza_below_filtered
 	        ial = important_arabic_letters
 	        print important_arabic_letters
-	        filler = '.*'
+	        filler = ""
+                #filler.encode('utf-8')
+                print filler
 	        arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
-			#arabic_regex_list = list(itertools.chain.from_iterable(zip(important_arabic_letters, [filler] * len(important_arabic_letters))))
-	        print arabic_regex_list
+	        del arabic_regex_list[-1]
+                print arabic_regex_list
 	        arabic_regex = "".join(arabic_regex_list)
 	        print arabic_regex
-	        #list.insert(index, obj)
-			#arabic_regex = re.sub()
-			#<.*>
+                return arabic_regex
+                #uni_arabic_regex = unicode(arabic_regex, 'utf-8')
+                #print uni_arabic_regex
+                #return uni_arabic_regex
+	        #unicode(string[, encoding, errors])
+                #.encode([encoding], [errors='strict'])
+                #cell = str(cell)
 
 		
 
