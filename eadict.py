@@ -383,9 +383,9 @@ def harder_rev_search_entries_regex(ial):
                                 harder_regex_matched_entries.append(entry)
         return harder_regex_matched_entries
 
-
+'''
 def even_harder_rev_search_entries_regex(ial):
-        filler = "[(..)((..)(..))((..)(..)(..))((..)(..)(..)(..))]"
+        filler = "[(..)((..)(..))((..)(..)(..))]"
         #filler.encode('utf-8')
         print filler
         arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
@@ -404,7 +404,7 @@ def even_harder_rev_search_entries_regex(ial):
                         if entry.regex_search_fields(compiled_regex, arabic_regex):
                                 even_harder_regex_matched_entries.append(entry)
         return even_harder_regex_matched_entries
-        
+        '''
 
 def hardest_rev_search_entries_regex(ial):
         filler = ".*"
@@ -456,9 +456,9 @@ def search_entries(search_term):
         important_arabic_letters = arabic_regex_term(search_term)
         regex_matched_entries = reverse_search_entries_regex(important_arabic_letters)
         more_regex_matched_entries = harder_rev_search_entries_regex(important_arabic_letters)
-        even_more_regex_matched_entries = even_harder_rev_search_entries_regex(important_arabic_letters)
+        #even_more_regex_matched_entries = even_harder_rev_search_entries_regex(important_arabic_letters)
         most_regex_matched_entries = hardest_rev_search_entries_regex(important_arabic_letters)
-        all_regex_matched_entries = regex_matched_entries + more_regex_matched_entries + most_regex_matched_entries + even_more_regex_matched_entries
+        all_regex_matched_entries = regex_matched_entries + more_regex_matched_entries + most_regex_matched_entries
         unique_regex_matched_entries = remove_dup(all_regex_matched_entries)
         if len(unique_regex_matched_entries) > 0:
                 for entry in unique_regex_matched_entries:
@@ -578,6 +578,7 @@ def read_dict(my_file_name):
 def main(name_of_file, search_term):
         read_dict(name_of_file)
         search_entries(search_term)
+        #whatisthis(search_term)
 
         #regex_search('grab/*')
 
