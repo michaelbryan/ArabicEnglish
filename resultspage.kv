@@ -12,8 +12,8 @@
         Button:
             text: 'Home'
     BoxLayout:
-        size_hint: 1, .05
-        pos_hint: {'x': 0, 'y': .90}
+        size_hint: 1, .1
+        pos_hint: {'x': 0, 'y': .85}
         TextInput: 
             text: 'search again'
             background_color: .8, .8, 0, 1
@@ -33,34 +33,34 @@
             text_size: self.size  
             on_release: root.results_screen
     BoxLayout:
-        size_hint: .9, .8
+        size_hint: .9, .75
         pos_hint: {'x': .05, 'y': .1}
         orientation: 'horizontal'
         BoxLayout:
             orientation: 'vertical'
             size_hint: .75, 1
             Label:
-                Text: 'Result'
+                text: 'Result'
                 text_size: self.size
                 valign: 'middle'
                 halign: 'center'
             Label:
-                Text: 'Result'
+                text: 'Result'
                 text_size: self.size
                 valign: 'middle'
                 halign: 'center'
             Label:
-                Text: 'Result'
+                text: 'Result'
                 text_size: self.size
                 valign: 'middle'
                 halign: 'center'
             Label:
-                Text: 'Result'
+                text: 'Result'
                 text_size: self.size
                 valign: 'middle'
                 halign: 'center'
             Label:
-                Text: 'Result'
+                text: 'Result'
                 text_size: self.size
                 valign: 'middle'
                 halign: 'center'
@@ -69,37 +69,39 @@
             size_hint: .25, 1
             pos_hint: {'x': .75, 'y': 0}
             Label:
-                Text: 'Link to search'
+                text: 'Link to search'
                 text_size: self.size
                 valign: 'middle'
                 halign: 'center'
             Label:
-                Text: 'Link to search'
+                text: 'Link to search'
                 text_size: self.size
                 valign: 'middle'
                 halign: 'center'
             Label:
-                Text: 'Link to search'
+                text: 'Link to search'
                 text_size: self.size
                 valign: 'middle'
                 halign: 'center'
             Label:
-                Text: 'Link to search'
+                text: 'Link to search'
                 text_size: self.size
                 valign: 'middle'
                 halign: 'center'
             Label:
-                Text: 'Link to search'
+                text: 'Link to search'
                 text_size: self.size
                 valign: 'middle'
                 halign: 'center'
     FloatLayout:
+        size_hint: 1, .1
         Button:
-            Text: 'More hits'
+            size_hint: .5, .5
+            pos_hint: {'x': .25, 'y': .25}
+            text: 'More hits'
             text_size: self.size
             valign: 'middle'
             halign: 'center'
-            padding: 5
 
 <HomeScreen>:
     orientation: 'vertical'

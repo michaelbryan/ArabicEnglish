@@ -2,6 +2,9 @@ import sys
 import re
 import itertools
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 all_entries = {}
 
 class Entry:
