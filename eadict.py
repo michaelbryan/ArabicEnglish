@@ -279,9 +279,9 @@ class Entry:
                 return english_string
 
         def retrieve_just_arabic(self):
-                arabic_string = "\n"
-                arabic_string += self.arabic + "\n"
-                arabic_string += self.part_of_speech + "\n"
+                arabic_string = " "
+                arabic_string += self.arabic + " "
+                arabic_string += self.part_of_speech + " "
                 return arabic_string
 
         def retrieve_arabic(self):
@@ -341,73 +341,107 @@ def reverse_search_entries(search_term):
                                 matched_entries.append(entry)
         return matched_entries
 
-def reverse_search_entries_regex(ial):
-        filler = "((..)|((..)(..)))"
+def arabic_regex_search_1(ial):
+        filler = ""
         #filler.encode('utf-8')
         print filler
         arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
         del arabic_regex_list[-1]
         begin_word = "^"
+        end_word = "$"
         arabic_regex_list.insert(0, begin_word)
+        arabic_regex_list.append(end_word)
         print arabic_regex_list
         arabic_regex = "".join(arabic_regex_list)
         print arabic_regex
         
-        regex_matched_entries = []
+        arabic_matched_entries_1 = []
         compiled_regex = re.compile(arabic_regex)
         print compiled_regex
         for english, list_of_entries in all_entries.items():
                 for entry in list_of_entries:
                         if entry.regex_search_fields(compiled_regex, arabic_regex):
-                                regex_matched_entries.append(entry)
-        return regex_matched_entries
-        
-def harder_rev_search_entries_regex(ial):
-        filler = "((..)|((..)(..)))"
-        #filler.encode('utf-8')
-        print filler
-        arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
-        del arabic_regex_list[-1]
-        begin_word = ""
-        arabic_regex_list.insert(0, begin_word)
-        print arabic_regex_list
-        arabic_regex = "".join(arabic_regex_list)
-        print arabic_regex
-        
-        harder_regex_matched_entries = []
-        compiled_regex = re.compile(arabic_regex)
-        print compiled_regex
-        for english, list_of_entries in all_entries.items():
-                for entry in list_of_entries:
-                        if entry.regex_search_fields(compiled_regex, arabic_regex):
-                                harder_regex_matched_entries.append(entry)
-        return harder_regex_matched_entries
+                                arabic_matched_entries_1.append(entry)
+        return arabic_matched_entries_1
 
-'''
-def even_harder_rev_search_entries_regex(ial):
-        filler = "[(..)((..)(..))((..)(..)(..))]"
+def arabic_regex_search_2(ial):
+        filler = "(\S?)"
         #filler.encode('utf-8')
         print filler
         arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
-        del arabic_regex_list[-1]
-        begin_word = ""
+        #del arabic_regex_list[-1]
+        begin_word = "^"
+        end_word = "$"
         arabic_regex_list.insert(0, begin_word)
+        arabic_regex_list.append(end_word)
         print arabic_regex_list
         arabic_regex = "".join(arabic_regex_list)
         print arabic_regex
         
-        even_harder_regex_matched_entries = []
+        arabic_matched_entries_2 = []
         compiled_regex = re.compile(arabic_regex)
         print compiled_regex
         for english, list_of_entries in all_entries.items():
                 for entry in list_of_entries:
                         if entry.regex_search_fields(compiled_regex, arabic_regex):
-                                even_harder_regex_matched_entries.append(entry)
-        return even_harder_regex_matched_entries
-        '''
+                                arabic_matched_entries_2.append(entry)
+        return arabic_matched_entries_2
+        
+def arabic_regex_search_3(ial):
+        filler = "(\S{0,3})"
+        #"((\S?)|((\S?)(\S?))|((\S?)(\S?)(\S?)))"
+        #"(([^ ]?)|([^ ][^ ]?))" another way
+        #"((.?)|(..?))" yet another
+        #filler.encode('utf-8')
+        print filler
+        arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
+        del arabic_regex_list[-1]
+        begin_word = "^"
+        end_word = ""
+        arabic_regex_list.insert(0, begin_word)
+        arabic_regex_list.append(end_word)
+        print arabic_regex_list
+        arabic_regex = "".join(arabic_regex_list)
+        print arabic_regex
+        
+        arabic_matched_entries_3 = []
+        compiled_regex = re.compile(arabic_regex)
+        print compiled_regex
+        for english, list_of_entries in all_entries.items():
+                for entry in list_of_entries:
+                        if entry.regex_search_fields(compiled_regex, arabic_regex):
+                                arabic_matched_entries_3.append(entry)
+        return arabic_matched_entries_3
 
-def hardest_rev_search_entries_regex(ial):
-        filler = ".*"
+
+def arabic_regex_search_4(ial):
+        filler = "(\w{0,3})"
+        #filler.encode('utf-8')
+        print filler
+        arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
+        del arabic_regex_list[-1]
+        begin_word = ""
+        end_word = "$"
+        #arabic_regex_list.insert(0, begin_word)
+        arabic_regex_list.append(end_word)
+        print arabic_regex_list
+        arabic_regex = "".join(arabic_regex_list)
+        print arabic_regex
+        
+        arabic_matched_entries_4 = []
+        compiled_regex = re.compile(arabic_regex)
+        print compiled_regex
+        for english, list_of_entries in all_entries.items():
+                for entry in list_of_entries:
+                        if entry.regex_search_fields(compiled_regex, arabic_regex):
+                                arabic_matched_entries_4.append(entry)
+        return arabic_matched_entries_4
+        
+
+def arabic_regex_search_5(ial):
+        filler = "(\S)*"
+        #"(([\S?][\S?][\S?][\S?]))"
+        #"(([^ ]?)|([^ ][^ ]?)|([^ ][^ ][^ ]?)|([^ ][^ ][^ ][^ ]?))"
         #filler.encode('utf-8')
         print filler
         arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
@@ -418,14 +452,14 @@ def hardest_rev_search_entries_regex(ial):
         arabic_regex = "".join(arabic_regex_list)
         print arabic_regex
         
-        hardest_regex_matched_entries = []
+        matched_regex_entries_5 = []
         compiled_regex = re.compile(arabic_regex)
         print compiled_regex
         for english, list_of_entries in all_entries.items():
                 for entry in list_of_entries:
                         if entry.regex_search_fields(compiled_regex, arabic_regex):
-                                hardest_regex_matched_entries.append(entry)
-        return hardest_regex_matched_entries
+                                matched_regex_entries_5.append(entry)
+        return matched_regex_entries_5
 
 def remove_dup(ordered_list):
     seen = set()
@@ -438,9 +472,11 @@ def search_entries(search_term):
                         print "Found via english: %s" % entry.retrieve_arabic()
                 return True
         
-        matched_regex_entries_eng = regex_search(search_term)
-        more_matched_regex_entries = harder_regex_search(search_term)
-        all_matched_regex_entries = matched_regex_entries_eng + more_matched_regex_entries
+        matched_regex_entries_1 = regex_search_1(search_term)
+        matched_regex_entries_2 = regex_search_2(search_term)
+        matched_regex_entries_3 = regex_search_3(search_term)
+        matched_regex_entries_4 = regex_search_4(search_term)
+        all_matched_regex_entries = matched_regex_entries_1 + matched_regex_entries_2 + matched_regex_entries_3 + matched_regex_entries_4
         unique_matched_regex_entries = remove_dup(all_matched_regex_entries)
         if len(unique_matched_regex_entries) > 0:
                 for entry in unique_matched_regex_entries:
@@ -454,14 +490,15 @@ def search_entries(search_term):
                 return True
 
         important_arabic_letters = arabic_regex_term(search_term)
-        regex_matched_entries = reverse_search_entries_regex(important_arabic_letters)
-        more_regex_matched_entries = harder_rev_search_entries_regex(important_arabic_letters)
-        #even_more_regex_matched_entries = even_harder_rev_search_entries_regex(important_arabic_letters)
-        most_regex_matched_entries = hardest_rev_search_entries_regex(important_arabic_letters)
-        all_regex_matched_entries = regex_matched_entries + more_regex_matched_entries + most_regex_matched_entries
-        unique_regex_matched_entries = remove_dup(all_regex_matched_entries)
-        if len(unique_regex_matched_entries) > 0:
-                for entry in unique_regex_matched_entries:
+        arabic_matched_entries_1 = arabic_regex_search_1(important_arabic_letters)
+        arabic_matched_entries_2 = arabic_regex_search_2(important_arabic_letters)
+        arabic_matched_entries_3 = arabic_regex_search_3(important_arabic_letters)
+        arabic_matched_entries_4 = arabic_regex_search_4(important_arabic_letters)
+        arabic_matched_entries_5 = arabic_regex_search_5(important_arabic_letters)
+        all_arabic_matched_entries = arabic_matched_entries_1 + arabic_matched_entries_2 + arabic_matched_entries_3 + arabic_matched_entries_4 + arabic_matched_entries_5
+        unique_arabic_matched_entries = remove_dup(all_arabic_matched_entries)
+        if len(unique_arabic_matched_entries) > 0:
+                for entry in unique_arabic_matched_entries:
                         print "Did you mean: %s" % entry.retrieve_just_arabic()
                 return True
 
@@ -478,7 +515,9 @@ def arabic_regex_term(search_term):
 	        maddah = "\xd9\x93"
 	        hamza_above = "\xd9\x94"
 	        hamza_below = "\xd9\x95"
-	        broken_unicode = list(search_term)
+                new_search_term = search_term.replace("*", "**")
+                #This is just to maintain an even number of elements in the list of split utf-8 encodings.
+	        broken_unicode = list(new_search_term)
 	        print broken_unicode
 	        arabic_letters = [i+j for i,j in zip(broken_unicode[::2],broken_unicode[1::2])]
 	        print arabic_letters
@@ -490,9 +529,16 @@ def arabic_regex_term(search_term):
 	        maddah_filtered = list(filter((maddah).__ne__, sukun_filtered))
 	        hamza_above_filtered = list(filter((hamza_above).__ne__, maddah_filtered))
 	        hamza_below_filtered = list(filter((hamza_below).__ne__, hamza_above_filtered))
-	        important_arabic_letters = hamza_below_filtered
-	        ial = important_arabic_letters
-	        return ial
+                alif_madda_replaced_list = ["[\xd8\xa2\xd8\xa3\xd8\xa5\xd8\xa7]{1}" if x=="\xd8\xa2" else x for x in hamza_below_filtered]
+                alif_hamza_above_replaced_list = ["[\xd8\xa2\xd8\xa3\xd8\xa5\xd8\xa7]{1}" if x=="\xd8\xa3" else x for x in alif_madda_replaced_list]
+                alif_hamza_below_replaced_list = ["[\xd8\xa2\xd8\xa3\xd8\xa5\xd8\xa7]{1}" if x=="\xd8\xa5" else x for x in alif_hamza_above_replaced_list]
+                alif_replaced_list = ["[\xd8\xa2\xd8\xa3\xd8\xa5\xd8\xa7]{1}" if x=="\xd8\xa7" else x for x in alif_hamza_below_replaced_list]
+                #alif_maksura_replaced_list = ["[\xd9\x89\xd9\x8a]{1}" if x=="\xd9\x89" else x for x in alif_replaced_list]
+                #yah_replaced_list = ["[\xd9\x89\xd9\x8a]{1}" if x=="\xd9\x8a" else x for x in alif_maksura_replaced_list]
+                asterisk_replaced_list = ["(\S{1,2})" if x=="**" else x for x in alif_replaced_list]
+	        important_arabic_letters = asterisk_replaced_list
+                print important_arabic_letters
+	        return important_arabic_letters
                 #uni_arabic_regex = unicode(arabic_regex, 'utf-8')
                 #print uni_arabic_regex
                 #return uni_arabic_regex
@@ -505,50 +551,68 @@ def arabic_regex_term(search_term):
 
 def get_regex_term(search_term):
 		eng_letters_list = list(search_term)
+                asterisk_replaced_list = replace_asterisk_in_english_list(eng_letters_list)
                 filler = ".*"
                 #filler.encode('utf-8')
                 print filler
-                eng_letters_list = list(itertools.chain.from_iterable(zip(eng_letters_list, [filler] * len(eng_letters_list))))
-                del eng_letters_list[-1]
-                print eng_letters_list
-                new_search_term = "".join(eng_letters_list)
+                with_filler_list = list(itertools.chain.from_iterable(zip(asterisk_replaced_list, [filler] * len(asterisk_replaced_list))))
+                del with_filler_list[-1]
+                print with_filler_list
+                new_search_term = "".join(with_filler_list)
                 print new_search_term
                 return new_search_term
 
-def harder_regex_search(search_term):
-                print "harder_regex_search:", search_term
+def regex_search_4(search_term):
+                print "regex_search_4:", search_term
                 new_search_term = get_regex_term(search_term)
                 compiled_regex = re.compile(new_search_term, re.I)
-                more_matched_regex_entries = []
+                matched_regex_entries_4 = []
         
                 for key in all_entries.keys():
                         for entry in all_entries[key]:
                                 if compiled_regex.search(entry.english):
-                                        more_matched_regex_entries.append(entry)
-                return more_matched_regex_entries
+                                        matched_regex_entries_4.append(entry)
+                return matched_regex_entries_4
 
-def regex_search(regex):
-		print "eng_regex_search:", regex
-    		compiled_regex = re.compile(regex, re.I)
-                matched_regex_entries_eng = []
-                
-		'''
-		someWords = ["work", "woooden puppet", "glass", "worrm", "computer", "widow"]
-		for word in someWords:
-		if compiled_regex.search(word):
-		print word
-		'''
+def regex_search_3(search_term):
+                print "regex_search_3:", search_term
+                new_search_term = replace_asterisk_in_english_string(search_term)
+                compiled_regex = re.compile(new_search_term, re.I)
+                matched_regex_entries_3 = []
         
-	    	for key in all_entries.keys():
-	                for entry in all_entries[key]:
-	                        if compiled_regex.search(entry.english):
-                                        matched_regex_entries_eng.append(entry)
-                return matched_regex_entries_eng
-        	'''
-        					else:
-        							print regex + " also not found."
-        							return False
-        							'''
+                for key in all_entries.keys():
+                        for entry in all_entries[key]:
+                                if compiled_regex.search(entry.english):
+                                        matched_regex_entries_3.append(entry)
+                return matched_regex_entries_3
+
+def regex_search_2(search_term):
+                print "regex_search_2:", search_term
+                new_search_term = replace_asterisk_in_english_string(search_term)
+                new_search_term_2 = "^" + new_search_term
+                print new_search_term_2
+                compiled_regex = re.compile(new_search_term_2, re.I)
+                matched_regex_entries_2 = []
+        
+                for key in all_entries.keys():
+                        for entry in all_entries[key]:
+                                if compiled_regex.search(entry.english):
+                                        matched_regex_entries_2.append(entry)
+                return matched_regex_entries_2
+
+def regex_search_1(search_term):
+        print "regex_search_1:", search_term
+        new_search_term = replace_asterisk_in_english_string(search_term)
+        new_search_term_2 = "^" + new_search_term + "$"
+        print new_search_term_2
+        compiled_regex = re.compile(new_search_term_2, re.I)
+        matched_regex_entries_1 = []
+        
+        for key in all_entries.keys():
+                for entry in all_entries[key]:
+                        if compiled_regex.search(entry.english):
+                                matched_regex_entries_1.append(entry)
+        return matched_regex_entries_1
 
 def read_dict(my_file_name):
         file_handler = open(my_file_name, 'r')
@@ -574,6 +638,16 @@ def read_dict(my_file_name):
         print "Number of repeats :", num_repeats
         print "Number of all entries :", num_all_entries
         file_handler.close()
+
+def replace_asterisk_in_english_list(list_with_asterisk):
+        asterisk_replaced_list = ["(.)" if x=="*" else x for x in list_with_asterisk]
+        print asterisk_replaced_list
+        return asterisk_replaced_list
+
+def replace_asterisk_in_english_string(search_term):
+        new_search_term = search_term.replace("*", "(.)")
+        print new_search_term
+        return new_search_term
 
 def main(name_of_file, search_term):
         read_dict(name_of_file)
