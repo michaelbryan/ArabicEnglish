@@ -1,0 +1,130 @@
+#:kivy 1.7.2
+
+<EntryScreen>:
+    orientation: 'vertical'
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, .05
+        pos_hint: {'x': 0, 'y': .95}
+        Label:
+            size_hint: 1, 1
+            pos_hint: {'x': 0, 'y': 0}
+            text: 'entry.part_of_speech'
+            text_size: self.size
+            valign: 'middle'
+            halign: 'center'
+        Label:
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 1, .25
+        pos_hint: {'x': 0, 'y': .7}
+        FloatLayout:
+            pos_hint: {'x': 0, 'y': .5}
+            Label:
+                size_hint: 1, 1
+                pos_hint: {'x': 0, 'y': 0}
+                text: 'entry.english'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+            Label:
+                size_hint: .2, 1
+                pos_hint: {'x': .1, 'y': 0}
+                text: '>>'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+        FloatLayout:
+            pos_hint: {'x': 0, 'y': 0}
+            Label:
+                size_hint: 1, 1
+                pos_hint: {'x': 0, 'y': 0}
+                text: 'entry.arabic'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+            Label:
+                size_hint: .2, 1
+                pos_hint: {'x': .7, 'y': 0}
+                text: '<<'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 1, .7
+        pos_hint: {'x': 0, 'y': 0}
+        BoxLayout:
+            orientation: 'vertical'
+            pos_hint: {'x': 0, 'y': .75}
+            canvas:
+                Rectangle:
+                    pos: self.center_x-50, self.center_y-6
+                    size: 100, 1
+            Label:
+                size_hint: 1, 1
+                pos_hint: {'x': 0, 'y': 0}
+                text: 'entry.plural'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+            Label:
+                size_hint: 1, 1
+                text: 'PLURAL'
+                font_size: 10
+        BoxLayout:
+            orientation: 'vertical'
+            pos_hint: {'x': 0, 'y': .5}
+            canvas:
+                Rectangle:
+                    pos: self.center_x-50, self.center_y-6
+                    size: 100, 1
+            Label:
+                size_hint: 1, 1
+                pos_hint: {'x': 0, 'y': 0}
+                text: 'entry.alt_plural'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+            Label:
+                size_hint: 1, 1
+                text: 'ALTERNATIVE PLURAL'
+                font_size: 10
+        BoxLayout:
+            orientation: 'vertical'
+            pos_hint: {'x': 0, 'y': .25}
+            canvas:
+                Rectangle:
+                    pos: self.center_x-50, self.center_y-6
+                    size: 100, 1
+            Label:
+                size_hint: 1, 1
+                pos_hint: {'x': 0, 'y': 0}
+                text: 'entry.fem_sing'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+            Label:
+                size_hint: 1, 1
+                text: 'FEMININE SINGULAR'
+                font_size: 10
+        BoxLayout:
+            orientation: 'vertical'
+            pos_hint: {'x': 0, 'y': 0}
+            canvas:
+                Rectangle:
+                    pos: self.center_x-50, self.center_y-6
+                    size: 100, 1
+            Label:
+                size_hint: 1, 1
+                pos_hint: {'x': 0, 'y': 0}
+                text: 'entry.fem_plural'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+            Label:
+                size_hint: 1, 1
+                text: 'FEMININE PLURAL'
+                font_size: 10
+        
+    
