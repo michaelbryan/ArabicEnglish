@@ -1,0 +1,87 @@
+#:kivy 1.7.2
+
+<Did_You_Mean_Screen>:
+    orientation: 'vertical'
+    AnchorLayout:
+        size_hint: 1, .1   
+        pos_hint: {'x': 0, 'y': .9}
+        anchor_x: 'center'
+        anchor_y: 'center'
+        TextInput:
+        	text: 'Arabic or English'
+            background_color: 1, 1, 1, 1
+            multiline: True
+            size_hint: .75, None
+            height: 28
+            font_size: 14
+	BoxLayout:
+		orientation: 'horizontal'
+		size_hint: 1, .12   
+	    pos_hint: {'x': 0, 'y': .78}
+		AnchorLayout:
+			anchor_x: 'left'
+	        anchor_y: 'bottom'
+			Label:
+				text: 'Did you mean:'
+				size_hint: None, None
+	            height: 20
+	            width: 100
+	            font_size: 13
+	    AnchorLayout:
+	        anchor_x: 'center'
+	        anchor_y: 'top'
+	        Button: 
+	        	text: 'Translate'
+	            size_hint: None, None
+	            height: 20
+	            width: 70
+	            font_size: 10
+	    AnchorLayout:
+	    	anchor_x: 'right'
+	        anchor_y: 'bottom'
+    #BoxLayout:
+    	#orientation: 'vertical'
+    	#pos_hint: {'x': 0, 'y': 0.1}
+    	#size_hint: 1, .7
+    ScrollView:
+    	orientation: 'vertical'
+    	pos_hint: {'x': 0, 'y': 0.1}
+    	size_hint: 1, .68
+        TextInput:
+            id: unicode_txt
+            background_color: .8811, .8811, .8811, 1
+            foreground_color: 0, 0, 0, 1
+            font_name: 
+            font_size: 14
+            text: 'Result 1 Result 2 Result 3'
+            size_hint: 1, 1
+            height: 
+        #FileChooserListView:
+                #id: entrychooser
+                #filters: ['*.ttf']
+	BoxLayout:
+		orientation: 'horizontal'
+		pos_hint: {'x': 0, 'y': 0}
+	    size_hint: 1, .1
+	    AnchorLayout:
+	    	anchor_x: 'left'
+	        anchor_y: 'center'
+	        Button:
+	    		text: 'Back'
+	            size_hint: None, None
+	            height: 20
+	            width: 40
+	            font_size: 10
+	    AnchorLayout:
+	    	anchor_x: 'center'
+	        anchor_y: 'center'
+	        Button:
+	    		text: 'More'
+	            size_hint: None, None
+	            height: 20
+	            width: 40
+	            font_size: 10
+	    AnchorLayout:
+	    	anchor_x: 'right'
+	        anchor_y: 'center'
+	        
