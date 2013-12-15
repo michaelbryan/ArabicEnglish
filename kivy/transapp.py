@@ -1,5 +1,21 @@
-#:kivy 1.7.2
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 
+import kivy
+kivy.require('1.7.2') # replace with your current kivy version !
+
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
+from kivy.uix.button import Button
+from kivy.uix.widget import Widget
+from kivy.properties import ObjectProperty
+from kivy.uix.screenmanager import ScreenManager, Screen
+
+Builder.load_string("""
 <HomeScreen>:
     translateInput: translateInputID
     translateButton: translateButtonID
@@ -53,3 +69,27 @@
         Button:
             text: 'Back to menu'
             on_press: root.manager.current = 'homescreen'
+""")
+
+class HomeScreen(Screen):
+    translateInput = ObjectProperty(None)
+    translateButton = ObjectProperty(None)
+
+    def translateButtonPressed(self):
+    	print "input to translate:", self.translateInput.text
+    	sm.current = 'translation'
+
+class ResultsScreen(Screen):
+	pass
+
+# Create the screen manager
+sm = ScreenManager()
+sm.add_widget(HomeScreen(name='home'))
+sm.add_widget(ResultsScreen(name='translation'))
+
+class TransApp(App):
+    def build(self):
+        return sm
+
+if __name__ == '__main__':
+    TransApp().run()
