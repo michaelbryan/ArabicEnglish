@@ -3,10 +3,44 @@ from openpyxl.reader.excel import load_workbook
 import unicodedata
 import codecs
 
+from Entry import Entry
+
+def RetrieveEntriesFromFile(my_file_name, all_entries):
+    file_handler = open(my_file_name, 'r')
+    
+    line_counter = 0
+    num_repeats = 0
+    num_all_entries = 0
+    for line in file_handler:
+        line_counter += 1
+        # create an instance of Entry and call it current_entry
+        current_entry = Entry(line.strip())
+
+        if current_entry.english not in all_entries:
+            num_all_entries += 1
+            all_entries[current_entry.english] = [current_entry]
+        else:
+            num_all_entries += 1
+            num_repeats += 1
+            all_entries[current_entry.english].append(current_entry)
+
+    numUniqueEntries = len(all_entries)
+    numAllEntries = numUniqueEntries + num_repeats
+    print "Number of lines         :", line_counter
+    print "Number of unique entries:", numUniqueEntries
+    print "Number of repeats       :", num_repeats
+    print "Number of all entries   :", numAllEntries
+    if line_counter != numAllEntries:
+    	print "##### WARNING: Something is afoot... the number of lines in %s != number of entries derived" % my_file_name
+    	print "               %s (num lines) != %s (num entries derived)" % (line_counter, numAllEntries)
+    else:
+    	print "***** Number of lines = Number of entries derived ... Yay!"
+    file_handler.close()
+
 def WriteDataToFile(file_name, mylist):
 	file_handler = open(file_name, 'w')
 	for crap in mylist:
-		print "crap:", crap
+		#print "crap:", crap
 		try:
 			file_handler.write(crap)
 		except UnicodeEncodeError:
@@ -56,7 +90,7 @@ def main():
 		
 		cell_details = []
 		for cell_index, cell in enumerate(row):
-			print "cell:", cell
+			#print "cell:", cell
 			# cell could be unicode ... UnicodeEncodeError:
 			if cell is None:
 				cell = ""
@@ -68,7 +102,8 @@ def main():
 					cell = str(cell)
 				except UnicodeEncodeError:
 					#import pdb; pdb.set_trace()
-					print "it was not a ascii-encoded unicode string"
+					#print "it was not a ascii-encoded unicode string"
+					foo = 3
 					#cell = str(cell.encode('utf16'))
 
 			output_html_list.append("<td>")
@@ -85,4 +120,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-	
