@@ -148,9 +148,11 @@ def remove_dup(ordered_list):
 
 def search_entries(search_term):
     if search_term in gAllEntries.keys():
+        entries_found = []
         for entry in gAllEntries[search_term]:
             print "Found via english: %s" % entry.retrieve_arabic()
-        return True
+            entries_found.append((entry, 0))
+        return entries_found
 
     matched_regex_entries_1 = regex_search_1(search_term)
     matched_regex_entries_2 = regex_search_2(search_term)
@@ -159,16 +161,20 @@ def search_entries(search_term):
     all_matched_regex_entries = matched_regex_entries_1 + matched_regex_entries_2 + matched_regex_entries_3 + matched_regex_entries_4
     unique_matched_regex_entries = remove_dup(all_matched_regex_entries)
     if len(unique_matched_regex_entries) > 0:
+        entries_found = []
         for entry in unique_matched_regex_entries:
             print "Did you mean: %s" % entry.retrieve_english()
-        return True
+            entries_found.append((entry, 1))
+        return entries_found
 
     print "NOT FOUND VIA ENGLISH"
     matched_entries = reverse_search_entries(search_term)
     if len(matched_entries) > 0:
+        entries_found = []
         for entry in matched_entries:
             print "Found via arabic: %s" % entry.retrieve_english()
-        return True
+            entries_found.append((entry, 2))
+        return entries_found
 
     print "NOT FOUND VIA ARABIC"
     important_arabic_letters = arabic_regex_term(search_term)
@@ -180,13 +186,15 @@ def search_entries(search_term):
     all_arabic_matched_entries = arabic_matched_entries_1 + arabic_matched_entries_2 + arabic_matched_entries_3 + arabic_matched_entries_4 + arabic_matched_entries_5
     unique_arabic_matched_entries = remove_dup(all_arabic_matched_entries)
     if len(unique_arabic_matched_entries) > 0:
+        entries_found = []
         for entry in unique_arabic_matched_entries:
             print "Did you mean: %s" % entry#.retrieve_just_arabic()
-        return True
+            entries_found.append((entry, 3))
+        return entries_found
 
     else:
         print "The word \"%s\" was not found." % search_term
-        return False
+        return [(None, 4)]
 
 def arabic_regex_term(search_term):
     fatha = "\xd9\x8e"

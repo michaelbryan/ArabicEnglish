@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+from bidi.algorithm import get_display
+
+import arabic_reshaper
+
 class Entry:
     def __init__(self, line):
         fields = line.split("|")
@@ -298,6 +304,14 @@ class Entry:
     def __str__(self):
         entry_string = "\n"
         entry_string += self.english + "\n"
+
+        #arabic_text = get_display(arabic_reshaper.reshape(u'العربية Hello World')).encode('utf-8')
+        #myArabic = get_display(arabic_reshaper.reshape(self.arabic)).encode('utf-8')
+        #z = unicode(self.arabic, 'utf-8')
+        #myArabic = get_display(arabic_reshaper.reshape(z)).decode('utf-8')
+        #print "*********************************** ", myArabic
+        #return get_display(arabic_reshaper.reshape(self.arabic))#.decode('utf-8')
+        
         entry_string += self.arabic + "\n"
         entry_string += "".join(self.part_of_speech) + "\n"
         if self.plural:

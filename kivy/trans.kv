@@ -27,7 +27,7 @@
             valign: 'middle'
             halign: 'center'
             text_size: self.size
-            on_release: root.translateButtonPressed()
+            on_press: root.translateButtonPressed()
             #on_press: root.manager.current = 'resultsscreen'
 
         Label:
@@ -37,6 +37,7 @@
             halign: 'center'
             pos_hint: {'x': .3, 'y': .75}
             size_hint: .4, .2
+            font: freesans
 
     BoxLayout:
         size_hint: 1, .05
@@ -52,4 +53,4 @@
             text: 'My settings button'
         Button:
             text: 'Back to menu'
-            on_press: root.manager.current = 'homescreen'
+            on_press: root.goHome()
