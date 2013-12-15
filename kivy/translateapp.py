@@ -20,12 +20,15 @@ class TranslateScreen(BoxLayout):
 	translateInputCode = ObjectProperty(None)
 	translateButtonCode = ObjectProperty(None)
 	translationCode = ObjectProperty(None)
-	outputText = ""
 
-	def translateButtonPressed(self, inputProvided, translationObject):
-		#print("The button was pressed: %s" % inputProvided.text)
-		search_result = search_entries(inputProvided.text)
-		translationObject.text = "Hey yo! ... returned: %s" % search_result
+	def translateButtonPressed(self):
+		################################################################
+		##### WHAT IS GOING ON WITH THE FOLLOWING TWO LINES? ###########
+		##### print TranslateScreen.translateButtonCode ################
+		##### print self.translateButtonCode ###########################
+		################################################################
+		search_result = search_entries(self.translateInputCode.text)
+		self.translationCode.text = "Hey yo! ... returned: %s" % search_result
 
 class TranslateApp(App):
     def build(self):
