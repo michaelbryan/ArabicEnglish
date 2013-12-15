@@ -303,8 +303,11 @@ def replace_asterisk_in_english_string(search_term):
     print new_search_term
     return new_search_term
 
-def main(name_of_file, search_term):
+def PopulateDB(name_of_file):
     RetrieveEntriesFromFile(name_of_file, gAllEntries)
+
+def main(name_of_file, search_term):
+    PopulateDB(name_of_file)
     search_entries(search_term)
 
 if __name__ == "__main__":

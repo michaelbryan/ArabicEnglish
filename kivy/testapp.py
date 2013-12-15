@@ -10,37 +10,29 @@ from kivy.uix.button import Button
 from kivy.uix.widget import Widget
 
 class ResultsScreen(BoxLayout):
-
+	print "************ FOOOO"
 	pass
 
-
 class HomeScreen(FloatLayout):
-
 	results_screen = ResultsScreen()
-
-
-	'''def __init__(self, **kwargs):
-		super(HomeScreen, self).__init__(**kwargs)
-		searchbar = TextInput()
-		welcomelabel = Label()'''
-		#self.rows = 3
-		#welcomelabel = Label(text='Bedouin Translater')
-		#self.add_widget(welcomelabel)
-		#translatebutton = Button(text='Translate')
-		#self.add_widget(translatebutton)
-		#funnybutton = Button(text='funny')
-		#weirdbutton = Button(test='weird')
-		#welcomelabel = Label()
-			
-
+	'''
+	def __init__(self, **kwargs):
+	super(HomeScreen, self).__init__(**kwargs)
+	searchbar = TextInput()
+	welcomelabel = Label()
+	'''
+	#self.rows = 3
+	#welcomelabel = Label(text='Bedouin Translater')
+	#self.add_widget(welcomelabel)
+	#translatebutton = Button(text='Translate')
+	#self.add_widget(translatebutton)
+	#funnybutton = Button(text='funny')
+	#weirdbutton = Button(test='weird')
+	#welcomelabel = Label()
 
 class TransApp(App):
-
     def build(self):
-
         return HomeScreen()
-
-
 
 if __name__ == '__main__':
     TransApp().run()

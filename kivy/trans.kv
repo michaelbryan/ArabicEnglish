@@ -3,8 +3,8 @@
 <HomeScreen>:
     orientation: 'vertical'
     FloatLayout:
-        size_hint: 1, .95    
-        TextInput: 
+        size_hint: 1, .95
+        TextInput:
         	text: 'funny stuff'
             background_color: .8, .8, 0, 1
             size_hint: .75, .1
@@ -16,15 +16,16 @@
     		padding: 5
     		
         Button:
+            id: translateButtonID
         	text: 'Translate'
         	pos_hint: {'x': .35, 'y': .35}
         	size_hint: .3, .08
             valign: 'middle'
             halign: 'center'
-            text_size: self.size  
-            on_release: root.results_screen  
+            text_size: self.size
+            on_release: root.results_screen
 
-        Label: 
+        Label:
         	text: '*Bedouin مُخْتَبَر*'
         	text_size: self.size
             valign: 'middle'
@@ -39,5 +40,3 @@
             text: 'Usage Notes'
         Button:
             text: 'About'
-        
-    
