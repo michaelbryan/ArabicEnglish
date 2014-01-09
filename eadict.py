@@ -119,7 +119,7 @@ def arabic_regex_search_4(ial):
 
 def arabic_regex_search_5(ial):
     print "===== arabic_regex_search_5"
-    filler = "(\S)*"
+    filler = "(\S){0,6}"
     #"(([\S?][\S?][\S?][\S?]))"
     #"(([^ ]?)|([^ ][^ ]?)|([^ ][^ ][^ ]?)|([^ ][^ ][^ ][^ ]?))"
     #filler.encode('utf-8')
@@ -251,7 +251,20 @@ def get_regex_term(search_term):
 
 def regex_search_4(search_term):
     print "regex_search_4:", search_term
-    new_search_term = get_regex_term(search_term)
+    new_search_term = replace_asterisk_in_english_string(search_term)
+    new_search_term_2 = "^" + new_search_term + "?"
+    compiled_regex = re.compile(new_search_term, re.I)
+    matched_regex_entries_4 = []
+
+    for key in gAllEntries.keys():
+        for entry in gAllEntries[key]:
+            if compiled_regex.search(entry.english):
+                matched_regex_entries_4.append(entry)
+    return matched_regex_entries_4
+
+def regex_search_4(search_term):
+    print "regex_search_4:", search_term
+    new_search_term = replace_asterisk_in_english_string(search_term)
     compiled_regex = re.compile(new_search_term, re.I)
     matched_regex_entries_4 = []
 
@@ -264,6 +277,7 @@ def regex_search_4(search_term):
 def regex_search_3(search_term):
     print "regex_search_3:", search_term
     new_search_term = replace_asterisk_in_english_string(search_term)
+    new_search_term_2 = new_search_term + "$"
     compiled_regex = re.compile(new_search_term, re.I)
     matched_regex_entries_3 = []
 

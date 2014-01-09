@@ -2,7 +2,7 @@
 
 from bidi.algorithm import get_display
 
-import arabic_reshaper
+#import arabic_reshaper
 
 class Entry:
     def __init__(self, line):
@@ -32,6 +32,7 @@ class Entry:
         maddah = "\xd9\x93"
         hamza_above = "\xd9\x94"
         hamza_below = "\xd9\x95"
+        hamza_on_alif_maksura = "\xd8\xa6"
         yah = "\xd9\x8a"
         waw = "\xd9\x88"
         alif = "\xd8\xa7"
@@ -156,7 +157,7 @@ class Entry:
         print he_conjugations_list
         she_arabic_broken = [hah, kasra, yah, shadda, fatha]
         she_arabic_string = "".join(she_arabic_broken)
-        she_past_broken = [first_root_letter, fatha, second_root_letter, fatha, third_root_letter, fatha, tah]
+        she_past_broken = [first_root_letter, fatha, second_root_letter, sukun, third_root_letter, fatha, tah]
         she_past_string = "".join(she_past_broken)
         she_present_b_broken = [bah, sukun, tah, kasra, first_root_letter, sukun, second_root_letter, kasra, third_root_letter]
         she_present_b_string = "".join(she_present_b_broken)
