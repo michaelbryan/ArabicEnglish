@@ -251,7 +251,7 @@ class Entry:
         active_participle_string = "".join(active_participle_broken)
         active_participle_broken2 = [first_root_letter, alif, second_root_letter, shadda]
         active_participle_string2 = "".join(active_participle_broken)
-        direct_object_broken = [meem, fatha, " ", fah, kasra, yah, hah]
+        direct_object_broken = [meem, alif, " ", fah, kasra, yah, hah]
         direct_object_string = "".join(direct_object_broken)
         verbal_noun_broken = [first_root_letter, fatha, second_root_letter, shadda]
         verbal_noun_string = "".join(verbal_noun_broken)

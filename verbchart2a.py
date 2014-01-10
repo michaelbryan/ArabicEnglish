@@ -138,14 +138,14 @@ class Entry:
         print you_f_conjugations_list
         he_arabic_broken = [hah, damma, waw, shadda, fatha]
         he_arabic_string = "".join(he_arabic_broken)
-        he_past_broken = [first_root_letter, fatha, second_root_letter, damma, fatha, third_root_letter]
+        he_past_broken = [first_root_letter, fatha, second_root_letter, shadda, fatha, third_root_letter]
         he_past_string = "".join(he_past_broken)
-        he_present_b_broken = [bah, kasra, first_root_letter, fatha, second_root_letter, damma, kasra, third_root_letter]
+        he_present_b_broken = [bah, kasra, first_root_letter, fatha, second_root_letter, shadda, kasra, third_root_letter]
         he_present_b_string = "".join(he_present_b_broken)
         he_command_string = ""
-        he_present_broken = [yah, kasra, first_root_letter, fatha, second_root_letter, damma, kasra, third_root_letter]
+        he_present_broken = [yah, kasra, first_root_letter, fatha, second_root_letter, shadda, kasra, third_root_letter]
         he_present_string = "".join(he_present_broken)
-        he_present_with_pronoun_broken = [yah, kasra, first_root_letter, fatha, second_root_letter, damma, kasra, third_root_letter, fatha, kaaf]
+        he_present_with_pronoun_broken = [yah, kasra, first_root_letter, fatha, second_root_letter, shadda, kasra, third_root_letter, fatha, kaaf]
         he_present_with_pronoun_string = "".join(he_present_with_pronoun_broken)
         he_conjugations_list = [he_arabic_string, he_past_string, he_present_b_string, he_command_string, he_present_string, he_present_with_pronoun_string]
         print he_arabic_string + "\n"

@@ -252,7 +252,7 @@ class Entry:
         word_verbal_noun_string = "".join(word_verbal_noun_broken)
         active_participle_broken = [second_root_letter, alif, yah]
         active_participle_string = "".join(active_participle_broken)
-        direct_object_broken = [meem, fatha, " ", fah, kasra, yah, hah]
+        direct_object_broken = [meem, alif, " ", fah, kasra, yah, hah]
         direct_object_string = "".join(direct_object_broken)
         verbal_noun_broken = [meem, fatha, second_root_letter, kasra, yah, hamza]
         verbal_noun_string = "".join(verbal_noun_broken)

@@ -141,7 +141,7 @@ class Entry:
         print you_f_conjugations_list
         he_arabic_broken = [hah, damma, waw, shadda, fatha]
         he_arabic_string = "".join(he_arabic_broken)
-        he_past_broken = [first_root_letter, fatha, second_root_letter, sukun, third_root_letter, third_root_letter]
+        he_past_broken = [first_root_letter, fatha, second_root_letter, sukun, third_root_letter, fourth_root_letter]
         he_past_string = "".join(he_past_broken)
         he_present_b_broken = [bah, kasra, first_root_letter, fatha, second_root_letter, sukun, third_root_letter, kasra, yah]
         he_present_b_string = "".join(he_present_b_broken)
@@ -249,11 +249,11 @@ class Entry:
         word_direct_object_string = "".join(word_direct_object_broken)
         word_verbal_noun_broken = [alif, lam, meem, fatha, saad, sukun, daal, fatha, rah]
         word_verbal_noun_string = "".join(word_verbal_noun_broken)
-        active_participle_broken = [meem, sukun, first_root_letter, fatha, second_root_letter, shadda, kasra, yah]
+        active_participle_broken = [meem, sukun, first_root_letter, fatha, second_root_letter, sukun, third_root_letter, kasra, yah]
         active_participle_string = "".join(active_participle_broken)
-        direct_object_broken = [meem, sukun, first_root_letter, fatha, second_root_letter, shadda, third_root_letter]
+        direct_object_broken = [meem, sukun, first_root_letter, fatha, second_root_letter, sukun, third_root_letter, fourth_root_letter]
         direct_object_string = "".join(direct_object_broken)
-        verbal_noun_broken = [tah, fatha, first_root_letter, sukun, second_root_letter, kasra, yah, shadda, tah_marbuuta]
+        verbal_noun_broken = [meem, damma, first_root_letter, fatha, second_root_letter, sukun, third_root_letter, alif, tah_marbuuta]
         verbal_noun_string = "".join(verbal_noun_broken)
         print word_active_participle_string + ": " + active_participle_string + "\n"
         print word_direct_object_string + ": " + direct_object_string + "\n"
