@@ -271,7 +271,7 @@ class Entry:
             return self.verb_chart_1b()
         else:
             print "##### ERROR: Unexpected input to some_verb_chart or verb type not assigned"
-            return "CRAP"
+            return "No verb chart assigned"
 
     def retrieve_english(self):
         #english_string = "\n"
