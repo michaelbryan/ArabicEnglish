@@ -9,13 +9,11 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.stacklayout import StackLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.widget import Widget
-from kivy.uix.scrollview import ScrollView
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 
@@ -136,7 +134,8 @@ Builder.load_string("""
     	size_hint: 1, .68
         StackLayout:
             id: StackLayoutID
-            size_hint: 1, None
+            #####if I change the y size hint from None to 1, more buttons will be created, why?
+            size_hint: 1, 1
             orientation: 'tb-lr'
             #Button:
                 #id: resultButtonID
@@ -217,7 +216,7 @@ class HomeScreen(Screen):
 class ResultsScreen(Screen):
     translationTextInput = ObjectProperty(None)
     goHomeButton = ObjectProperty(None)
-    #result_button = ObjectProperty(None)
+    result_button = ObjectProperty(None)
     scroll_view = ObjectProperty(None)
     stack_layout = ObjectProperty(None)
 
@@ -235,35 +234,40 @@ class ResultsScreen(Screen):
         return self.stack_layout
 
     def getResultButton(self, results_list):
-        #stacked_layout = self.scroll_view.add_widget(StackLayout(orientation='tb-lr'))
-        #scrolling_stacked_layout = self.scroll_view(stacked_layout)
-        layout = self.stack_layout
-        for entry in results_list:
-            #btn = Button(size_hint=(1, None), text=str(entry))
-            layout.add_widget(Button(size_hint=(1, None), text=str(entry)))
-        #root = self.scroll_view
-        #root.add_widget(layout)
-        #return self.result_button
-        #size_hint=(1, None), text=str(entry)
-        #self.result_button.add_widget(
+        layout1 = self.stack_layout#GridLayout(cols=1, spacing=10, size_hint=(1, None))
+        layout1.bind(minimum_height=layout1.setter('height'),
+                     minimum_width=layout1.setter('width'))
+        for i in range(40):
+            btn = Button(text=str(i), size_hint=(1, None),
+                         size_y=(100))
+            layout1.add_widget(btn)
+        #scrollview1 = ScrollView(bar_width='2dp')
+        #scrollview1.add_widget(layout1)
 
-        '''layout = StackLayout(orientation='tb-lr', spacing=10, size_hint_y=None)
-        # Make sure the height is such that there is something to scroll.
-        layout.bind(minimum_height=layout.setter('height'))
-        for i in range(30):
-            btn = Button(text=str(i), size_hint_y=None, height=40)
-            layout.add_widget(btn)
-        root = ScrollView(size_hint=(None, None), size=(400, 400))
-        root.add_widget(layout)'''
+
+
+        '''results = results_list
+        for entry in results:
+            self.stack_layout.add_widget(Button(text=(entry), size_hint=(1, None)))'''
+
+
+    '''layout = GridLayout(cols=1, spacing=10, size_hint_y=None)
+    # Make sure the height is such that there is something to scroll.
+    layout.bind(minimum_height=layout.setter('height'))
+    for i in range(30):
+        btn = Button(text=str(i), size_hint_y=None, height=40)
+        layout.add_widget(btn)
+    root = ScrollView(size_hint=(None, None), size=(400, 400))
+    root.add_widget(layout)'''
 
     def getTranslationTextInput(self):
         return self.translationTextInput
 
-#class ScrollView(Widget):
-    #scroll_view = ObjectProperty(None)
+class ScrollView(Widget):
+    scroll_view = ObjectProperty(None)
 
-#class StackLayout(Widget):
-    #stack_layout = ObjectProperty(None)
+class StackLayout(Widget):
+    stack_layout = ObjectProperty(None)
 
 class ResultButton(Widget):
     result_button = ObjectProperty(None)
