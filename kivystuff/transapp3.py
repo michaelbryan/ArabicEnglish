@@ -85,7 +85,7 @@ Builder.load_string("""
     #translationTextInput: translationID
     #result_button: resultButtonID
     scroll_view: scrollviewID
-    stack_layout: StackLayoutID
+    #stack_layout: StackLayoutID
 
     AnchorLayout:
         size_hint: 1, .1   
@@ -132,11 +132,12 @@ Builder.load_string("""
     	orientation: 'vertical'
     	pos_hint: {'x': 0, 'y': 0.1}
     	size_hint: 1, .68
-        StackLayout:
-            id: StackLayoutID
-            #####if I change the y size hint from None to 1, more buttons will be created, why?
-            size_hint: 1, 1
-            orientation: 'tb-lr'
+        bar_width: '4dp'
+        #StackLayout:
+            #id: StackLayoutID
+            ######if I change the y size hint from None to 1, more buttons will be created, why?
+            #size_hint: 1, 1
+            #orientation: 'tb-lr'
             #Button:
                 #id: resultButtonID
                 #size_hint: 1, None
@@ -218,7 +219,7 @@ class ResultsScreen(Screen):
     goHomeButton = ObjectProperty(None)
     result_button = ObjectProperty(None)
     scroll_view = ObjectProperty(None)
-    stack_layout = ObjectProperty(None)
+    #stack_layout = ObjectProperty(None)
 
     def goHome(self):
         sm.current = 'home'
@@ -234,15 +235,15 @@ class ResultsScreen(Screen):
         return self.stack_layout
 
     def getResultButton(self, results_list):
-        layout1 = self.stack_layout#GridLayout(cols=1, spacing=10, size_hint=(1, None))
+        layout1 = GridLayout(cols=1, spacing=10, size_hint=(1, None))
         layout1.bind(minimum_height=layout1.setter('height'),
                      minimum_width=layout1.setter('width'))
-        for i in range(40):
-            btn = Button(text=str(i), size_hint=(1, None),
+        for result in results_list:
+            btn = Button(text=str(result), size_hint=(1, None),
                          size_y=(100))
             layout1.add_widget(btn)
-        #scrollview1 = ScrollView(bar_width='2dp')
-        #scrollview1.add_widget(layout1)
+        scrollview1 = self.scroll_view#ScrollView(bar_width='2dp')
+        scrollview1.add_widget(layout1)
 
 
 
