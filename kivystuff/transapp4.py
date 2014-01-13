@@ -95,7 +95,7 @@ Builder.load_string("""
         anchor_y: 'center'
         TextInput:
         	id: translateInput2KV
-        	text: 'Arabic or English'
+        	text: 'happy'
             background_color: 1, 1, 1, 1
             multiline: False
             size_hint: .75, None
@@ -173,10 +173,38 @@ Builder.load_string("""
 	        anchor_y: 'center'
 """)
 
-class Dictionary:
+#class Dictionary:
 
-    def run_search(self, input_to_tranlate):
-        
+def run_search(input_to_translate):
+    search_result = search_entries(input_to_translate)
+    print "search_result:", search_result
+
+    results_list = []
+    found = False
+    for tupleOfEntryAndBool in search_result:
+        entry = tupleOfEntryAndBool[0]
+        responseCode = tupleOfEntryAndBool[1]
+        print "entry:", entry
+        print "response code:", responseCode
+        if responseCode == 0:
+            results_list.append(entry.retrieve_just_arabic())
+            found = True
+        elif responseCode == 1:
+            results_list.append(entry.retrieve_english())
+    else:
+        results_list.append("response code was not 0 or 1")
+
+    num_results = len(results_list)
+
+    #if found:
+
+        #displayText = "".join(results_list)
+
+    #results_scrollview = ResultsScreen.ScrollView()
+
+    sm.get_screen("translation").getResultButton(results_list)#.text = displayText
+    PROVIDED_USER_INPUT = input_to_translate
+    sm.current = 'translation'
 
 class HomeScreen(Screen):
     translateInput = ObjectProperty(None)
@@ -188,34 +216,10 @@ class HomeScreen(Screen):
     	arabic_text = get_display(arabic_reshaper.reshape(u'العربية Hello World')).encode('utf-8')
     	self.translateLabel.text = arabic_text
 
-    	#sm.get_screen("translation").getGoHomeButton().text = self.translateInput.text
-    	search_result = search_entries(self.translateInput.text)
-    	print "search_result:", search_result
+    	input_to_translate = self.translateInput.text
+        run_search(input_to_translate)
 
-    	results_list = []
-    	found = False
-    	for tupleOfEntryAndBool in search_result:
-    		entry = tupleOfEntryAndBool[0]
-    		responseCode = tupleOfEntryAndBool[1]
-    		print "entry:", entry
-    		print "response code:", responseCode
-    		if responseCode == 0:
-    			results_list.append(entry.retrieve_arabic())
-    			found = True
-        else:
-            displayText = "response code was not 0"
-
-        num_results = len(results_list)
-
-        if found:
-
-            displayText = "".join(results_list)
-
-        #results_scrollview = ResultsScreen.ScrollView()
-
-        sm.get_screen("translation").getResultButton(results_list)#.text = displayText
-        PROVIDED_USER_INPUT = self.translateInput.text
-        sm.current = 'translation'
+        #sm.get_screen("translation").getGoHomeButton().text = self.translateInput.text
 
     def getInputText(self):
     	return self.translateInput.text
@@ -236,8 +240,10 @@ class ResultsScreen(Screen):
         return self.goHomeButton
 
     def translateButtonPressed(self):
-
-        return HomeScreen.translateButtonPressed(self.translate_input_2)
+        #scrollview1 = self.scroll_view
+        #scrollview1.clear_widgets()
+        input_to_translate_2 = self.translate_input_2.text
+        return run_search(input_to_translate_2)
 
     def getResultButton(self, results_list):
         layout1 = GridLayout(cols=1, spacing=10, size_hint=(1, None))
