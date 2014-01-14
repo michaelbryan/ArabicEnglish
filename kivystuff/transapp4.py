@@ -84,7 +84,7 @@ Builder.load_string("""
     orientation: 'vertical'
     goHomeButton: goHomeID
     translate_input_2: translateInput2KV
-    #results_label: resultsLabelID
+    results_label: resultsLabelID
     #translationTextInput: translationID
     #result_button: resultButtonID
     scroll_view: scrollviewID
@@ -112,13 +112,13 @@ Builder.load_string("""
             id: anchorLayout2
 			anchor_x: 'left'
 	        anchor_y: 'bottom'
-			#Label:
-                #id: resultsLabelID
-				#text: 'Results:'
-				#size_hint: None, None
-	            #height: 20
-	            #width: 100
-	            #font_size: 13
+			Label:
+                id: resultsLabelID
+				text: "Results:"
+				size_hint: None, None
+	            height: 20
+	            width: 100
+	            font_size: 13
 	    AnchorLayout:
 	        anchor_x: 'center'
 	        anchor_y: 'top'
@@ -186,12 +186,21 @@ Builder.load_string("""
     layout_for_fem_sin: boxlayout4ID
     layout_for_fem_plural: boxlayout5ID
 
+    label_for_pos: label1ID
+    label_for_english: label2ID
+    label_for_arabic: label3ID
+    label_for_plural: label4ID
+    label_for_alt_plural: label5ID
+    label_for_fem_sin: label6ID
+    label_for_fem_plural: label7ID
+
     BoxLayout:
         id: boxlayout1ID
         orientation: 'horizontal'
         size_hint: 1, .05
         pos_hint: {'x': 0, 'y': .95}
         Label:
+            id: label1ID
             size_hint: 1, 1
             pos_hint: {'x': 0, 'y': 0}
             text: 'entry.part_of_speech'
@@ -207,6 +216,7 @@ Builder.load_string("""
             id: floatlayout1ID
             pos_hint: {'x': 0, 'y': .5}
             Label:
+                id: label2ID
                 size_hint: 1, 1
                 pos_hint: {'x': 0, 'y': 0}
                 text: 'entry.english'
@@ -224,6 +234,7 @@ Builder.load_string("""
             id: floatlayout2ID
             pos_hint: {'x': 0, 'y': 0}
             Label:
+                id: label3ID
                 size_hint: 1, 1
                 pos_hint: {'x': 0, 'y': 0}
                 text: 'entry.arabic'
@@ -250,6 +261,7 @@ Builder.load_string("""
                     pos: self.center_x-50, self.center_y-6
                     size: 100, 1
             Label:
+                id: label4ID
                 size_hint: 1, 1
                 pos_hint: {'x': 0, 'y': 0}
                 text: 'entry.plural'
@@ -269,6 +281,7 @@ Builder.load_string("""
                     pos: self.center_x-50, self.center_y-6
                     size: 100, 1
             Label:
+                id: label5ID
                 size_hint: 1, 1
                 pos_hint: {'x': 0, 'y': 0}
                 text: 'entry.alt_plural'
@@ -288,6 +301,7 @@ Builder.load_string("""
                     pos: self.center_x-50, self.center_y-6
                     size: 100, 1
             Label:
+                id: label6ID
                 size_hint: 1, 1
                 pos_hint: {'x': 0, 'y': 0}
                 text: 'entry.fem_sing'
@@ -307,6 +321,7 @@ Builder.load_string("""
                     pos: self.center_x-50, self.center_y-6
                     size: 100, 1
             Label:
+                id: label7ID
                 size_hint: 1, 1
                 pos_hint: {'x': 0, 'y': 0}
                 text: 'entry.fem_plural'
@@ -339,8 +354,8 @@ def run_search(input_to_translate):
             found = True
         elif responseCode == 1:
             results_list.append((entry.retrieve_english(), entry))
-            new_results_label = "Did you mean:"
-            ResultsScreen().change_results_label(new_results_label)
+            new_results_label2 = "Did you mean:"
+            ResultsScreen().change_results_label(new_results_label2)
         elif responseCode == 2:
             results_list.append((entry.retrieve_english(), entry))
             new_results_label = "Results:"
@@ -351,8 +366,8 @@ def run_search(input_to_translate):
             part_of_speech = entry.retrieve_pos
             button_label = " " + part_of_speech + " " + word
             results_list.append((button_label, entry))
-            new_results_label = "Did you mean:"
-            ResultsScreen().change_results_label(new_results_label)
+            new_results_label2 = "Did you mean:"
+            ResultsScreen().change_results_label(new_results_label2)
         else:
             results_list.append("response code was 4")
 
@@ -392,7 +407,7 @@ class ResultsScreen(Screen):
     result_button = ObjectProperty(None)
     scroll_view = ObjectProperty(None)
     translate_input_2 = ObjectProperty(None)
-    #results_label = ObjectProperty(None)
+    results_label = ObjectProperty(None)
     anchor_layout_2 = ObjectProperty(None)
     #stack_layout = ObjectProperty(None)
 
@@ -413,6 +428,9 @@ class ResultsScreen(Screen):
         sm.get_screen("entry_viewer").replace_labels(entry)
         sm.current = 'entry_viewer'
 
+    def result_button_pressed_v(self, entry):
+        sm.get_screen("entry_viewer").replace_labels(entry)
+        sm.current = 'entry_viewer'
 
     def getResultButton(self, results_list):
         layout1 = GridLayout(cols=1, spacing=10, size_hint=(1, None))
@@ -420,18 +438,29 @@ class ResultsScreen(Screen):
                      minimum_width=layout1.setter('width'))
 
         for result, entry in results_list:
-            btn = Button(text=str(result), size_hint=(1, None),
+            if entry.part_of_speech == "v":
+                btn = Button(text=str(result), size_hint=(1, None),
+                         size_y=(100), on_release=self.result_button_pressed_v(entry))
+                layout1.add_widget(btn)
+            else:
+                btn2 = Button(text=str(result), size_hint=(1, None),
                          size_y=(100), on_release=self.result_button_pressed(entry))
-            layout1.add_widget(btn)
+                layout1.add_widget(btn2)
         scrollview1 = self.scroll_view
         scrollview1.clear_widgets()
         scrollview1.add_widget(layout1)
 
     def change_results_label(self, new_results_label):
+        print "Current Page Label: ", self.results_label.text
+        self.results_label.text = new_results_label
+
+
+        '''
         layout_of_label = self.anchor_layout_2
         layout_of_label.clear_widgets()
         new_label = Label(text=str(new_results_label), size_hint=(None, None), height=20, width=100, font_size=13)
         layout_of_label.add_widget(new_label)
+        '''
 
         #new_label = Label(text=new_results_label)
 
@@ -439,6 +468,7 @@ class ResultsScreen(Screen):
         return self.translationTextInput
 
 class EntryScreen(Screen):
+    '''
     layout_for_pos = ObjectProperty(None)
     layout_for_english = ObjectProperty(None)
     layout_for_arabic = ObjectProperty(None)
@@ -446,9 +476,24 @@ class EntryScreen(Screen):
     layout_for_alt_plural = ObjectProperty(None)
     layout_for_fem_sin = ObjectProperty(None)
     layout_for_fem_plural = ObjectProperty(None)
+    '''
+
+    label_for_pos = ObjectProperty(None)
+    label_for_english = ObjectProperty(None)
+    label_for_arabic = ObjectProperty(None)
+    label_for_plural = ObjectProperty(None)
+    label_for_alt_plural = ObjectProperty(None)
+    label_for_fem_sin = ObjectProperty(None)
+    label_for_fem_plural = ObjectProperty(None)
 
     def replace_labels(self, entry):
-        pos_layout = self.layout_for_pos
+        self.label_for_pos.text = entry.part_of_speech
+        self.label_for_english.text = entry.english
+        self.label_for_arabic.text = entry.arabic
+        self.label_for_plural.text = entry.plural
+        self.label_for_alt_plural.text = entry.alt_plural
+        self.label_for_fem_sin.text = entry.fem_sing
+        self.label_for_fem_plural.text = entry.fem_plural
 
 
 

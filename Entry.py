@@ -201,9 +201,9 @@ class Entry:
         return entry_string
 
     def search_fields(self, search_term):
-        if search_term == self.page or search_term == self.plural_type or search_term == self.arabic or \
-            search_term == self.plural or search_term == self.alt_plural or search_term == self.fem_sing or \
-            search_term == self.fem_plural or search_term == self.part_of_speech:
+        if search_term == self.arabic or search_term == self.plural or \
+            search_term == self.alt_plural or search_term == self.fem_sing or \
+            search_term == self.fem_plural:
             return True
         else:
             return False
