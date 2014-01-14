@@ -157,7 +157,7 @@ class Entry:
     def retrieve_just_arabic(self):
         arabic_string = " "
         arabic_string += self.part_of_speech + " "
-        arabic_string += self.arabic + " "
+        arabic_string += self.arabic
         return arabic_string
 
     def retrieve_arabic(self):
@@ -209,16 +209,15 @@ class Entry:
             return False
 
     def regex_search_fields(self, compiled_regex, arabic_regex):
-        '''
         if compiled_regex.search(self.arabic):
             return self.arabic
-        elif compiled_regex.search(self.plural):
+        if compiled_regex.search(self.plural):
             return self.plural
-        elif compiled_regex.search(self.alt_plural):
+        if compiled_regex.search(self.alt_plural):
             return self.alt_plural
-        elif compiled_regex.search(self.fem_sing):
+        if compiled_regex.search(self.fem_sing):
             return self.fem_sing
-        elif compiled_regex.search(self.fem_plural):
+        if compiled_regex.search(self.fem_plural):
             return self.fem_plural
         else:
             return False
@@ -229,3 +228,4 @@ class Entry:
             return True
         else:
             return False
+        '''

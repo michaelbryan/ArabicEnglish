@@ -19,6 +19,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 
 from bidi.algorithm import get_display
 import arabic_reshaper
+#from functools import partial
 
 import sys
 sys.path.append('../')
@@ -83,10 +84,12 @@ Builder.load_string("""
     orientation: 'vertical'
     goHomeButton: goHomeID
     translate_input_2: translateInput2KV
+    #results_label: resultsLabelID
     #translationTextInput: translationID
     #result_button: resultButtonID
     scroll_view: scrollviewID
     #stack_layout: StackLayoutID
+    anchor_layout_2: anchorLayout2
 
     AnchorLayout:
         size_hint: 1, .1   
@@ -106,14 +109,16 @@ Builder.load_string("""
 		size_hint: 1, .12   
 	    pos_hint: {'x': 0, 'y': .78}
 		AnchorLayout:
+            id: anchorLayout2
 			anchor_x: 'left'
 	        anchor_y: 'bottom'
-			Label:
-				text: 'Did you mean:'
-				size_hint: None, None
-	            height: 20
-	            width: 100
-	            font_size: 13
+			#Label:
+                #id: resultsLabelID
+				#text: 'Results:'
+				#size_hint: None, None
+	            #height: 20
+	            #width: 100
+	            #font_size: 13
 	    AnchorLayout:
 	        anchor_x: 'center'
 	        anchor_y: 'top'
@@ -124,7 +129,7 @@ Builder.load_string("""
 	            height: 20
 	            width: 70
 	            font_size: 10
-	            on_press: root.translateButtonPressed()
+	            on_release: root.translateButtonPressed()
 	    AnchorLayout:
 	    	anchor_x: 'right'
 	        anchor_y: 'bottom'
@@ -171,6 +176,147 @@ Builder.load_string("""
 	    AnchorLayout:
 	    	anchor_x: 'right'
 	        anchor_y: 'center'
+<EntryScreen>:
+    orientation: 'vertical'
+    layout_for_pos: boxlayout1ID
+    layout_for_english: floatlayout1ID
+    layout_for_arabic: floatlayout2ID
+    layout_for_plural: boxlayout2ID
+    layout_for_alt_plural: boxlayout3ID
+    layout_for_fem_sin: boxlayout4ID
+    layout_for_fem_plural: boxlayout5ID
+
+    BoxLayout:
+        id: boxlayout1ID
+        orientation: 'horizontal'
+        size_hint: 1, .05
+        pos_hint: {'x': 0, 'y': .95}
+        Label:
+            size_hint: 1, 1
+            pos_hint: {'x': 0, 'y': 0}
+            text: 'entry.part_of_speech'
+            text_size: self.size
+            valign: 'middle'
+            halign: 'center'
+        Label:
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 1, .25
+        pos_hint: {'x': 0, 'y': .7}
+        FloatLayout:
+            id: floatlayout1ID
+            pos_hint: {'x': 0, 'y': .5}
+            Label:
+                size_hint: 1, 1
+                pos_hint: {'x': 0, 'y': 0}
+                text: 'entry.english'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+            Label:
+                size_hint: .2, 1
+                pos_hint: {'x': .1, 'y': 0}
+                text: '>>'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+        FloatLayout:
+            id: floatlayout2ID
+            pos_hint: {'x': 0, 'y': 0}
+            Label:
+                size_hint: 1, 1
+                pos_hint: {'x': 0, 'y': 0}
+                text: 'entry.arabic'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+            Label:
+                size_hint: .2, 1
+                pos_hint: {'x': .7, 'y': 0}
+                text: '<<'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 1, .7
+        pos_hint: {'x': 0, 'y': 0}
+        BoxLayout:
+            id: boxlayout2ID
+            orientation: 'vertical'
+            pos_hint: {'x': 0, 'y': .75}
+            canvas:
+                Rectangle:
+                    pos: self.center_x-50, self.center_y-6
+                    size: 100, 1
+            Label:
+                size_hint: 1, 1
+                pos_hint: {'x': 0, 'y': 0}
+                text: 'entry.plural'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+            Label:
+                size_hint: 1, 1
+                text: 'PLURAL'
+                font_size: 12
+        BoxLayout:
+            id: boxlayout3ID
+            orientation: 'vertical'
+            pos_hint: {'x': 0, 'y': .5}
+            canvas:
+                Rectangle:
+                    pos: self.center_x-50, self.center_y-6
+                    size: 100, 1
+            Label:
+                size_hint: 1, 1
+                pos_hint: {'x': 0, 'y': 0}
+                text: 'entry.alt_plural'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+            Label:
+                size_hint: 1, 1
+                text: 'ALTERNATIVE PLURAL'
+                font_size: 12
+        BoxLayout:
+            id: boxlayout4ID
+            orientation: 'vertical'
+            pos_hint: {'x': 0, 'y': .25}
+            canvas:
+                Rectangle:
+                    pos: self.center_x-50, self.center_y-6
+                    size: 100, 1
+            Label:
+                size_hint: 1, 1
+                pos_hint: {'x': 0, 'y': 0}
+                text: 'entry.fem_sing'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+            Label:
+                size_hint: 1, 1
+                text: 'FEMININE SINGULAR'
+                font_size: 12
+        BoxLayout:
+            id: boxlayout5ID
+            orientation: 'vertical'
+            pos_hint: {'x': 0, 'y': 0}
+            canvas:
+                Rectangle:
+                    pos: self.center_x-50, self.center_y-6
+                    size: 100, 1
+            Label:
+                size_hint: 1, 1
+                pos_hint: {'x': 0, 'y': 0}
+                text: 'entry.fem_plural'
+                text_size: self.size
+                valign: 'middle'
+                halign: 'center'
+            Label:
+                size_hint: 1, 1
+                text: 'FEMININE PLURAL'
+                font_size: 12
 """)
 
 #class Dictionary:
@@ -187,14 +333,30 @@ def run_search(input_to_translate):
         print "entry:", entry
         print "response code:", responseCode
         if responseCode == 0:
-            results_list.append(entry.retrieve_just_arabic())
+            results_list.append((entry.retrieve_just_arabic(), entry))
+            new_results_label = "Results:"
+            ResultsScreen().change_results_label(new_results_label)
             found = True
         elif responseCode == 1:
-            results_list.append(entry.retrieve_english())
-    else:
-        results_list.append("response code was not 0 or 1")
+            results_list.append((entry.retrieve_english(), entry))
+            new_results_label = "Did you mean:"
+            ResultsScreen().change_results_label(new_results_label)
+        elif responseCode == 2:
+            results_list.append((entry.retrieve_english(), entry))
+            new_results_label = "Results:"
+            ResultsScreen().change_results_label(new_results_label)
+        elif responseCode == 3:
+            entry = entry[0]
+            word = entry[1]
+            part_of_speech = entry.retrieve_pos
+            button_label = " " + part_of_speech + " " + word
+            results_list.append((button_label, entry))
+            new_results_label = "Did you mean:"
+            ResultsScreen().change_results_label(new_results_label)
+        else:
+            results_list.append("response code was 4")
 
-    num_results = len(results_list)
+    #num_results = len(results_list)
 
     #if found:
 
@@ -230,6 +392,8 @@ class ResultsScreen(Screen):
     result_button = ObjectProperty(None)
     scroll_view = ObjectProperty(None)
     translate_input_2 = ObjectProperty(None)
+    #results_label = ObjectProperty(None)
+    anchor_layout_2 = ObjectProperty(None)
     #stack_layout = ObjectProperty(None)
 
     def goHome(self):
@@ -245,42 +409,54 @@ class ResultsScreen(Screen):
         input_to_translate_2 = self.translate_input_2.text
         return run_search(input_to_translate_2)
 
+    def result_button_pressed(self, entry):
+        sm.get_screen("entry_viewer").replace_labels(entry)
+        sm.current = 'entry_viewer'
+
+
     def getResultButton(self, results_list):
         layout1 = GridLayout(cols=1, spacing=10, size_hint=(1, None))
         layout1.bind(minimum_height=layout1.setter('height'),
                      minimum_width=layout1.setter('width'))
-        for result in results_list:
+
+        for result, entry in results_list:
             btn = Button(text=str(result), size_hint=(1, None),
-                         size_y=(100))
+                         size_y=(100), on_release=self.result_button_pressed(entry))
             layout1.add_widget(btn)
-        scrollview1 = self.scroll_view#ScrollView(bar_width='2dp')
+        scrollview1 = self.scroll_view
         scrollview1.clear_widgets()
         scrollview1.add_widget(layout1)
 
+    def change_results_label(self, new_results_label):
+        layout_of_label = self.anchor_layout_2
+        layout_of_label.clear_widgets()
+        new_label = Label(text=str(new_results_label), size_hint=(None, None), height=20, width=100, font_size=13)
+        layout_of_label.add_widget(new_label)
 
-
-        '''results = results_list
-        for entry in results:
-            self.stack_layout.add_widget(Button(text=(entry), size_hint=(1, None)))'''
-
-
-    '''layout = GridLayout(cols=1, spacing=10, size_hint_y=None)
-    # Make sure the height is such that there is something to scroll.
-    layout.bind(minimum_height=layout.setter('height'))
-    for i in range(30):
-        btn = Button(text=str(i), size_hint_y=None, height=40)
-        layout.add_widget(btn)
-    root = ScrollView(size_hint=(None, None), size=(400, 400))
-    root.add_widget(layout)'''
+        #new_label = Label(text=new_results_label)
 
     def getTranslationTextInput(self):
         return self.translationTextInput
+
+class EntryScreen(Screen):
+    layout_for_pos = ObjectProperty(None)
+    layout_for_english = ObjectProperty(None)
+    layout_for_arabic = ObjectProperty(None)
+    layout_for_plural = ObjectProperty(None)
+    layout_for_alt_plural = ObjectProperty(None)
+    layout_for_fem_sin = ObjectProperty(None)
+    layout_for_fem_plural = ObjectProperty(None)
+
+    def replace_labels(self, entry):
+        pos_layout = self.layout_for_pos
+
 
 
 # Create the screen manager
 sm = ScreenManager()
 sm.add_widget(HomeScreen(name='home'))
 sm.add_widget(ResultsScreen(name='translation'))
+sm.add_widget(EntryScreen(name='entry_viewer'))
 
 PROVIDED_USER_INPUT = ""
 

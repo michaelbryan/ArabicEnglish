@@ -38,8 +38,9 @@ def arabic_regex_search_1(ial):
     print compiled_regex
     for english, list_of_entries in gAllEntries.items():
         for entry in list_of_entries:
+            arabic_word = entry.regex_search_fields(compiled_regex, arabic_regex)
             if entry.regex_search_fields(compiled_regex, arabic_regex):
-                arabic_matched_entries_1.append(entry)
+                arabic_matched_entries_1.append((entry, arabic_word))
     return arabic_matched_entries_1
 
 def arabic_regex_search_2(ial):
@@ -62,8 +63,9 @@ def arabic_regex_search_2(ial):
     print compiled_regex
     for english, list_of_entries in gAllEntries.items():
         for entry in list_of_entries:
+            arabic_word = entry.regex_search_fields(compiled_regex, arabic_regex)
             if entry.regex_search_fields(compiled_regex, arabic_regex):
-                arabic_matched_entries_2.append(entry)
+                arabic_matched_entries_2.append((entry, arabic_word))
     return arabic_matched_entries_2
         
 def arabic_regex_search_3(ial):
@@ -89,8 +91,9 @@ def arabic_regex_search_3(ial):
     print compiled_regex
     for english, list_of_entries in gAllEntries.items():
         for entry in list_of_entries:
+            arabic_word = entry.regex_search_fields(compiled_regex, arabic_regex)
             if entry.regex_search_fields(compiled_regex, arabic_regex):
-                arabic_matched_entries_3.append(entry)
+                arabic_matched_entries_3.append((entry, arabic_word))
     return arabic_matched_entries_3
 
 def arabic_regex_search_4(ial):
@@ -113,8 +116,9 @@ def arabic_regex_search_4(ial):
     print compiled_regex
     for english, list_of_entries in gAllEntries.items():
         for entry in list_of_entries:
+            arabic_word = entry.regex_search_fields(compiled_regex, arabic_regex)
             if entry.regex_search_fields(compiled_regex, arabic_regex):
-                arabic_matched_entries_4.append(entry)
+                arabic_matched_entries_4.append((entry, arabic_word))
     return arabic_matched_entries_4
 
 def arabic_regex_search_5(ial):
@@ -137,8 +141,9 @@ def arabic_regex_search_5(ial):
     print compiled_regex
     for english, list_of_entries in gAllEntries.items():
         for entry in list_of_entries:
+            arabic_word = entry.regex_search_fields(compiled_regex, arabic_regex)
             if entry.regex_search_fields(compiled_regex, arabic_regex):
-                matched_regex_entries_5.append(entry)
+                matched_regex_entries_5.append((entry, arabic_word))
     return matched_regex_entries_5
 
 def remove_dup(ordered_list):
@@ -183,13 +188,15 @@ def search_entries(search_term):
     arabic_matched_entries_3 = arabic_regex_search_3(important_arabic_letters)
     arabic_matched_entries_4 = arabic_regex_search_4(important_arabic_letters)
     arabic_matched_entries_5 = arabic_regex_search_5(important_arabic_letters)
+    #These are now all tuples!  The entry AND the matching arabic word.
     all_arabic_matched_entries = arabic_matched_entries_1 + arabic_matched_entries_2 + arabic_matched_entries_3 + arabic_matched_entries_4 + arabic_matched_entries_5
     unique_arabic_matched_entries = remove_dup(all_arabic_matched_entries)
     if len(unique_arabic_matched_entries) > 0:
         entries_found = []
-        for entry in unique_arabic_matched_entries:
-            print "Did you mean: %s" % entry#.retrieve_just_arabic()
-            entries_found.append((entry, 3))
+        for entry, word in unique_arabic_matched_entries:
+            print "Did you mean: %s" % word#entry.regex_search_fields()
+            entries_found.append(((entry, word), 3))
+            print entry
         return entries_found
 
     else:
@@ -249,8 +256,8 @@ def get_regex_term(search_term):
     print new_search_term
     return new_search_term
 
-def regex_search_4(search_term):
-    print "regex_search_4:", search_term
+def regex_search_5(search_term):
+    print "regex_search_5:", search_term
     new_search_term = replace_asterisk_in_english_string(search_term)
     new_search_term_2 = "^" + new_search_term + "?"
     compiled_regex = re.compile(new_search_term, re.I)
