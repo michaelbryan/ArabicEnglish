@@ -28,19 +28,24 @@ from eadict import PopulateDB, search_entries
 
 Builder.load_string("""
 <RunSearchButton>:
+    #run_search_button: runSearchButtonID
+    #id: runSearchButtonID
     #size_hint: None, None
-    size_x: root.width-60
+    #size_x: self.width-60
+    size_y: 100
     on_release: root.RunSearchButton_pressed()
 
 <EntryButton>:
     #size_hint: None, None
-    size_x: 60
+    #size_x: 60
+    size_y: 100
     text: "Full Entry"
     on_release: root.EntryButton_pressed()
 
 <VerbChartButton>:
     #size_hint: None, None
-    size_x: 60
+    #size_x: 60
+    size_y: 100
     text: "Verb Chart"
     on_release: root.VerbChartButton_pressed()
 
@@ -108,6 +113,10 @@ Builder.load_string("""
     scroll_view: scrollviewID
     #stack_layout: StackLayoutID
     anchor_layout_2: anchorLayout2
+    
+    #run_search_button: runSearchButtonID
+    #entry_button: entryButtonID
+    #verb_chart_button: verbChartButtonID
 
     AnchorLayout:
         size_hint: 1, .1   
@@ -157,16 +166,28 @@ Builder.load_string("""
     	pos_hint: {'x': 0, 'y': 0.1}
     	size_hint: 1, .68
         bar_width: '4dp'
+        
         #StackLayout:
             #id: StackLayoutID
             ######if I change the y size hint from None to 1, more buttons will be created, why?
-            #size_hint: 1, 1
-            #orientation: 'tb-lr'
+            #size_hint: 1, None
+            #orientation: 'lr-tb'
+            #pos_hint: {'x': 0, 'y': 0}
+            
+            #RunSearchButton:
+                #id: runSearchButtonID
+            
+            #EntryButton:
+                #id: entryButtonID
+
+            #VerbChartButton:
+                #id: verbChartButtonID
+
             #Button:
                 #id: resultButtonID
                 #size_hint: 1, None
                 #text: 'result'
-
+        
 	BoxLayout:
 		orientation: 'horizontal'
 		pos_hint: {'x': 0, 'y': 0}
@@ -417,14 +438,23 @@ def run_search(input_to_translate):
     #results_scrollview = ResultsScreen.ScrollView()
     #PROVIDED_USER_INPUT = input_to_translate
 
-    sm.get_screen("results_screen").getResultsButtons(results_list)
-    sm.current = 'results_screen'
+            sm.get_screen("results_screen").getResultsButtons(results_list)
+            sm.current = 'results_screen'
 
 class RunSearchButton(Button):
+    #run_search_button = ObjectProperty(None)
 
+    '''
+    def __init__(self, word):
+        self.input_to_translate = word
 
-    def RunSearchButton_pressed(self, word):
-        run_search(word)
+    
+    def edit_button(self, button_label, word):
+        self.run_search_button.text = button_label
+    '''
+
+    def RunSearchButton_pressed(self):
+        run_search(self.input_to_translate)
 
 class EntryButton(Button):
 
@@ -466,13 +496,17 @@ class ResultsScreen(Screen):
     anchor_layout_2 = ObjectProperty(None)
     #stack_layout = ObjectProperty(None)
 
+    #run_search_button = ObjectProperty(None)
+    #entry_button = ObjectProperty(None)
+    #verb_chart_button = ObjectProperty(None)
+
     def getArabicResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
         self.getResultsButtons(results_list)
 
-
     def getCloseEnglishResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
+        self.getCloseResultsButtons(results_list)
 
     def getEnglishResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
@@ -481,14 +515,14 @@ class ResultsScreen(Screen):
 
     def getCloseArabicResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
-
+        self.getCloseResultsButtons(results_list)
 
     def goHome(self):
         sm.current = 'home'
         #self.goHomeButton.text = HomeScreen.translateInput.text
 
-    def getGoHomeButton(self):
-        return self.goHomeButton
+    #def getGoHomeButton(self):
+        #return self.goHomeButton
 
     def translateButtonPressed(self):
         #scrollview1 = self.scroll_view
@@ -496,6 +530,7 @@ class ResultsScreen(Screen):
         input_to_translate_2 = self.translate_input_2.text
         return run_search(input_to_translate_2)
 
+    '''
     def result_button_pressed(self, entry):
         sm.get_screen("entry_viewer").replace_labels(entry)
         sm.current = 'entry_viewer'
@@ -503,13 +538,13 @@ class ResultsScreen(Screen):
     def result_button_pressed_v(self, entry):
         sm.get_screen("entry_viewer").replace_labels(entry)
         sm.current = 'entry_viewer'
+    '''
 
     def getResultsButtons(self, results_list):
-        run_search_button = ObjectProperty(None)
-        entry_button = ObjectProperty(None)
-        verb_chart_button = ObjectProperty(None)
-        #layout1 = GridLayout(cols=1, spacing=10, size_hint=(1, None))
-        layout1 = StackLayout(orientation="lr-tb", spacing=0, size_hint=(1, None))
+
+        layout1 = GridLayout(cols=2, spacing=0, size_hint=(1, 1))
+        #layout1 = StackLayout(orientation="lr-tb", spacing=0, size_hint=(1, None))
+        #layout1 = self.stack_layout
         layout1.bind(minimum_height=layout1.setter('height'),
                      minimum_width=layout1.setter('width'))
 
@@ -520,7 +555,8 @@ class ResultsScreen(Screen):
             if entry.part_of_speech == "v":
                 #RunSearchButton().text = button_label
                 btn1 = RunSearchButton()
-                btn2 = EntryButton()
+                #RunSearchButton.edit_button(RunSearchButton(word), button_label, word)
+                btn2 = VerbChartButton()
                 '''
                 btn1 = Button(text=str(button_label), size_hint=(None, None),
                          size_y=(100), size_x=(self.width-60))#, on_release=run_search(str(word)))
@@ -531,7 +567,7 @@ class ResultsScreen(Screen):
                 layout1.add_widget(btn2)
             else:
                 btn3 = RunSearchButton()
-                btn4 = VerbChartButton()
+                btn4 = EntryButton()
                 '''
                 btn3 = Button(text=str(button_label), size_hint=(None, None),
                          size_y=(100), size_x=(self.width-60))#, on_release=run_search(str(word)))
