@@ -27,6 +27,23 @@ sys.path.append('../')
 from eadict import PopulateDB, search_entries
 
 Builder.load_string("""
+<RunSearchButton>:
+    #size_hint: None, None
+    size_x: root.width-60
+    on_release: root.RunSearchButton_pressed()
+
+<EntryButton>:
+    #size_hint: None, None
+    size_x: 60
+    text: "Full Entry"
+    on_release: root.EntryButton_pressed()
+
+<VerbChartButton>:
+    #size_hint: None, None
+    size_x: 60
+    text: "Verb Chart"
+    on_release: root.VerbChartButton_pressed()
+
 <HomeScreen>:
     translateInput: translateInputID
     translateButton: translateButtonID
@@ -326,6 +343,28 @@ Builder.load_string("""
                 size_hint: 1, 1
                 text: 'FEMININE PLURAL'
                 font_size: 12
+<VerbChartScreen>:
+    orientation: 'vertical'
+    thin_bottom_bar: thin_bottom_bar_ID
+    done_button: doneButton_ID
+    
+    ScrollView:
+        size_hint: 1, None
+        size_y: root.height-60
+        pos: root.x, root.y + 60
+
+    BoxLayout:
+        id: thin_bottom_bar_ID
+        size_hint: 1, None
+        size_y: 40
+        pos_hint: {'x': 0, 'y': 0}
+        Button:
+            id: doneButton_ID
+            center_x: root.center_x
+            size: 60, 20
+            text: 'Done'
+            on_release: root.doneButton_pressed()
+
 """)
 
 #class Dictionary:
@@ -344,19 +383,19 @@ def run_search(input_to_translate):
         if responseCode == 0:
             results_list.append((entry.arabic, entry.retrieve_just_arabic(), entry))
             new_results_label = "Results:"
-            sm.get_screen("translation").getArabicResults(results_list, new_results_label)
-            sm.current = 'translation'
+            sm.get_screen("results_screen").getArabicResults(results_list, new_results_label)
+            sm.current = 'results_screen'
             #found = True
         elif responseCode == 1:
             results_list.append((entry.english, entry.retrieve_english(), entry))
             new_results_label = "Did you mean:"
-            sm.get_screen("translation").getCloseEnglishResults(results_list, new_results_label)
-            sm.current = 'translation'
+            sm.get_screen("results_screen").getCloseEnglishResults(results_list, new_results_label)
+            sm.current = 'results_screen'
         elif responseCode == 2:
             results_list.append((entry.english, entry.retrieve_english(), entry))
             new_results_label = "Results:"
-            sm.get_screen("translation").getEnglishResults(results_list, new_results_label)
-            sm.current = 'translation'
+            sm.get_screen("results_screen").getEnglishResults(results_list, new_results_label)
+            sm.current = 'results_screen'
         elif responseCode == 3:
             entry = entry[0]
             word = entry[1]
@@ -364,8 +403,8 @@ def run_search(input_to_translate):
             button_label = " " + part_of_speech + " " + word
             results_list.append((word, button_label, entry))
             new_results_label = "Did you mean:"
-            sm.get_screen("translation").getCloseArabicResults(results_list, new_results_label)
-            sm.current = 'translation'
+            sm.get_screen("results_screen").getCloseArabicResults(results_list, new_results_label)
+            sm.current = 'results_screen'
         else:
             results_list.append("response code was 4")
 
@@ -378,8 +417,26 @@ def run_search(input_to_translate):
     #results_scrollview = ResultsScreen.ScrollView()
     #PROVIDED_USER_INPUT = input_to_translate
 
-    #sm.get_screen("translation").getResultsButtons(results_list)
-    #sm.current = 'translation'
+    sm.get_screen("results_screen").getResultsButtons(results_list)
+    sm.current = 'results_screen'
+
+class RunSearchButton(Button):
+
+
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+
+class EntryButton(Button):
+
+    def EntryButton_pressed(self, entry):
+        sm.get_screen("entry_viewer").replace_labels(entry)
+        sm.current = 'entry_viewer'
+
+class VerbChartButton(Button):
+
+    def VerbChartButton_pressed(self, entry):
+        sm.get_screen("verb_chart").refresh_verb_chart(entry)
+        sm.current = 'verb_chart'
 
 class HomeScreen(Screen):
     translateInput = ObjectProperty(None)
@@ -394,7 +451,7 @@ class HomeScreen(Screen):
     	input_to_translate = self.translateInput.text
         run_search(input_to_translate)
 
-        #sm.get_screen("translation").getGoHomeButton().text = self.translateInput.text
+        #sm.get_screen("results_screen").getGoHomeButton().text = self.translateInput.text
 
     def getInputText(self):
     	return self.translateInput.text
@@ -416,7 +473,6 @@ class ResultsScreen(Screen):
 
     def getCloseEnglishResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
-        #self.getResultsButtons(results_list)
 
     def getEnglishResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
@@ -449,6 +505,9 @@ class ResultsScreen(Screen):
         sm.current = 'entry_viewer'
 
     def getResultsButtons(self, results_list):
+        run_search_button = ObjectProperty(None)
+        entry_button = ObjectProperty(None)
+        verb_chart_button = ObjectProperty(None)
         #layout1 = GridLayout(cols=1, spacing=10, size_hint=(1, None))
         layout1 = StackLayout(orientation="lr-tb", spacing=0, size_hint=(1, None))
         layout1.bind(minimum_height=layout1.setter('height'),
@@ -459,25 +518,28 @@ class ResultsScreen(Screen):
             button_label = result[1]
             entry = result[2]
             if entry.part_of_speech == "v":
-                btn1 = Button(text=str(button_label), size_hint=(1, None),
-                         size_y=(100), on_release=self.result_button_pressed_v(entry))
-                '''btn1 = Button(text=str(button_label), size_hint=(1, None),
-                         size_y=(100), size_x=(self.width-60), on_release=run_search(str(word)))
+                #RunSearchButton().text = button_label
+                btn1 = RunSearchButton()
+                btn2 = EntryButton()
+                '''
+                btn1 = Button(text=str(button_label), size_hint=(None, None),
+                         size_y=(100), size_x=(self.width-60))#, on_release=run_search(str(word)))
                 btn2 = Button(text="Verb Chart", size_hint=(None, None),
                          size_y=(100), size_x=(60), on_release=self.result_button_pressed_v(entry))
+                '''
                 layout1.add_widget(btn1)
-                layout1.add_widget(btn2)'''
-                layout1.add_widget(btn1)
+                layout1.add_widget(btn2)
             else:
-                btn2 = Button(text=str(button_label), size_hint=(1, None),
-                         size_y=(100), on_release=self.result_button_pressed_v(entry))
-                '''btn3 = Button(text=str(button_label), size_hint=(None, None),
-                         size_y=(100), size_x=(self.width-60), on_release=run_search(str(word)))
+                btn3 = RunSearchButton()
+                btn4 = VerbChartButton()
+                '''
+                btn3 = Button(text=str(button_label), size_hint=(None, None),
+                         size_y=(100), size_x=(self.width-60))#, on_release=run_search(str(word)))
                 btn4 = Button(text="Full Entry", size_hint=(None, None),
                          size_y=(100), size_x=(60), on_release=self.result_button_pressed(entry))
+                '''
                 layout1.add_widget(btn3)
-                layout1.add_widget(btn4)'''
-                layout1.add_widget(btn2)
+                layout1.add_widget(btn4)
         scrollview1 = self.scroll_view
         scrollview1.clear_widgets()
         scrollview1.add_widget(layout1)
@@ -517,13 +579,23 @@ class EntryScreen(Screen):
         self.label_for_fem_sin.text = entry.fem_sing
         self.label_for_fem_plural.text = entry.fem_plural
 
+class VerbChartScreen(Screen):
+    thin_bottom_bar = ObjectProperty(None)
+    doneButton = ObjectProperty(None)
+
+    def refresh_verb_chart(self, entry):
+        verb = entry.arabic
+
+    def doneButton_pressed(self):
+        sm.current = 'results_screen'
 
 
 # Create the screen manager
 sm = ScreenManager()
 sm.add_widget(HomeScreen(name='home'))
-sm.add_widget(ResultsScreen(name='translation'))
+sm.add_widget(ResultsScreen(name='results_screen'))
 sm.add_widget(EntryScreen(name='entry_viewer'))
+sm.add_widget(VerbChartScreen(name='verb_chart'))
 
 PROVIDED_USER_INPUT = ""
 

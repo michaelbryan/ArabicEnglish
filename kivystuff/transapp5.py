@@ -378,8 +378,8 @@ def run_search(input_to_translate):
     #results_scrollview = ResultsScreen.ScrollView()
     #PROVIDED_USER_INPUT = input_to_translate
 
-    #sm.get_screen("translation").getResultsButtons(results_list)
-    #sm.current = 'translation'
+    sm.get_screen("translation").getResultsButtons(results_list)
+    sm.current = 'translation'
 
 class HomeScreen(Screen):
     translateInput = ObjectProperty(None)
@@ -416,7 +416,6 @@ class ResultsScreen(Screen):
 
     def getCloseEnglishResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
-        #self.getResultsButtons(results_list)
 
     def getEnglishResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
@@ -459,25 +458,19 @@ class ResultsScreen(Screen):
             button_label = result[1]
             entry = result[2]
             if entry.part_of_speech == "v":
-                btn1 = Button(text=str(button_label), size_hint=(1, None),
-                         size_y=(100), on_release=self.result_button_pressed_v(entry))
-                '''btn1 = Button(text=str(button_label), size_hint=(1, None),
+                btn1 = Button(text=str(button_label), size_hint=(None, None),
                          size_y=(100), size_x=(self.width-60), on_release=run_search(str(word)))
                 btn2 = Button(text="Verb Chart", size_hint=(None, None),
                          size_y=(100), size_x=(60), on_release=self.result_button_pressed_v(entry))
                 layout1.add_widget(btn1)
-                layout1.add_widget(btn2)'''
-                layout1.add_widget(btn1)
+                layout1.add_widget(btn2)
             else:
-                btn2 = Button(text=str(button_label), size_hint=(1, None),
-                         size_y=(100), on_release=self.result_button_pressed_v(entry))
-                '''btn3 = Button(text=str(button_label), size_hint=(None, None),
+                btn3 = Button(text=str(button_label), size_hint=(None, None),
                          size_y=(100), size_x=(self.width-60), on_release=run_search(str(word)))
                 btn4 = Button(text="Full Entry", size_hint=(None, None),
                          size_y=(100), size_x=(60), on_release=self.result_button_pressed(entry))
                 layout1.add_widget(btn3)
-                layout1.add_widget(btn4)'''
-                layout1.add_widget(btn2)
+                layout1.add_widget(btn4)
         scrollview1 = self.scroll_view
         scrollview1.clear_widgets()
         scrollview1.add_widget(layout1)

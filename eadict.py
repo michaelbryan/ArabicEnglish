@@ -188,7 +188,7 @@ def search_entries(search_term):
     arabic_matched_entries_3 = arabic_regex_search_3(important_arabic_letters)
     arabic_matched_entries_4 = arabic_regex_search_4(important_arabic_letters)
     arabic_matched_entries_5 = arabic_regex_search_5(important_arabic_letters)
-    #These are now all tuples!  The entry AND the matching arabic word.
+    #These are now all tuples!  The entry AND the matching arabic word from within that entry.
     all_arabic_matched_entries = arabic_matched_entries_1 + arabic_matched_entries_2 + arabic_matched_entries_3 + arabic_matched_entries_4 + arabic_matched_entries_5
     unique_arabic_matched_entries = remove_dup(all_arabic_matched_entries)
     if len(unique_arabic_matched_entries) > 0:
