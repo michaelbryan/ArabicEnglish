@@ -60,7 +60,8 @@ Builder.load_string("""
         TextInput:
             id: translateInputID
             text: 'walk'
-            #text: 'مَشى'
+            #text: 'ﻰﺸَﻣ'
+            font_name: "data/fonts/DejaVuSans.ttf"
             background_color: .8, .8, 0, 1
             size_hint: .75, .1
             multiline: False
@@ -438,8 +439,8 @@ def run_search(input_to_translate):
     #results_scrollview = ResultsScreen.ScrollView()
     #PROVIDED_USER_INPUT = input_to_translate
 
-            sm.get_screen("results_screen").getResultsButtons(results_list)
-            sm.current = 'results_screen'
+            #sm.get_screen("results_screen").getResultsButtons(results_list)
+            #sm.current = 'results_screen'
 
 class RunSearchButton(Button):
     #run_search_button = ObjectProperty(None)
@@ -475,7 +476,8 @@ class HomeScreen(Screen):
 
     def translateButtonPressed(self):
     	print "input to translate:", self.translateInput.text
-    	arabic_text = get_display(arabic_reshaper.reshape(u'العربية Hello World')).encode('utf-8')
+        new_label = unicode(self.translateLabel.text, encoding='utf-8')
+    	arabic_text = get_display(arabic_reshaper.reshape(new_label))#(u'العربية Hello World')).encode('utf-8')
     	self.translateLabel.text = arabic_text
 
     	input_to_translate = self.translateInput.text

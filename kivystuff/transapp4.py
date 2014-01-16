@@ -24,7 +24,7 @@ import arabic_reshaper
 
 import sys
 sys.path.append('../')
-from eadict import PopulateDB, search_entries
+from eadict2 import PopulateDB, search_entries
 
 Builder.load_string("""
 <HomeScreen>:
@@ -39,6 +39,7 @@ Builder.load_string("""
             id: translateInputID
             text: 'walk'
             #text: 'مَشى'
+            font_name: "data/fonts/DejaVuSans.ttf"
             background_color: .8, .8, 0, 1
             size_hint: .75, .1
             multiline: False
@@ -367,7 +368,7 @@ def run_search(input_to_translate):
             sm.get_screen("translation").getCloseArabicResults(results_list, new_results_label)
             sm.current = 'translation'
         else:
-            results_list.append("response code was 4")
+            results_list.append(("response code was 4"))
 
     #num_results = len(results_list)
 
@@ -378,8 +379,8 @@ def run_search(input_to_translate):
     #results_scrollview = ResultsScreen.ScrollView()
     #PROVIDED_USER_INPUT = input_to_translate
 
-    #sm.get_screen("translation").getResultsButtons(results_list)
-    #sm.current = 'translation'
+            #sm.get_screen("translation").getResultsButtons(results_list)
+            #sm.current = 'translation'
 
 class HomeScreen(Screen):
     translateInput = ObjectProperty(None)
@@ -416,7 +417,7 @@ class ResultsScreen(Screen):
 
     def getCloseEnglishResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
-        #self.getResultsButtons(results_list)
+        self.getResultsButtons(results_list)
 
     def getEnglishResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
@@ -458,9 +459,24 @@ class ResultsScreen(Screen):
             word = result[0]
             button_label = result[1]
             entry = result[2]
+            print button_label
+            button_label2 = word.decode('string_escape')
+            print button_label2
+            button_label3 = button_label2.decode('utf-8')
+            print button_label3
+            button_label4 = unicode(button_label, encoding='utf-8')
+            print button_label4
+            label_letters_list = list(button_label4)
+            print label_letters_list
+            reshaped_label = get_display(arabic_reshaper.reshape(button_label4))#.decode('utf-8')
+            print reshaped_label
             if entry.part_of_speech == "v":
-                btn1 = Button(text=str(button_label), size_hint=(1, None),
+                btn1 = Button(text=reshaped_label, size_hint=(1, None), font_name="data/fonts/DejaVuSans.ttf",
                          size_y=(100), on_release=self.result_button_pressed_v(entry))
+                btn2 = Button(text=str(button_label2), size_hint=(1, None), font_name="data/fonts/DejaVuSans.ttf",
+                         size_y=(100), on_release=self.result_button_pressed_v(entry))
+                #btn3 = Button(text=str(button_label3), size_hint=(1, None), font_name="data/fonts/DejaVuSans.ttf",
+                         #size_y=(100), on_release=self.result_button_pressed_v(entry))
                 '''btn1 = Button(text=str(button_label), size_hint=(1, None),
                          size_y=(100), size_x=(self.width-60), on_release=run_search(str(word)))
                 btn2 = Button(text="Verb Chart", size_hint=(None, None),
@@ -468,8 +484,10 @@ class ResultsScreen(Screen):
                 layout1.add_widget(btn1)
                 layout1.add_widget(btn2)'''
                 layout1.add_widget(btn1)
+                layout1.add_widget(btn2)
+                #layout1.add_widget(btn3)
             else:
-                btn2 = Button(text=str(button_label), size_hint=(1, None),
+                btn2 = Button(text=str(button_label), size_hint=(1, None), font_name="data/fonts/DejaVuSans.ttf",
                          size_y=(100), on_release=self.result_button_pressed_v(entry))
                 '''btn3 = Button(text=str(button_label), size_hint=(None, None),
                          size_y=(100), size_x=(self.width-60), on_release=run_search(str(word)))
