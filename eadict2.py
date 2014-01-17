@@ -8,6 +8,9 @@ from DictionaryRetrieval2 import RetrieveEntriesFromFile
 #reload(sys)
 #sys.setdefaultencoding('utf-8')
 
+a = sys.getfilesystemencoding()
+print "Filesystem encoding: " + a
+
 gAllEntries = {}
 
 def reverse_search_entries(search_term):
@@ -20,11 +23,11 @@ def reverse_search_entries(search_term):
 
 def arabic_regex_search_1(ial):
     print "===== arabic_regex_search_1"
-    filler = ""
+    filler = "(.)?"
     #filler.encode('utf-8')
     print filler
     arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
-    del arabic_regex_list[-1]
+    #del arabic_regex_list[-1]
     begin_word = "^"
     end_word = "$"
     arabic_regex_list.insert(0, begin_word)
@@ -45,11 +48,12 @@ def arabic_regex_search_1(ial):
 
 def arabic_regex_search_2(ial):
     print "===== arabic_regex_search_2"
-    filler = "(\S?)"
+    filler = "(.){0,2}"
     #filler.encode('utf-8')
     print filler
     arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
-    #del arabic_regex_list[-1]
+    del arabic_regex_list[-1]
+    arabic_regex_list.append("(.?)")
     begin_word = "^"
     end_word = "$"
     arabic_regex_list.insert(0, begin_word)
@@ -70,7 +74,7 @@ def arabic_regex_search_2(ial):
         
 def arabic_regex_search_3(ial):
     print "===== arabic_regex_search_3"
-    filler = "(\S{0,3})"
+    filler = "(.{0,2})"
     #"((\S?)|((\S?)(\S?))|((\S?)(\S?)(\S?)))"
     #"(([^ ]?)|([^ ][^ ]?))" another way
     #"((.?)|(..?))" yet another
@@ -98,11 +102,12 @@ def arabic_regex_search_3(ial):
 
 def arabic_regex_search_4(ial):
     print "===== arabic_regex_search_4"
-    filler = "(\w{0,3})"
+    filler = "(.{0,3})"
     #filler.encode('utf-8')
     print filler
     arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
     del arabic_regex_list[-1]
+    arabic_regex_list.append("(.?)")
     begin_word = ""
     end_word = "$"
     #arabic_regex_list.insert(0, begin_word)
@@ -123,7 +128,7 @@ def arabic_regex_search_4(ial):
 
 def arabic_regex_search_5(ial):
     print "===== arabic_regex_search_5"
-    filler = "(\S){0,6}"
+    filler = "(.{0,3})"
     #"(([\S?][\S?][\S?][\S?]))"
     #"(([^ ]?)|([^ ][^ ]?)|([^ ][^ ][^ ]?)|([^ ][^ ][^ ][^ ]?))"
     #filler.encode('utf-8')
@@ -152,13 +157,14 @@ def remove_dup(ordered_list):
     return [ x for x in ordered_list if x not in seen and not seen_add(x)]
 
 def search_entries(search_term):
-    search_term2 = search_term.encode('utf-8')
+    search_term2 = search_term#.encode('utf-8')
     if search_term2 in gAllEntries.keys():
         entries_found = []
         for entry in gAllEntries[search_term2]:
             print "Found via english: %s" % entry.retrieve_arabic()
             word = entry.arabic
             print list(word)
+            #print gAllEntries.values[1]
             #unicode_word = unicode(word, encoding='utf-8')
             #print list(unicode_word)
             entries_found.append((entry, 0))
@@ -201,7 +207,7 @@ def search_entries(search_term):
         for entry, word in unique_arabic_matched_entries:
             print "Did you mean: %s" % word#entry.regex_search_fields()
             entries_found.append(((entry, word), 3))
-            print entry
+            print word
         return entries_found
 
     else:
@@ -209,21 +215,67 @@ def search_entries(search_term):
         return [(None, 4)]
 
 def arabic_regex_term(search_term):
-    fatha = "\xd9\x8e"
-    damma = "\xd9\x8f"
-    kasra = "\xd9\x90"
-    shadda = "\xd9\x91"
-    sukun = "\xd9\x92"
-    maddah = "\xd9\x93"
-    hamza_above = "\xd9\x94"
-    hamza_below = "\xd9\x95"
-    new_search_term = search_term.replace("*", "**")
-    #This is just to maintain an even number of elements in the list of split utf-8 encodings.
-    broken_unicode = list(new_search_term)
-    print broken_unicode
-    arabic_letters = [i+j for i,j in zip(broken_unicode[::2],broken_unicode[1::2])]
-    print arabic_letters
-    fatha_filtered = list(filter((fatha).__ne__, arabic_letters))
+    fatha = u'\u064e'
+    damma = u'\u064f'
+    kasra = u'\u0650'
+    shadda = u'\u0651'
+    sukun = u'\u0652'
+    maddah = u'\u0653'
+    hamza_above = u'\u0654'
+    hamza_below = u'\u0655'
+    #special_letters = [fatha, damma, kasra, shadda, sukun, maddah, hamza_above, hamza_below]
+
+
+    alif_maddah = u'\u0622'
+    alif_hamza_above = u'\u0623'
+    alif_hamza_below = u'\u0625'
+    alif = u'\u0627'
+
+    #alifs_list = [alif_maddah, alif_hamza_above, alif_hamza_below, alif]
+    #unc_alifs = "".join(alifs_list)
+
+    #reg_alifs = re.compile(ur'[\u0622\u0623\u0625\u0627]{1}', re.U)
+    #subbed_alif_term = reg_alifs.sub(ur'[\u0622\u0623\u0625\u0627]', search_term)
+
+    hamza_on_alif_maksura = u'\u0626'
+    yah = u'\u064a'
+    waw = u'\u0648'
+    meem = u'\u0645'
+    bah = u'\u0628'
+    tah = u'\u062a'
+    tah_marbuuta = u'\u0629'
+    noon = u'\u0646'
+    hah = u'\u0647'
+    kaaf = u'\u0643'
+    hah_heavy = u'\u062d'
+    seen = u'\u0633'
+    lam = u'\u0644'
+    fah = u'\u0641'
+    ein = u'\u0639'
+    saad = u'\u0635'
+    daal = u'\u062f'
+    rah = u'\u0631'
+
+    alif_maksura = u'\u0649'
+    tah_heavy = u'\u0637'
+    hamza = u'\u0621'
+    waw_with_hamza = u'\u0624'
+    
+    #utf8_letters = [hamza_on_alif_maksura, yah, waw, meem, bah, tah_marbuuta, tah, noon,\
+    #hah, kaaf, hah_heavy, seen, lam, fah, ein, saad, daal, rah]
+    utf8_letters = [waw_with_hamza]
+
+    unc_spec_lett = []
+    for char in utf8_letters:
+        unc_char = unicode(char, encoding='utf-8')
+        unc_spec_lett.append(unc_char)
+    print "unicode alifs: "
+    print unc_spec_lett
+    
+    
+    unicode_letters = list(search_term)
+    print unicode_letters
+    fatha_filtered = list(filter((fatha).__ne__, unicode_letters))
     damma_filtered = list(filter((damma).__ne__, fatha_filtered))
     kasra_filtered = list(filter((kasra).__ne__, damma_filtered))
     shadda_filtered = list(filter((shadda).__ne__, kasra_filtered))
@@ -231,13 +283,15 @@ def arabic_regex_term(search_term):
     maddah_filtered = list(filter((maddah).__ne__, sukun_filtered))
     hamza_above_filtered = list(filter((hamza_above).__ne__, maddah_filtered))
     hamza_below_filtered = list(filter((hamza_below).__ne__, hamza_above_filtered))
-    alif_madda_replaced_list = ["[\xd8\xa2\xd8\xa3\xd8\xa5\xd8\xa7]{1}" if x=="\xd8\xa2" else x for x in hamza_below_filtered]
-    alif_hamza_above_replaced_list = ["[\xd8\xa2\xd8\xa3\xd8\xa5\xd8\xa7]{1}" if x=="\xd8\xa3" else x for x in alif_madda_replaced_list]
-    alif_hamza_below_replaced_list = ["[\xd8\xa2\xd8\xa3\xd8\xa5\xd8\xa7]{1}" if x=="\xd8\xa5" else x for x in alif_hamza_above_replaced_list]
-    alif_replaced_list = ["[\xd8\xa2\xd8\xa3\xd8\xa5\xd8\xa7]{1}" if x=="\xd8\xa7" else x for x in alif_hamza_below_replaced_list]
+    
+    alif_madda_replaced_list = [ur'[\u0622\u0623\u0625\u0627]' if x==alif_maddah else x for x in hamza_below_filtered]
+    alif_hamza_above_replaced_list = [ur'[\u0622\u0623\u0625\u0627]' if x==alif_hamza_above else x for x in alif_madda_replaced_list]
+    alif_hamza_below_replaced_list = [ur'[\u0622\u0623\u0625\u0627]' if x==alif_hamza_below else x for x in alif_hamza_above_replaced_list]
+    alif_replaced_list = [ur'[\u0622\u0623\u0625\u0627]' if x==alif else x for x in alif_hamza_below_replaced_list]
+    
     #alif_maksura_replaced_list = ["[\xd9\x89\xd9\x8a]{1}" if x=="\xd9\x89" else x for x in alif_replaced_list]
     #yah_replaced_list = ["[\xd9\x89\xd9\x8a]{1}" if x=="\xd9\x8a" else x for x in alif_maksura_replaced_list]
-    asterisk_replaced_list = ["(\S{1,2})" if x=="**" else x for x in alif_replaced_list]
+    asterisk_replaced_list = ["(.)" if x=="*" else x for x in alif_replaced_list]
     important_arabic_letters = asterisk_replaced_list
     print important_arabic_letters
     return important_arabic_letters
@@ -290,7 +344,8 @@ def regex_search_3(search_term):
     print "regex_search_3:", search_term
     new_search_term = replace_asterisk_in_english_string(search_term)
     new_search_term_2 = new_search_term + "$"
-    compiled_regex = re.compile(new_search_term, re.I)
+    print new_search_term_2
+    compiled_regex = re.compile(new_search_term_2, re.I)
     matched_regex_entries_3 = []
 
     for key in gAllEntries.keys():

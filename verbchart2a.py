@@ -4,7 +4,7 @@ from bidi.algorithm import get_display
 
 import arabic_reshaper
 
-class Entry:
+class VerbChart2a:
     def __init__(self, line):
         fields = line.split("|")
 
@@ -19,34 +19,47 @@ class Entry:
         self.part_of_speech = fields[8]
         self.verb_type = fields[9]
 
-    def verb_chart_2a(self):
-        broken_unicode = list(self.arabic)
-        print broken_unicode
-        arabic_letters = [i+j for i,j in zip(broken_unicode[::2],broken_unicode[1::2])]
-        print arabic_letters
-        fatha = "\xd9\x8e"
-        damma = "\xd9\x8f"
-        kasra = "\xd9\x90"
-        shadda = "\xd9\x91"
-        sukun = "\xd9\x92"
-        maddah = "\xd9\x93"
-        hamza_above = "\xd9\x94"
-        hamza_below = "\xd9\x95"
-        hamza_on_alif_maksura = "\xd8\xa6"
-        yah = "\xd9\x8a"
-        waw = "\xd9\x88"
-        alif = "\xd8\xa7"
-        alif_hamza_above = "\xd8\xa3"
-        alif_hamza_below = "\xd8\xa5"
-        meem = "\xd9\x85"
-        bah = "\xd8\xa8"
-        tah = "\xd8\xaa"
-        tah_marbuuta = "\xd8\xa9"
-        noon = "\xd9\x86"
-        hah = "\xd9\x87"
-        kaaf = "\xd9\x83"
-        hah_heavy = "\xd8\xad"
+        arabic_letters = list(self.arabic)
+        #print arabic_letters
+
         #these arabic letters are commonly used in conjugations
+        fatha = u'\u064e'
+        damma = u'\u064f'
+        kasra = u'\u0650'
+        shadda = u'\u0651'
+        sukun = u'\u0652'
+        maddah = u'\u0653'
+        hamza_above = u'\u0654'
+        hamza_below = u'\u0655'
+
+        alif_maddah = u'\u0622'
+        alif_hamza_above = u'\u0623'
+        alif_hamza_below = u'\u0625'
+        alif = u'\u0627'
+
+        hamza_on_alif_maksura = u'\u0626'
+        yah = u'\u064a'
+        waw = u'\u0648'
+        meem = u'\u0645'
+        bah = u'\u0628'
+        tah = u'\u062a'
+        tah_marbuuta = u'\u0629'
+        noon = u'\u0646'
+        hah = u'\u0647'
+        kaaf = u'\u0643'
+        hah_heavy = u'\u062d'
+        alif_maksura = u'\u0649'
+        tah_heavy = u'\u0637'
+        hamza = u'\u0621'
+        #other arabic letters for naming parts of speech
+        seen = u'\u0633'
+        lam = u'\u0644'
+        fah = u'\u0641'
+        ein = u'\u0639'
+        saad = u'\u0635'
+        daal = u'\u062f'
+        rah = u'\u0631'
+        
         fatha_filtered = list(filter((fatha).__ne__, arabic_letters))
         damma_filtered = list(filter((damma).__ne__, fatha_filtered))
         kasra_filtered = list(filter((kasra).__ne__, damma_filtered))
@@ -55,15 +68,7 @@ class Entry:
         maddah_filtered = list(filter((maddah).__ne__, sukun_filtered))
         hamza_above_filtered = list(filter((hamza_above).__ne__, maddah_filtered))
         hamza_below_filtered = list(filter((hamza_below).__ne__, hamza_above_filtered))
-        #meem_filtered = list(filter((meem).__ne__, hamza_below_filtered))
-        #if "\xd9\x8e" in arabic_letters: arabic_letters.remove("\xd9\x8e")
-        #if "\xd9\x8f" in arabic_letters: arabic_letters.remove("\xd9\x8f")
-        #if "\xd9\x90" in arabic_letters: arabic_letters.remove("\xd9\x90")
-        #if "\xd9\x91" in arabic_letters: arabic_letters.remove("\xd9\x91")
-        #if "\xd9\x92" in arabic_letters: arabic_letters.remove("\xd9\x92")
-        #if "\xd9\x93" in arabic_letters: arabic_letters.remove("\xd9\x93")
-        #if "\xd9\x94" in arabic_letters: arabic_letters.remove("\xd9\x94")
-        #if "\xd9\x95" in arabic_letters: arabic_letters.remove("\xd9\x95")
+        
         arabic_root = hamza_below_filtered
         first_root_letter = arabic_root[0]
         second_root_letter = arabic_root[1]
@@ -232,14 +237,7 @@ class Entry:
         print they_present_string + "\n"
         print they_present_with_pronoun_string + "\n"
         print they_conjugations_list
-        #other arabic letters for naming parts of speech
-        seen = "\xd8\xb3"
-        lam = "\xd9\x84"
-        fah = "\xd9\x81"
-        ein = "\xd8\xb9"
-        saad = "\xd8\xb5"
-        daal = "\xd8\xaf"
-        rah = "\xd8\xb1"
+        
         word_active_participle_broken = [alif, seen, sukun, meem, " ", alif, lam, fah, alif, ein, kasra, lam]
         word_active_participle_string = "".join(word_active_participle_broken)
         word_direct_object_broken = [alif, seen, sukun, meem, " ", alif, lam, meem, fatha, fah, sukun, ein, damma, waw, lam]

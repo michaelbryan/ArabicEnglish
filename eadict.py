@@ -156,6 +156,8 @@ def search_entries(search_term):
         entries_found = []
         for entry in gAllEntries[search_term]:
             print "Found via english: %s" % entry.retrieve_arabic()
+            word = entry.arabic
+            print list(word)
             entries_found.append((entry, 0))
         return entries_found
 
