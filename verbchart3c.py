@@ -250,8 +250,27 @@ class VerbChart3c:
         direct_object_string = "".join(direct_object_broken)
         verbal_noun_broken = [meem, damma, first_root_letter, alif, second_root_letter, fatha, third_root_letter, tah_marbuuta]
         verbal_noun_string = "".join(verbal_noun_broken)
-        print word_active_participle_string + ": " + active_participle_string + "\n"
-        print word_direct_object_string + ": " + direct_object_string + "\n"
-        print word_verbal_noun_string + ": " + verbal_noun_string + "\n"
-        # youre now returning a list...
-        return arabic_root
+        
+        act_part = word_active_participle_string + ": " + active_participle_string
+        dir_object = word_direct_object_string + ": " + direct_object_string
+        verbal_noun = word_verbal_noun_string + ": " + verbal_noun_string
+
+        chart_extras = (act_part, dir_object, verbal_noun)
+        # other important verb info
+
+        column_titles = verb_columns_list[::-1]
+        row_2 = i_conjugations_list[::-1]
+        row_3 = you_m_conjugations_list[::-1]
+        row_4 = you_f_conjugations_list[::-1]
+        row_5 = he_conjugations_list[::-1]
+        row_6 = she_conjugations_list[::-1]
+        row_7 = we_conjugations_list[::-1]
+        row_8 = you_all_conjugations_list[::-1]
+        row_9 = they_conjugations_list[::-1]
+
+        all_conj = column_titles + row_2 + row_3 + row_4 + row_5 + row_6 + row_7 + row_8 + row_9
+        # all 54 cells for the chart of 6 by 9
+
+        chart_stuff_tuple = (all_conj, chart_extras)
+        # youre now returning a tuple of two lists...
+        return chart_stuff_tuple

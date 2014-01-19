@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from verbchart1a import VerbChart1a
+import verbchart1a #import VerbChart1a
 from verbchart1b import VerbChart1b
 from verbchart1c import VerbChart1c
 from verbchart1d import VerbChart1d
@@ -83,7 +83,7 @@ class Entry:
 
     def some_verb_chart(self):
         if self.verb_type == "1a":
-            return VerbChart1a.get_chart(VerbChart1a(), self.arabic)
+            return verbchart1a.get_chart(self.arabic)
         elif self.verb_type == "1b":
             return VerbChart1b(self.arabic)
         elif self.verb_type == "1c":

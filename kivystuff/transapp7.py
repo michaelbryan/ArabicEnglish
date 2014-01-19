@@ -461,7 +461,7 @@ def run_search(input_to_translate):
         entry = tupleOfEntryAndBool[0]
         responseCode = tupleOfEntryAndBool[1]
         #print "entry:", entry
-        print "response code:", responseCode
+        #print "response code:", responseCode
         if responseCode == 0:
             results_list_tuples.append((entry.arabic, entry.retrieve_just_arabic(), entry))
             new_results_label = " Results:"
@@ -616,7 +616,7 @@ class ResultsScreen(Screen):
             word = result[0]
             button_label = result[1]
             entry = result[2]
-            print button_label
+            #print button_label
 
             reshaped_label = get_display(arabic_reshaper.reshape(button_label))#.decode('utf-8')
             print reshaped_label
@@ -681,7 +681,7 @@ class ResultsScreen(Screen):
 
             reshaped_word = get_display(arabic_reshaper.reshape(word))
 
-            btn1 = Button(text=reshaped_label, font_name="data/fonts/DejaVuSans.ttf")#, halign="left")
+            btn1 = Button(text=reshaped_word, font_name="data/fonts/DejaVuSans.ttf")#, halign="left")
             #btn1.bind(on_press=run_search(word))
             layout1.add_widget(btn1)
 
@@ -738,17 +738,19 @@ class VerbChartScreen(Screen):
         all_conjugations = chart_stuff_tuple[0]
         chart_extras = chart_stuff_tuple[1]
 
+        self.main_chart.clear_widgets()
+        self.extras_box.clear_widgets()
+
         for conj in all_conjugations:
             reshaped_conj = get_display(arabic_reshaper.reshape(conj))
-            #print reshaped_label
+            print reshaped_conj
             lbl1 = Label(text=reshaped_conj, font_name="data/fonts/DejaVuSans.ttf")#, halign="center")
-            self.main_chart.clear_widgets()
             self.main_chart.add_widget(lbl1)
 
         for info in chart_extras:
             reshaped_info = get_display(arabic_reshaper.reshape(info))
-            lbl2 = Label(text=reshaped_conj, font_name="data/fonts/DejaVuSans.ttf")#, halign="right")
-            self.extras_box.clear_widgets()
+            print reshaped_info
+            lbl2 = Label(text=reshaped_info, font_name="data/fonts/DejaVuSans.ttf")#, halign="right")
             self.extras_box.add_widget(lbl2)
 
     def done_button_pressed(self):

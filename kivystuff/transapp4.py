@@ -335,7 +335,7 @@ def run_search(input_to_translate):
     search_result = search_entries(input_to_translate)
     print "search_result:", search_result
 
-    WordLabelEntry_tuple = []
+    results_list = []
     #found = False
     for tupleOfEntryAndBool in search_result:
         entry = tupleOfEntryAndBool[0]
@@ -343,32 +343,32 @@ def run_search(input_to_translate):
         #print "entry:", entry
         print "response code:", responseCode
         if responseCode == 0:
-            WordLabelEntry_tuple.append((entry.arabic, entry.retrieve_just_arabic(), entry))
+            results_list.append((entry.arabic, entry.retrieve_just_arabic(), entry))
             new_results_label = "Results:"
-            sm.get_screen("translation").getArabicResults(WordLabelEntry_tuple, new_results_label)
+            sm.get_screen("translation").getArabicResults(results_list, new_results_label)
             sm.current = 'translation'
             #found = True
         elif responseCode == 1:
-            WordLabelEntry_tuple.append((entry.english, entry.retrieve_english(), entry))
+            results_list.append((entry.english, entry.retrieve_english(), entry))
             new_results_label = "Did you mean:"
-            sm.get_screen("translation").getCloseEnglishResults(WordLabelEntry_tuple, new_results_label)
+            sm.get_screen("translation").getCloseEnglishResults(results_list, new_results_label)
             sm.current = 'translation'
         elif responseCode == 2:
-            WordLabelEntry_tuple.append((entry.english, entry.retrieve_english(), entry))
+            results_list.append((entry.english, entry.retrieve_english(), entry))
             new_results_label = "Results:"
-            sm.get_screen("translation").getEnglishResults(WordLabelEntry_tuple, new_results_label)
+            sm.get_screen("translation").getEnglishResults(results_list, new_results_label)
             sm.current = 'translation'
         elif responseCode == 3:
             real_entry = entry[0]
             word = entry[1]
             part_of_sp = real_entry.part_of_speech
             button_label = " " + part_of_sp + " " + word
-            WordLabelEntry_tuple.append((word, button_label, real_entry))
+            results_list.append((word, button_label, real_entry))
             new_results_label = "Did you mean:"
-            sm.get_screen("translation").getCloseArabicResults(WordLabelEntry_tuple, new_results_label)
+            sm.get_screen("translation").getCloseArabicResults(results_list, new_results_label)
             sm.current = 'translation'
         else:
-            WordLabelEntry_tuple.append(("response code was 4"))
+            results_list.append(("response code was 4"))
 
     #num_results = len(results_list)
 
