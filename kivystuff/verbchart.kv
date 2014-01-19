@@ -1,0 +1,297 @@
+#:kivy 1.7.2
+
+<VerbChartScreen>:
+    orientation: 'vertical'
+    main_chart: mainChartID
+    extras_box: extrasBoxID
+    bottom_bar: bottomBarID
+    big_box: bigBoxID
+    chart_scroll: chartScrollID
+    chart_label: chartLabelID
+    BoxLayout:
+        size_hint: 1, None
+        height: 40
+        pos: 0, root.bottom_bar.height + root.main_chart.height
+        Label:
+            id: chartLabelID
+            text: 'eng : arab word'
+            halign: 'center'
+            valign: 'middle'
+    ScrollView:
+        id: chartScrollID
+        pos: 0, root.bottom_bar.height
+        BoxLayout:
+            id: bigBoxID
+            size_hint: None, None
+            height: root.main_chart.height
+            width: root.main_chart.width + root.extras_box.width
+            GridLayout:
+                id: mainChartID
+                size_hint: None, None
+                pos_hint: {'x': 0, 'y': 0}
+                cols: 6
+                col_default_width: 100
+                rows: 9
+                row_force_default: True
+                row_default_height: 40
+                height: self.rows * self.row_default_height
+                width: self.cols * self.col_default_width
+                minimum_height: self.height
+                minimum_width: self.width
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conj'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+                Label:
+                    text: 'some conjug.'
+                    valign: 'middle'
+                    halign: 'right'
+
+            BoxLayout:
+                id: extrasBoxID
+                label_1: label1ID
+                orientation: 'vertical'
+                size_hint: None, None
+                height: root.main_chart.height
+                width: self.label_1.width
+                #pos_hint: {'x': .75, 'y': 0}
+                pos: root.main_chart.width, 0
+                Label:
+                    id: label1ID
+                    #size_hint: 1, 1
+                    #pos_hint: {'x': 0, 'y': 0}
+                    text: 'ism fa\'il: yadayada'
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'center'
+                Label:
+                    #size_hint: .2, 1
+                    #pos_hint: {'x': .1, 'y': 0}
+                    text: 'dir. object: yadayada'
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'center'
+    AnchorLayout:
+        id: bottomBarID
+        orientation: 'vertical'
+        #pos_hint: {'x': 0, 'y': 0}
+        pos: 0, 0
+        size_hint: 1, None
+        height: 40
+        anchor_x: 'center'
+        anchor_y: 'center'
+        Button:
+            text: 'Done'
+            size_hint: None, None
+            height: 20
+            width: 40
+            font_size: 10
+        

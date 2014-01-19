@@ -59,7 +59,7 @@ Builder.load_string("""
         size_hint: 1, .95
         TextInput:
             id: translateInputID
-            text: 'walk'
+            text: 'grab'
             #text: 'ﻰﺸَﻣ'
             font_name: "data/fonts/DejaVuSans.ttf"
             background_color: .8, .8, 0, 1
@@ -109,6 +109,7 @@ Builder.load_string("""
     goHomeButton: goHomeID
     translate_input_2: translateInput2KV
     results_label: resultsLabelID
+    #results_layout: resultsLayoutID
     #translationTextInput: translationID
     #result_button: resultButtonID
     scroll_view: scrollviewID
@@ -147,6 +148,7 @@ Builder.load_string("""
 	            height: 20
 	            width: 100
 	            font_size: 13
+                halign: 'left'
 	    AnchorLayout:
 	        anchor_x: 'center'
 	        anchor_y: 'top'
@@ -166,8 +168,11 @@ Builder.load_string("""
     	orientation: 'vertical'
     	pos_hint: {'x': 0, 'y': 0.1}
     	size_hint: 1, .68
-        bar_width: '4dp'
+        bar_width: '8dp'
         
+        #BoxLayout:
+            #id: resultsLayoutID
+            #size_hint: 1, None
         #StackLayout:
             #id: StackLayoutID
             ######if I change the y size hint from None to 1, more buttons will be created, why?
@@ -239,8 +244,7 @@ Builder.load_string("""
             text: 'entry.part_of_speech'
             text_size: self.size
             valign: 'middle'
-            halign: 'center'
-        Label:
+            halign: 'left'
     BoxLayout:
         orientation: 'vertical'
         size_hint: 1, .25
@@ -367,25 +371,81 @@ Builder.load_string("""
                 font_size: 12
 <VerbChartScreen>:
     orientation: 'vertical'
-    thin_bottom_bar: thin_bottom_bar_ID
-    done_button: doneButton_ID
-    
-    ScrollView:
-        size_hint: 1, None
-        size_y: root.height-60
-        pos: root.x, root.y + 60
-
+    main_chart: mainChartID
+    extras_box: extrasBoxID
+    bottom_bar: bottomBarID
+    big_box: bigBoxID
+    done_button: doneButtonID
+    chart_scroll: chartScrollID
+    chart_label: chartLabelID
     BoxLayout:
-        id: thin_bottom_bar_ID
         size_hint: 1, None
-        size_y: 40
-        pos_hint: {'x': 0, 'y': 0}
+        height: 40
+        pos: 0, root.bottom_bar.height + root.main_chart.height
+        Label:
+            id: chartLabelID
+            font_name: "data/fonts/DejaVuSans.ttf"
+            text: 'eng : arab word'
+            halign: 'center'
+            valign: 'middle'
+    ScrollView:
+        id: chartScrollID
+        pos: 0, root.bottom_bar.height
+        BoxLayout:
+            id: bigBoxID
+            size_hint: None, None
+            height: root.main_chart.height
+            width: root.main_chart.width + root.extras_box.width
+            GridLayout:
+                id: mainChartID
+                size_hint: None, None
+                pos_hint: {'x': 0, 'y': 0}
+                cols: 6
+                col_default_width: 100
+                rows: 9
+                row_force_default: True
+                row_default_height: 40
+                height: self.rows * self.row_default_height
+                width: self.cols * self.col_default_width
+                minimum_height: self.height
+                minimum_width: self.width
+
+            BoxLayout:
+                id: extrasBoxID
+                label_1: label1ID
+                orientation: 'vertical'
+                size_hint: None, None
+                height: root.main_chart.height
+                width: self.label_1.width
+                #pos_hint: {'x': .75, 'y': 0}
+                pos: root.main_chart.width, 0
+                Label:
+                    id: label1ID
+                    font_name: "data/fonts/DejaVuSans.ttf"
+                    #size_hint: 1, 1
+                    #pos_hint: {'x': 0, 'y': 0}
+                    text: 'ism faail: yadayada'
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'center'
+
+    AnchorLayout:
+        id: bottomBarID
+        orientation: 'vertical'
+        #pos_hint: {'x': 0, 'y': 0}
+        pos: 0, 0
+        size_hint: 1, None
+        height: 40
+        anchor_x: 'center'
+        anchor_y: 'center'
         Button:
-            id: doneButton_ID
-            center_x: root.center_x
-            size: 60, 20
+            id: doneButtonID
             text: 'Done'
-            on_release: root.doneButton_pressed()
+            size_hint: None, None
+            height: 20
+            width: 40
+            font_size: 10
+            on_release: root.done_button_pressed()
 
 """)
 
@@ -404,32 +464,33 @@ def run_search(input_to_translate):
         print "response code:", responseCode
         if responseCode == 0:
             results_list_tuples.append((entry.arabic, entry.retrieve_just_arabic(), entry))
-            new_results_label = "Results:"
+            new_results_label = " Results:"
             sm.get_screen("results_screen").getArabicResults(results_list_tuples, new_results_label)
             sm.current = 'results_screen'
             #found = True
         elif responseCode == 1:
             results_list_tuples.append((entry.english, entry.retrieve_english(), entry))
-            new_results_label = "Did you mean:"
+            new_results_label = " Did you mean:"
             sm.get_screen("results_screen").getCloseEnglishResults(results_list_tuples, new_results_label)
             sm.current = 'results_screen'
         elif responseCode == 2:
             results_list_tuples.append((entry.english, entry.retrieve_english(), entry))
-            new_results_label = "Results:"
+            new_results_label = " Results:"
             sm.get_screen("results_screen").getEnglishResults(results_list_tuples, new_results_label)
             sm.current = 'results_screen'
         elif responseCode == 3:
             real_entry = entry[0]
             word = entry[1]
             part_of_sp = real_entry.part_of_speech
-            button_label = " " + part_of_sp + " " + word
+            button_label = " " + part_of_sp + ": " + word
             results_list_tuples.append((word, button_label, real_entry))
-            new_results_label = "Did you mean:"
+            new_results_label = " Did you mean:"
             sm.get_screen("results_screen").getCloseArabicResults(results_list_tuples, new_results_label)
             sm.current = 'results_screen'
         else:
-            results_list_tuples.append(("response code was 4"))
-
+            results_list_tuples.append(("", "response code was 4", ""))
+            sm.get_screen("results_screen").getResultsButtons(results_list_tuples)
+            sm.current = 'results_screen'
     #num_results = len(results_list)
 
     #if found:
@@ -439,8 +500,6 @@ def run_search(input_to_translate):
     #results_scrollview = ResultsScreen.ScrollView()
     #PROVIDED_USER_INPUT = input_to_translate
 
-            #sm.get_screen("results_screen").getResultsButtons(results_list)
-            #sm.current = 'results_screen'
 
 class RunSearchButton(Button):
     #run_search_button = ObjectProperty(None)
@@ -495,6 +554,7 @@ class ResultsScreen(Screen):
     scroll_view = ObjectProperty(None)
     translate_input_2 = ObjectProperty(None)
     results_label = ObjectProperty(None)
+    #results_layout = ObjectProperty(None)
     anchor_layout_2 = ObjectProperty(None)
     #stack_layout = ObjectProperty(None)
 
@@ -508,8 +568,7 @@ class ResultsScreen(Screen):
 
     def getCloseEnglishResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
-        #self.getCloseResultsButtons(results_list)
-        self.getResultsButtons(results_list)
+        self.getCloseResultsButtons(results_list)
 
     def getEnglishResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
@@ -518,8 +577,7 @@ class ResultsScreen(Screen):
 
     def getCloseArabicResults(self, results_list, new_results_label):
         self.change_results_label(new_results_label)
-        self.getResultsButtons(results_list)
-        #self.getCloseResultsButtons(results_list)
+        self.getCloseResultsButtons(results_list)
 
     def goHome(self):
         sm.current = 'home'
@@ -535,18 +593,20 @@ class ResultsScreen(Screen):
         return run_search(input_to_translate_2)
 
     
-    def result_button_pressed(self, entry):
+    def full_entry_button_pressed(self, entry):
         sm.get_screen("entry_viewer").replace_labels(entry)
         sm.current = 'entry_viewer'
 
-    def result_button_pressed_v(self, entry):
-        sm.get_screen("entry_viewer").replace_labels(entry)
-        sm.current = 'entry_viewer'
+    def verb_chart_button_pressed(self, entry):
+        sm.get_screen("verb_chart").refresh_verb_chart(entry)
+        sm.current = 'verb_chart'
     
 
     def getResultsButtons(self, results_list_tuples):
-
-        layout1 = GridLayout(cols=2, spacing=0, size_hint=(1, 1))
+        layout1 = GridLayout(cols=2, spacing=0, size_hint=(1, None), \
+            row_force_default=True, row_default_height=40)#, cols_minimum={0, 60})
+        
+        #layout1 = GridLayout(cols=2, spacing=0, size_hint=(1, None))
         #layout1 = StackLayout(orientation="lr-tb", spacing=0, size_hint=(1, None))
         #layout1 = self.stack_layout
         layout1.bind(minimum_height=layout1.setter('height'),
@@ -566,11 +626,19 @@ class ResultsScreen(Screen):
                 btn1 = RunSearchButton()
                 #RunSearchButton.edit_button(RunSearchButton(word), button_label, word)
                 btn2 = VerbChartButton()
-                '''
+                
                 btn1 = Button(text=reshaped_label, size_hint=(1, None), font_name="data/fonts/DejaVuSans.ttf",
-                         size_y=(100), size_x=(self.width-60))#, on_release=self.result_button_pressed_v(entry))
+                         height=(30), size_x=(self.width-60))#, on_release=self.result_button_pressed_v(entry))
                 btn2 = Button(text="Verb Chart", size_hint=(None, None),
-                         size_y=(100), size_x=(60), on_release=self.result_button_pressed_v(entry))
+                         height=(30), width=(100))#, on_release=self.result_button_pressed_v(entry))
+                '''
+                btn1 = Button(text=reshaped_label, halign="left", font_name="data/fonts/DejaVuSans.ttf")
+                         #, on_release=self.result_button_pressed_v(entry))
+                btn2 = Button(text="Verb Chart", halign='left', size_hint_x=None,
+                         width=(80))#, on_release=self.result_button_pressed_v(entry))
+                
+                #btn1.bind(on_press=run_search(word))
+                btn2.bind(on_press=self.verb_chart_button_pressed(entry))
                 
                 layout1.add_widget(btn1)
                 layout1.add_widget(btn2)
@@ -578,14 +646,45 @@ class ResultsScreen(Screen):
                 '''
                 btn3 = RunSearchButton()
                 btn4 = EntryButton()
-                '''
+                
                 btn3 = Button(text=reshaped_label, size_hint=(1, None), font_name="data/fonts/DejaVuSans.ttf",
-                         size_y=(100), size_x=(self.width-60))#, on_release=run_search(word))
+                         height=(30), size_x=(self.width-60))#, on_release=run_search(word))
                 btn4 = Button(text="Full Entry", size_hint=(None, None),
-                         size_y=(100), size_x=(60), on_release=self.result_button_pressed(entry))
+                         height=(30), width=(100))#, on_release=self.result_button_pressed(entry))
+                '''
+                btn3 = Button(text=reshaped_label, halign='left', font_name="data/fonts/DejaVuSans.ttf")
+                         #, on_release=run_search(word))
+                btn4 = Button(text="Full Entry", halign='left', size_hint_x=None,
+                         width=(80))#, on_release=self.result_button_pressed(entry))
+
+                #btn3.bind(on_press=run_search(word))
+                #btn4.bind(on_press=self.full_entry_button_pressed(entry))
                 
                 layout1.add_widget(btn3)
                 layout1.add_widget(btn4)
+
+        scrollview1 = self.scroll_view
+        scrollview1.clear_widgets()
+        scrollview1.add_widget(layout1)
+
+    def getCloseResultsButtons(self, results_list):
+        layout1 = GridLayout(cols=1, spacing=0, size_hint=(1, None), \
+            row_force_default=True, row_default_height=40)#, cols_minimum={0, 60})
+
+        layout1.bind(minimum_height=layout1.setter('height'),
+                     minimum_width=layout1.setter('width'))
+
+        for result in results_list_tuples:
+            word = result[0]
+            button_label = result[1]
+            entry = result[2]
+
+            reshaped_word = get_display(arabic_reshaper.reshape(word))
+
+            btn1 = Button(text=reshaped_label, font_name="data/fonts/DejaVuSans.ttf")#, halign="left")
+            #btn1.bind(on_press=run_search(word))
+            layout1.add_widget(btn1)
+
         scrollview1 = self.scroll_view
         scrollview1.clear_widgets()
         scrollview1.add_widget(layout1)
@@ -617,7 +716,7 @@ class EntryScreen(Screen):
     label_for_fem_plural = ObjectProperty(None)
 
     def replace_labels(self, entry):
-        self.label_for_pos.text = entry.part_of_speech
+        self.label_for_pos.text = " " + entry.part_of_speech
         self.label_for_english.text = entry.english
         self.label_for_arabic.text = entry.arabic
         self.label_for_plural.text = entry.plural
@@ -626,13 +725,33 @@ class EntryScreen(Screen):
         self.label_for_fem_plural.text = entry.fem_plural
 
 class VerbChartScreen(Screen):
-    thin_bottom_bar = ObjectProperty(None)
-    doneButton = ObjectProperty(None)
+    done_button = ObjectProperty(None)
+    chart_label = ObjectProperty(None)
+    main_chart = ObjectProperty(None)
+    extras_box = ObjectProperty(None)
 
     def refresh_verb_chart(self, entry):
         verb = entry.arabic
+        english = entry.english
+        self.chart_label.text = english + " : " + verb
+        chart_stuff_tuple = entry.some_verb_chart()
+        all_conjugations = chart_stuff_tuple[0]
+        chart_extras = chart_stuff_tuple[1]
 
-    def doneButton_pressed(self):
+        for conj in all_conjugations:
+            reshaped_conj = get_display(arabic_reshaper.reshape(conj))
+            #print reshaped_label
+            lbl1 = Label(text=reshaped_conj, font_name="data/fonts/DejaVuSans.ttf")#, halign="center")
+            self.main_chart.clear_widgets()
+            self.main_chart.add_widget(lbl1)
+
+        for info in chart_extras:
+            reshaped_info = get_display(arabic_reshaper.reshape(info))
+            lbl2 = Label(text=reshaped_conj, font_name="data/fonts/DejaVuSans.ttf")#, halign="right")
+            self.extras_box.clear_widgets()
+            self.extras_box.add_widget(lbl2)
+
+    def done_button_pressed(self):
         sm.current = 'results_screen'
 
 

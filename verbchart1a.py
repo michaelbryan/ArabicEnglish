@@ -5,7 +5,9 @@ from bidi.algorithm import get_display
 import arabic_reshaper
 
 class VerbChart1a:
-    def __init__(self, line):
+    
+    def get_chart(self, verb):
+        '''
         fields = line.split("|")
 
         self.english = fields[0]
@@ -18,8 +20,9 @@ class VerbChart1a:
         self.fem_plural = fields[7]
         self.part_of_speech = fields[8]
         self.verb_type = fields[9]
+        '''
 
-        arabic_letters = list(self.arabic)
+        arabic_letters = list(verb)
         #print arabic_letters
 
         #these arabic letters are commonly used in conjugations
@@ -251,8 +254,27 @@ class VerbChart1a:
         direct_object_string = "".join(direct_object_broken)
         verbal_noun_broken = [first_root_letter, fatha, second_root_letter, kasra, third_root_letter]
         verbal_noun_string = "".join(verbal_noun_broken)
-        print word_active_participle_string + ": " + active_participle_string + "\n"
-        print word_direct_object_string + ": " + direct_object_string + "\n"
-        print word_verbal_noun_string + ": " + verbal_noun_string + "\n"
-        # youre now returning a list...
-        return arabic_root
+
+        act_part = word_active_participle_string + ": " + active_participle_string
+        dir_object = word_direct_object_string + ": " + direct_object_string
+        verbal_noun = word_verbal_noun_string + ": " + verbal_noun_string
+
+        chart_extras = (act_part, dir_object, verbal_noun)
+        # other important verb info
+
+        column_titles = verb_columns_list[::-1]
+        row_2 = i_conjugations_list[::-1]
+        row_3 = you_m_conjugations_list[::-1]
+        row_4 = you_f_conjugations_list[::-1]
+        row_5 = he_conjugations_list[::-1]
+        row_6 = she_conjugations_list[::-1]
+        row_7 = we_conjugations_list[::-1]
+        row_8 = you_all_conjugations_list[::-1]
+        row_9 = they_conjugations_list[::-1]
+
+        all_conj = column_titles + row_2 + row_3 + row_4 + row_5 + row_6 + row_7 + row_8 + row_9
+        # all 54 cells for the chart of 6 by 9
+
+        chart_stuff_tuple = (all_conj, chart_extras)
+        # youre now returning a tuple of two lists...
+        return chart_stuff_tuple

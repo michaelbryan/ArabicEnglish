@@ -12,7 +12,7 @@ class ScrollViewApp(App):
                      minimum_width=layout1.setter('width'))
         for i in range(40):
             btn = Button(text=str(i), size_hint=(1, None),
-                         size_y=(100))
+                         height=(110))
             layout1.add_widget(btn)
         scrollview1 = ScrollView(bar_width='2dp')
         scrollview1.add_widget(layout1)
