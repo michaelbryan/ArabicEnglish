@@ -17,10 +17,11 @@ from kivy.uix.button import Button
 from kivy.uix.widget import Widget
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.graphics.texture import Texture
 
 from bidi.algorithm import get_display
-import arabic_reshaper
-#from functools import partial
+import arabic_reshaper2
+from functools import partial
 
 import sys
 sys.path.append('../')
@@ -50,6 +51,7 @@ Builder.load_string("""
     on_release: root.VerbChartButton_pressed()
 
 <HomeScreen>:
+    id: home_screen
     translateInput: translateInputID
     translateButton: translateButtonID
     translateLabel: labelID
@@ -59,7 +61,7 @@ Builder.load_string("""
         size_hint: 1, .95
         TextInput:
             id: translateInputID
-            text: 'grab'
+            text: 'cove'
             #text: 'ﻰﺸَﻣ'
             font_name: "data/fonts/DejaVuSans.ttf"
             background_color: .8, .8, 0, 1
@@ -127,7 +129,7 @@ Builder.load_string("""
         anchor_y: 'center'
         TextInput:
         	id: translateInput2KV
-        	text: 'happy'
+        	text: 'cover'
             background_color: 1, 1, 1, 1
             multiline: False
             size_hint: .75, None
@@ -536,7 +538,7 @@ class HomeScreen(Screen):
     def translateButtonPressed(self):
     	print "input to translate:", self.translateInput.text
         #new_label = unicode(self.translateLabel.text, encoding='utf-8')
-    	#arabic_text = get_display(arabic_reshaper.reshape(new_label))#(u'العربية Hello World')).encode('utf-8')
+    	#arabic_text = get_display(arabic_reshaper2.reshape(new_label))#(u'العربية Hello World')).encode('utf-8')
     	#self.translateLabel.text = arabic_text
 
     	input_to_translate = self.translateInput.text
@@ -618,7 +620,7 @@ class ResultsScreen(Screen):
             entry = result[2]
             #print button_label
 
-            reshaped_label = get_display(arabic_reshaper.reshape(button_label))#.decode('utf-8')
+            reshaped_label = get_display(arabic_reshaper2.reshape(button_label))#.decode('utf-8')
             print reshaped_label
             if entry.part_of_speech == "v":
                 '''
@@ -632,16 +634,22 @@ class ResultsScreen(Screen):
                 btn2 = Button(text="Verb Chart", size_hint=(None, None),
                          height=(30), width=(100))#, on_release=self.result_button_pressed_v(entry))
                 '''
-                btn1 = Button(text=reshaped_label, halign="left", font_name="data/fonts/DejaVuSans.ttf")
+                btn1 = Button(font_name="data/fonts/DejaVuSans.ttf", \
+                    size_hint=(1, 1), valign='middle')#, width=300)
                          #, on_release=self.result_button_pressed_v(entry))
-                btn2 = Button(text="Verb Chart", halign='left', size_hint_x=None,
-                         width=(80))#, on_release=self.result_button_pressed_v(entry))
-                
+                #btn1.text_size = (btn1.width-20, layout1.row_default_height)
+                btn1.text = reshaped_label
+
+                btn2 = Button(text="Verb Chart", size_hint_x=None,
+                         width=(70), font_size=12, \
+                         valign ='middle')#, on_release=self.result_button_pressed_v(entry))
+                btn2.text_size = (btn2.width-10, layout1.row_default_height)
+                #text_size=(80, 40), 
                 #btn1.bind(on_press=run_search(word))
                 btn2.bind(on_press=self.verb_chart_button_pressed(entry))
                 
-                layout1.add_widget(btn1)
                 layout1.add_widget(btn2)
+                layout1.add_widget(btn1)
             else:
                 '''
                 btn3 = RunSearchButton()
@@ -652,38 +660,53 @@ class ResultsScreen(Screen):
                 btn4 = Button(text="Full Entry", size_hint=(None, None),
                          height=(30), width=(100))#, on_release=self.result_button_pressed(entry))
                 '''
-                btn3 = Button(text=reshaped_label, halign='left', font_name="data/fonts/DejaVuSans.ttf")
+                btn3 = Button(text=reshaped_label, font_name="data/fonts/DejaVuSans.ttf")
                          #, on_release=run_search(word))
-                btn4 = Button(text="Full Entry", halign='left', size_hint_x=None,
-                         width=(80))#, on_release=self.result_button_pressed(entry))
+                btn4 = Button(text="Full Entry", size_hint_x=None,
+                         width=(70), font_size=12, \
+                         valign ='middle')#, on_release=self.result_button_pressed_v(entry))
+                btn4.text_size = (btn4.width-10, layout1.row_default_height)
 
                 #btn3.bind(on_press=run_search(word))
                 #btn4.bind(on_press=self.full_entry_button_pressed(entry))
                 
-                layout1.add_widget(btn3)
                 layout1.add_widget(btn4)
+                layout1.add_widget(btn3)
 
         scrollview1 = self.scroll_view
         scrollview1.clear_widgets()
         scrollview1.add_widget(layout1)
 
     def getCloseResultsButtons(self, results_list):
-        layout1 = GridLayout(cols=1, spacing=0, size_hint=(1, None), \
-            row_force_default=True, row_default_height=40)#, cols_minimum={0, 60})
+        layout1 = GridLayout(cols=1, spacing=0, size_hint=(None, None), \
+            row_force_default=False, row_default_height=40)#, cols_minimum={0, 60})
 
         layout1.bind(minimum_height=layout1.setter('height'),
                      minimum_width=layout1.setter('width'))
 
-        for result in results_list_tuples:
+        layout1.clear_widgets()
+
+        result_words = []
+        for result in results_list:
             word = result[0]
             button_label = result[1]
             entry = result[2]
 
-            reshaped_word = get_display(arabic_reshaper.reshape(word))
+            if word in result_words:
+                f=3
+            else:
+                result_words.append(word)
+                reshaped_word = get_display(arabic_reshaper2.reshape(word))
 
-            btn1 = Button(text=reshaped_word, font_name="data/fonts/DejaVuSans.ttf")#, halign="left")
-            #btn1.bind(on_press=run_search(word))
-            layout1.add_widget(btn1)
+                btn = Button(text=reshaped_word, font_name="data/fonts/DejaVuSans.ttf", \
+                    size_hint=(None, 1), halign='left', valign='middle', width=300)#, \
+                    #on_press=partial(run_search, word))
+                #btn.texture_size = (btn.width-20, 40)
+                #btn.text_size = btn.size
+                btn.text_size = (btn.width-20, btn.height)
+                #btn.bind(on_press=run_search(word))
+                #btn.bind(on_press=partial(run_search, word))
+                layout1.add_widget(btn)
 
         scrollview1 = self.scroll_view
         scrollview1.clear_widgets()
@@ -742,13 +765,13 @@ class VerbChartScreen(Screen):
         self.extras_box.clear_widgets()
 
         for conj in all_conjugations:
-            reshaped_conj = get_display(arabic_reshaper.reshape(conj))
+            reshaped_conj = get_display(arabic_reshaper2.reshape(conj))
             print reshaped_conj
             lbl1 = Label(text=reshaped_conj, font_name="data/fonts/DejaVuSans.ttf")#, halign="center")
             self.main_chart.add_widget(lbl1)
 
         for info in chart_extras:
-            reshaped_info = get_display(arabic_reshaper.reshape(info))
+            reshaped_info = get_display(arabic_reshaper2.reshape(info))
             print reshaped_info
             lbl2 = Label(text=reshaped_info, font_name="data/fonts/DejaVuSans.ttf")#, halign="right")
             self.extras_box.add_widget(lbl2)
