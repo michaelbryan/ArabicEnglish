@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+#from bidi.algorithm import get_display
+#import arabic_reshaper
+
+import sys
+sys.path.append('verbcharts/')
 import verbchart1a 
 import verbchart1b
 import verbchart1c
@@ -61,10 +66,6 @@ import verbchart10c
 import verbchart10d
 import verbchart10e
 import verbchart10f
-
-from bidi.algorithm import get_display
-#import arabic_reshaper
-
 
 class Entry:
     def __init__(self, line):
