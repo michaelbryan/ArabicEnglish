@@ -85,125 +85,125 @@ class Entry:
         if self.verb_type == "1a":
             return verbchart1a.get_chart(self.arabic)
         elif self.verb_type == "1b":
-            return VerbChart1b.get_chart(self.arabic)
+            return verbchart1b.get_chart(self.arabic)
         elif self.verb_type == "1c":
-            return VerbChart1c.get_chart(self.arabic)
+            return verbchart1c.get_chart(self.arabic)
         elif self.verb_type == "1d":
-            return VerbChart1d.get_chart(self.arabic)
+            return verbchart1d.get_chart(self.arabic)
         elif self.verb_type == "1e":
-            return VerbChart1e.get_chart(self.arabic)
+            return verbchart1e.get_chart(self.arabic)
         elif self.verb_type == "1f":
-            return VerbChart1f.get_chart(self.arabic)
+            return verbchart1f.get_chart(self.arabic)
         elif self.verb_type == "1g":
-            return VerbChart1g.get_chart(self.arabic)
+            return verbchart1g.get_chart(self.arabic)
         elif self.verb_type == "1h":
-            return VerbChart1h.get_chart(self.arabic)
+            return verbchart1h.get_chart(self.arabic)
         elif self.verb_type == "1i":
-            return VerbChart1i.get_chart(self.arabic)
+            return verbchart1i.get_chart(self.arabic)
         elif self.verb_type == "1j":
-            return VerbChart1j.get_chart(self.arabic)
+            return verbchart1j.get_chart(self.arabic)
         elif self.verb_type == "1k":
-            return VerbChart1k.get_chart(self.arabic)
+            return verbchart1k.get_chart(self.arabic)
         elif self.verb_type == "1l":
-            return VerbChart1l.get_chart(self.arabic)
+            return verbchart1l.get_chart(self.arabic)
         elif self.verb_type == "1m":
-            return VerbChart1m.get_chart(self.arabic)
+            return verbchart1m.get_chart(self.arabic)
         elif self.verb_type == "1n":
-            return VerbChart1n.get_chart(self.arabic)
+            return verbchart1n.get_chart(self.arabic)
         elif self.verb_type == "1o":
-            return VerbChart1o.get_chart(self.arabic)
+            return verbchart1o.get_chart(self.arabic)
         elif self.verb_type == "1p":
-            return VerbChart1p.get_chart(self.arabic)
+            return verbchart1p.get_chart(self.arabic)
         elif self.verb_type == "1q":
-            return VerbChart1q.get_chart(self.arabic)
+            return verbchart1q.get_chart(self.arabic)
         elif self.verb_type == "1r":
-            return VerbChart1r.get_chart(self.arabic)
+            return verbchart1r.get_chart(self.arabic)
         elif self.verb_type == "1s":
-            return VerbChart1s.get_chart(self.arabic)
+            return verbchart1s.get_chart(self.arabic)
         elif self.verb_type == "1t":
-            return VerbChart1t.get_chart(self.arabic)
+            return verbchart1t.get_chart(self.arabic)
         elif self.verb_type == "1u":
-            return VerbChart1u.get_chart(self.arabic)
+            return verbchart1u.get_chart(self.arabic)
         elif self.verb_type == "2a":
-            return VerbChart2a.get_chart(self.arabic)
+            return verbchart2a.get_chart(self.arabic)
         elif self.verb_type == "2b":
-            return VerbChart2b.get_chart(self.arabic)
+            return verbchart2b.get_chart(self.arabic)
         elif self.verb_type == "2c":
-            return VerbChart2c.get_chart(self.arabic)
+            return verbchart2c.get_chart(self.arabic)
         elif self.verb_type == "2d":
-            return VerbChart2d.get_chart(self.arabic)
+            return verbchart2d.get_chart(self.arabic)
         elif self.verb_type == "2e":
-            return VerbChart2e.get_chart(self.arabic)
+            return verbchart2e.get_chart(self.arabic)
         elif self.verb_type == "3a":
-            return VerbChart3a.get_chart(self.arabic)
+            return verbchart3a.get_chart(self.arabic)
         elif self.verb_type == "3b":
-            return VerbChart3b.get_chart(self.arabic)
+            return verbchart3b.get_chart(self.arabic)
         elif self.verb_type == "3c":
-            return VerbChart3c.get_chart(self.arabic)
+            return verbchart3c.get_chart(self.arabic)
         elif self.verb_type == "4a":
-            return VerbChart4a.get_chart(self.arabic)
+            return verbchart4a.get_chart(self.arabic)
         elif self.verb_type == "4b":
-            return VerbChart4b.get_chart(self.arabic)
+            return verbchart4b.get_chart(self.arabic)
         elif self.verb_type == "4c":
-            return VerbChart4c.get_chart(self.arabic)
+            return verbchart4c.get_chart(self.arabic)
         elif self.verb_type == "4d":
-            return VerbChart4d.get_chart(self.arabic)
+            return verbchart4d.get_chart(self.arabic)
         elif self.verb_type == "4e":
-            return VerbChart4e.get_chart(self.arabic)
+            return verbchart4e.get_chart(self.arabic)
         elif self.verb_type == "4f":
-            return VerbChart4f.get_chart(self.arabic)
+            return verbchart4f.get_chart(self.arabic)
         elif self.verb_type == "5a":
-            return VerbChart5a.get_chart(self.arabic)
+            return verbchart5a.get_chart(self.arabic)
         elif self.verb_type == "5b":
-            return VerbChart5b.get_chart(self.arabic)
+            return verbchart5b.get_chart(self.arabic)
         elif self.verb_type == "5c":
-            return VerbChart5c.get_chart(self.arabic)
+            return verbchart5c.get_chart(self.arabic)
         elif self.verb_type == "6a":
-            return VerbChart6a.get_chart(self.arabic)
+            return verbchart6a.get_chart(self.arabic)
         elif self.verb_type == "6b":
-            return VerbChart6b.get_chart(self.arabic)
+            return verbchart6b.get_chart(self.arabic)
         elif self.verb_type == "7a":
-            return VerbChart7a.get_chart(self.arabic)
+            return verbchart7a.get_chart(self.arabic)
         elif self.verb_type == "7b":
-            return VerbChart7b.get_chart(self.arabic)
+            return verbchart7b.get_chart(self.arabic)
         elif self.verb_type == "7c":
-            return VerbChart7c.get_chart(self.arabic)
+            return verbchart7c.get_chart(self.arabic)
         elif self.verb_type == "7d":
-            return VerbChart7d.get_chart(self.arabic)
+            return verbchart7d.get_chart(self.arabic)
         elif self.verb_type == "8a":
-            return VerbChart8a.get_chart(self.arabic)
+            return verbchart8a.get_chart(self.arabic)
         elif self.verb_type == "8b":
-            return VerbChart8b.get_chart(self.arabic)
+            return verbchart8b.get_chart(self.arabic)
         elif self.verb_type == "8c":
-            return VerbChart8c.get_chart(self.arabic)
+            return verbchart8c.get_chart(self.arabic)
         elif self.verb_type == "8d":
-            return VerbChart8d.get_chart(self.arabic)
+            return verbchart8d.get_chart(self.arabic)
         elif self.verb_type == "8e":
-            return VerbChart8e.get_chart(self.arabic)
+            return verbchart8e.get_chart(self.arabic)
         elif self.verb_type == "8f":
-            return VerbChart8f.get_chart(self.arabic)
+            return verbchart8f.get_chart(self.arabic)
         elif self.verb_type == "8g":
-            return VerbChart8g.get_chart(self.arabic)
+            return verbchart8g.get_chart(self.arabic)
         elif self.verb_type == "8h":
-            return VerbChart8h.get_chart(self.arabic)
+            return verbchart8h.get_chart(self.arabic)
         elif self.verb_type == "8i":
-            return VerbChart8i.get_chart(self.arabic)
+            return verbchart8i.get_chart(self.arabic)
         elif self.verb_type == "8j":
-            return VerbChart8j.get_chart(self.arabic)
+            return verbchart8j.get_chart(self.arabic)
         elif self.verb_type == "9a":
-            return VerbChart9a.get_chart(self.arabic)
+            return verbchart9a.get_chart(self.arabic)
         elif self.verb_type == "10a":
-            return VerbChart10a.get_chart(self.arabic)
+            return verbchart10a.get_chart(self.arabic)
         elif self.verb_type == "10b":
-            return VerbChart10b.get_chart(self.arabic)
+            return verbchart10b.get_chart(self.arabic)
         elif self.verb_type == "10c":
-            return VerbChart10c.get_chart(self.arabic)
+            return verbchart10c.get_chart(self.arabic)
         elif self.verb_type == "10d":
-            return VerbChart10d.get_chart(self.arabic)
+            return verbchart10d.get_chart(self.arabic)
         elif self.verb_type == "10e":
-            return VerbChart10e.get_chart(self.arabic)
+            return verbchart10e.get_chart(self.arabic)
         elif self.verb_type == "10f":
-            return VerbChart10f.get_chart(self.arabic)
+            return verbchart10f.get_chart(self.arabic)
         else:
             print "##### ERROR: Unexpected input to some_verb_chart or verb type not assigned"
             return "No verb chart assigned"
