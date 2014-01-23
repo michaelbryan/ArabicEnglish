@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 
+#from bidi.algorithm import get_display
+#import arabic_reshaper
+
+'''
+import sys
+sys.path.append('verbcharts/')
 import verbchart1a 
 import verbchart1b
 import verbchart1c
@@ -61,10 +67,7 @@ import verbchart10c
 import verbchart10d
 import verbchart10e
 import verbchart10f
-
-from bidi.algorithm import get_display
-#import arabic_reshaper
-
+'''
 
 class Entry:
     def __init__(self, line):
@@ -82,6 +85,9 @@ class Entry:
         self.verb_type = fields[9]
 
     def some_verb_chart(self):
+        return (['Nothing here'], ['And nothing here'])
+
+        '''
         if self.verb_type == "1a":
             return verbchart1a.get_chart(self.arabic)
         elif self.verb_type == "1b":
@@ -207,6 +213,7 @@ class Entry:
         else:
             print "##### ERROR: Unexpected input to some_verb_chart or verb type not assigned"
             return "No verb chart assigned"
+        '''
 
     def retrieve_english(self):
         #english_string = "\n"

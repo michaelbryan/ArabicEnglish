@@ -11,6 +11,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.stacklayout import StackLayout
+from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
@@ -18,6 +19,9 @@ from kivy.uix.widget import Widget
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.graphics.texture import Texture
+from kivy.uix.dropdown import DropDown
+from kivy.uix.popup import Popup
+from kivy.uix.scrollview import ScrollView
 
 from bidi.algorithm import get_display
 import arabic_reshaper
@@ -50,11 +54,30 @@ Builder.load_string("""
     text: "Verb Chart"
     on_release: root.VerbChartButton_pressed()
 
+<CustomDropDown>:
+    Button:
+        text: 'My first Item'
+        size_hint_y: None
+        height: 44
+        on_release: root.select('item1')
+    Label:
+        text: 'Unselectable item'
+        size_hint_y: None
+        height: 44
+    Button:
+        text: 'My second Item'
+        size_hint_y: None
+        height: 44
+        on_release: root.select('item2')
+
 <HomeScreen>:
     id: home_screen
     translateInput: translateInputID
     translateButton: translateButtonID
     translateLabel: labelID
+    top_layout: topLayoutID
+    #notes_dropdown: notesDropDownID
+    dd_btn: btn_ddID
 
     orientation: 'vertical'
     FloatLayout:
@@ -64,7 +87,7 @@ Builder.load_string("""
             text: 'cove'
             #text: 'ﻰﺸَﻣ'
             font_name: "data/fonts/DejaVuSans.ttf"
-            background_color: .8, .8, 0, 1
+            background_color: 1, 1, 1, 1
             size_hint: .75, .1
             multiline: False
             pos_hint: {'x': .125, 'y': .45}
@@ -99,23 +122,26 @@ Builder.load_string("""
             font_size: 50
 
     BoxLayout:
+        id: topLayoutID
+        #cols: 2
         size_hint: 1, .05
         pos_hint: {'x': 0, 'y': .95}
         Button:
+            #id: notesDropDownID 
+            id: btn_ddID
             text: 'Usage Notes'
+            #on_release: root.drop_down.open
+            on_release: root.NotesButtonPressed()
         Button:
             text: 'About'
+            on_release: root.AboutButtonPressed()
 
 <ResultsScreen>:
     orientation: 'vertical'
     goHomeButton: goHomeID
     translate_input_2: translateInput2KV
     results_label: resultsLabelID
-    #results_layout: resultsLayoutID
-    #translationTextInput: translationID
-    #result_button: resultButtonID
     scroll_view: scrollviewID
-    #stack_layout: StackLayoutID
     anchor_layout_2: anchorLayout2
     
     #run_search_button: runSearchButtonID
@@ -171,30 +197,6 @@ Builder.load_string("""
     	pos_hint: {'x': 0, 'y': 0.1}
     	size_hint: 1, .68
         bar_width: '8dp'
-        
-        #BoxLayout:
-            #id: resultsLayoutID
-            #size_hint: 1, None
-        #StackLayout:
-            #id: StackLayoutID
-            ######if I change the y size hint from None to 1, more buttons will be created, why?
-            #size_hint: 1, None
-            #orientation: 'lr-tb'
-            #pos_hint: {'x': 0, 'y': 0}
-            
-            #RunSearchButton:
-                #id: runSearchButtonID
-            
-            #EntryButton:
-                #id: entryButtonID
-
-            #VerbChartButton:
-                #id: verbChartButtonID
-
-            #Button:
-                #id: resultButtonID
-                #size_hint: 1, None
-                #text: 'result'
         
 	BoxLayout:
 		orientation: 'horizontal'
@@ -530,10 +532,127 @@ class VerbChartButton(Button):
         sm.get_screen("verb_chart").refresh_verb_chart(entry)
         sm.current = 'verb_chart'
 
+class CustomDropDown(DropDown):
+    foo = 3
+
+'''
+dropdown = CustomDropDown()
+mainbutton = Button(text='Usage Notes', size_hint=(None, None))
+mainbutton.bind(on_release=dropdown.open)
+dropdown.bind(on_select=lambda instance, x: setattr(mainbutton, 'text', x))
+'''
+
 class HomeScreen(Screen):
     translateInput = ObjectProperty(None)
     translateButton = ObjectProperty(None)
     translateLabel = ObjectProperty(None)
+    top_layout = ObjectProperty(None)
+    dd_btn = ObjectProperty(None)
+    drop_down = CustomDropDown()
+    #notes_dropdown = ObjectProperty(None)
+
+    def NotesButtonPressed(self):
+        dropdown = DropDown()
+        notes = [('Features', self.FeaturesButtonPressed()), \
+        ('Suggestions', self.SuggestionsButtonPressed()),\
+        ('Abbreviations', self.AbbreviationsButtonPressed()), \
+        ('Miscellaneous', self.MiscellaneousButtonPressed())]
+
+        for note in notes:
+            lbl = note[0]
+            method = note[1]
+            # when adding widgets, we need to specify the height manually (disabling
+            # the size_hint_y) so the dropdown can calculate the area it needs.
+            btn = Button(text='%r' % lbl, size_hint_y=None, height=30)
+
+            # for each button, attach a callback that will call the select() method
+            # on the dropdown. We'll pass the text of the button as the data of the
+            # selection.
+            btn.bind(on_release=lambda btn: dropdown.select(method))
+
+            # then add the button inside the dropdown
+            dropdown.add_widget(btn)
+
+        # create a big main button
+        mainbutton = self.dd_btn #Button(text='Usage Notes', size_hint=(1, 1))
+
+        # show the dropdown menu when the main button is released
+        # note: all the bind() calls pass the instance of the caller (here, the
+        # mainbutton instance) as the first argument of the callback (here,
+        # dropdown.open.).
+        mainbutton.bind(on_release=dropdown.open)
+        #dd_btn.bind(on_release=dropdown.open)
+
+        # one last thing, listen for the selection in the dropdown list and
+        # assign the data to the button text.
+        dropdown.bind(on_select=lambda instance, x: x)
+        #dropdown.bind(on_select=lambda instance, x: setattr(mainbutton, 'text', x))
+
+        #layout = self.top_layout
+        #layout.add_widget(mainbutton)
+        
+    def FeaturesButtonPressed(self):
+        about_lbl = Label(text='These are the features.')
+        about_sv = ScrollView()
+        about_sv.add_widget(about_lbl)
+        popup = Popup(title='Features', size_hint=(.8, .8), \
+            content=about_sv)#Label(text='Hello world'))#, size_hint=(.8, .8))#, size=(400, 400))
+
+        popup.open()
+
+    def SuggestionsButtonPressed(self):
+        about_lbl = Label(text='These are suggestions.')
+        about_sv = ScrollView()
+        about_sv.add_widget(about_lbl)
+        popup = Popup(title='Suggestions', size_hint=(.8, .8), \
+            content=about_sv)#Label(text='Hello world'))#, size_hint=(.8, .8))#, size=(400, 400))
+
+        popup.open()
+
+    def AbbreviationsButtonPressed(self):
+        about_lbl = Label(text='These are the abbreviations.')
+        about_sv = ScrollView()
+        about_sv.add_widget(about_lbl)
+        popup = Popup(title='Abbreviations', size_hint=(.8, .8), \
+            content=about_sv)#Label(text='Hello world'))#, size_hint=(.8, .8))#, size=(400, 400))
+
+        popup.open()
+
+    def MiscellaneousButtonPressed(self):
+        about_lbl = Label(text='These are miscellaneous things.')
+        about_sv = ScrollView()
+        about_sv.add_widget(about_lbl)
+        popup = Popup(title='Miscellaneous', size_hint=(.8, .8), \
+            content=about_sv)#Label(text='Hello world'))#, size_hint=(.8, .8))#, size=(400, 400))
+
+        popup.open()
+
+    def AboutButtonPressed(self):
+        about_lbl = Label(size_hint=(1, None), \
+            font_size=13, \
+            text='This app was made blah blah This app was made blah blah This app was made blah blah This app was made blah blah This app was made blah blah This app was made blah blah ')
+        about_sv = ScrollView()
+        about_layout = BoxLayout(orientation='vertical')
+        scroll_layout = GridLayout(cols=1, spacing=10, size_hint_y=None, height=about_lbl.texture_size[1])
+        btn_layout = AnchorLayout(size_hint=(1, None), height=20, anchor_x='center', \
+            anchor_y='center')
+        btn = Button(text='Done', size_hint=(None, None), size=(50, 20), \
+            pos_hint=())
+        #about_lbl.bind(size=(scroll_layout.width, about_lbl.texture_size[1]))
+        #about_lbl.bind(text_size=(about_lbl.width, None))
+
+        scroll_layout.add_widget(about_lbl)
+        about_sv.add_widget(scroll_layout)
+        btn_layout.add_widget(btn)
+        about_layout.add_widget(about_sv)
+        about_layout.add_widget(btn_layout)
+
+        popup = Popup(title='About', size_hint=(.9, .8), \
+            content=about_layout)
+        #about_lbl.text_size = popup.size
+        btn.bind(on_release=popup.dismiss)
+
+        popup.open()
 
     def translateButtonPressed(self):
     	print "input to translate:", self.translateInput.text
@@ -647,6 +766,7 @@ class ResultsScreen(Screen):
                 #text_size=(80, 40), 
                 #btn1.bind(on_press=run_search(word))
                 btn2.bind(on_press=self.verb_chart_button_pressed(entry))
+                #btn2.bind(on_press= lambda btn: self.verb_chart_button_pressed(entry))
                 
                 layout1.add_widget(btn2)
                 layout1.add_widget(btn1)
