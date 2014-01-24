@@ -32,12 +32,106 @@ from functools import partial
 from eadict2 import PopulateDB, search_entries
 
 Builder.load_string("""
-<RunSearchButton>:
-    #run_search_button: runSearchButtonID
-    #id: runSearchButtonID
-    #size_hint: None, None
-    #size_x: self.width-60
-    size_y: 100
+<RunSearchButton1>:
+    padding: (10, 0)
+    text_size: self.width, None
+    size_hint: (1, None)
+    height: self.texture_size[1]
+    #on_release: root.RunSearchButton_pressed()
+<RunSearchButton2>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton3>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton4>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton5>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton6>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton7>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton8>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton9>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton10>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton11>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton12>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton13>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton14>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton15>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton16>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton17>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton18>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton19>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
+    on_release: root.RunSearchButton_pressed()
+<RunSearchButton20>:
+    text_size: self.width, None
+    size_hint: (1, None)
+    size: self.width, self.texture_size[1]
     on_release: root.RunSearchButton_pressed()
 
 <EntryButton>:
@@ -54,21 +148,76 @@ Builder.load_string("""
     text: "Verb Chart"
     on_release: root.VerbChartButton_pressed()
 
+<MyPopup>:
+    size_hint: .9, .8
+
+<MyContentLayout>:
+    orientation: 'vertical'
+    content_lbl: contentID
+    done_btn: doneButtonID
+    ScrollView:
+        GridLayout:
+            cols: 1
+            spacing: 10
+            size_hint_y: None
+            height: contentID.texture_size[1]
+
+            Label:
+                id: contentID
+                text_size: self.width, None
+                text: 'whatever whatever whatever whatever whatever '
+                size_hint: (1, None)
+                size: self.parent.width, self.texture_size[1]
+    AnchorLayout:
+        size_hint: 1, None
+        height: 20
+        anchor_x: 'center'
+        anchor_y: 'center'
+        Button:
+            id: doneButtonID
+            text: 'Done'
+            size_hint: None, None
+            size: 50, 20
+            on_release: root.parent.parent.parent.dismiss()
+
+<MyScrollView>:
+    GridLayout:
+        cols: 1
+        spacing: 10
+        size_hint_y: None
+        height: thetb.texture_size[1]
+
+        Label:
+            id: thetb
+            text: 'whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever '
+            text_size: self.width, None
+            size_hint: (1, None)
+            size: self.parent.width, self.texture_size[1]
+
+
 <CustomDropDown>:
+    id: cdd
     Button:
-        text: 'My first Item'
+        text: 'Features'
         size_hint_y: None
         height: 44
-        on_release: root.select('item1')
-    Label:
-        text: 'Unselectable item'
-        size_hint_y: None
-        height: 44
+        on_release: root.FeaturesButtonPressed()
     Button:
-        text: 'My second Item'
+        text: 'Suggestions'
         size_hint_y: None
         height: 44
-        on_release: root.select('item2')
+        on_release: root.SuggestionsButtonPressed()
+
+    Button:
+        text: 'Abbreviations'
+        size_hint_y: None
+        height: 44
+        on_release: root.AbbreviationsButtonPressed()
+    Button:
+        text: 'Miscellaneous'
+        size_hint_y: None
+        height: 44
+        on_release: root.MiscellaneousButtonPressed()
 
 <HomeScreen>:
     id: home_screen
@@ -109,7 +258,7 @@ Builder.load_string("""
 
         Label:
         	id: labelID
-            text: 'Bedouin مُتَرْجِم'
+            text: 'Bedouin Translator'
             text_size: self.size
             valign: 'middle'
             halign: 'center'
@@ -119,7 +268,7 @@ Builder.load_string("""
             #font_name: "5thgradecursive.ttf"
             #font_name: "AGA-Rasheeq-Regular.ttf"
             font_name: "data/fonts/DejaVuSans.ttf"
-            font_size: 50
+            font_size: 18
 
     BoxLayout:
         id: topLayoutID
@@ -130,8 +279,8 @@ Builder.load_string("""
             #id: notesDropDownID 
             id: btn_ddID
             text: 'Usage Notes'
-            #on_release: root.drop_down.open
-            on_release: root.NotesButtonPressed()
+            on_release: root.drop_down.open(self)
+            #on_release: root.NotesButtonPressed()
         Button:
             text: 'About'
             on_release: root.AboutButtonPressed()
@@ -505,7 +654,7 @@ def run_search(input_to_translate):
     #PROVIDED_USER_INPUT = input_to_translate
 
 
-class RunSearchButton(Button):
+class RunSearchButton1(Button):
     #run_search_button = ObjectProperty(None)
 
     '''
@@ -517,8 +666,66 @@ class RunSearchButton(Button):
         self.run_search_button.text = button_label
     '''
 
-    def RunSearchButton_pressed(self):
-        run_search(self.input_to_translate)
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+
+class RunSearchButton2(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton3(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton4(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton5(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton6(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton7(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton8(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton9(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton10(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton11(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton12(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton13(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton14(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton15(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton16(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton17(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton18(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton19(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
+class RunSearchButton20(Button):
+    def RunSearchButton_pressed(self, word):
+        run_search(word)
 
 class EntryButton(Button):
 
@@ -530,17 +737,65 @@ class VerbChartButton(Button):
 
     def VerbChartButton_pressed(self, entry):
         sm.get_screen("verb_chart").refresh_verb_chart(entry)
-        sm.current = 'verb_chart'
+        sm.current = 'verb_chmyrt'
+
+class MyContentLayout(BoxLayout):
+    content_lbl = ObjectProperty(None)
+
+    def change_content_text(self, new_text):
+        self.content_lbl.text = new_text
+
+class MyPopup(Popup):
+    my_content = MyContentLayout()
+
+    def close_pu(self):
+        self.dismiss()
+    
+class MyScrollView(ScrollView):
+    pass
 
 class CustomDropDown(DropDown):
-    foo = 3
+    my_content = MyContentLayout()
+    my_popup = MyPopup()
+    #home_screen = HomeScreen()
+    
+    def FeaturesButtonPressed(self):
+        new_text = "These are the features."
+        self.my_content.change_content_text(new_text)
+        pup = self.my_popup
+        pup.title = 'Features'
+        pup.content = self.my_content
+        pup.open()
 
-'''
-dropdown = CustomDropDown()
-mainbutton = Button(text='Usage Notes', size_hint=(None, None))
-mainbutton.bind(on_release=dropdown.open)
-dropdown.bind(on_select=lambda instance, x: setattr(mainbutton, 'text', x))
-'''
+    def SuggestionsButtonPressed(self):
+        new_text = "These are the suggestions."
+        self.my_content.change_content_text(new_text)
+        pup = self.my_popup
+        pup.title = 'Suggestions'
+        pup.content = self.my_content
+        pup.open()
+
+    def AbbreviationsButtonPressed(self):
+        new_text = "These are the abbreviations."
+        self.my_content.change_content_text(new_text)
+        pup = self.my_popup
+        pup.title = 'Abbreviations'
+        pup.content = self.my_content
+        pup.open()
+        
+    def MiscellaneousButtonPressed(self):
+        new_text = "These are the miscellaneous things."
+        self.my_content.change_content_text(new_text)
+        pup = self.my_popup
+        pup.title = 'Miscellaneous'
+        pup.content = self.my_content
+        pup.open()
+        
+    #def open_dropdown(self):
+
+
+        #foo = 3
+
 
 class HomeScreen(Screen):
     translateInput = ObjectProperty(None)
@@ -550,109 +805,20 @@ class HomeScreen(Screen):
     dd_btn = ObjectProperty(None)
     drop_down = CustomDropDown()
     #notes_dropdown = ObjectProperty(None)
+    my_content = MyContentLayout()
+    my_popup = MyPopup()
 
     def NotesButtonPressed(self):
-        dropdown = DropDown()
-        notes = [('Features', self.FeaturesButtonPressed()), \
-        ('Suggestions', self.SuggestionsButtonPressed()),\
-        ('Abbreviations', self.AbbreviationsButtonPressed()), \
-        ('Miscellaneous', self.MiscellaneousButtonPressed())]
-
-        for note in notes:
-            lbl = note[0]
-            method = note[1]
-            # when adding widgets, we need to specify the height manually (disabling
-            # the size_hint_y) so the dropdown can calculate the area it needs.
-            btn = Button(text='%r' % lbl, size_hint_y=None, height=30)
-
-            # for each button, attach a callback that will call the select() method
-            # on the dropdown. We'll pass the text of the button as the data of the
-            # selection.
-            btn.bind(on_release=lambda btn: dropdown.select(method))
-
-            # then add the button inside the dropdown
-            dropdown.add_widget(btn)
-
-        # create a big main button
-        mainbutton = self.dd_btn #Button(text='Usage Notes', size_hint=(1, 1))
-
-        # show the dropdown menu when the main button is released
-        # note: all the bind() calls pass the instance of the caller (here, the
-        # mainbutton instance) as the first argument of the callback (here,
-        # dropdown.open.).
-        mainbutton.bind(on_release=dropdown.open)
-        #dd_btn.bind(on_release=dropdown.open)
-
-        # one last thing, listen for the selection in the dropdown list and
-        # assign the data to the button text.
-        dropdown.bind(on_select=lambda instance, x: x)
-        #dropdown.bind(on_select=lambda instance, x: setattr(mainbutton, 'text', x))
-
-        #layout = self.top_layout
-        #layout.add_widget(mainbutton)
+        dd = self.drop_down
+        dd.open
         
-    def FeaturesButtonPressed(self):
-        about_lbl = Label(text='These are the features.')
-        about_sv = ScrollView()
-        about_sv.add_widget(about_lbl)
-        popup = Popup(title='Features', size_hint=(.8, .8), \
-            content=about_sv)#Label(text='Hello world'))#, size_hint=(.8, .8))#, size=(400, 400))
-
-        popup.open()
-
-    def SuggestionsButtonPressed(self):
-        about_lbl = Label(text='These are suggestions.')
-        about_sv = ScrollView()
-        about_sv.add_widget(about_lbl)
-        popup = Popup(title='Suggestions', size_hint=(.8, .8), \
-            content=about_sv)#Label(text='Hello world'))#, size_hint=(.8, .8))#, size=(400, 400))
-
-        popup.open()
-
-    def AbbreviationsButtonPressed(self):
-        about_lbl = Label(text='These are the abbreviations.')
-        about_sv = ScrollView()
-        about_sv.add_widget(about_lbl)
-        popup = Popup(title='Abbreviations', size_hint=(.8, .8), \
-            content=about_sv)#Label(text='Hello world'))#, size_hint=(.8, .8))#, size=(400, 400))
-
-        popup.open()
-
-    def MiscellaneousButtonPressed(self):
-        about_lbl = Label(text='These are miscellaneous things.')
-        about_sv = ScrollView()
-        about_sv.add_widget(about_lbl)
-        popup = Popup(title='Miscellaneous', size_hint=(.8, .8), \
-            content=about_sv)#Label(text='Hello world'))#, size_hint=(.8, .8))#, size=(400, 400))
-
-        popup.open()
-
     def AboutButtonPressed(self):
-        about_lbl = Label(size_hint=(1, None), \
-            font_size=13, \
-            text='This app was made blah blah This app was made blah blah This app was made blah blah This app was made blah blah This app was made blah blah This app was made blah blah ')
-        about_sv = ScrollView()
-        about_layout = BoxLayout(orientation='vertical')
-        scroll_layout = GridLayout(cols=1, spacing=10, size_hint_y=None, height=about_lbl.texture_size[1])
-        btn_layout = AnchorLayout(size_hint=(1, None), height=20, anchor_x='center', \
-            anchor_y='center')
-        btn = Button(text='Done', size_hint=(None, None), size=(50, 20), \
-            pos_hint=())
-        #about_lbl.bind(size=(scroll_layout.width, about_lbl.texture_size[1]))
-        #about_lbl.bind(text_size=(about_lbl.width, None))
-
-        scroll_layout.add_widget(about_lbl)
-        about_sv.add_widget(scroll_layout)
-        btn_layout.add_widget(btn)
-        about_layout.add_widget(about_sv)
-        about_layout.add_widget(btn_layout)
-
-        popup = Popup(title='About', size_hint=(.9, .8), \
-            content=about_layout)
-        #about_lbl.text_size = popup.size
-        btn.bind(on_release=popup.dismiss)
-
-        popup.open()
+        new_text = "This app was made blah blah "
+        self.my_content.change_content_text(new_text)
+        pup = self.my_popup
+        pup.title = 'About'
+        pup.content = self.my_content
+        pup.open()
 
     def translateButtonPressed(self):
     	print "input to translate:", self.translateInput.text
@@ -679,7 +845,27 @@ class ResultsScreen(Screen):
     anchor_layout_2 = ObjectProperty(None)
     #stack_layout = ObjectProperty(None)
 
-    #run_search_button = ObjectProperty(None)
+    #run_search_button1 = RunSearchButton1()
+    #run_search_button2 = RunSearchButton2()
+    #run_search_button3 = RunSearchButton3()
+    #run_search_button4 = RunSearchButton4()
+    #run_search_button5 = RunSearchButton5()
+    #run_search_button6 = RunSearchButton6()
+    #run_search_button7 = RunSearchButton7()
+    #run_search_button8 = RunSearchButton8()
+    #run_search_button9 = RunSearchButton9()
+    #run_search_button10 = RunSearchButton10()
+    #run_search_button11 = RunSearchButton11()
+    #run_search_button12 = RunSearchButton12()
+    #run_search_button13 = RunSearchButton13()
+    #run_search_button14 = RunSearchButton14()
+    #run_search_button15 = RunSearchButton15()
+    #run_search_button16 = RunSearchButton16()
+    #run_search_button17 = RunSearchButton17()
+    #run_search_button18 = RunSearchButton18()
+    #run_search_button19 = RunSearchButton19()
+    #run_search_button20 = RunSearchButton20()
+
     #entry_button = ObjectProperty(None)
     #verb_chart_button = ObjectProperty(None)
 
@@ -798,7 +984,9 @@ class ResultsScreen(Screen):
         scrollview1.add_widget(layout1)
 
     def getCloseResultsButtons(self, results_list):
-        layout1 = GridLayout(cols=1, spacing=0, size_hint=(None, None), \
+        #search_btn = self.run_search_button
+
+        layout1 = GridLayout(cols=1, spacing=0, size_hint=(1, None), \
             row_force_default=False, row_default_height=40)#, cols_minimum={0, 60})
 
         layout1.bind(minimum_height=layout1.setter('height'),
@@ -813,20 +1001,155 @@ class ResultsScreen(Screen):
             entry = result[2]
 
             if word in result_words:
-                f=3
+                f = 3
             else:
-                result_words.append(word)
-                reshaped_word = get_display(arabic_reshaper.reshape(word))
+                if len(result_words) == 0:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton1()
+                    btn.width = layout1.width
+                    btn.on_release = btn.RunSearchButton_pressed(word)
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 1:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton2()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 2:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton3()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 3:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton4()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 4:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton5()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 5:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton6()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 6:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton7()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 7:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton8()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 8:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton9()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 9:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton10()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 10:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton11()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 11:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton12()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 12:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton13()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 13:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton14()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 14:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton15()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 15:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton16()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 16:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton17()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 17:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton18()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 18:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton19()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                elif len(result_words) == 19:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
+                    btn = RunSearchButton20()
+                    btn.text = reshaped_word
+                    layout1.add_widget(btn)
+                else:
+                    f = 4
+            '''
+            else:
+                if word in result_words:
+                    f=3
+                else:
+                    result_words.append(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(word))
 
-                btn = Button(text=reshaped_word, font_name="data/fonts/DejaVuSans.ttf", \
-                    size_hint=(None, 1), halign='left', valign='middle', width=300)#, \
-                    #on_press=partial(run_search, word))
-                #btn.texture_size = (btn.width-20, 40)
-                #btn.text_size = btn.size
-                btn.text_size = (btn.width-20, btn.height)
-                #btn.bind(on_press=run_search(word))
-                #btn.bind(on_press=partial(run_search, word))
-                layout1.add_widget(btn)
+                    btn = self.run_search_button% % len(result_words)
+                    btn.text = reshaped_word
+
+                    
+                    btn = Button(text=reshaped_word, font_name="data/fonts/DejaVuSans.ttf", \
+                        size_hint=(None, 1), halign='left', valign='middle', width=300)#, \
+                        #on_press=partial(run_search, word))
+                    #btn.texture_size = (btn.width-20, 40)
+                    #btn.text_size = btn.size
+                    btn.text_size = (btn.width-20, btn.height)
+                    #btn.bind(on_press=run_search(word))
+                    #btn.bind(on_press=partial(run_search, word))
+                    
+                    layout1.add_widget(btn)
+            '''
 
         scrollview1 = self.scroll_view
         scrollview1.clear_widgets()
