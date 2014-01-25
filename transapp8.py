@@ -33,8 +33,7 @@ from eadict2 import PopulateDB, search_entries
 
 Builder.load_string("""
 <RunSearchButton1>:
-    padding: (10, 0)
-    text_size: self.width, None
+    text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]
     #on_release: root.RunSearchButton_pressed()
@@ -918,7 +917,7 @@ class ResultsScreen(Screen):
         #layout1 = self.stack_layout
         layout1.bind(minimum_height=layout1.setter('height'),
                      minimum_width=layout1.setter('width'))
-
+        print results_list_tuples
         for result in results_list_tuples:
             word = result[0]
             button_label = result[1]
@@ -940,7 +939,8 @@ class ResultsScreen(Screen):
                          height=(30), width=(100))#, on_release=self.result_button_pressed_v(entry))
                 '''
                 btn1 = Button(font_name="data/fonts/DejaVuSans.ttf", \
-                    size_hint=(1, 1), valign='middle')#, width=300)
+                    size_hint=(1, None), valign='middle', halign='right')#, \
+                    #height=root.texture_size[1], text_size=(root.width-10, None))#, width=300)
                          #, on_release=self.result_button_pressed_v(entry))
                 #btn1.text_size = (btn1.width-20, layout1.row_default_height)
                 btn1.text = reshaped_label
@@ -1007,8 +1007,8 @@ class ResultsScreen(Screen):
                     result_words.append(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(word))
                     btn = RunSearchButton1()
-                    btn.width = layout1.width
-                    btn.on_release = btn.RunSearchButton_pressed(word)
+                    #btn.width = layout1.width
+                    btn.bind(on_release=run_search(word))
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 1:

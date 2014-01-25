@@ -1,0 +1,81 @@
+#:kivy 1.7.2
+
+<CustomDropDown>:
+    Button:
+        text: 'My first Item'
+        size_hint_y: None
+        height: 44
+        on_release: root.select('item1')
+    Label:
+        text: 'Unselectable item'
+        size_hint_y: None
+        height: 44
+    Button:
+        text: 'My second Item'
+        size_hint_y: None
+        height: 44
+        on_release: root.select('item2')
+
+<HomeScreen>:
+    id: home_screen
+    translateInput: translateInputID
+    translateButton: translateButtonID
+    translateLabel: labelID
+    top_layout: topLayoutID
+    #notes_dropdown: notesDropDownID
+    dd_btn: btn_ddID
+
+    orientation: 'vertical'
+    FloatLayout:
+        size_hint: 1, .95
+        TextInput:
+            id: translateInputID
+            text: 'cove'
+            #text: 'ﻰﺸَﻣ'
+            font_name: "data/fonts/DejaVuSans.ttf"
+            background_color: 1, 1, 1, 1
+            size_hint: .75, .1
+            multiline: False
+            pos_hint: {'x': .125, 'y': .45}
+            text_size: self.size
+            valign: 'middle'
+            halign: 'center'
+            padding: 5
+            
+        Button:
+            id: translateButtonID
+            text: 'Translate'
+            pos_hint: {'x': .35, 'y': .35}
+            size_hint: .3, .08
+            valign: 'middle'
+            halign: 'center'
+            text_size: self.size
+            on_release: root.translateButtonPressed()
+            #on_press: root.manager.current = 'resultsscreen'
+
+        Label:
+        	id: labelID
+            text: 'Translator'
+            text_size: self.size
+            valign: 'middle'
+            halign: 'center'
+            pos_hint: {'x': .3, 'y': .75}
+            size_hint: .4, .2
+            #font_name: "simpo.ttf"
+            #font_name: "5thgradecursive.ttf"
+            #font_name: "AGA-Rasheeq-Regular.ttf"
+            font_name: "data/fonts/DejaVuSans.ttf"
+            font_size: 50
+
+    BoxLayout:
+        id: topLayoutID
+        #cols: 2
+        size_hint: 1, .05
+        pos_hint: {'x': 0, 'y': .95}
+        Button:
+            #id: notesDropDownID 
+            id: btn_ddID
+            text: 'Usage Notes'
+            on_release: root.drop_down.open(self)
+        Button:
+            text: 'About'

@@ -1,0 +1,25 @@
+#:kivy 1.7.2
+
+<ButtonILike>:
+	text_size: self.width-10, None
+    size_hint: (1, None)
+    height: self.texture_size[1]
+    text: root.get_text()
+    #on_release: root.RunSearchButton_pressed()
+
+<HomeScreen>:
+	scroll_view: scrollviewID
+	AnchorLayout:
+        size_hint: 1, .1   
+        pos_hint: {'x': 0, 'y': .9}
+        anchor_x: 'center'
+        anchor_y: 'center'
+        Label:
+        	text: 'Button Tester'
+
+    ScrollView:
+        id: scrollviewID
+    	orientation: 'vertical'
+    	pos_hint: {'x': 0, 'y': 0}
+    	size_hint: 1, .9
+        bar_width: '8dp'

@@ -1,0 +1,31 @@
+#:kivy 1.7.2
+
+<HomeScreen>:
+	scroll_view: scrollviewID
+	top_lbl: lblID
+	grid_l: gridlayoutID
+	AnchorLayout:
+        size_hint: 1, .1   
+        pos_hint: {'x': 0, 'y': .9}
+        anchor_x: 'center'
+        anchor_y: 'center'
+        Label:
+        	id: lblID
+        	text: 'Button Tester'
+    Button:
+    	size_hint: 1, .1   
+        pos_hint: {'x': 0, 'y': .8}
+        text: 'Add theoretical search results'
+        on_release: root.search_btn_pressed()
+    ScrollView:
+        id: scrollviewID
+    	orientation: 'vertical'
+    	pos_hint: {'x': 0, 'y': 0}
+    	size_hint: 1, .8
+        bar_width: '8dp'
+    	GridLayout:
+    		id: gridlayoutID
+    		cols: 1
+    		size_hint: 1, None
+    		row_default_height: 40
+    		row_force_default: False
