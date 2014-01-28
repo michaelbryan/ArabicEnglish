@@ -28,16 +28,17 @@ def RetrieveEntriesFromFile(my_file_name, all_entries):
     numUniqueEntries = len(all_entries)
     numAllEntries = numUniqueEntries + num_repeats
     
-    print "Number of lines         :", line_counter
+    #print "Number of lines         :", line_counter
     
-    print "Number of unique entries:", numUniqueEntries
-    print "Number of repeats       :", num_repeats
-    print "Number of all entries   :", numAllEntries
+    #print "Number of unique entries:", numUniqueEntries
+    #print "Number of repeats       :", num_repeats
+    #print "Number of all entries   :", numAllEntries
     if line_counter != numAllEntries:
     	print "##### WARNING: Something is afoot... the number of lines in %s != number of entries derived" % my_file_name
     	print "               %s (num lines) != %s (num entries derived)" % (line_counter, numAllEntries)
     else:
-    	print "***** Number of lines = Number of entries derived ... Yay!"
+    	f = 3
+    	#print "***** Number of lines = Number of entries derived ... Yay!"
     	
     file_handler.close()
 

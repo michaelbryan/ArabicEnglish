@@ -29,14 +29,14 @@ from functools import partial
 
 #import sys
 #sys.path.append('../')
-from eadict2 import PopulateDB, search_entries
+from eadict2 import PopulateDB, search_entries, filter_main_diacritics
 
 Builder.load_string("""
 <CustomButton1>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    halign: 'left'
+    #halign: 'right'
     font_name: "data/fonts/DejaVuSans.ttf"
 <CustomButton2>:
     text_size: self.width-10, None
@@ -693,89 +693,45 @@ def run_search(input_to_translate, *args):
 
 
 class CustomButton1(Button):
-    #run_search_button = ObjectProperty(None)
-
-    '''
-    def __init__(self, word):
-        self.input_to_translate = word
-
-    
-    def edit_button(self, button_label, word):
-        self.run_search_button.text = button_label
-    '''
-
-    def CustomButton_pressed(self, word):
-        run_search(word)
-
+    pass
 class CustomButton2(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton3(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton4(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton5(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton6(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton7(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton8(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton9(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton10(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton11(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton12(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton13(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton14(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton15(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton16(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton17(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton18(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton19(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
+    pass
 class CustomButton20(Button):
-    def CustomButton_pressed(self, word):
-        run_search(word)
-
-class EntryButton(Button):
-
-    def EntryButton_pressed(self, entry):
-        sm.get_screen("entry_viewer").replace_labels(entry)
-        sm.current = 'entry_viewer'
-
-class VerbChartButton(Button):
-
-    def VerbChartButton_pressed(self, entry):
-        sm.get_screen("verb_chart").refresh_verb_chart(entry)
-        sm.current = 'verb_chmyrt'
+    pass
 
 class MyContentLayout(BoxLayout):
     content_lbl = ObjectProperty(None)
@@ -882,20 +838,24 @@ class ResultsScreen(Screen):
     anchor_layout_2 = ObjectProperty(None)
 
     def getArabicResults(self, results_list, new_results_label):
+        alignment = 'right'
         self.change_results_label(new_results_label)
         self.getResultsButtons(results_list)
 
     def getCloseEnglishResults(self, results_list, new_results_label):
+        alignment = 'left'
         self.change_results_label(new_results_label)
-        self.getCloseResultsButtons(results_list)
+        self.getCloseResultsButtons(results_list, alignment)
 
     def getEnglishResults(self, results_list, new_results_label):
+        alignment = 'left'
         self.change_results_label(new_results_label)
         self.getResultsButtons(results_list)
 
     def getCloseArabicResults(self, results_list, new_results_label):
+        alignment = 'right'
         self.change_results_label(new_results_label)
-        self.getCloseResultsButtons(results_list)
+        self.getCloseResultsButtons(results_list, alignment)
 
     def goHome(self):
         sm.current = 'home'
@@ -926,50 +886,538 @@ class ResultsScreen(Screen):
             button_label = result[1]
             entry = result[2]
 
-            reshaped_label = get_display(arabic_reshaper.reshape(button_label))#.decode('utf-8')
-            #print reshaped_label
-            if entry.part_of_speech == "v":
-               
-                btn1 = Button(font_name="data/fonts/DejaVuSans.ttf", \
-                    size_hint=(1, None), valign='middle', halign='left')#, \
-                    #height=root.texture_size[1])#, text_size=(root.width-10, None))#, width=300)
-                btn1.bind(on_release=partial(run_search, word))
-                btn1.bind(size=btn1.setter('text_size'))
-                #btn1.text_size = (btn1.parent.width-10, None)
-                btn1.height = btn1.texture_size[1]
-                btn1.text = reshaped_label
-
-                btn2 = Button(text="Verb Chart", size_hint_x=None,
-                         width=(70), font_size=12, \
-                         valign ='middle')
-                btn2.text_size = (btn2.width-10, layout1.row_default_height)
-                #text_size=(80, 40), 
-                btn2.bind(on_release=partial(self.verb_chart_button_pressed, entry))
-                
-                layout1.add_widget(btn2)
-                layout1.add_widget(btn1)
+            if button_label in result_labels:
+                f = 3
             else:
-                btn3 = Button(text=reshaped_label, size_hint=(1, None), \
-                    font_name="data/fonts/DejaVuSans.ttf")
-                btn3.bind(on_release=partial(run_search, word))
-                btn3.bind(size=btn3.setter('text_size'))
-                btn3.height = btn3.texture_size[1]
-                #btn3.text_size = (btn3.parent.width-10, None)
+                if len(result_labels) == 0:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton1()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    #btn.bind(halign=partial(get_alignment, alignment))
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
-                btn4 = Button(text="Full Entry", size_hint_x=None,
-                         width=(70), font_size=12, \
-                         valign ='middle')
-                btn4.text_size = (btn4.width-10, layout1.row_default_height)
-                btn4.bind(on_release=partial(self.full_entry_button_pressed, entry))
-                
-                layout1.add_widget(btn4)
-                layout1.add_widget(btn3)
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 1:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton2()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 2:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton3()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 3:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton4()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 4:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton5()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 5:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton6()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 6:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton7()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 7:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton8()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 8:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton9()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 9:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton10()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 10:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton11()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 11:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton12()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 12:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton13()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 13:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton14()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 14:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton15()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 15:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton16()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 16:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton17()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 17:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton18()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 18:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton19()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                elif len(result_labels) == 19:
+                    result_labels.append(button_label)
+                    filtered_label = filter_main_diacritics(button_label)
+                    reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
+                    btn = CustomButton20()
+                    #btn.width = layout1.width
+                    btn.bind(on_release=partial(run_search, word))
+                    btn.text = reshaped_label
+                    
+                    if entry.part_of_speech == "v":
+                        btn_v = Button(text="Verb Chart", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
+                        btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
+
+                        layout1.add_widget(btn_v)
+                    else:
+                        btn_e = Button(text="Full Entry", size_hint_x=None,
+                                 width=(70), font_size=12, \
+                                 valign ='middle')
+                        btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
+                        btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
+                    
+                        layout1.add_widget(btn_e)
+                    layout1.add_widget(btn)
+                else:
+                    f = 4
 
         scrollview1 = self.scroll_view
         scrollview1.clear_widgets()
         scrollview1.add_widget(layout1)
 
-    def getCloseResultsButtons(self, results_list):
+    def getCloseResultsButtons(self, results_list, alignment):
         layout1 = GridLayout(cols=1, spacing=0, size_hint=(1, None), \
             row_force_default=False, row_default_height=25)#, cols_minimum={0, 60})
 
@@ -989,143 +1437,183 @@ class ResultsScreen(Screen):
             else:
                 if len(result_words) == 0:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton1()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton1()
                     #btn.width = layout1.width
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 1:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton2()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton2()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 2:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton3()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton3()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 3:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton4()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton4()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 4:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton5()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton5()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 5:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton6()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton6()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 6:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton7()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton7()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 7:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton8()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton8()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 8:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton9()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton9()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 9:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton10()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton10()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 10:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton11()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton11()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 11:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton12()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton12()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 12:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton13()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton13()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 13:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton14()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton14()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 14:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton15()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton15()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 15:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton16()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton16()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 16:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton17()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton17()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 17:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton18()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton18()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 18:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton19()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton19()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 elif len(result_words) == 19:
                     result_words.append(word)
-                    reshaped_word = get_display(arabic_reshaper.reshape(word))
-                    btn = RunSearchButton20()
+                    filtered_word = filter_main_diacritics(word)
+                    reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
+                    btn = CustomButton20()
                     btn.bind(on_release=partial(run_search, word))
+                    btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
                 else:
@@ -1161,16 +1649,6 @@ class ResultsScreen(Screen):
     def change_results_label(self, new_results_label):
         print "Current Page Label: ", self.results_label.text
         self.results_label.text = new_results_label
-
-
-        '''
-        layout_of_label = self.anchor_layout_2
-        layout_of_label.clear_widgets()
-        new_label = Label(text=str(new_results_label), size_hint=(None, None), height=20, width=100, font_size=13)
-        layout_of_label.add_widget(new_label)
-        '''
-
-        #new_label = Label(text=new_results_label)
 
     def getTranslationTextInput(self):
         return self.translationTextInput

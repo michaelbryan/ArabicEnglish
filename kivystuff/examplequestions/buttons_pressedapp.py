@@ -6,8 +6,9 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
+from functools import partial
 
-i = range(1)
+i = ['some', 'words']
 
 class HomeScreen(Screen):
     grid_l = ObjectProperty(None)
@@ -19,24 +20,26 @@ class HomeScreen(Screen):
                      minimum_width=grid.setter('width'))
 
         for result in i:
-                
-                btn1 = Button(size_hint=(1, None), on_release=self.btn1_pressed())
-                btn1.text = 'Change top label'
+
+                btn1 = Button(size_hint=(1, None))
+                btn1.text = '%r' % result
+                btn1.bind(on_release=partial(self.btn1_pressed, result))
 
                 btn2 = Button(size_hint=(1, None))
                 btn2.text = 'Remove result buttons'
-                btn2.bind(on_release=self.btn2_pressed())
+                btn2.bind(on_release=self.btn2_pressed)
 
                 grid.add_widget(btn1)
                 grid.add_widget(btn2)
 
-    def btn1_pressed(self):
-        self.top_lbl.text = 'Dynamically created kivy buttons are trickier than they should be'
-        
-    def btn2_pressed(self):
+    def btn1_pressed(self, result, *args):
+        new_text = result
+        self.top_lbl.text = new_text
+
+    def btn2_pressed(self, *args):
         self.grid_l.clear_widgets()
         #pass
-        
+
 class buttons_pressedApp(App):
 
     def build(self):

@@ -284,11 +284,3 @@ class Entry:
             return self.fem_plural
         else:
             return False
-        '''
-if compiled_regex.search(self.arabic) or compiled_regex.search(self.plural) or \
-compiled_regex.search(self.alt_plural) or compiled_regex.search(self.fem_sing) or \
-compiled_regex.search(self.fem_plural):
-return True
-else:
-return False
-'''
