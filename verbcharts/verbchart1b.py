@@ -3,7 +3,7 @@
 def get_chart(verb):
 
     arabic_letters = list(verb)
-    #print arabic_letters
+    ###print arabic_letters
 
     #these arabic letters are commonly used in conjugations
     fatha = u'\u064e'
@@ -57,15 +57,15 @@ def get_chart(verb):
     first_root_letter = arabic_root[0]
     second_root_letter = arabic_root[1]
     third_root_letter = arabic_root[2]
-    print first_root_letter
-    print second_root_letter
-    print third_root_letter
-    print arabic_root
+    ##print first_root_letter
+    ##print second_root_letter
+    ##print third_root_letter
+    ##print arabic_root
     he_past_broken = [first_root_letter, kasra, second_root_letter, kasra, third_root_letter]
     he_past_string = "".join(he_past_broken)
-    verb_columns_list = [he_past_string, "Past", "Present", "Command", "Following a Verb", "With Pronoun"]
-    print he_past_string
-    print verb_columns_list
+    verb_columns_list = [he_past_string, "Past", "Present", "Command", "After Verb", "With Pronoun"]
+    ##print he_past_string
+    ##print verb_columns_list
     i_arabic_broken = [alif_hamza_above, fatha, noon, alif]
     i_arabic_string = "".join(i_arabic_broken)
     i_past_broken = [first_root_letter, sukun, second_root_letter, kasra, third_root_letter, sukun, tah]
@@ -78,13 +78,13 @@ def get_chart(verb):
     i_present_with_pronoun_broken = [alif_hamza_above, fatha, first_root_letter, sukun, second_root_letter, fatha, third_root_letter, sukun, hah, damma, meem]
     i_present_with_pronoun_string = "".join(i_present_with_pronoun_broken)
     i_conjugations_list = [i_arabic_string, i_past_string, i_present_b_string, i_command_string, i_present_string, i_present_with_pronoun_string]
-    print i_arabic_string + "\n"
-    print i_past_string + "\n"
-    print i_present_b_string + "\n"
-    print i_command_string + "\n"
-    print i_present_string + "\n"
-    print i_present_with_pronoun_string + "\n"
-    print i_conjugations_list
+    ##print i_arabic_string + "\n"
+    ##print i_past_string + "\n"
+    ##print i_present_b_string + "\n"
+    ##print i_command_string + "\n"
+    ##print i_present_string + "\n"
+    ##print i_present_with_pronoun_string + "\n"
+    ##print i_conjugations_list
     you_m_arabic_broken = [alif_hamza_below, noon, sukun, tah, fatha]
     you_m_arabic_string = "".join(you_m_arabic_broken)
     you_m_past_broken = [first_root_letter, sukun, second_root_letter, kasra, third_root_letter, sukun, tah]
@@ -98,13 +98,13 @@ def get_chart(verb):
     you_m_present_with_pronoun_broken = [tah, kasra, first_root_letter, sukun, second_root_letter, fatha, third_root_letter, damma, hah]
     you_m_present_with_pronoun_string = "".join(you_m_present_with_pronoun_broken)
     you_m_conjugations_list = [you_m_arabic_string, you_m_past_string, you_m_present_b_string, you_m_command_string, you_m_present_string, you_m_present_with_pronoun_string]
-    print you_m_arabic_string + "\n"
-    print you_m_past_string + "\n"
-    print you_m_present_b_string + "\n"
-    print you_m_command_string + "\n"
-    print you_m_present_string + "\n"
-    print you_m_present_with_pronoun_string + "\n"
-    print you_m_conjugations_list
+    ##print you_m_arabic_string + "\n"
+    ##print you_m_past_string + "\n"
+    ##print you_m_present_b_string + "\n"
+    ##print you_m_command_string + "\n"
+    ##print you_m_present_string + "\n"
+    ##print you_m_present_with_pronoun_string + "\n"
+    ##print you_m_conjugations_list
     you_f_arabic_broken = [alif_hamza_below, noon, sukun, tah, kasra, yah]
     you_f_arabic_string = "".join(you_f_arabic_broken)
     you_f_past_broken = [first_root_letter, sukun, second_root_letter, kasra, third_root_letter, sukun, tah, kasra, yah]
@@ -118,13 +118,13 @@ def get_chart(verb):
     you_f_present_with_pronoun_broken = [tah, kasra, first_root_letter, sukun, second_root_letter, fatha, third_root_letter, kasra, yah, hah, alif]
     you_f_present_with_pronoun_string = "".join(you_f_present_with_pronoun_broken)
     you_f_conjugations_list = [you_f_arabic_string, you_f_past_string, you_f_present_b_string, you_f_command_string, you_f_present_string, you_f_present_with_pronoun_string]
-    print you_f_arabic_string + "\n"
-    print you_f_past_string + "\n"
-    print you_f_present_b_string + "\n"
-    print you_f_command_string + "\n"
-    print you_f_present_string + "\n"
-    print you_f_present_with_pronoun_string + "\n"
-    print you_f_conjugations_list
+    ##print you_f_arabic_string + "\n"
+    ##print you_f_past_string + "\n"
+    ##print you_f_present_b_string + "\n"
+    ##print you_f_command_string + "\n"
+    ##print you_f_present_string + "\n"
+    ##print you_f_present_with_pronoun_string + "\n"
+    ##print you_f_conjugations_list
     he_arabic_broken = [hah, damma, waw, shadda, fatha]
     he_arabic_string = "".join(he_arabic_broken)
     he_past_broken = [first_root_letter, kasra, second_root_letter, kasra, third_root_letter]
@@ -137,13 +137,13 @@ def get_chart(verb):
     he_present_with_pronoun_broken = [yah, kasra, first_root_letter, sukun, second_root_letter, fatha, third_root_letter, fatha, kaaf]
     he_present_with_pronoun_string = "".join(he_present_with_pronoun_broken)
     he_conjugations_list = [he_arabic_string, he_past_string, he_present_b_string, he_command_string, he_present_string, he_present_with_pronoun_string]
-    print he_arabic_string + "\n"
-    print he_past_string + "\n"
-    print he_present_b_string + "\n"
-    print he_command_string + "\n"
-    print he_present_string + "\n"
-    print he_present_with_pronoun_string + "\n"
-    print he_conjugations_list
+    ##print he_arabic_string + "\n"
+    ##print he_past_string + "\n"
+    ##print he_present_b_string + "\n"
+    ##print he_command_string + "\n"
+    ##print he_present_string + "\n"
+    ##print he_present_with_pronoun_string + "\n"
+    ##print he_conjugations_list
     she_arabic_broken = [hah, kasra, yah, shadda, fatha]
     she_arabic_string = "".join(she_arabic_broken)
     she_past_broken = [first_root_letter, kasra, second_root_letter, sukun, third_root_letter, fatha, tah]
@@ -156,13 +156,13 @@ def get_chart(verb):
     she_present_with_pronoun_broken = [tah, kasra, first_root_letter, sukun, second_root_letter, fatha, third_root_letter, kasra, kaaf]
     she_present_with_pronoun_string = "".join(she_present_with_pronoun_broken)
     she_conjugations_list = [she_arabic_string, she_past_string, she_present_b_string, she_command_string, she_present_string, she_present_with_pronoun_string]
-    print she_arabic_string + "\n"
-    print she_past_string + "\n"
-    print she_present_b_string + "\n"
-    print she_command_string + "\n"
-    print she_present_string + "\n"
-    print she_present_with_pronoun_string + "\n"
-    print she_conjugations_list
+    ##print she_arabic_string + "\n"
+    ##print she_past_string + "\n"
+    ##print she_present_b_string + "\n"
+    ##print she_command_string + "\n"
+    ##print she_present_string + "\n"
+    ##print she_present_with_pronoun_string + "\n"
+    ##print she_conjugations_list
     we_arabic_broken = [alif_hamza_below, kasra, hah_heavy, sukun, noon, alif]
     we_arabic_string = "".join(we_arabic_broken)
     we_past_broken = [first_root_letter, sukun, second_root_letter, kasra, third_root_letter, sukun, noon, alif]
@@ -175,13 +175,13 @@ def get_chart(verb):
     we_present_with_pronoun_broken = [noon, kasra, first_root_letter, sukun, second_root_letter, fatha, third_root_letter, sukun, kaaf, damma, meem]
     we_present_with_pronoun_string = "".join(we_present_with_pronoun_broken)
     we_conjugations_list = [we_arabic_string, we_past_string, we_present_b_string, we_command_string, we_present_string, we_present_with_pronoun_string]
-    print we_arabic_string + "\n"
-    print we_past_string + "\n"
-    print we_present_b_string + "\n"
-    print we_command_string + "\n"
-    print we_present_string + "\n"
-    print we_present_with_pronoun_string + "\n"
-    print we_conjugations_list
+    ##print we_arabic_string + "\n"
+    ##print we_past_string + "\n"
+    ##print we_present_b_string + "\n"
+    ##print we_command_string + "\n"
+    ##print we_present_string + "\n"
+    ##print we_present_with_pronoun_string + "\n"
+    ##print we_conjugations_list
     you_all_arabic_broken = [alif_hamza_below, noon, sukun, tah, damma, waw, alif]
     you_all_arabic_string = "".join(you_all_arabic_broken)
     you_all_past_broken = [first_root_letter, sukun, second_root_letter, kasra, third_root_letter, sukun, tah, damma, waw, alif]
@@ -195,13 +195,13 @@ def get_chart(verb):
     you_all_present_with_pronoun_broken = [tah, kasra, first_root_letter, sukun, second_root_letter, fatha, third_root_letter, damma, waw, noon, alif]
     you_all_present_with_pronoun_string = "".join(you_all_present_with_pronoun_broken)
     you_all_conjugations_list = [you_all_arabic_string, you_all_past_string, you_all_present_b_string, you_all_command_string, you_all_present_string, you_all_present_with_pronoun_string]
-    print you_all_arabic_string + "\n"
-    print you_all_past_string + "\n"
-    print you_all_present_b_string + "\n"
-    print you_all_command_string + "\n"
-    print you_all_present_string + "\n"
-    print you_all_present_with_pronoun_string + "\n"
-    print you_all_conjugations_list
+    ##print you_all_arabic_string + "\n"
+    ##print you_all_past_string + "\n"
+    ##print you_all_present_b_string + "\n"
+    ##print you_all_command_string + "\n"
+    ##print you_all_present_string + "\n"
+    ##print you_all_present_with_pronoun_string + "\n"
+    ##print you_all_conjugations_list
     they_arabic_broken = [hah, damma, meem, shadda, fatha]
     they_arabic_string = "".join(they_arabic_broken)
     they_past_broken = [first_root_letter, kasra, second_root_letter, sukun, third_root_letter, damma, waw, alif]
@@ -214,13 +214,13 @@ def get_chart(verb):
     they_present_with_pronoun_broken = [yah, kasra, first_root_letter, sukun, second_root_letter, fatha, third_root_letter, damma, waw, noon, kasra, yah]
     they_present_with_pronoun_string = "".join(they_present_with_pronoun_broken)
     they_conjugations_list = [they_arabic_string, they_past_string, they_present_b_string, they_command_string, they_present_string, they_present_with_pronoun_string]
-    print they_arabic_string + "\n"
-    print they_past_string + "\n"
-    print they_present_b_string + "\n"
-    print they_command_string + "\n"
-    print they_present_string + "\n"
-    print they_present_with_pronoun_string + "\n"
-    print they_conjugations_list
+    ##print they_arabic_string + "\n"
+    ##print they_past_string + "\n"
+    ##print they_present_b_string + "\n"
+    ##print they_command_string + "\n"
+    ##print they_present_string + "\n"
+    ##print they_present_with_pronoun_string + "\n"
+    ##print they_conjugations_list
     
     word_active_participle_broken = [alif, seen, sukun, meem, " ", alif, lam, fah, alif, ein, kasra, lam]
     word_active_participle_string = "".join(word_active_participle_broken)
@@ -235,9 +235,9 @@ def get_chart(verb):
     verbal_noun_broken = [first_root_letter, kasra, second_root_letter, kasra, third_root_letter]
     verbal_noun_string = "".join(verbal_noun_broken)
     
-    act_part = word_active_participle_string + ": " + active_participle_string
-    dir_object = word_direct_object_string + ": " + direct_object_string
-    verbal_noun = word_verbal_noun_string + ": " + verbal_noun_string
+    act_part = word_active_participle_string + ": " + "\n" + active_participle_string
+    dir_object = word_direct_object_string + ": " + "\n" + direct_object_string
+    verbal_noun = word_verbal_noun_string + ": " + "\n" + verbal_noun_string
 
     chart_extras = (act_part, dir_object, verbal_noun)
     # other important verb info
@@ -252,9 +252,11 @@ def get_chart(verb):
     row_8 = you_all_conjugations_list[::-1]
     row_9 = they_conjugations_list[::-1]
 
-    all_conj = column_titles + row_2 + row_3 + row_4 + row_5 + row_6 + row_7 + row_8 + row_9
-    # all 54 cells for the chart of 6 by 9
+    titles = column_titles
+    # 6 column titles
+    all_conj = row_2 + row_3 + row_4 + row_5 + row_6 + row_7 + row_8 + row_9
+    # 48 cells for the chart of 6 by 8
 
-    chart_stuff_tuple = (all_conj, chart_extras)
-    # youre now returning a tuple of two lists...
+    chart_stuff_tuple = (titles, all_conj, chart_extras)
+    # youre now returning a tuple of three lists...
     return chart_stuff_tuple

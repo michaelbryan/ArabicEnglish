@@ -29,124 +29,110 @@ from functools import partial
 
 #import sys
 #sys.path.append('../')
-from eadict2 import PopulateDB, search_entries, filter_main_diacritics
+from eadict2 import PopulateDB, search_entries, \
+filter_main_diacritics, all_regex_searches
 
 Builder.load_string("""
 <CustomButton1>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    #halign: 'right'
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton2>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton3>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton4>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton5>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton6>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton7>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton8>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton9>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton10>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton11>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton12>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton13>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton14>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton15>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton16>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton17>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton18>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton19>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
+    font_name: "DejaVuSans.ttf"
 <CustomButton20>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
-    font_name: "data/fonts/DejaVuSans.ttf"
-
-<EntryButton>:
-    #size_hint: None, None
-    #size_x: 60
-    size_y: 100
-    text: "Full Entry"
-    on_release: root.EntryButton_pressed()
-
-<VerbChartButton>:
-    #size_hint: None, None
-    #size_x: 60
-    size_y: 100
-    text: "Verb Chart"
-    on_release: root.VerbChartButton_pressed()
+    font_name: "DejaVuSans.ttf"
 
 <MyPopup>:
     size_hint: .9, .9
@@ -194,6 +180,20 @@ Builder.load_string("""
             size_hint: (1, None)
             size: self.parent.width, self.texture_size[1]
 
+<NotFoundLayout>:
+    the_lbl: theLblID
+    cols: 1
+    spacing: 0
+    size_hint_y: None
+    height: theLblID.texture_size[1]
+
+    Label:
+        id: theLblID
+        size_hint: (1, None)
+        size: self.parent.width, self.texture_size[1]
+        text: 'whatever whatever whatever whatever whatever whatever whatever whatever whatever '
+        text_size: self.width, None
+        halign: 'center'
 
 <CustomDropDown>:
     id: cdd
@@ -267,7 +267,7 @@ Builder.load_string("""
                 valign: 'middle'
                 halign: 'center'
                 font_size: 18
-                font_name: "data/fonts/DejaVuSans.ttf"
+                font_name: "DejaVuSans.ttf"
                 #font_name: "simpo.ttf"
                 #font_name: "5thgradecursive.ttf"
                 #font_name: "AGA-Rasheeq-Regular.ttf"
@@ -278,13 +278,14 @@ Builder.load_string("""
             TextInput:
                 id: translateInputID
                 text: 'cove'
-                font_name: "data/fonts/DejaVuSans.ttf"
+                font_name: "DejaVuSans.ttf"
                 background_color: 1, 1, 1, 1
                 size_hint: .75, None
                 height: 28
                 font_size: 14
                 multiline: False
                 text_size: self.size
+                on_text_validate: root.translateButtonPressed()
 
         AnchorLayout:
             anchor_x: 'center'
@@ -302,19 +303,15 @@ Builder.load_string("""
 
 <ResultsScreen>:
     orientation: 'vertical'
-    goHomeButton: goHomeID
-    translate_input_2: translateInput2KV
+    text_input_2: textInput2ID
     results_label: resultsLabelID
     scroll_view: scrollviewID
+    more_btn_lay: moreBtnLayID
     anchor_layout_2: anchorLayout2
     top_layout: topLayoutID
     trans_btn_l: transBtnLID
     bottom_lay: bottomLayID
     
-    #run_search_button: runSearchButtonID
-    #entry_button: entryButtonID
-    #verb_chart_button: verbChartButtonID
-
     AnchorLayout:
         id: topLayoutID
         size_hint: 1, None
@@ -323,14 +320,16 @@ Builder.load_string("""
         anchor_x: 'center'
         anchor_y: 'center'
         TextInput:
-        	id: translateInput2KV
+        	id: textInput2ID
         	text: 'cover'
             background_color: 1, 1, 1, 1
             multiline: False
             size_hint: .85, None
             height: 28
             font_size: 14
-            font_name: "data/fonts/DejaVuSans.ttf"
+            font_name: "DejaVuSans.ttf"
+            text_size: self.size
+            on_text_validate: root.translateButtonPressed()
 
     AnchorLayout:
         id: transBtnLID
@@ -381,25 +380,27 @@ Builder.load_string("""
 	    	anchor_x: 'left'
 	        anchor_y: 'center'
 	        Button:
-	        	id: goHomeID
-            	on_release: root.goHome()
+	        	#id: goBackID
+            	on_release: root.goBack()
 	    		text: 'Back'
 	            size_hint: None, None
 	            height: 20
 	            width: 40
 	            font_size: 10
 	    AnchorLayout:
+            id: moreBtnLayID
 	    	anchor_x: 'center'
 	        anchor_y: 'center'
-	        Button:
-	    		text: 'More'
-	            size_hint: None, None
-	            height: 20
-	            width: 40
-	            font_size: 10
 	    AnchorLayout:
 	    	anchor_x: 'right'
 	        anchor_y: 'center'
+            Button:
+                text: 'Home'
+                on_release: root.goHome()
+                size_hint: None, None
+                height: 20
+                width: 40
+                font_size: 10
 <EntryScreen>:
  
     label_for_pos: label1ID
@@ -414,10 +415,13 @@ Builder.load_string("""
         pos: 0, 40
         size_hint: 1, None
         height: root.height-40
-        BoxLayout:
-            orientation: 'vertical'
+        GridLayout:
+            #orientation: 'vertical'
+            cols: 1
+            minimum_width: 200
             size_hint: None, None
-            size: 300, 400
+            height: 400
+            width: (label3ID.texture_size[0] / 2.2) + 200
             BoxLayout:
                 id: boxlayout1ID
                 orientation: 'horizontal'
@@ -429,7 +433,7 @@ Builder.load_string("""
                     pos_hint: {'x': 0, 'y': 0}
                     text: 'entry.part_of_speech'
                     text_size: self.size
-                    font_name: "data/fonts/DejaVuSans.ttf"
+                    font_name: "DejaVuSans.ttf"
                     valign: 'middle'
                     halign: 'left'
             BoxLayout:
@@ -452,7 +456,7 @@ Builder.load_string("""
                         halign: 'center'
                         valign: 'top'
                         text: 'entry.english'
-                        font_name: "data/fonts/DejaVuSans.ttf"
+                        font_name: "DejaVuSans.ttf"
                     Label:
                         text: ""
                         size_hint: None, 1
@@ -467,7 +471,8 @@ Builder.load_string("""
                     Label:
                         id: label3ID
                         text: 'entry.arabic'
-                        font_name: "data/fonts/DejaVuSans.ttf"
+                        font_name: "KacstOne.ttf"
+                        font_size: 20
                     Label:
                         text: '<<'
                         size_hint: None, 1
@@ -487,7 +492,8 @@ Builder.load_string("""
                     Label:
                         id: label4ID
                         text: 'entry.plural'
-                        font_name: "data/fonts/DejaVuSans.ttf"
+                        font_name: "KacstOne.ttf"
+                        font_size: 20
                     Label:
                         text: 'PLURAL'
                         font_size: 12
@@ -503,7 +509,8 @@ Builder.load_string("""
                         id: label5ID
                         pos_hint: {'x': 0, 'y': 0}
                         text: 'entry.alt_plural'
-                        font_name: "data/fonts/DejaVuSans.ttf"
+                        font_name: "KacstOne.ttf"
+                        font_size: 20
                     Label:
                         text: 'ALTERNATIVE PLURAL'
                         font_size: 12
@@ -519,7 +526,8 @@ Builder.load_string("""
                         id: label6ID
                         pos_hint: {'x': 0, 'y': 0}
                         text: 'entry.fem_sing'
-                        font_name: "data/fonts/DejaVuSans.ttf"
+                        font_name: "KacstOne.ttf"
+                        font_size: 20
                     Label:
                         text: 'FEMININE SINGULAR'
                         font_size: 12
@@ -535,7 +543,8 @@ Builder.load_string("""
                         id: label7ID
                         pos_hint: {'x': 0, 'y': 0}
                         text: 'entry.fem_plural'
-                        font_name: "data/fonts/DejaVuSans.ttf"
+                        font_name: "KacstOne.ttf"
+                        font_size: 20
                     Label:
                         text: 'FEMININE PLURAL'
                         font_size: 12
@@ -581,7 +590,7 @@ Builder.load_string("""
                 #pos: 0, root.chart_scroll.height-40
                 Label:
                     id: chartLabelID
-                    font_name: "data/fonts/DejaVuSans.ttf"
+                    font_name: "DejaVuSans.ttf"
                     text: 'eng : arab word'
             BoxLayout:
                 id: bigBoxID
@@ -613,7 +622,7 @@ Builder.load_string("""
                     pos: root.main_chart.width, 0
                     Label:
                         id: label1ID
-                        font_name: "data/fonts/DejaVuSans.ttf"
+                        font_name: "DejaVuSans.ttf"
                         #size_hint: 1, 1
                         #pos_hint: {'x': 0, 'y': 0}
                         text: 'ism faail: yadayada'
@@ -640,12 +649,15 @@ Builder.load_string("""
 
 """)
 
-#class Dictionary:
+searches = []
 
 def run_search(input_to_translate, *args):
     search_result = search_entries(input_to_translate)
-    print "search_result:", search_result
+    sm.get_screen("results_screen").update_TI(input_to_translate)
+    #print "search_result:", search_result
+    results_separator(search_result)
 
+def results_separator(search_result):
     results_list_tuples = []
     #found = False
     for tupleOfEntryAndBool in search_result:
@@ -679,18 +691,8 @@ def run_search(input_to_translate, *args):
             sm.get_screen("results_screen").getCloseArabicResults(results_list_tuples, new_results_label)
             sm.current = 'results_screen'
         else:
-            results_list_tuples.append(("", "response code was 4", ""))
-            sm.get_screen("results_screen").getResultsButtons(results_list_tuples)
+            sm.get_screen("results_screen").run_not_found()
             sm.current = 'results_screen'
-    #num_results = len(results_list)
-
-    #if found:
-
-        #displayText = "".join(results_list)
-
-    #results_scrollview = ResultsScreen.ScrollView()
-    #PROVIDED_USER_INPUT = input_to_translate
-
 
 class CustomButton1(Button):
     pass
@@ -748,6 +750,12 @@ class MyPopup(Popup):
 class MyScrollView(ScrollView):
     pass
 
+class NotFoundLayout(GridLayout):
+    the_lbl = ObjectProperty(None)
+
+    def change_lbl_text(self, new_text):
+        self.the_lbl.text = new_text
+
 class CustomDropDown(DropDown):
     my_content = MyContentLayout()
     my_popup = MyPopup()
@@ -798,7 +806,6 @@ class HomeScreen(Screen):
     top_layout = ObjectProperty(None)
     dd_btn = ObjectProperty(None)
     drop_down = CustomDropDown()
-    #notes_dropdown = ObjectProperty(None)
     my_content = MyContentLayout()
     my_popup = MyPopup()
 
@@ -815,29 +822,44 @@ class HomeScreen(Screen):
         pup.open()
 
     def translateButtonPressed(self):
-    	print "input to translate:", self.translateInput.text
-        #new_label = unicode(self.translateLabel.text, encoding='utf-8')
-    	#arabic_text = get_display(arabic_reshaper.reshape(new_label))#(u'العربية Hello World')).encode('utf-8')
-    	#self.translateLabel.text = arabic_text
-
+    	#print "input to translate:", self.translateInput.text
     	input_to_translate = self.translateInput.text
+        searches.append(input_to_translate)
         run_search(input_to_translate)
-
-        #sm.get_screen("results_screen").getGoHomeButton().text = self.translateInput.text
 
     def getInputText(self):
     	return self.translateInput.text
 
 class ResultsScreen(Screen):
-    translationTextInput = ObjectProperty(None)
-    goHomeButton = ObjectProperty(None)
-    result_button = ObjectProperty(None)
     scroll_view = ObjectProperty(None)
-    translate_input_2 = ObjectProperty(None)
+    text_input_2 = ObjectProperty(None)
     results_label = ObjectProperty(None)
-    anchor_layout_2 = ObjectProperty(None)
+    more_btn_lay = ObjectProperty(None)
+    not_found_lay = NotFoundLayout()
 
+    def run_not_found(self):
+        new_results_label = ""
+        self.change_results_label(new_results_label)
+
+        new_text = "Word not found." + "\n" + \
+        "Please see the suggestions under 'Usage Notes' on the home page."
+        self.not_found_lay.change_lbl_text(new_text)
+        scrollview1 = self.scroll_view
+        scrollview1.clear_widgets()
+        scrollview1.add_widget(self.not_found_lay)
+
+    def change_results_label(self, new_results_label):
+        #print "Current Page Label: ", self.results_label.text
+        self.results_label.text = new_results_label
+
+    def update_TI(self, input_to_translate):
+        self.text_input_2.text = input_to_translate
+        
     def getArabicResults(self, results_list, new_results_label):
+        btn = Button(size_hint=(None, None), height=20, width=40, \
+            font_size=10, text='More')
+        btn.bind(on_release=self.moreButton_pressed)
+        self.more_btn_lay.add_widget(btn)
         alignment = 'right'
         self.change_results_label(new_results_label)
         self.getResultsButtons(results_list)
@@ -848,6 +870,10 @@ class ResultsScreen(Screen):
         self.getCloseResultsButtons(results_list, alignment)
 
     def getEnglishResults(self, results_list, new_results_label):
+        btn = Button(size_hint=(None, None), height=20, width=40, \
+            font_size=10, text='More')
+        btn.bind(on_release=self.moreButton_pressed)
+        self.more_btn_lay.add_widget(btn)
         alignment = 'left'
         self.change_results_label(new_results_label)
         self.getResultsButtons(results_list)
@@ -857,11 +883,9 @@ class ResultsScreen(Screen):
         self.change_results_label(new_results_label)
         self.getCloseResultsButtons(results_list, alignment)
 
-    def goHome(self):
-        sm.current = 'home'
-
     def translateButtonPressed(self):
-        input_to_translate_2 = self.translate_input_2.text
+        input_to_translate_2 = self.text_input_2.text
+        searches.append(input_to_translate_2)
         return run_search(input_to_translate_2)
     
     def full_entry_button_pressed(self, entry, *args):
@@ -871,9 +895,42 @@ class ResultsScreen(Screen):
     def verb_chart_button_pressed(self, entry, *args):
         sm.get_screen("verb_chart").refresh_verb_chart(entry)
         sm.current = 'verb_chart'
-    
+
+    def result_button_pressed(self, word, *args):
+        searches.append(word)
+        run_search(word)
+
+    def goBack(self):
+        if len(searches) == 0:
+            sm.current = 'home'
+        else:
+            if searches[-1] == self.text_input_2.text:
+                del searches[-1]
+
+            if len(searches) == 0:
+                sm.current = 'home'
+            else:
+                new_search = searches[-1]
+                #print new_search
+                del searches[-1]
+                #print searches
+                run_search(new_search)
+
+    def moreButton_pressed(self, *args):
+        self.more_btn_lay.clear_widgets()
+        search_term = self.text_input_2.text
+        print search_term
+        results = all_regex_searches(search_term)
+        #print results
+        results_separator(results)
+
+    def goHome(self):
+        sm.current = 'home'
 
     def getResultsButtons(self, results_list_tuples):
+        # I use repetitive custom buttons here, created in Kivy, 
+        # because I cannot achieve the same behavior in Python.
+
         layout1 = GridLayout(cols=2, spacing=0, size_hint=(1, None), \
             row_force_default=False, row_default_height=25)#, cols_minimum={0, 60})
 
@@ -895,7 +952,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton1()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     #btn.bind(halign=partial(get_alignment, alignment))
                     
@@ -922,7 +979,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton2()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -948,7 +1005,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton3()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -974,7 +1031,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton4()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1000,7 +1057,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton5()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1026,7 +1083,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton6()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1052,7 +1109,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton7()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1078,7 +1135,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton8()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1104,7 +1161,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton9()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1130,7 +1187,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton10()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1156,7 +1213,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton11()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1182,7 +1239,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton12()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1208,7 +1265,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton13()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1234,7 +1291,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton14()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1260,7 +1317,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton15()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1286,7 +1343,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton16()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1312,7 +1369,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton17()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1338,7 +1395,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton18()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1364,7 +1421,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton19()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1390,7 +1447,7 @@ class ResultsScreen(Screen):
                     reshaped_label = get_display(arabic_reshaper.reshape(filtered_label))
                     btn = CustomButton20()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.text = reshaped_label
                     
                     if entry.part_of_speech == "v":
@@ -1418,6 +1475,9 @@ class ResultsScreen(Screen):
         scrollview1.add_widget(layout1)
 
     def getCloseResultsButtons(self, results_list, alignment):
+        # I use repetitive custom buttons here, created in Kivy, 
+        # because I cannot achieve the same behavior in Python.
+        
         layout1 = GridLayout(cols=1, spacing=0, size_hint=(1, None), \
             row_force_default=False, row_default_height=25)#, cols_minimum={0, 60})
 
@@ -1441,7 +1501,7 @@ class ResultsScreen(Screen):
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton1()
                     #btn.width = layout1.width
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1450,7 +1510,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton2()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1459,7 +1519,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton3()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1468,7 +1528,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton4()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1477,7 +1537,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton5()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1486,7 +1546,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton6()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1495,7 +1555,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton7()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1504,7 +1564,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton8()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1513,7 +1573,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton9()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1522,7 +1582,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton10()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1531,7 +1591,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton11()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1540,7 +1600,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton12()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1549,7 +1609,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton13()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1558,7 +1618,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton14()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1567,7 +1627,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton15()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1576,7 +1636,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton16()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1585,7 +1645,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton17()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1594,7 +1654,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton18()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1603,7 +1663,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton19()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1612,7 +1672,7 @@ class ResultsScreen(Screen):
                     filtered_word = filter_main_diacritics(word)
                     reshaped_word = get_display(arabic_reshaper.reshape(filtered_word))
                     btn = CustomButton20()
-                    btn.bind(on_release=partial(run_search, word))
+                    btn.bind(on_release=partial(self.result_button_pressed, word))
                     btn.halign = alignment
                     btn.text = reshaped_word
                     layout1.add_widget(btn)
@@ -1630,7 +1690,7 @@ class ResultsScreen(Screen):
                     btn.text = reshaped_word
 
                     
-                    btn = Button(text=reshaped_word, font_name="data/fonts/DejaVuSans.ttf", \
+                    btn = Button(text=reshaped_word, font_name="DejaVuSans.ttf", \
                         size_hint=(None, 1), halign='left', valign='middle', width=300)#, \
                         #on_press=partial(run_search, word))
                     #btn.texture_size = (btn.width-20, 40)
@@ -1645,13 +1705,6 @@ class ResultsScreen(Screen):
         scrollview1 = self.scroll_view
         scrollview1.clear_widgets()
         scrollview1.add_widget(layout1)
-
-    def change_results_label(self, new_results_label):
-        print "Current Page Label: ", self.results_label.text
-        self.results_label.text = new_results_label
-
-    def getTranslationTextInput(self):
-        return self.translationTextInput
 
 class EntryScreen(Screen):
     label_for_pos = ObjectProperty(None)
@@ -1696,22 +1749,32 @@ class VerbChartScreen(Screen):
         english = entry.english
         self.chart_label.text = english + " : " + reshaped_verb
         chart_stuff_tuple = entry.some_verb_chart()
-        all_conjugations = chart_stuff_tuple[0]
-        chart_extras = chart_stuff_tuple[1]
+        titles = chart_stuff_tuple[0]
+        all_conjugations = chart_stuff_tuple[1]
+        chart_extras = chart_stuff_tuple[2]
 
         self.main_chart.clear_widgets()
         self.extras_box.clear_widgets()
 
+        for title in titles:
+            reshaped_title = get_display(arabic_reshaper.reshape(title))
+            #print reshaped_title
+            lbl1 = Label(text=reshaped_title, font_name="DejaVuSans.ttf", \
+                font_size=14)
+            self.main_chart.add_widget(lbl1)
+
         for conj in all_conjugations:
             reshaped_conj = get_display(arabic_reshaper.reshape(conj))
-            print reshaped_conj
-            lbl1 = Label(text=reshaped_conj, font_name="data/fonts/DejaVuSans.ttf")#, halign="center")
+            #print reshaped_conj
+            lbl1 = Label(text=reshaped_conj, font_name="KacstOne.ttf", \
+                font_size=22)
             self.main_chart.add_widget(lbl1)
 
         for info in chart_extras:
             reshaped_info = get_display(arabic_reshaper.reshape(info))
-            print reshaped_info
-            lbl2 = Label(text=reshaped_info, font_name="data/fonts/DejaVuSans.ttf")#, halign="right")
+            #print reshaped_info
+            lbl2 = Label(text=reshaped_info, font_name="KacstOne.ttf", \
+                font_size=22)
             self.extras_box.add_widget(lbl2)
 
     def done_button_pressed(self):
