@@ -1,0 +1,12 @@
+"*" Feature:
+If you are unsure of a letter in English or Arabic, just replace that letter with a "*".  This can be done as many times as you like.
+
+"More" Button:
+When you have direct hits, the "More" button will appear on the results screen.  When pressed, the "More" button tells the app to try harder to find imperfect matches you might be looking for.  This will give you more hits, especially for shorter words.
+
+"Full Entry" Button:
+Get plurals and feminine forms of the word!
+
+"Verb Chart" Button:
+Conjugations, active participle, direct object, and verbal nouns!
+

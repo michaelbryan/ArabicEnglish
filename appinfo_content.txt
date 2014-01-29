@@ -1,0 +1,3 @@
+This app was created in Python and Kivy.  It was the project of Michael M. and all responsibility for mistakes in the content and the programming fall to him.
+
+Special thanks go to Clark, without whose help the app never would have been started (or finished, probably), and Abd Allah, whose arabic reshaper tool saved the day.

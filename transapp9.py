@@ -222,13 +222,32 @@ Builder.load_string("""
         height: 25
         on_release: root.MiscellaneousButtonPressed()
 
+<CustomDropDown2>:
+    Button:
+        text: 'About Arabic'
+        font_size: 12
+        size_hint_y: None
+        height: 25
+        on_release: root.ArabicButtonPressed()
+    Button:
+        text: 'Contact Info'
+        font_size: 12
+        size_hint_y: None
+        height: 25
+        on_release: root.ContactButtonPressed()
+    Button:
+        text: 'App Info'
+        font_size: 12
+        size_hint_y: None
+        height: 25
+        on_release: root.AppInfoButtonPressed()
+
 <HomeScreen>:
     id: home_screen
     translateInput: translateInputID
     translateButton: translateButtonID
     translateLabel: labelID
     top_layout: topLayoutID
-    #notes_dropdown: notesDropDownID
     dd_btn: btn_ddID
 
     orientation: 'vertical'
@@ -249,7 +268,7 @@ Builder.load_string("""
             size_hint: 1, None
             height: 25
             font_size: 12
-            on_release: root.AboutButtonPressed()
+            on_release: root.drop_down2.open(self)
 
     BoxLayout:
         orientation: 'vertical'
@@ -759,10 +778,10 @@ class NotFoundLayout(GridLayout):
 class CustomDropDown(DropDown):
     my_content = MyContentLayout()
     my_popup = MyPopup()
-    #home_screen = HomeScreen()
     
     def FeaturesButtonPressed(self):
-        new_text = "These are the features."
+        file_object = open('features_content.txt', 'r')
+        new_text = file_object.read()
         self.my_content.change_content_text(new_text)
         pup = self.my_popup
         pup.title = 'Features'
@@ -770,7 +789,8 @@ class CustomDropDown(DropDown):
         pup.open()
 
     def SuggestionsButtonPressed(self):
-        new_text = "These are the suggestions."
+        file_object = open('suggestions_content.txt', 'r')
+        new_text = file_object.read()
         self.my_content.change_content_text(new_text)
         pup = self.my_popup
         pup.title = 'Suggestions'
@@ -778,7 +798,8 @@ class CustomDropDown(DropDown):
         pup.open()
 
     def AbbreviationsButtonPressed(self):
-        new_text = "These are the abbreviations."
+        file_object = open('abbreviations_content.txt', 'r')
+        new_text = file_object.read()
         self.my_content.change_content_text(new_text)
         pup = self.my_popup
         pup.title = 'Abbreviations'
@@ -786,18 +807,44 @@ class CustomDropDown(DropDown):
         pup.open()
         
     def MiscellaneousButtonPressed(self):
-        new_text = "These are the miscellaneous things."
+        file_object = open('miscellaneous_content.txt', 'r')
+        new_text = file_object.read()
         self.my_content.change_content_text(new_text)
         pup = self.my_popup
         pup.title = 'Miscellaneous'
         pup.content = self.my_content
         pup.open()
-        
-    #def open_dropdown(self):
 
+class CustomDropDown2(DropDown):
+    my_content = MyContentLayout()
+    my_popup = MyPopup()
+    
+    def ArabicButtonPressed(self):
+        file_object = open('arabic_content.txt', 'r')
+        new_text = file_object.read()
+        self.my_content.change_content_text(new_text)
+        pup = self.my_popup
+        pup.title = 'About Arabic'
+        pup.content = self.my_content
+        pup.open()
 
-        #foo = 3
+    def ContactButtonPressed(self):
+        file_object = open('contact_content.txt', 'r')
+        new_text = file_object.read()
+        self.my_content.change_content_text(new_text)
+        pup = self.my_popup
+        pup.title = 'Contact Info'
+        pup.content = self.my_content
+        pup.open()
 
+    def AppInfoButtonPressed(self):
+        file_object = open('appinfo_content.txt', 'r')
+        new_text = file_object.read()
+        self.my_content.change_content_text(new_text)
+        pup = self.my_popup
+        pup.title = 'App Info'
+        pup.content = self.my_content
+        pup.open()  
 
 class HomeScreen(Screen):
     translateInput = ObjectProperty(None)
@@ -806,29 +853,12 @@ class HomeScreen(Screen):
     top_layout = ObjectProperty(None)
     dd_btn = ObjectProperty(None)
     drop_down = CustomDropDown()
-    my_content = MyContentLayout()
-    my_popup = MyPopup()
-
-    def NotesButtonPressed(self):
-        dd = self.drop_down
-        dd.open
-        
-    def AboutButtonPressed(self):
-        new_text = "This app was made blah blah "
-        self.my_content.change_content_text(new_text)
-        pup = self.my_popup
-        pup.title = 'About'
-        pup.content = self.my_content
-        pup.open()
+    drop_down2 = CustomDropDown2()
 
     def translateButtonPressed(self):
-    	#print "input to translate:", self.translateInput.text
     	input_to_translate = self.translateInput.text
         searches.append(input_to_translate)
         run_search(input_to_translate)
-
-    def getInputText(self):
-    	return self.translateInput.text
 
 class ResultsScreen(Screen):
     scroll_view = ObjectProperty(None)
@@ -919,7 +949,7 @@ class ResultsScreen(Screen):
     def moreButton_pressed(self, *args):
         self.more_btn_lay.clear_widgets()
         search_term = self.text_input_2.text
-        print search_term
+        #print search_term
         results = all_regex_searches(search_term)
         #print results
         results_separator(results)

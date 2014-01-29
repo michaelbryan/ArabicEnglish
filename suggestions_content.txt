@@ -1,0 +1,9 @@
+    These suggestions are to help you find the word or words you are looking for.
+
+1. Use the asterisk, or "*", feature. (See 'Features' for details.)
+
+2. Type a shorter word, then press the "More" button. (See 'Features' for details.)
+
+3. Avoid plurals in English. For example, leave off the 's' and 'es' endings and search for 'foot' and not 'feet'.  Plurals in Arabic are fair game, however, and searchable.  Nearly all the nouns have at least one plural attached in Arabic.
+
+4. Use single word searches when possible. There are many multiple word entries you will see, and you can successfully search with multiple words.  However, you might have more luck avoiding typos if you pick a key word and use the "More" button, when necessary.
