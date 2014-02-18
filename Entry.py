@@ -271,7 +271,7 @@ class Entry:
         else:
             return False
 
-    def regex_search_fields(self, compiled_regex, arabic_regex):
+    def regex_search_fields(self, compiled_regex):
         if compiled_regex.search(self.arabic):
             return self.arabic
         if compiled_regex.search(self.plural):
