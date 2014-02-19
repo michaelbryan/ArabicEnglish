@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*- 
+
 import sys
 import re
 import itertools
@@ -183,16 +185,20 @@ def arabic_regex_search_5(ial):
 
 def incl_arab_matches(search_term):
     ial = arabic_regex_term(search_term)
-    filler = r'(.{0,2})'
-    #print filler
+    filler = ur'(\u0651)?(.{0,1})'
+    #print filler  (\u0651)?
     arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
     del arabic_regex_list[-1]
-    arabic_regex_list.append("(.?)")
+    arabic_regex_list.append(ur'[\u064b\u0647]?')
+    #arabic_regex_list.append(ur'[ًّه]?')
+        ## Above is a fathatan, or hah that might end a word.
     def_article = u'\u0627\u0644'
+    #def_article = u'ال'
+        ## Above is an alif and lam, which may begin a word.
     arabic_regex = "".join(arabic_regex_list)
     new_search_term = '^' + r'\b' + '(' + def_article + ')' + '?' + arabic_regex + r'\b'
     compiled_regex = re.compile(new_search_term, re.U)
-    #print new_search_term
+    print new_search_term
     #print compiled_regex
     
     more_matches = []
@@ -228,8 +234,9 @@ def remove_dup(ordered_list):
     return [ x for x in ordered_list if x not in seen and not seen_add(x)]
 
 def search_entries(search_term):
+    entries_found = []
+    additional_matches = contained_matches(search_term)
     if search_term in gAllEntries.keys():
-        entries_found = []
         for entry in gAllEntries[search_term]:
             #print "Found via english: %s" % entry.retrieve_arabic()
             word = entry.arabic
@@ -238,23 +245,23 @@ def search_entries(search_term):
             #unicode_word = unicode(word, encoding='utf-8')
             #print list(unicode_word)
             entries_found.append((entry, 0))
-        additional_matches = contained_matches(search_term)
+    #if len(additional_matches) > 0:
         for entry in additional_matches:
             entries_found.append((entry, 0))
         unique_entries = remove_dup(entries_found)
         return unique_entries
 
     #print "NOT FOUND VIA ENGLISH"
+    ara_entries_found = []
     matched_entries = reverse_search_entries(search_term)
-    if len(matched_entries) > 0:
-        entries_found = []
+    more_matches = incl_arab_matches(search_term)
+    if len(matched_entries) > 0 or len(more_matches) > 0:
         for match in matched_entries:
             #print "Found via arabic: %s" % entry.retrieve_english()
-            entries_found.append((match, 2))
-        more_matches = incl_arab_matches(search_term)
+            ara_entries_found.append((match, 2))
         for match in more_matches:
-            entries_found.append((match, 2))
-        unique_entries = remove_dup(entries_found)
+            ara_entries_found.append((match, 2))
+        unique_entries = remove_dup(ara_entries_found)
         return unique_entries
 
     regex_results = all_regex_searches(search_term)
@@ -359,6 +366,7 @@ def arabic_regex_term(search_term):
     saad = u'\u0635'
     daal = u'\u062f'
     rah = u'\u0631'
+    fathatan = u'\u064b'
 
     alif_maksura = u'\u0649'
     tah_heavy = u'\u0637'
@@ -380,14 +388,15 @@ def arabic_regex_term(search_term):
     
     unicode_letters = list(filtered_term)
     
-    alif_madda_replaced_list = [ur'[\u0622\u0623\u0625\u0627]' if x==alif_maddah else x for x in unicode_letters]
-    alif_hamza_above_replaced_list = [ur'[\u0622\u0623\u0625\u0627]' if x==alif_hamza_above else x for x in alif_madda_replaced_list]
-    alif_hamza_below_replaced_list = [ur'[\u0622\u0623\u0625\u0627]' if x==alif_hamza_below else x for x in alif_hamza_above_replaced_list]
-    alif_replaced_list = [ur'[\u0622\u0623\u0625\u0627]' if x==alif else x for x in alif_hamza_below_replaced_list]
+    alif_madda_replaced_list = [ur'[\u0622\u0623\u0625\u0627\u0649]{1}' if x==alif_maddah else x for x in unicode_letters]
+    alif_hamza_above_replaced_list = [ur'[\u0622\u0623\u0625\u0627\u0649]{1}' if x==alif_hamza_above else x for x in alif_madda_replaced_list]
+    alif_hamza_below_replaced_list = [ur'[\u0622\u0623\u0625\u0627\u0649]{1}' if x==alif_hamza_below else x for x in alif_hamza_above_replaced_list]
+    alif_replaced_list = [ur'[\u0622\u0623\u0625\u0627\u0649]{1}' if x==alif else x for x in alif_hamza_below_replaced_list]
+    alif_maksura_replaced_list = [ur'[\u0622\u0623\u0625\u0627\u0649]{1}' if x==alif_maksura else x for x in alif_replaced_list]
     
     #alif_maksura_replaced_list = ["[\xd9\x89\xd9\x8a]{1}" if x=="\xd9\x89" else x for x in alif_replaced_list]
     #yah_replaced_list = ["[\xd9\x89\xd9\x8a]{1}" if x=="\xd9\x8a" else x for x in alif_maksura_replaced_list]
-    asterisk_replaced_list = ["(.)" if x=="*" else x for x in alif_replaced_list]
+    asterisk_replaced_list = ["(.)" if x=="*" else x for x in alif_maksura_replaced_list]
     important_arabic_letters = asterisk_replaced_list
     #print important_arabic_letters
     return important_arabic_letters
@@ -578,7 +587,8 @@ def replace_endings(search_term):
     return new_term
 
 def remove_punct(search_term):
-    half_removed = search_term.replace("(", ".?")
+    questi_removed = search_term.replace("?", ".?")
+    half_removed = questi_removed.replace("(", ".?")
     paren_removed = half_removed.replace(")", ".?")
     comma_removed = paren_removed.replace(",", ".?")
     semic_removed = comma_removed.replace(";", ".?")
@@ -588,8 +598,9 @@ def remove_punct(search_term):
     hyphen_removed = quote_removed.replace("-", ".?")
     #space_removed = hyphen_removed.replace(" ", ".?")
     exclam_removed = hyphen_removed.replace("!", ".?")
-    questi_removed = exclam_removed.replace("?", ".?")
-    new_search_term = questi_removed
+    b_slash_removed = exclam_removed.replace("\\", ".?")
+    f_slash_removed = b_slash_removed.replace("/", ".?")
+    new_search_term = f_slash_removed
     return new_search_term
 
 def replace_asterisk_in_english_list(list_with_asterisk):

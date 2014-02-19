@@ -242,6 +242,7 @@ Builder.load_string("""
     content_lbl: contentID
     done_btn: doneButtonID
     ScrollView:
+        bar_width: '8dp'
         GridLayout:
             cols: 1
             spacing: 10
@@ -396,7 +397,7 @@ Builder.load_string("""
             anchor_y: 'center'
             TextInput:
                 id: translateInputID
-                text: 'cove'
+                text: ''
                 font_name: "DejaVuSans.ttf"
                 background_color: 1, 1, 1, 1
                 size_hint: .75, None
@@ -534,6 +535,7 @@ Builder.load_string("""
         pos: 0, 40
         size_hint: 1, None
         height: root.height-40
+        bar_width: '8dp'
         GridLayout:
             #orientation: 'vertical'
             cols: 1
@@ -698,6 +700,7 @@ Builder.load_string("""
         pos: 0, root.bottom_bar.height
         size_hint: 1, None
         height: root.height-40
+        bar_width: '8dp'
         BoxLayout:
             orientation: 'vertical'
             size_hint: None, None
