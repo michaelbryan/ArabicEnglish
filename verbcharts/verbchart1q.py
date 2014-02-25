@@ -70,7 +70,7 @@ def get_chart(verb):
     i_arabic_string = "".join(i_arabic_broken)
     i_past_broken = [first_root_letter, fatha, second_root_letter, fatha, third_root_letter, sukun, tah]
     i_past_string = "".join(i_past_broken)
-    i_present_b_broken = [bah, first_root_letter, sukun, second_root_letter, damma, third_root_letter]
+    i_present_b_broken = [bah, fatha, first_root_letter, sukun, second_root_letter, damma, third_root_letter]
     i_present_b_string = "".join(i_present_b_broken)
     i_command_string = ""
     i_present_broken = [alif_hamza_above, fatha, first_root_letter, sukun, second_root_letter, damma, third_root_letter]

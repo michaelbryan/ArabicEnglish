@@ -54,7 +54,7 @@ def get_chart(verb):
     
     arabic_root = hamza_below_filtered
     first_root_letter = arabic_root[1]
-    second_root_letter = arabic_root[2]
+    second_root_letter = arabic_root[3]
     third_root_letter = arabic_root[4]
     #print first_root_letter
     #print second_root_letter
@@ -231,16 +231,17 @@ def get_chart(verb):
     active_participle_string = "".join(active_participle_broken)
     direct_object_broken = [meem, kasra, tah, sukun, first_root_letter, alif, second_root_letter, fatha, third_root_letter]
     direct_object_string = "".join(direct_object_broken)
-    direct_object_string2 = "very rare"
+    rare_list = ["(", noon, alif, daal, kasra, rah, " ", kaaf, sukun, tah, kasra, yah, rah, ")"]
+    rare = "".join(rare_list)
     verbal_noun_broken = [tah, fatha, first_root_letter, alif, second_root_letter, damma, third_root_letter]
     verbal_noun_string = "".join(verbal_noun_broken)
     
     act_part = word_active_participle_string + ": " + "\n" + active_participle_string
-    dir_object = word_direct_object_string + ": " + "\n" + direct_object_string
-    dir_object2 = word_direct_object_string + ": " + "\n" + direct_object_string2
+    dir_object = word_direct_object_string + ": " + "\n" + direct_object_string \
+    + "\n" + rare
     verbal_noun = word_verbal_noun_string + ": " + "\n" + verbal_noun_string
 
-    chart_extras = (act_part, dir_object, dir_object2, verbal_noun)
+    chart_extras = (act_part, dir_object, verbal_noun)
     # other important verb info
 
     column_titles = verb_columns_list[::-1]

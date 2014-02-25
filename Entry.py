@@ -26,6 +26,7 @@ import verbchart1r
 import verbchart1s
 import verbchart1t
 import verbchart1u
+import verbchart1v
 import verbchart2a
 import verbchart2b
 import verbchart2c
@@ -45,6 +46,7 @@ import verbchart5b
 import verbchart5c
 import verbchart6a
 import verbchart6b
+import verbchart6c
 import verbchart7a
 import verbchart7b
 import verbchart7c
@@ -59,6 +61,7 @@ import verbchart8g
 import verbchart8h
 import verbchart8i
 import verbchart8j
+import verbchart8k
 import verbchart9a
 import verbchart10a
 import verbchart10b
@@ -125,6 +128,8 @@ class Entry:
             return verbchart1t.get_chart(self.arabic)
         elif self.verb_type == "1u":
             return verbchart1u.get_chart(self.arabic)
+        elif self.verb_type == "1v":
+            return verbchart1v.get_chart(self.arabic)
         elif self.verb_type == "2a":
             return verbchart2a.get_chart(self.arabic)
         elif self.verb_type == "2b":
@@ -163,6 +168,8 @@ class Entry:
             return verbchart6a.get_chart(self.arabic)
         elif self.verb_type == "6b":
             return verbchart6b.get_chart(self.arabic)
+        elif self.verb_type == "6c":
+            return verbchart6c.get_chart(self.arabic)
         elif self.verb_type == "7a":
             return verbchart7a.get_chart(self.arabic)
         elif self.verb_type == "7b":
@@ -191,6 +198,8 @@ class Entry:
             return verbchart8i.get_chart(self.arabic)
         elif self.verb_type == "8j":
             return verbchart8j.get_chart(self.arabic)
+        elif self.verb_type == "8k":
+            return verbchart8k.get_chart(self.arabic)
         elif self.verb_type == "9a":
             return verbchart9a.get_chart(self.arabic)
         elif self.verb_type == "10a":
@@ -242,15 +251,7 @@ class Entry:
     
     def __str__(self):
         entry_string = "\n"
-        entry_string += self.english + "\n"
-
-        #arabic_text = get_display(arabic_reshaper.reshape(u'العربية Hello World')).encode('utf-8')
-        #myArabic = get_display(arabic_reshaper.reshape(self.arabic)).encode('utf-8')
-        #z = unicode(self.arabic, 'utf-8')
-        #myArabic = get_display(arabic_reshaper.reshape(z)).decode('utf-8')
-        #print "*********************************** ", myArabic
-        #return get_display(arabic_reshaper.reshape(self.arabic))#.decode('utf-8')
-        
+        entry_string += self.english + "\n"        
         entry_string += self.arabic + "\n"
         entry_string += "".join(self.part_of_speech) + "\n"
         if self.plural:
@@ -264,10 +265,16 @@ class Entry:
         return entry_string
 
     def search_fields(self, search_term):
-        if search_term == self.arabic or search_term == self.plural or \
-            search_term == self.alt_plural or search_term == self.fem_sing or \
-            search_term == self.fem_plural:
-            return True
+        if search_term == self.arabic:
+            return self.arabic
+        if search_term == self.plural:
+            return self.plural
+        if search_term == self.alt_plural:
+            return self.alt_plural
+        if search_term == self.fem_sing:
+            return self.fem_sing
+        if search_term == self.fem_plural:
+            return self.fem_plural
         else:
             return False
 

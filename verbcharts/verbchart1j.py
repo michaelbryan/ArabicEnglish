@@ -235,7 +235,7 @@ def get_chart(verb):
     verbal_noun_broken = [first_root_letter, fatha, second_root_letter, kasra, yah]
     verbal_noun_string = "".join(verbal_noun_broken)
     verbal_noun_broken2 = [first_root_letter, kasra, second_root_letter, alif, yah, tah_marbuuta]
-    verbal_noun_string2 = "".join(verbal_noun_broken)
+    verbal_noun_string2 = "".join(verbal_noun_broken2)
     #print word_active_participle_string + ": " + "\n" + active_participle_string + "\n"
     #print word_direct_object_string + ": " + "\n" + direct_object_string + "\n"
     #print word_verbal_noun_string + ": " + "\n" + verbal_noun_string + "\n"
@@ -243,10 +243,10 @@ def get_chart(verb):
     
     act_part = word_active_participle_string + ": " + "\n" + active_participle_string
     dir_object = word_direct_object_string + ": " + "\n" + direct_object_string
-    verbal_noun = word_verbal_noun_string + ": " + "\n" + verbal_noun_string
-    verbal_noun2 = word_verbal_noun_string + ": " + "\n" + verbal_noun_string2
+    verbal_noun = word_verbal_noun_string + ": " + "\n" + verbal_noun_string + "\n" + verbal_noun_string2
+    #verbal_noun2 = word_verbal_noun_string + ": " + "\n" + verbal_noun_string2
 
-    chart_extras = (act_part, dir_object, verbal_noun, verbal_noun2)
+    chart_extras = (act_part, dir_object, verbal_noun)
     # other important verb info
 
     column_titles = verb_columns_list[::-1]

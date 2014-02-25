@@ -60,7 +60,7 @@ def get_chart(verb):
     #print second_root_letter
     #print third_root_letter
     #print arabic_root
-    he_past_broken = [tah, sukun, first_root_letter, fatha, second_root_letter, shadda, third_root_letter]
+    he_past_broken = [tah, fatha, first_root_letter, fatha, second_root_letter, shadda, third_root_letter]
     he_past_string = "".join(he_past_broken)
     verb_columns_list = [he_past_string, "Past", "Present", "Command", "After Verb", "With Pronoun"]
     #print he_past_string
@@ -231,7 +231,8 @@ def get_chart(verb):
     active_participle_string = "".join(active_participle_broken)
     direct_object_broken = [meem, kasra, tah, sukun, first_root_letter, fatha, second_root_letter, shadda, third_root_letter]
     direct_object_string = "".join(direct_object_broken)
-    direct_object_string2 = "very rare"
+    rare_list = ["(", noon, alif, daal, kasra, rah, " ", kaaf, sukun, tah, kasra, yah, rah, ")"]
+    rare = "".join(rare_list)
     verbal_noun_broken = [tah, fatha, first_root_letter, fatha, second_root_letter, shadda, kasra, yah]
     verbal_noun_string = "".join(verbal_noun_broken)
     #print word_active_participle_string + ": " + "\n" + active_participle_string + "\n"
@@ -240,11 +241,11 @@ def get_chart(verb):
     #print word_verbal_noun_string + ": " + "\n" + verbal_noun_string + "\n"
     
     act_part = word_active_participle_string + ": " + "\n" + active_participle_string
-    dir_object = word_direct_object_string + ": " + "\n" + direct_object_string
-    dir_object2 = word_direct_object_string + ": " + "\n" + direct_object_string2
+    dir_object = word_direct_object_string + ": " + "\n" + direct_object_string \
+    + "\n" + rare
     verbal_noun = word_verbal_noun_string + ": " + "\n" + verbal_noun_string
 
-    chart_extras = (act_part, dir_object, dir_object2, verbal_noun)
+    chart_extras = (act_part, dir_object, verbal_noun)
     # other important verb info
 
     column_titles = verb_columns_list[::-1]

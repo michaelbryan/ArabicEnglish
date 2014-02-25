@@ -19,8 +19,9 @@ def reverse_search_entries(search_term):
     matched_entries = []
     for english, list_of_entries in gAllEntries.items():
         for entry in list_of_entries:
+            arabic_word = entry.search_fields(search_term)
             if entry.search_fields(search_term):
-                matched_entries.append((entry, "place holder"))
+                matched_entries.append((entry, arabic_word))
     return matched_entries
 
 def arabic_regex_search_1(ial):
@@ -42,9 +43,9 @@ def arabic_regex_search_1(ial):
     compiled_regex = re.compile(arabic_regex)
     #print compiled_regex
     for english, list_of_entries in gAllEntries.items():
-        if len(arabic_matched_entries_1) < 20:
+        if len(arabic_matched_entries_1) < 30:
             for entry in list_of_entries:
-                if len(arabic_matched_entries_1) < 20:
+                if len(arabic_matched_entries_1) < 30:
                     arabic_word = entry.regex_search_fields(compiled_regex)
                     if entry.regex_search_fields(compiled_regex):
                         if entry.arabic in arabic_matched_words:
@@ -74,9 +75,9 @@ def arabic_regex_search_2(ial):
     compiled_regex = re.compile(arabic_regex)
     #print compiled_regex
     for english, list_of_entries in gAllEntries.items():
-        if len(arabic_matched_entries_2) < 20:
+        if len(arabic_matched_entries_2) < 30:
             for entry in list_of_entries:
-                if len(arabic_matched_entries_2) < 20:
+                if len(arabic_matched_entries_2) < 30:
                     arabic_word = entry.regex_search_fields(compiled_regex)
                     if entry.regex_search_fields(compiled_regex):
                         if entry.arabic in arabic_matched_words:
@@ -108,9 +109,9 @@ def arabic_regex_search_3(ial):
     compiled_regex = re.compile(arabic_regex)
     #print compiled_regex
     for english, list_of_entries in gAllEntries.items():
-        if len(arabic_matched_entries_3) < 20:
+        if len(arabic_matched_entries_3) < 30:
             for entry in list_of_entries:
-                if len(arabic_matched_entries_3) < 20:
+                if len(arabic_matched_entries_3) < 30:
                     arabic_word = entry.regex_search_fields(compiled_regex)
                     if entry.regex_search_fields(compiled_regex):
                         if entry.arabic in arabic_matched_words:
@@ -140,9 +141,9 @@ def arabic_regex_search_4(ial):
     compiled_regex = re.compile(arabic_regex)
     #print compiled_regex
     for english, list_of_entries in gAllEntries.items():
-        if len(arabic_matched_entries_4) < 20:
+        if len(arabic_matched_entries_4) < 30:
             for entry in list_of_entries:
-                if len(arabic_matched_entries_4) < 20:
+                if len(arabic_matched_entries_4) < 30:
                     arabic_word = entry.regex_search_fields(compiled_regex)
                     if entry.regex_search_fields(compiled_regex):
                         if entry.arabic in arabic_matched_words:
@@ -171,9 +172,9 @@ def arabic_regex_search_5(ial):
     compiled_regex = re.compile(arabic_regex)
     #print compiled_regex
     for english, list_of_entries in gAllEntries.items():
-        if len(arabic_matched_entries_5) < 20:
+        if len(arabic_matched_entries_5) < 30:
             for entry in list_of_entries:
-                if len(arabic_matched_entries_5) < 20:
+                if len(arabic_matched_entries_5) < 30:
                     arabic_word = entry.regex_search_fields(compiled_regex)
                     if entry.regex_search_fields(compiled_regex):
                         if entry.arabic in arabic_matched_words:
@@ -192,13 +193,13 @@ def incl_arab_matches(search_term):
     arabic_regex_list.append(ur'[\u064b\u0647]?')
     #arabic_regex_list.append(ur'[ًّه]?')
         ## Above is a fathatan, or hah that might end a word.
-    def_article = u'\u0627\u0644'
+    def_article = ur'\u0627\u0644'
     #def_article = u'ال'
         ## Above is an alif and lam, which may begin a word.
     arabic_regex = "".join(arabic_regex_list)
     new_search_term = '^' + r'\b' + '(' + def_article + ')' + '?' + arabic_regex + r'\b'
     compiled_regex = re.compile(new_search_term, re.U)
-    print new_search_term
+    #print new_search_term
     #print compiled_regex
     
     more_matches = []
@@ -206,9 +207,9 @@ def incl_arab_matches(search_term):
     #compiled_regex = re.compile(arabic_regex)
     #print compiled_regex
     for english, list_of_entries in gAllEntries.items():
-        if len(more_matches) < 20:
+        if len(more_matches) < 30:
             for entry in list_of_entries:
-                if len(more_matches) < 20:
+                if len(more_matches) < 30:
                     arabic_word = entry.regex_search_fields(compiled_regex)
                     if entry.regex_search_fields(compiled_regex):
                         #arabic_matched_words.append(entry.arabic)
@@ -219,9 +220,9 @@ def incl_arab_matches(search_term):
     #print new_search_term_2
     #print compiled_regex_2
     for english, list_of_entries in gAllEntries.items():
-        if len(more_matches) < 20:
+        if len(more_matches) < 30:
             for entry in list_of_entries:
-                if len(more_matches) < 20:
+                if len(more_matches) < 30:
                     arabic_word = entry.regex_search_fields(compiled_regex_2)
                     if entry.regex_search_fields(compiled_regex_2):
                         #arabic_matched_words.append(entry.arabic)
@@ -245,9 +246,10 @@ def search_entries(search_term):
             #unicode_word = unicode(word, encoding='utf-8')
             #print list(unicode_word)
             entries_found.append((entry, 0))
-    #if len(additional_matches) > 0:
+    if len(additional_matches) > 0:
         for entry in additional_matches:
             entries_found.append((entry, 0))
+    if len(entries_found) > 0:
         unique_entries = remove_dup(entries_found)
         return unique_entries
 
@@ -426,9 +428,9 @@ def regex_search_5(search_term):
     matched_regex_english = []
 
     for key in gAllEntries.keys():
-        if len(matched_regex_entries_5) < 20:
+        if len(matched_regex_entries_5) < 30:
             for entry in gAllEntries[key]:
-                if len(matched_regex_entries_5) < 20:
+                if len(matched_regex_entries_5) < 30:
                     if compiled_regex.search(entry.english):
                         if entry.english in matched_regex_english:
                             pass
@@ -448,9 +450,9 @@ def regex_search_4(search_term):
     matched_regex_english = []
 
     for key in gAllEntries.keys():
-        if len(matched_regex_entries_4) < 20:
+        if len(matched_regex_entries_4) < 30:
             for entry in gAllEntries[key]:
-                if len(matched_regex_entries_4) < 20:
+                if len(matched_regex_entries_4) < 30:
                     if compiled_regex.search(entry.english):
                         if entry.english in matched_regex_english:
                             pass
@@ -471,9 +473,9 @@ def regex_search_3(search_term):
     matched_regex_english = []
 
     for key in gAllEntries.keys():
-        if len(matched_regex_entries_3) < 20:
+        if len(matched_regex_entries_3) < 30:
             for entry in gAllEntries[key]:
-                if len(matched_regex_entries_3) < 20:
+                if len(matched_regex_entries_3) < 30:
                     if compiled_regex.search(entry.english):
                         if entry.english in matched_regex_english:
                             pass
@@ -494,9 +496,9 @@ def regex_search_2(search_term):
     matched_regex_english = []
 
     for key in gAllEntries.keys():
-        if len(matched_regex_entries_2) < 20:
+        if len(matched_regex_entries_2) < 30:
             for entry in gAllEntries[key]:
-                if len(matched_regex_entries_2) < 20:
+                if len(matched_regex_entries_2) < 30:
                     if compiled_regex.search(entry.english):
                         if entry.english in matched_regex_english:
                             pass
@@ -517,9 +519,9 @@ def regex_search_1(search_term):
     matched_regex_english = []
     
     for key in gAllEntries.keys():
-        if len(matched_regex_entries_1) < 20:
+        if len(matched_regex_entries_1) < 30:
             for entry in gAllEntries[key]:
-                if len(matched_regex_entries_1) < 20:
+                if len(matched_regex_entries_1) < 30:
                     if compiled_regex.search(entry.english):
                         if entry.english in matched_regex_english:
                             pass
@@ -533,35 +535,40 @@ def regex_search_1(search_term):
 def contained_matches(search_term):
     new_search_term = replace_asterisk_in_english_string(search_term)
     new_search_term_2 = replace_endings(new_search_term)
-    new_search_term_3 = '^' + r'\b' + new_search_term_2 + '[(s)(es)]?' + '(ing)?' + r'\b'
-    compiled_regex = re.compile(new_search_term_3, re.I)
-    #print new_search_term_3
+    new_search_term_3 = replace_space(new_search_term_2)
+    #new_search_term_4 = '^' + r'\b' + new_search_term_3 + '[(s)(es)]?' + '(ing)?' + r'\b'
+    new_search_term_4 = '^' + r'\b' + new_search_term_3 + r'\b'
+    compiled_regex = re.compile(new_search_term_4, re.I)
+    #print new_search_term_4
     #print compiled_regex
     additional_matches = []
     #matched_regex_english = []
     
     for key in gAllEntries.keys():
-        if len(additional_matches) < 20:
+        if len(additional_matches) < 30:
             for entry in gAllEntries[key]:
-                if len(additional_matches) < 20:
+                if len(additional_matches) < 30:
                     if compiled_regex.search(entry.english):
                         #matched_regex_english.append(entry.english)
                         additional_matches.append(entry)
                         #print entry
 
-    new_search_term_4 = r'\b' + new_search_term_2 + '[(s)(es)]?' + '(ing)?' + r'\b'
-    compiled_regex_2 = re.compile(new_search_term_4, re.I)
-    #print new_search_term_4
+    new_search_term_5 = r'\b' + new_search_term_3 + r'\b'
+    compiled_regex_2 = re.compile(new_search_term_5, re.I)
+    #print new_search_term_5
     #print compiled_regex_2
 
     for key in gAllEntries.keys():
-        if len(additional_matches) < 20:
+        if len(additional_matches) < 30:
             for entry in gAllEntries[key]:
-                if len(additional_matches) < 20:
+                if len(additional_matches) < 30:
                     if compiled_regex_2.search(entry.english):
-                        #matched_regex_english.append(entry.english)
-                        additional_matches.append(entry)
-                        #print entry
+                        if entry in additional_matches:
+                            pass
+                        else:
+                            #matched_regex_english.append(entry.english)
+                            additional_matches.append(entry)
+                            #print entry
 
     #print additional_matches
     return additional_matches
@@ -574,6 +581,12 @@ def replace_endings(search_term):
             del letters[-2]
             del letters[-1]
             letters.append('[(e)(ing)]?')
+    if len(letters) >= 3:
+        if (letters[-3] + letters[-2] + letters[-1]) == 'ies':
+            del letters[-3]
+            del letters[-2]
+            del letters[-1]
+            letters.append('[(y)(ies)]?')
     if len(letters) >= 2:
         if (letters[-2] + letters[-1]) == 'es':
             del letters[-2]
@@ -583,8 +596,18 @@ def replace_endings(search_term):
         if letters[-1] == 's':
             del letters[-1]
             letters.append('(s)?')
+    if len(letters) >= 1:
+        if letters[-1] == 'y':
+            del letters[-1]
+            letters.append('[(y)(ies)]?')
     new_term = "".join(letters)
     return new_term
+
+def replace_space(search_term):
+    search_term_2 = search_term.replace(r'-', r'[\s-]?')
+    search_term_3 = search_term_2.replace(r' ', r'[\s-]?')
+    #print search_term_3
+    return search_term_3
 
 def remove_punct(search_term):
     questi_removed = search_term.replace("?", ".?")
@@ -594,7 +617,7 @@ def remove_punct(search_term):
     semic_removed = comma_removed.replace(";", ".?")
     colon_removed = semic_removed.replace(":", ".?")
     apostr_removed = colon_removed.replace("'", ".?")
-    quote_removed = apostr_removed.replace("\"", ".?")
+    quote_removed = apostr_removed.replace(r"\"", ".?")
     hyphen_removed = quote_removed.replace("-", ".?")
     #space_removed = hyphen_removed.replace(" ", ".?")
     exclam_removed = hyphen_removed.replace("!", ".?")

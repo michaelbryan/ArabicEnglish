@@ -228,7 +228,7 @@ def get_chart(verb):
     word_direct_object_string = "".join(word_direct_object_broken)
     word_verbal_noun_broken = [alif, lam, meem, fatha, saad, sukun, daal, fatha, rah]
     word_verbal_noun_string = "".join(word_verbal_noun_broken)
-    active_participle_broken = [meem, alif, " ", fah, kasra, yah, hah, "\:", " ", meem, damma, seen, sukun, tah, fatha, ein, sukun, meem, fatha, lam, "\n", "\'", first_root_letter, fatha, second_root_letter, kasra, yah, third_root_letter, "\'"]
+    active_participle_broken = [meem, alif, " ", fah, kasra, yah, hah, "\n", "(", meem, damma, seen, sukun, tah, fatha, ein, sukun, meem, fatha, lam, "\n", "\'", first_root_letter, fatha, second_root_letter, kasra, yah, third_root_letter, "\'", ")"]
     active_participle_string = "".join(active_participle_broken)
     direct_object_broken = [meem, alif, " ", fah, kasra, yah, hah]
     direct_object_string = "".join(direct_object_broken)

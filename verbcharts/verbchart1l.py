@@ -231,26 +231,26 @@ def get_chart(verb):
     active_participle_broken = [first_root_letter, alif, second_root_letter, kasra, third_root_letter]
     active_participle_string = "".join(active_participle_broken)
     active_participle_broken2 = [first_root_letter, alif, second_root_letter, shadda]
-    active_participle_string2 = "".join(active_participle_broken)
+    active_participle_string2 = "".join(active_participle_broken2)
     direct_object_broken = [meem, fatha, first_root_letter, sukun, second_root_letter, damma, waw, third_root_letter]
     direct_object_string = "".join(direct_object_broken)
     verbal_noun_broken = [first_root_letter, damma, second_root_letter, shadda]
     verbal_noun_string = "".join(verbal_noun_broken)
     verbal_noun_broken2 = [meem, fatha, first_root_letter, fatha, second_root_letter, shadda, tah_marbuuta]
-    verbal_noun_string2 = "".join(verbal_noun_broken)
+    verbal_noun_string2 = "".join(verbal_noun_broken2)
     #print word_active_participle_string + ": " + "\n" + active_participle_string + "\n"
     #print word_active_participle_string + ": " + "\n" + active_participle_string2 + "\n"
     #print word_direct_object_string + ": " + "\n" + direct_object_string + "\n"
     #print word_verbal_noun_string + ": " + "\n" + verbal_noun_string + "\n"
     #print word_verbal_noun_string + ": " + "\n" + verbal_noun_string2 + "\n"
     
-    act_part = word_active_participle_string + ": " + "\n" + active_participle_string
-    act_part2 = word_active_participle_string + ": " + "\n" + active_participle_string2
+    act_part = word_active_participle_string + ": " + "\n" + active_participle_string + "\n" + active_participle_string2
+    #act_part2 = word_active_participle_string + ": " + "\n" + active_participle_string2
     dir_object = word_direct_object_string + ": " + "\n" + direct_object_string
-    verbal_noun = word_verbal_noun_string + ": " + "\n" + verbal_noun_string
-    verbal_noun2 = word_verbal_noun_string + ": " + "\n" + verbal_noun_string2
+    verbal_noun = word_verbal_noun_string + ": " + "\n" + verbal_noun_string + "\n" + verbal_noun_string2
+    #verbal_noun2 = word_verbal_noun_string + ": " + "\n" + verbal_noun_string2
 
-    chart_extras = (act_part, dir_object, verbal_noun, verbal_noun2)
+    chart_extras = (act_part, dir_object, verbal_noun)
     # other important verb info
 
     column_titles = verb_columns_list[::-1]

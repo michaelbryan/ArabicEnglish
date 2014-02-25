@@ -75,7 +75,7 @@ def get_chart(verb):
     i_present_broken = [alif_hamza_above, fatha, noon, sukun, first_root_letter, fatha, second_root_letter, kasra, yah]
     i_present_string = "".join(i_present_broken)
     i_present_with_pronoun_broken = [alif_hamza_above, fatha, noon, sukun, first_root_letter, fatha, second_root_letter, kasra, yah, hah, damma, meem]
-    i_present_with_pronoun_string = "".join(i_present_with_pronoun_broken)
+    i_present_with_pronoun_string = ""
     i_conjugations_list = [i_arabic_string, i_past_string, i_present_b_string, i_command_string, i_present_string, i_present_with_pronoun_string]
     #print i_arabic_string + "\n"
     #print i_past_string + "\n"
