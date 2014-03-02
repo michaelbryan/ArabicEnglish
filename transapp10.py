@@ -38,151 +38,211 @@ Builder.load_string("""
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton2>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton3>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton4>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton5>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton6>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton7>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton8>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton9>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton10>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton11>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton12>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton13>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton14>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton15>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton16>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton17>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton18>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton19>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton20>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton21>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton22>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton23>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton24>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton25>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton26>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton27>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton28>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton29>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 <CustomButton30>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
+    background_normal: 'tan2.png'
+    background_down: 'tan1.png'
 
 <CustomLabel1>:
     text_size: self.width-10, None
@@ -405,24 +465,36 @@ Builder.load_string("""
         size_hint_y: None
         height: 25
         on_release: root.FeaturesButtonPressed()
+        #color: .1686, .2745, .3372, 1 #Rainstorm
+        background_normal: 'greenbutton2.png'
+        background_down: 'greenbutton.png'
     Button:
         text: 'Suggestions'
         font_size: 12
         size_hint_y: None
         height: 25
         on_release: root.SuggestionsButtonPressed()
+        #color: .1686, .2745, .3372, 1 #Rainstorm
+        background_normal: 'greenbutton2.png'
+        background_down: 'greenbutton.png'
     Button:
         text: 'Abbreviations'
         font_size: 12
         size_hint_y: None
         height: 25
         on_release: root.AbbreviationsButtonPressed()
+        #color: .1686, .2745, .3372, 1 #Rainstorm
+        background_normal: 'greenbutton2.png'
+        background_down: 'greenbutton.png'
     Button:
         text: 'Miscellaneous'
         font_size: 12
         size_hint_y: None
         height: 25
         on_release: root.MiscellaneousButtonPressed()
+        #color: .1686, .2745, .3372, 1 #Rainstorm
+        background_normal: 'greenbutton2.png'
+        background_down: 'greenbutton.png'
 
 <CustomDropDown2>:
     Button:
@@ -431,18 +503,27 @@ Builder.load_string("""
         size_hint_y: None
         height: 25
         on_release: root.ArabicButtonPressed()
+        #color: .1686, .2745, .3372, 1 #Rainstorm
+        background_normal: 'greenbutton2.png'
+        background_down: 'greenbutton.png'
     Button:
         text: 'Contact Info'
         font_size: 12
         size_hint_y: None
         height: 25
         on_release: root.ContactButtonPressed()
+        #color: .1686, .2745, .3372, 1 #Rainstorm
+        background_normal: 'greenbutton2.png'
+        background_down: 'greenbutton.png'
     Button:
         text: 'App Info'
         font_size: 12
         size_hint_y: None
         height: 25
         on_release: root.AppInfoButtonPressed()
+        #color: .1686, .2745, .3372, 1 #Rainstorm
+        background_normal: 'greenbutton2.png'
+        background_down: 'greenbutton.png'
 
 <HomeScreen>:
     id: home_screen
@@ -453,6 +534,12 @@ Builder.load_string("""
     dd_btn: btn_ddID
 
     orientation: 'vertical'
+    canvas:
+        Color:
+            rgb: 0.73, 0.73, 0.73
+        Rectangle:
+            pos: self.pos
+            size: self.size
     BoxLayout:
         id: topLayoutID
         size_hint: 1, None
@@ -465,12 +552,21 @@ Builder.load_string("""
             text: 'Usage Notes'
             font_size: 12
             on_release: root.drop_down.open(self)
+            ##color: .1686, .2745, .3372, 1 #Rainstorm
+            background_normal: 'greenbutton2.png'
+            background_down: 'greenbutton.png'
+            border: (16, 16, 16, 16)
+            #background_color: .7451, .7333, .6666, 1
         Button:
             text: 'About'
             size_hint: 1, None
             height: 25
             font_size: 12
             on_release: root.drop_down2.open(self)
+            ##color: .1686, .2745, .3372, 1 #Rainstorm
+            background_normal: 'greenbutton2.png'
+            background_down: 'greenbutton.png'
+            border: (16, 16, 16, 16)
 
     BoxLayout:
         orientation: 'vertical'
@@ -484,6 +580,7 @@ Builder.load_string("""
                 id: labelID
                 size_hint: .9, 1
                 text: 'Jordanian Translator'
+                color: 0, 0, 0, 1
                 text_size: self.size
                 valign: 'middle'
                 halign: 'center'
@@ -521,6 +618,10 @@ Builder.load_string("""
                 halign: 'center'
                 text_size: self.size
                 on_release: root.translateButtonPressed()
+                ##color: .1686, .2745, .3372, 1 #Rainstorm
+                background_normal: 'greenbutton2.png'
+                background_down: 'greenbutton.png'
+                border: (16, 16, 16, 16)
 
 <ResultsScreen>:
     orientation: 'vertical'
@@ -532,7 +633,12 @@ Builder.load_string("""
     top_layout: topLayoutID
     trans_btn_l: transBtnLID
     bottom_lay: bottomLayID
-    
+    canvas:
+        Color:
+            rgb: 0.73, 0.73, 0.73
+        Rectangle:
+            pos: self.pos
+            size: self.size
     AnchorLayout:
         id: topLayoutID
         size_hint: 1, None
@@ -567,6 +673,8 @@ Builder.load_string("""
             width: 60
             font_size: 10
             on_release: root.translateButtonPressed()
+            background_normal: 'greenbutton2.png'
+            background_down: 'greenbutton.png'
 	AnchorLayout:
         id: anchorLayout2
 		anchor_x: 'left'
@@ -608,6 +716,8 @@ Builder.load_string("""
 	            height: 20
 	            width: 40
 	            font_size: 10
+                background_normal: 'greenbutton2.png'
+                background_down: 'greenbutton.png'
 	    AnchorLayout:
             id: moreBtnLayID
 	    	anchor_x: 'center'
@@ -622,6 +732,8 @@ Builder.load_string("""
                 height: 20
                 width: 40
                 font_size: 10
+                background_normal: 'greenbutton2.png'
+                background_down: 'greenbutton.png'
 <EntryScreen>:
  
     label_for_pos: label1ID
@@ -814,7 +926,8 @@ Builder.load_string("""
                 Label:
                     id: chartLabelID
                     font_name: "DejaVuSans.ttf"
-                    text: 'eng : arab word'
+                    text: 'eng : arabic'
+                    
             BoxLayout:
                 id: bigBoxID
                 size_hint: None, None
@@ -1207,7 +1320,8 @@ class ResultsScreen(Screen):
         
     def getArabicResults(self, results_list, new_results_label):
         btn = Button(size_hint=(None, None), height=20, width=40, \
-            font_size=10, text='More')
+            font_size=10, text='More', background_normal='greenbutton2.png', \
+            background_down='greenbutton.png')
         btn.bind(on_release=self.moreButton_pressed)
         self.more_btn_lay.add_widget(btn)
         alignment = 'left'
@@ -1221,7 +1335,8 @@ class ResultsScreen(Screen):
 
     def getEnglishResults(self, results_list, new_results_label):
         btn = Button(size_hint=(None, None), height=20, width=40, \
-            font_size=10, text='More')
+            font_size=10, text='More', background_normal='greenbutton2.png', \
+            background_down='greenbutton.png')
         btn.bind(on_release=self.moreButton_pressed)
         self.more_btn_lay.add_widget(btn)
         alignment = 'right'
@@ -1321,7 +1436,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1329,7 +1445,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1356,7 +1473,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1364,7 +1482,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1391,7 +1510,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1399,7 +1519,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1426,7 +1547,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1434,7 +1556,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1461,7 +1584,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1469,7 +1593,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1496,7 +1621,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1504,7 +1630,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1531,7 +1658,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1539,7 +1667,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1566,7 +1695,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1574,7 +1704,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1601,7 +1732,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1609,7 +1741,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1636,7 +1769,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1644,7 +1778,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1671,7 +1806,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1679,7 +1815,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1706,7 +1843,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1714,7 +1852,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1741,7 +1880,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1749,7 +1889,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1776,7 +1917,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1784,7 +1926,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1811,7 +1954,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1819,7 +1963,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1846,7 +1991,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1854,7 +2000,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1881,7 +2028,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1889,7 +2037,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1916,7 +2065,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1924,7 +2074,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1951,7 +2102,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1959,7 +2111,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1986,7 +2139,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1994,7 +2148,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2021,7 +2176,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2029,7 +2185,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2056,7 +2213,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2064,7 +2222,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2091,7 +2250,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2099,7 +2259,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2126,7 +2287,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2134,7 +2296,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2161,7 +2324,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2169,7 +2333,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2196,7 +2361,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2204,7 +2370,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2231,7 +2398,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2239,7 +2407,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2266,7 +2435,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2274,7 +2444,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2301,7 +2472,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2309,7 +2481,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2336,7 +2509,8 @@ class ResultsScreen(Screen):
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2344,7 +2518,8 @@ class ResultsScreen(Screen):
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
                              width=(70), font_size=12, \
-                             valign ='middle')
+                             valign ='middle', background_normal='tan2.png', \
+                             background_down='tan1.png')
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 

@@ -6,8 +6,12 @@ adj - adjective
 
 adv - adverb
 
+conj - conjuction
+
+cont - contraction
+
 prep - preposition
 
 modal - modal
 
-phrase - phrase (It was too good not to include in the dictionary, but too long to fit in one 'part of speech' category.)
+phrase - phrase (simple phrases, sometimes prepositional verbs or even idioms that don't easily fit into one part of speech)
