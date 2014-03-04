@@ -40,7 +40,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton2>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -48,7 +48,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton3>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -56,7 +56,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton4>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -64,7 +64,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton5>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -72,7 +72,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton6>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -80,7 +80,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton7>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -88,7 +88,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton8>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -96,7 +96,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton9>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -104,7 +104,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton10>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -112,7 +112,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton11>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -120,7 +120,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton12>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -128,7 +128,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton13>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -136,7 +136,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton14>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -144,7 +144,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton15>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -152,7 +152,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton16>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -160,7 +160,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton17>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -168,7 +168,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton18>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -176,7 +176,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton19>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -184,7 +184,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton20>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -192,7 +192,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton21>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -200,7 +200,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton22>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -208,7 +208,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton23>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -216,7 +216,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton24>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -224,7 +224,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton25>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -232,7 +232,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton26>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -240,7 +240,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton27>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -248,7 +248,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton28>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -256,7 +256,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton29>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -264,7 +264,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 <CustomButton30>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -272,7 +272,7 @@ Builder.load_string("""
     font_name: "DejaVuSans.ttf"
     background_normal: root.get_button()
     background_down: root.get_button_down()
-    color: root.get_text_color()
+    color: root.get_button_text_color()
 
 <CustomLabel1>:
     text_size: self.width-10, None
@@ -462,6 +462,7 @@ Builder.load_string("""
     orientation: 'vertical'
     content_lbl: contentID
     done_btn: doneButtonID
+    sv: svID
     canvas:
         Color:
             rgb: root.get_background()
@@ -469,7 +470,9 @@ Builder.load_string("""
             pos: self.pos
             size: self.size
     ScrollView:
+        id: svID
         bar_width: '6dp'
+        bar_color: root.get_bar_color()
         GridLayout:
             cols: 1
             spacing: 10
@@ -492,11 +495,12 @@ Builder.load_string("""
             id: doneButtonID
             text: 'Done'
             size_hint: None, None
-            size: 50, 20
+            size: 40, 20
+            font_size: 11
             on_release: root.parent.parent.parent.dismiss()
-            background_normal: root.get_button()
-            background_down: root.get_button_down()
-            color: root.get_text_color()
+            background_normal: root.get_accent_button()
+            background_down: root.get_accent_button_down()
+            color: root.get_button_text_color()
 
 <MyScrollView>:
     GridLayout:
@@ -526,6 +530,7 @@ Builder.load_string("""
         text: 'whatever whatever whatever whatever whatever'
         text_size: self.width, None
         halign: 'center'
+        color: root.get_text_color()
 
 <CustomDropDown>:
     id: cdd
@@ -535,7 +540,7 @@ Builder.load_string("""
         size_hint_y: None
         height: 25
         on_release: root.FeaturesButtonPressed()
-        color: root.get_text_color()
+        color: root.get_button_text_color()
         background_normal: root.get_button()
         background_down: root.get_button_down()
     Button:
@@ -544,7 +549,7 @@ Builder.load_string("""
         size_hint_y: None
         height: 25
         on_release: root.SuggestionsButtonPressed()
-        color: root.get_text_color()
+        color: root.get_button_text_color()
         background_normal: root.get_button()
         background_down: root.get_button_down()
     Button:
@@ -553,7 +558,7 @@ Builder.load_string("""
         size_hint_y: None
         height: 25
         on_release: root.AbbreviationsButtonPressed()
-        color: root.get_text_color()
+        color: root.get_button_text_color()
         background_normal: root.get_button()
         background_down: root.get_button_down()
     Button:
@@ -562,7 +567,7 @@ Builder.load_string("""
         size_hint_y: None
         height: 25
         on_release: root.MiscellaneousButtonPressed()
-        color: root.get_text_color()
+        color: root.get_button_text_color()
         background_normal: root.get_button()
         background_down: root.get_button_down()
 
@@ -573,7 +578,7 @@ Builder.load_string("""
         size_hint_y: None
         height: 25
         on_release: root.ArabicButtonPressed()
-        color: root.get_text_color()
+        color: root.get_button_text_color()
         background_normal: root.get_button()
         background_down: root.get_button_down()
     Button:
@@ -582,7 +587,7 @@ Builder.load_string("""
         size_hint_y: None
         height: 25
         on_release: root.ContactButtonPressed()
-        color: root.get_text_color()
+        color: root.get_button_text_color()
         background_normal: root.get_button()
         background_down: root.get_button_down()
     Button:
@@ -591,7 +596,7 @@ Builder.load_string("""
         size_hint_y: None
         height: 25
         on_release: root.AppInfoButtonPressed()
-        color: root.get_text_color()
+        color: root.get_button_text_color()
         background_normal: root.get_button()
         background_down: root.get_button_down()
 
@@ -622,7 +627,7 @@ Builder.load_string("""
             text: 'Usage Notes'
             font_size: 12
             on_release: root.drop_down.open(self)
-            color: root.get_text_color()
+            color: root.get_button_text_color()
             background_normal: root.get_button()
             background_down: root.get_button_down()
         Button:
@@ -631,7 +636,7 @@ Builder.load_string("""
             height: 25
             font_size: 12
             on_release: root.drop_down2.open(self)
-            color: root.get_text_color()
+            color: root.get_button_text_color()
             background_normal: root.get_button()
             background_down: root.get_button_down()
 
@@ -685,9 +690,9 @@ Builder.load_string("""
                 halign: 'center'
                 text_size: self.size
                 on_release: root.translateButtonPressed()
-                color: root.get_text_color()
-                background_normal: root.get_button()
-                background_down: root.get_button_down()
+                color: root.get_button_text_color()
+                background_normal: root.get_accent_button()
+                background_down: root.get_accent_button_down()
 
 <ResultsScreen>:
     orientation: 'vertical'
@@ -737,11 +742,11 @@ Builder.load_string("""
             size_hint: None, None
             height: 20
             width: 60
-            font_size: 10
+            font_size: 11
             on_release: root.translateButtonPressed()
-            background_normal: root.get_button()
-            background_down: root.get_button_down()
-            color: root.get_text_color()
+            background_normal: root.get_accent_button()
+            background_down: root.get_accent_button_down()
+            color: root.get_button_text_color()
 	AnchorLayout:
         id: anchorLayout2
 		anchor_x: 'left'
@@ -766,6 +771,7 @@ Builder.load_string("""
         height: root.height-(root.bottom_lay.height+root.anchor_layout_2.height+\
             root.trans_btn_l.height+root.top_layout.height)
         bar_width: '6dp'
+        bar_color: root.get_bar_color()
         
 	BoxLayout:
         id: bottomLayID
@@ -783,10 +789,10 @@ Builder.load_string("""
 	            size_hint: None, None
 	            height: 20
 	            width: 40
-	            font_size: 10
-                background_normal: root.get_button()
-                background_down: root.get_button_down()
-                color: root.get_text_color()
+	            font_size: 11
+                background_normal: root.get_accent_button()
+                background_down: root.get_accent_button_down()
+                color: root.get_button_text_color()
 	    AnchorLayout:
             id: moreBtnLayID
 	    	anchor_x: 'center'
@@ -800,10 +806,10 @@ Builder.load_string("""
                 size_hint: None, None
                 height: 20
                 width: 40
-                font_size: 10
-                background_normal: root.get_button()
-                background_down: root.get_button_down()
-                color: root.get_text_color()
+                font_size: 11
+                background_normal: root.get_accent_button()
+                background_down: root.get_accent_button_down()
+                color: root.get_button_text_color()
 <EntryScreen>:
  
     label_for_pos: label1ID
@@ -814,6 +820,7 @@ Builder.load_string("""
     label_for_fem_sin: label6ID
     label_for_fem_plural: label7ID
     grid_lay: gridlayID
+    sv: svID
     canvas:
         Color:
             rgb: root.get_background()
@@ -821,10 +828,12 @@ Builder.load_string("""
             pos: self.pos
             size: self.size
     ScrollView:
+        id: svID
         pos: 0, 40
         size_hint: 1, None
         height: root.height-40
         bar_width: '6dp'
+        bar_color: root.get_bar_color()
         AnchorLayout:
             anchor_x: 'center'
             anchor_y: 'center'
@@ -1001,11 +1010,11 @@ Builder.load_string("""
             size_hint: None, None
             height: 20
             width: 40
-            font_size: 10
+            font_size: 11
             on_release: root.done_button_pressed()
-            background_normal: root.get_button()
-            background_down: root.get_button_down()
-            color: root.get_text_color()
+            background_normal: root.get_accent_button()
+            background_down: root.get_accent_button_down()
+            color: root.get_button_text_color()
 <VerbChartScreen>:
     orientation: 'vertical'
     main_chart: mainChartID
@@ -1029,6 +1038,7 @@ Builder.load_string("""
         size_hint: 1, None
         height: root.height-40
         bar_width: '6dp'
+        bar_color: root.get_bar_color()
         BoxLayout:
             orientation: 'vertical'
             size_hint: None, None
@@ -1069,7 +1079,7 @@ Builder.load_string("""
                     orientation: 'vertical'
                     size_hint: None, None
                     height: root.main_chart.height
-                    width: self.label_1.width
+                    width: 120 #self.label_1.width
                     #pos_hint: {'x': .75, 'y': 0}
                     pos: root.main_chart.width, 0
                     Label:
@@ -1096,23 +1106,26 @@ Builder.load_string("""
             size_hint: None, None
             height: 20
             width: 40
-            font_size: 10
+            font_size: 11
             on_release: root.done_button_pressed()
-            background_normal: root.get_button()
-            background_down: root.get_button_down()
-            color: root.get_text_color()
+            background_normal: root.get_accent_button()
+            background_down: root.get_accent_button_down()
+            color: root.get_button_text_color()
 
 """)
 
 searches = []
 
-BG_color = (.73, .73, .73)
+BG_color = (.9412, .9412, .9412)
 
-button_image = 'greenbutton2.png'
+button_image = 'buttonwithoutline2.png'
+button_image_down = 'aquabuttonnobevel.png'
 
-button_image_down = 'greenbutton.png'
+accent_button = 'orangebutton.png'
+accent_button_down = 'aquabuttonnobevel.png'
 
 text_color = (0, 0, 0, 1)
+button_text_color = (1, 1, 1, 1)
 
 hs_text_color = text_color
 po_text_color = text_color
@@ -1120,10 +1133,14 @@ rs_text_color = text_color
 es_text_color = text_color
 vc_text_color = text_color
 
-verb_chart_tinting = (.5255, .8627, .5255, .5)
+verb_chart_tinting = (.8941, .8941, .8941, 1)
+bg_color_file = 'graybutton1.png' #This should be a color file that \
+# matches the background color rgb (i.e. 'BG_color').
 
-po_title_color = (.73, .73, .73)
-po_line_color = (.5255, .8627, .5255, .5)
+bar_color = (.6431, .8157, .7686, .9)
+
+po_title_color = (.9412, .9412, .9412)
+po_line_color = (.6431, .8157, .7686, 1)
 
 def run_search(input_to_translate, *args):
     search_result = search_entries(input_to_translate)
@@ -1180,211 +1197,211 @@ class CustomButton1(Button):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton2(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton3(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton4(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton5(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton6(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton7(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton8(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton9(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton10(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton11(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton12(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton13(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton14(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton15(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton16(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton17(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton18(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton19(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton20(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton21(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton22(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton23(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton24(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton25(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton26(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton27(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton28(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton29(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 class CustomButton30(Button):
     def get_button(self):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return rs_text_color
+    def get_button_text_color(self):
+        return button_text_color
 
 class CustomLabel1(Label):
     def get_text_color(self):
@@ -1479,18 +1496,24 @@ class CustomLabel30(Label):
 
 class MyContentLayout(BoxLayout):
     content_lbl = ObjectProperty(None)
+    sv = ObjectProperty(None)
 
     def change_content_text(self, new_text):
         self.content_lbl.text = new_text
+        self.sv.scroll_y = 1
 
     def get_background(self):
         return BG_color
-    def get_button(self):
-        return button_image
-    def get_button_down(self):
-        return button_image_down
+    def get_accent_button(self):
+        return accent_button
+    def get_accent_button_down(self):
+        return accent_button_down
     def get_text_color(self):
         return po_text_color
+    def get_button_text_color(self):
+        return button_text_color
+    def get_bar_color(self):
+        return bar_color
 
 class MyPopup(Popup):
     my_content = MyContentLayout()
@@ -1512,6 +1535,9 @@ class NotFoundLayout(GridLayout):
     def change_lbl_text(self, new_text):
         self.the_lbl.text = new_text
 
+    def get_text_color(self):
+        return rs_text_color
+
 class CustomDropDown(DropDown):
     my_content = MyContentLayout()
     my_popup = MyPopup()
@@ -1520,8 +1546,8 @@ class CustomDropDown(DropDown):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return hs_text_color
+    def get_button_text_color(self):
+        return button_text_color
     
     def FeaturesButtonPressed(self):
         file_object = open('features_content.txt', 'r')
@@ -1575,8 +1601,8 @@ class CustomDropDown2(DropDown):
         return button_image
     def get_button_down(self):
         return button_image_down
-    def get_text_color(self):
-        return hs_text_color
+    def get_button_text_color(self):
+        return button_text_color
     
     def ArabicButtonPressed(self):
         file_object = open('arabic_content.txt', 'r')
@@ -1656,8 +1682,17 @@ class HomeScreen(Screen):
     def get_button_down(self):
         return button_image_down
 
+    def get_accent_button(self):
+        return accent_button
+
+    def get_accent_button_down(self):
+        return accent_button_down
+
     def get_text_color(self):
         return hs_text_color
+
+    def get_button_text_color(self):
+        return button_text_color
 
     def translateButtonPressed(self):
     	input_to_translate = self.translateInput.text
@@ -1681,8 +1716,20 @@ class ResultsScreen(Screen):
     def get_button_down(self):
         return button_image_down
 
+    def get_accent_button(self):
+        return accent_button
+
+    def get_accent_button_down(self):
+        return accent_button_down
+
     def get_text_color(self):
         return rs_text_color
+
+    def get_button_text_color(self):
+        return button_text_color
+
+    def get_bar_color(self):
+        return bar_color
 
     def run_not_found(self):
         new_results_label = ""
@@ -1704,34 +1751,40 @@ class ResultsScreen(Screen):
         
     def getArabicResults(self, results_list, new_results_label):
         btn = Button(size_hint=(None, None), height=20, width=40, \
-            font_size=10, text='More', background_normal=self.get_button(), \
-            background_down=self.get_button_down(), \
-            color=self.get_text_color())
+            font_size=11, text='More', \
+            background_normal=self.get_accent_button(), \
+            background_down=self.get_accent_button_down(), \
+            color=self.get_button_text_color())
         btn.bind(on_release=self.moreButton_pressed)
         self.more_btn_lay.add_widget(btn)
         alignment = 'left'
         self.change_results_label(new_results_label)
+        self.scroll_view.scroll_y = 1
         self.getResultsButtons(results_list, alignment)
 
     def getCloseEnglishResults(self, results_list, new_results_label):
         alignment = 'left'
         self.change_results_label(new_results_label)
+        self.scroll_view.scroll_y = 1
         self.getCloseResultsButtons(results_list, alignment)
 
     def getEnglishResults(self, results_list, new_results_label):
         btn = Button(size_hint=(None, None), height=20, width=40, \
-            font_size=10, text='More', background_normal=self.get_button(), \
-            background_down=self.get_button_down(), \
-            color=self.get_text_color())
+            font_size=11, text='More', \
+            background_normal=self.get_accent_button(), \
+            background_down=self.get_accent_button_down(), \
+            color=self.get_button_text_color())
         btn.bind(on_release=self.moreButton_pressed)
         self.more_btn_lay.add_widget(btn)
         alignment = 'right'
         self.change_results_label(new_results_label)
+        self.scroll_view.scroll_y = 1
         self.getResultsButtons(results_list, alignment)
 
     def getCloseArabicResults(self, results_list, new_results_label):
         alignment = 'right'
         self.change_results_label(new_results_label)
+        self.scroll_view.scroll_y = 1
         self.getCloseResultsButtons(results_list, alignment)
 
     def translateButtonPressed(self):
@@ -1825,7 +1878,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1835,7 +1888,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1865,7 +1918,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1875,7 +1928,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1905,7 +1958,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1915,7 +1968,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1945,7 +1998,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1955,7 +2008,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -1985,7 +2038,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -1995,7 +2048,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2025,7 +2078,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2035,7 +2088,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2065,7 +2118,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2075,7 +2128,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2105,7 +2158,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2115,7 +2168,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2145,7 +2198,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2155,7 +2208,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2185,7 +2238,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2195,7 +2248,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2225,7 +2278,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2235,7 +2288,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2265,7 +2318,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2275,7 +2328,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2305,7 +2358,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2315,7 +2368,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2345,7 +2398,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2355,7 +2408,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2385,7 +2438,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2395,7 +2448,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2425,7 +2478,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2435,7 +2488,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2465,7 +2518,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2475,7 +2528,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2505,7 +2558,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2515,7 +2568,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2545,7 +2598,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2555,7 +2608,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2585,7 +2638,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2595,7 +2648,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2625,7 +2678,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2635,7 +2688,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2665,7 +2718,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2675,7 +2728,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2705,7 +2758,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2715,7 +2768,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2745,7 +2798,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2755,7 +2808,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2785,7 +2838,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2795,7 +2848,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2825,7 +2878,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2835,7 +2888,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2865,7 +2918,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2875,7 +2928,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2905,7 +2958,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2915,7 +2968,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2945,7 +2998,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2955,7 +3008,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -2985,7 +3038,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_v.text_size = (btn_v.width-10, layout1.row_default_height)
                     btn_v.bind(on_release=partial(self.verb_chart_button_pressed, entry))
 
@@ -2995,7 +3048,7 @@ class ResultsScreen(Screen):
                              width=(70), font_size=12, \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
-                             color=self.get_text_color())
+                             color=self.get_button_text_color())
                     btn_e.text_size = (btn_e.width-10, layout1.row_default_height)
                     btn_e.bind(on_release=partial(self.full_entry_button_pressed, entry))
                 
@@ -3338,18 +3391,25 @@ class EntryScreen(Screen):
     label_for_alt_plural = ObjectProperty(None)
     label_for_fem_sin = ObjectProperty(None)
     label_for_fem_plural = ObjectProperty(None)
+    sv = ObjectProperty(None)
 
     def get_background(self):
         return BG_color
 
-    def get_button(self):
-        return button_image
+    def get_accent_button(self):
+        return accent_button
 
-    def get_button_down(self):
-        return button_image_down
+    def get_accent_button_down(self):
+        return accent_button_down
 
     def get_text_color(self):
         return es_text_color
+
+    def get_button_text_color(self):
+        return button_text_color
+
+    def get_bar_color(self):
+        return bar_color
 
     def replace_labels(self, entry):
         self.label_for_pos.text = " " + "Part of Speech: "+ entry.part_of_speech
@@ -3370,6 +3430,9 @@ class EntryScreen(Screen):
         reshaped_arabic5 = get_display(arabic_reshaper.reshape(entry.fem_plural))
         self.label_for_fem_plural.text = reshaped_arabic5
 
+        self.sv.scroll_y = 1
+        self.sv.scroll_x = .5
+
     def decide_width(self, layout_width, scrollview_width):
         if layout_width <= scrollview_width:
             return scrollview_width
@@ -3384,18 +3447,28 @@ class VerbChartScreen(Screen):
     chart_label = ObjectProperty(None)
     main_chart = ObjectProperty(None)
     extras_box = ObjectProperty(None)
+    chart_scroll = ObjectProperty(None)
 
     def get_background(self):
         return BG_color
 
-    def get_button(self):
-        return button_image
+    def get_accent_button(self):
+        return accent_button
 
-    def get_button_down(self):
-        return button_image_down
+    def get_accent_button_down(self):
+        return accent_button_down
 
     def get_text_color(self):
         return vc_text_color
+
+    def get_button_text_color(self):
+        return button_text_color
+
+    def get_bg_color(self):
+        return bg_color_file
+
+    def get_bar_color(self):
+        return bar_color
 
     def refresh_verb_chart(self, entry, *args):
         verb = entry.arabic
@@ -3417,8 +3490,6 @@ class VerbChartScreen(Screen):
 
         self.main_chart.clear_widgets()
         self.extras_box.clear_widgets()
-
-        verb_chart_tinting = (.5255, .8627, .5255, .5)
 
         for title in titles:
             reshaped_title = get_display(arabic_reshaper.reshape(title))
@@ -3445,6 +3516,9 @@ class VerbChartScreen(Screen):
                 font_size=22, color=self.get_text_color())
             self.extras_box.add_widget(lbl2)
 
+        self.chart_scroll.scroll_y = 1
+        self.chart_scroll.scroll_x = 1
+
     def add_row_with_color(self, row):
         for conj in row:
             reshaped_conj = get_display(arabic_reshaper.reshape(conj))
@@ -3460,8 +3534,8 @@ class VerbChartScreen(Screen):
             reshaped_conj = get_display(arabic_reshaper.reshape(conj))
             #print reshaped_conj
             lbl1 = Button(text=reshaped_conj, font_name="KacstOne.ttf", \
-                font_size=22, background_normal='plain_white.png', \
-                background_down='plain_white.png', color=self.get_text_color())
+                font_size=22, background_normal=self.get_bg_color(), \
+                background_down=self.get_bg_color(), color=self.get_text_color())
             self.main_chart.add_widget(lbl1)
 
     def done_button_pressed(self):
