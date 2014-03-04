@@ -1118,7 +1118,7 @@ searches = []
 
 BG_color = (.9412, .9412, .9412)
 
-button_image = 'buttonwithoutline2.png'
+button_image = 'buttonwithborder3.png'
 button_image_down = 'aquabuttonnobevel.png'
 
 accent_button = 'orangebutton.png'
