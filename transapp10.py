@@ -437,7 +437,7 @@ Builder.load_string("""
 
         Label:
             id: thetb
-            text: 'whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever whatever '
+            text: 'whatever whatever whatever whatever whatever whatever '
             text_size: self.width, None
             size_hint: (1, None)
             size: self.parent.width, self.texture_size[1]
@@ -743,145 +743,157 @@ Builder.load_string("""
     label_for_alt_plural: label5ID
     label_for_fem_sin: label6ID
     label_for_fem_plural: label7ID
-
+    grid_lay: gridlayID
+    canvas:
+        Color:
+            rgb: 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
     ScrollView:
         pos: 0, 40
         size_hint: 1, None
         height: root.height-40
         bar_width: '6dp'
-        GridLayout:
-            #orientation: 'vertical'
-            cols: 1
-            minimum_width: 200
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
             size_hint: None, None
-            height: 400
-            width: (label3ID.texture_size[0] / 2.2) + 200
-            BoxLayout:
-                id: boxlayout1ID
-                orientation: 'horizontal'
-                size_hint: 1, .05
-                pos_hint: {'x': 0, 'y': .95}
-                Label:
-                    id: label1ID
-                    size_hint: 1, 1
-                    pos_hint: {'x': 0, 'y': 0}
-                    text: 'entry.part_of_speech'
-                    text_size: self.size
-                    font_name: "DejaVuSans.ttf"
-                    valign: 'middle'
-                    halign: 'left'
-            BoxLayout:
-                orientation: 'vertical'
-                size_hint: 1, .25
-                pos_hint: {'x': 0, 'y': .7}
+            height: gridlayID.height
+            width: root.decide_width(gridlayID.width, self.parent.width)
+            GridLayout:
+                id: gridlayID
+                cols: 1
+                minimum_width: 200
+                size_hint: None, None
+                height: 400
+                width: (label3ID.texture_size[0] / 2.2) + 200
                 BoxLayout:
-                    id: floatlayout1ID
-                    pos_hint: {'x': 0, 'y': .5}
+                    id: boxlayout1ID
+                    orientation: 'horizontal'
+                    size_hint: 1, .05
+                    pos_hint: {'x': 0, 'y': .95}
                     Label:
-                        #text: '>>'
-                        size_hint: None, None
-                        height: root.label_for_english.height
-                        width: 20
-                    Label:
-                        id: label2ID
-                        text_size: self.width-25, None
-                        size_hint: 1, None
-                        height: self.texture_size[1]
-                        halign: 'center'
-                        valign: 'top'
-                        text: 'entry.english'
+                        id: label1ID
+                        size_hint: 1, 1
+                        pos_hint: {'x': 0, 'y': 0}
+                        text: 'entry.part_of_speech'
+                        text_size: self.size
                         font_name: "DejaVuSans.ttf"
-                    Label:
-                        text: ""
-                        size_hint: None, 1
-                        width: 20
+                        valign: 'middle'
+                        halign: 'left'
                 BoxLayout:
-                    id: floatlayout2ID
+                    orientation: 'vertical'
+                    size_hint: 1, .25
+                    pos_hint: {'x': 0, 'y': .7}
+                    BoxLayout:
+                        id: floatlayout1ID
+                        pos_hint: {'x': 0, 'y': .5}
+                        Label:
+                            #text: '>>'
+                            size_hint: None, None
+                            height: root.label_for_english.height
+                            width: 20
+                        Label:
+                            id: label2ID
+                            text_size: self.width-25, None
+                            size_hint: 1, None
+                            height: self.texture_size[1]
+                            halign: 'center'
+                            valign: 'top'
+                            text: 'entry.english'
+                            font_name: "DejaVuSans.ttf"
+                        Label:
+                            text: ""
+                            size_hint: None, 1
+                            width: 20
+                    BoxLayout:
+                        id: floatlayout2ID
+                        pos_hint: {'x': 0, 'y': 0}
+                        Label:
+                            text: ""
+                            size_hint: None, 1
+                            width: 20
+                        Label:
+                            id: label3ID
+                            text: 'entry.arabic'
+                            font_name: "KacstOne.ttf"
+                            font_size: 20
+                        Label:
+                            #text: '<<'
+                            size_hint: None, 1
+                            width: 20
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: 1, .7
                     pos_hint: {'x': 0, 'y': 0}
-                    Label:
-                        text: ""
-                        size_hint: None, 1
-                        width: 20
-                    Label:
-                        id: label3ID
-                        text: 'entry.arabic'
-                        font_name: "KacstOne.ttf"
-                        font_size: 20
-                    Label:
-                        #text: '<<'
-                        size_hint: None, 1
-                        width: 20
-            BoxLayout:
-                orientation: 'vertical'
-                size_hint: 1, .7
-                pos_hint: {'x': 0, 'y': 0}
-                BoxLayout:
-                    id: boxlayout2ID
-                    orientation: 'vertical'
-                    pos_hint: {'x': 0, 'y': .75}
-                    canvas:
-                        Rectangle:
-                            pos: self.center_x-50, self.center_y-4
-                            size: 100, 1
-                    Label:
-                        id: label4ID
-                        text: 'entry.plural'
-                        font_name: "KacstOne.ttf"
-                        font_size: 20
-                    Label:
-                        text: 'PLURAL'
-                        font_size: 12
-                BoxLayout:
-                    id: boxlayout3ID
-                    orientation: 'vertical'
-                    pos_hint: {'x': 0, 'y': .5}
-                    canvas:
-                        Rectangle:
-                            pos: self.center_x-50, self.center_y-4
-                            size: 100, 1
-                    Label:
-                        id: label5ID
+                    BoxLayout:
+                        id: boxlayout2ID
+                        orientation: 'vertical'
+                        pos_hint: {'x': 0, 'y': .75}
+                        canvas:
+                            Rectangle:
+                                pos: self.center_x-50, self.center_y-4
+                                size: 100, 1
+                        Label:
+                            id: label4ID
+                            text: 'entry.plural'
+                            font_name: "KacstOne.ttf"
+                            font_size: 20
+                        Label:
+                            text: 'PLURAL'
+                            font_size: 12
+                    BoxLayout:
+                        id: boxlayout3ID
+                        orientation: 'vertical'
+                        pos_hint: {'x': 0, 'y': .5}
+                        canvas:
+                            Rectangle:
+                                pos: self.center_x-50, self.center_y-4
+                                size: 100, 1
+                        Label:
+                            id: label5ID
+                            pos_hint: {'x': 0, 'y': 0}
+                            text: 'entry.alt_plural'
+                            font_name: "KacstOne.ttf"
+                            font_size: 20
+                        Label:
+                            text: 'ALTERNATIVE PLURAL'
+                            font_size: 12
+                    BoxLayout:
+                        id: boxlayout4ID
+                        orientation: 'vertical'
+                        pos_hint: {'x': 0, 'y': .25}
+                        canvas:
+                            Rectangle:
+                                pos: self.center_x-50, self.center_y-4
+                                size: 100, 1
+                        Label:
+                            id: label6ID
+                            pos_hint: {'x': 0, 'y': 0}
+                            text: 'entry.fem_sing'
+                            font_name: "KacstOne.ttf"
+                            font_size: 20
+                        Label:
+                            text: 'FEMININE SINGULAR'
+                            font_size: 12
+                    BoxLayout:
+                        id: boxlayout5ID
+                        orientation: 'vertical'
                         pos_hint: {'x': 0, 'y': 0}
-                        text: 'entry.alt_plural'
-                        font_name: "KacstOne.ttf"
-                        font_size: 20
-                    Label:
-                        text: 'ALTERNATIVE PLURAL'
-                        font_size: 12
-                BoxLayout:
-                    id: boxlayout4ID
-                    orientation: 'vertical'
-                    pos_hint: {'x': 0, 'y': .25}
-                    canvas:
-                        Rectangle:
-                            pos: self.center_x-50, self.center_y-4
-                            size: 100, 1
-                    Label:
-                        id: label6ID
-                        pos_hint: {'x': 0, 'y': 0}
-                        text: 'entry.fem_sing'
-                        font_name: "KacstOne.ttf"
-                        font_size: 20
-                    Label:
-                        text: 'FEMININE SINGULAR'
-                        font_size: 12
-                BoxLayout:
-                    id: boxlayout5ID
-                    orientation: 'vertical'
-                    pos_hint: {'x': 0, 'y': 0}
-                    canvas:
-                        Rectangle:
-                            pos: self.center_x-50, self.center_y-4
-                            size: 100, 1
-                    Label:
-                        id: label7ID
-                        pos_hint: {'x': 0, 'y': 0}
-                        text: 'entry.fem_plural'
-                        font_name: "KacstOne.ttf"
-                        font_size: 20
-                    Label:
-                        text: 'FEMININE PLURAL'
-                        font_size: 12
+                        canvas:
+                            Rectangle:
+                                pos: self.center_x-50, self.center_y-4
+                                size: 100, 1
+                        Label:
+                            id: label7ID
+                            pos_hint: {'x': 0, 'y': 0}
+                            text: 'entry.fem_plural'
+                            font_name: "KacstOne.ttf"
+                            font_size: 20
+                        Label:
+                            text: 'FEMININE PLURAL'
+                            font_size: 12
     AnchorLayout:
         id: bottomBarID
         #pos_hint: {'x': 0, 'y': 0}
@@ -908,6 +920,13 @@ Builder.load_string("""
     chart_scroll: chartScrollID
     chart_label: chartLabelID
 
+    canvas:
+        Color:
+            rgb: 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
     ScrollView:
         id: chartScrollID
         pos: 0, root.bottom_bar.height
@@ -927,6 +946,7 @@ Builder.load_string("""
                     id: chartLabelID
                     font_name: "DejaVuSans.ttf"
                     text: 'eng : arabic'
+                    color: 0, 0, 0, 1
                     
             BoxLayout:
                 id: bigBoxID
@@ -2882,6 +2902,12 @@ class EntryScreen(Screen):
         reshaped_arabic5 = get_display(arabic_reshaper.reshape(entry.fem_plural))
         self.label_for_fem_plural.text = reshaped_arabic5
 
+    def decide_width(self, layout_width, scrollview_width):
+        if layout_width <= scrollview_width:
+            return scrollview_width
+        else:
+            return layout_width
+
     def done_button_pressed(self):
         sm.current = 'results_screen'
 
@@ -2900,30 +2926,63 @@ class VerbChartScreen(Screen):
         titles = chart_stuff_tuple[0]
         all_conjugations = chart_stuff_tuple[1]
         chart_extras = chart_stuff_tuple[2]
+        row_2 = all_conjugations[0:6]
+        row_3 = all_conjugations[6:12]
+        row_4 = all_conjugations[12:18]
+        row_5 = all_conjugations[18:24]
+        row_6 = all_conjugations[24:30]
+        row_7 = all_conjugations[30:36]
+        row_8 = all_conjugations[36:42]
+        row_9 = all_conjugations[42:48]
 
         self.main_chart.clear_widgets()
         self.extras_box.clear_widgets()
 
+        row_tinting = (.5255, .8627, .5255, .5)
+
         for title in titles:
             reshaped_title = get_display(arabic_reshaper.reshape(title))
             #print reshaped_title
-            lbl1 = Label(text=reshaped_title, font_name="DejaVuSans.ttf", \
-                font_size=14)
+            lbl1 = Button(text=reshaped_title, font_name="DejaVuSans.ttf", \
+                font_size=14, background_normal='plain_white.png', \
+                background_down='plain_white.png', \
+                background_color=row_tinting, color=(0, 0, 0, 1))
             self.main_chart.add_widget(lbl1)
 
-        for conj in all_conjugations:
-            reshaped_conj = get_display(arabic_reshaper.reshape(conj))
-            #print reshaped_conj
-            lbl1 = Label(text=reshaped_conj, font_name="KacstOne.ttf", \
-                font_size=22)
-            self.main_chart.add_widget(lbl1)
+        self.add_row_without_color(row_2)
+        self.add_row_with_color(row_3, row_tinting)
+        self.add_row_without_color(row_4)
+        self.add_row_with_color(row_5, row_tinting)
+        self.add_row_without_color(row_6)
+        self.add_row_with_color(row_7, row_tinting)
+        self.add_row_without_color(row_8)
+        self.add_row_with_color(row_9, row_tinting)
 
         for info in chart_extras:
             reshaped_info = get_display(arabic_reshaper.reshape(info))
             #print reshaped_info
             lbl2 = Label(text=reshaped_info, font_name="KacstOne.ttf", \
-                font_size=22)
+                font_size=22, color=(0, 0, 0, 1))
             self.extras_box.add_widget(lbl2)
+
+    def add_row_with_color(self, row, row_tinting):
+        for conj in row:
+            reshaped_conj = get_display(arabic_reshaper.reshape(conj))
+            #print reshaped_conj
+            lbl1 = Button(text=reshaped_conj, font_name="KacstOne.ttf", \
+                font_size=22, background_normal='plain_white.png', \
+                background_down='plain_white.png', \
+                background_color=row_tinting, color=(0, 0, 0, 1))
+            self.main_chart.add_widget(lbl1)
+
+    def add_row_without_color(self, row):
+        for conj in row:
+            reshaped_conj = get_display(arabic_reshaper.reshape(conj))
+            #print reshaped_conj
+            lbl1 = Button(text=reshaped_conj, font_name="KacstOne.ttf", \
+                font_size=22, background_normal='plain_white.png', \
+                background_down='plain_white.png', color=(0, 0, 0, 1))
+            self.main_chart.add_widget(lbl1)
 
     def done_button_pressed(self):
         sm.current = 'results_screen'
