@@ -23,7 +23,7 @@ from kivy.uix.dropdown import DropDown
 from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
 
-from bidi.algorithm import get_display
+from algorithm import get_display
 import arabic_reshaper
 from functools import partial
 
@@ -3549,7 +3549,7 @@ sm.add_widget(ResultsScreen(name='results_screen'))
 sm.add_widget(EntryScreen(name='entry_viewer'))
 sm.add_widget(VerbChartScreen(name='verb_chart'))
 
-PROVIDED_USER_INPUT = ""
+#PROVIDED_USER_INPUT = ""
 
 class TransApp(App):
     def build(self):

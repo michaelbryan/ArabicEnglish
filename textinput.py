@@ -129,7 +129,7 @@ from kivy.properties import StringProperty, NumericProperty, \
         ListProperty, ObjectProperty, VariableListProperty
 
 ##### My changes! Discard if needed!
-from bidi.algorithm import get_display
+from algorithm import get_display
 import arabic_reshaper
 ##### My changes! Discard if needed!
 

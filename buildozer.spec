@@ -4,7 +4,7 @@
 title = The Jordanian Dictionary
 
 # (str) Package name
-package.name = myapp
+package.name = jorddict
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
@@ -13,7 +13,7 @@ package.domain = org.test
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas
+source.include_exts = py,png,jpg,kv,atlas,txt,ttf,md
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
@@ -25,11 +25,11 @@ source.include_exts = py,png,jpg,kv,atlas
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version.regex = __version__ = '(.*)'
-version.filename = %(source.dir)s/main.py
+#version.regex = __version__ = '(.*)'
+#version.filename = %(source.dir)s/main.py
 
 # (str) Application versioning (method 2)
-# version = 1.2.0
+version = 1.0
 
 # (list) Application requirements
 requirements = kivy
@@ -41,10 +41,10 @@ requirements = kivy
 #icon.filename = %(source.dir)s/data/icon.png
 
 # (str) Supported orientation (one of landscape, portrait or all)
-orientation = landscape
+orientation = all
 
 # (bool) Indicate if the application should be fullscreen or not
-fullscreen = 1
+fullscreen = 0
 
 
 #
@@ -134,7 +134,7 @@ fullscreen = 1
 [buildozer]
 
 # (int) Log level (0 = error only, 1 = info, 2 = debug (with command output))
-log_level = 1
+log_level = 2
 
 
 # -----------------------------------------------------------------------------

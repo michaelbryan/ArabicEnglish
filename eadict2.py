@@ -10,9 +10,6 @@ from DictionaryRetrieval2 import RetrieveEntriesFromFile
 #reload(sys)
 #sys.setdefaultencoding('utf-8')
 
-a = sys.getfilesystemencoding()
-#print "Filesystem encoding: " + a
-
 gAllEntries = {}
 
 def reverse_search_entries(search_term):
