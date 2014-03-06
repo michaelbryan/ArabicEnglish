@@ -22,6 +22,8 @@ from kivy.graphics.texture import Texture
 from kivy.uix.dropdown import DropDown
 from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
+from kivy.core.window import Window
+from kivy.base import EventLoop
 
 from algorithm import get_display
 import arabic_reshaper
@@ -41,6 +43,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton2>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -49,6 +52,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton3>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -57,6 +61,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton4>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -65,6 +70,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton5>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -73,6 +79,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton6>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -81,6 +88,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton7>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -89,6 +97,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton8>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -97,6 +106,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton9>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -105,6 +115,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton10>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -113,6 +124,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton11>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -121,6 +133,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton12>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -129,6 +142,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton13>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -137,6 +151,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton14>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -145,6 +160,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton15>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -153,6 +169,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton16>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -161,6 +178,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton17>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -169,6 +187,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton18>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -177,6 +196,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton19>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -185,6 +205,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton20>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -193,6 +214,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton21>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -201,6 +223,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton22>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -209,6 +232,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton23>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -217,6 +241,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton24>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -225,6 +250,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton25>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -233,6 +259,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton26>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -241,6 +268,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton27>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -249,6 +277,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton28>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -257,6 +286,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton29>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -265,6 +295,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 <CustomButton30>:
     text_size: self.width-10, None
     size_hint: (1, None)
@@ -273,6 +304,7 @@ Builder.load_string("""
     background_normal: root.get_button()
     background_down: root.get_button_down()
     color: root.get_button_text_color()
+    font_size: root.get_c_button_font_size()
 
 <CustomLabel1>:
     text_size: self.width-10, None
@@ -280,180 +312,210 @@ Builder.load_string("""
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel2>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel3>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel4>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel5>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel6>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel7>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel8>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel9>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel10>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel11>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel12>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel13>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel14>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel15>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel16>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel17>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel18>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel19>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel20>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel21>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel22>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel23>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel24>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel25>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel26>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel27>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel28>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel29>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 <CustomLabel30>:
     text_size: self.width-10, None
     size_hint: (1, None)
     height: self.texture_size[1]+8
     font_name: "DejaVuSans.ttf"
     color: root.get_text_color()
+    font_size: root.get_c_label_font_size()
 
 <MyPopup>:
     size_hint: .9, .9
@@ -488,15 +550,15 @@ Builder.load_string("""
                 color: root.get_text_color()
     AnchorLayout:
         size_hint: 1, None
-        height: 20
+        height: root.get_button_height()
         anchor_x: 'center'
         anchor_y: 'center'
         Button:
             id: doneButtonID
             text: 'Done'
             size_hint: None, None
-            size: 40, 20
-            font_size: 11
+            size: root.get_button_width(), root.get_button_height()
+            font_size: contentID.font_size
             on_release: root.parent.parent.parent.dismiss()
             background_normal: root.get_accent_button()
             background_down: root.get_accent_button_down()
@@ -536,36 +598,36 @@ Builder.load_string("""
     id: cdd
     Button:
         text: 'Features'
-        font_size: 12
+        font_size: root.get_button_font_size()
         size_hint_y: None
-        height: 25
+        height: root.get_button_height()
         on_release: root.FeaturesButtonPressed()
         color: root.get_button_text_color()
         background_normal: root.get_button()
         background_down: root.get_button_down()
     Button:
         text: 'Suggestions'
-        font_size: 12
+        font_size: root.get_button_font_size()
         size_hint_y: None
-        height: 25
+        height: root.get_button_height()
         on_release: root.SuggestionsButtonPressed()
         color: root.get_button_text_color()
         background_normal: root.get_button()
         background_down: root.get_button_down()
     Button:
         text: 'Abbreviations'
-        font_size: 12
+        font_size: root.get_button_font_size()
         size_hint_y: None
-        height: 25
+        height: root.get_button_height()
         on_release: root.AbbreviationsButtonPressed()
         color: root.get_button_text_color()
         background_normal: root.get_button()
         background_down: root.get_button_down()
     Button:
         text: 'Miscellaneous'
-        font_size: 12
+        font_size: root.get_button_font_size()
         size_hint_y: None
-        height: 25
+        height: root.get_button_height()
         on_release: root.MiscellaneousButtonPressed()
         color: root.get_button_text_color()
         background_normal: root.get_button()
@@ -574,27 +636,27 @@ Builder.load_string("""
 <CustomDropDown2>:
     Button:
         text: 'About Arabic'
-        font_size: 12
+        font_size: root.get_button_font_size()
         size_hint_y: None
-        height: 25
+        height: root.get_button_height()
         on_release: root.ArabicButtonPressed()
         color: root.get_button_text_color()
         background_normal: root.get_button()
         background_down: root.get_button_down()
     Button:
         text: 'Contact Info'
-        font_size: 12
+        font_size: root.get_button_font_size()
         size_hint_y: None
-        height: 25
+        height: root.get_button_height()
         on_release: root.ContactButtonPressed()
         color: root.get_button_text_color()
         background_normal: root.get_button()
         background_down: root.get_button_down()
     Button:
         text: 'App Info'
-        font_size: 12
+        font_size: root.get_button_font_size()
         size_hint_y: None
-        height: 25
+        height: root.get_button_height()
         on_release: root.AppInfoButtonPressed()
         color: root.get_button_text_color()
         background_normal: root.get_button()
@@ -607,6 +669,8 @@ Builder.load_string("""
     translateLabel: labelID
     top_layout: topLayoutID
     dd_btn: btn_ddID
+    my_window: my_windowID
+    #my_window_2: my_window_2ID
 
     orientation: 'vertical'
     canvas:
@@ -616,83 +680,90 @@ Builder.load_string("""
             pos: self.pos
             size: self.size
     BoxLayout:
-        id: topLayoutID
+        id: my_windowID
         size_hint: 1, None
-        height: 25
-        pos: 0, root.height-self.height
-        Button:
-            id: btn_ddID
-            size_hint: 1, None
-            height: 25
-            text: 'Usage Notes'
-            font_size: 12
-            on_release: root.drop_down.open(self)
-            color: root.get_button_text_color()
-            background_normal: root.get_button()
-            background_down: root.get_button_down()
-        Button:
-            text: 'About'
-            size_hint: 1, None
-            height: 25
-            font_size: 12
-            on_release: root.drop_down2.open(self)
-            color: root.get_button_text_color()
-            background_normal: root.get_button()
-            background_down: root.get_button_down()
-
-    BoxLayout:
+        height: root.height
+        pos: 0, root.height - self.height
         orientation: 'vertical'
-        size_hint: 1, None
-        height: root.height-root.top_layout.height
-
-        AnchorLayout:
-            anchor_x: 'center'
-            anchor_y: 'center'
-            Label:
-                id: labelID
-                size_hint: .9, 1
-                text: 'Jordanian Translator'
-                color: root.get_text_color()
-                text_size: self.size
-                valign: 'middle'
-                halign: 'center'
-                font_size: 18
-                font_name: "DejaVuSans.ttf"
-                #font_name: "simpo.ttf"
-                #font_name: "5thgradecursive.ttf"
-                #font_name: "AGA-Rasheeq-Regular.ttf"
-
-        AnchorLayout:
-            anchor_x: 'center'
-            anchor_y: 'center'
-            TextInput:
-                id: translateInputID
-                text: ''
-                font_name: "DejaVuSans.ttf"
-                background_color: 1, 1, 1, 1
-                size_hint: .75, None
-                height: 28
-                font_size: 14
-                multiline: False
-                text_size: self.size
-                on_text_validate: root.translateButtonPressed()
-
-        AnchorLayout:
-            anchor_x: 'center'
-            anchor_y: 'top'
+        BoxLayout:
+            id: topLayoutID
+            size_hint: 1, None
+            height: root.get_button_height()
+            pos: 0, root.my_window.height-self.height
             Button:
-                id: translateButtonID
-                text: 'Translate'
-                font_size: 12
-                size_hint: None, None
-                size: 65, 25
-                valign: 'middle'
-                halign: 'center'
-                text_size: self.size
-                on_release: root.translateButtonPressed()
+                id: btn_ddID
+                size_hint: 1, 1
+                text: 'Usage Notes'
+                font_size: root.get_button_font_size()
+                on_release: root.drop_down.open(self)
                 color: root.get_button_text_color()
-                background_normal: root.get_accent_button()
-                background_down: root.get_accent_button_down()
+                background_normal: root.get_button()
+                background_down: root.get_button_down()
+            Button:
+                text: 'About'
+                size_hint: 1, 1
+                font_size: root.get_button_font_size()
+                on_release: root.drop_down2.open(self)
+                color: root.get_button_text_color()
+                background_normal: root.get_button()
+                background_down: root.get_button_down()
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: root.my_window.height-root.top_layout.height
+
+            AnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'center'
+                size_hint: 1, 1
+                Label:
+                    id: labelID
+                    size_hint: .9, 1
+                    text: 'Jordanian Translator'
+                    color: root.get_text_color()
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'center'
+                    font_size: root.get_title_font_size()
+                    font_name: "DejaVuSans.ttf"
+                    #font_name: "simpo.ttf"
+                    #font_name: "5thgradecursive.ttf"
+                    #font_name: "AGA-Rasheeq-Regular.ttf"
+
+            AnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'center'
+                size_hint: 1, .5
+                TextInput:
+                    id: translateInputID
+                    text: ''
+                    font_name: "DejaVuSans.ttf"
+                    background_color: 1, 1, 1, 1
+                    size_hint: .75, None
+                    height: root.get_TI_height()
+                    font_size: root.get_TI_font_size()
+                    multiline: False
+                    text_size: self.size
+                    on_text_validate: root.translateButtonPressed()
+                    hint_text: 'English or Arabic'
+
+            AnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'top'
+                size_hint: 1, .5
+                Button:
+                    id: translateButtonID
+                    text: 'Translate'
+                    font_size: root.get_button_font_size()
+                    size_hint: None, None
+                    size: root.get_button_width(), root.get_button_height()
+                    valign: 'middle'
+                    halign: 'center'
+                    on_release: root.translateButtonPressed()
+                    color: root.get_button_text_color()
+                    background_normal: root.get_accent_button()
+                    background_down: root.get_accent_button_down()
 
 <ResultsScreen>:
     orientation: 'vertical'
@@ -704,6 +775,7 @@ Builder.load_string("""
     top_layout: topLayoutID
     trans_btn_l: transBtnLID
     bottom_lay: bottomLayID
+    input_label: inputLabelID
     canvas:
         Color:
             rgb: root.get_background()
@@ -713,7 +785,7 @@ Builder.load_string("""
     AnchorLayout:
         id: topLayoutID
         size_hint: 1, None
-        height: 35
+        height: '35dp'
         pos: 0, root.height-self.height
         anchor_x: 'center'
         anchor_y: 'center'
@@ -723,16 +795,17 @@ Builder.load_string("""
             background_color: 1, 1, 1, 1
             multiline: False
             size_hint: .85, None
-            height: 28
-            font_size: 14
+            height: root.get_TI_height()
+            font_size: root.get_TI_font_size()
             font_name: "DejaVuSans.ttf"
             text_size: self.size
             on_text_validate: root.translateButtonPressed()
+            hint_text: 'English or Arabic'
 
     AnchorLayout:
         id: transBtnLID
         size_hint: 1, None
-        height: 25
+        height: '60dp'
         pos: 0, root.height-(self.height+root.top_layout.height)
         anchor_x: 'center'
         anchor_y: 'top'
@@ -740,33 +813,49 @@ Builder.load_string("""
             id: translateButtonKV
             text: 'Translate'
             size_hint: None, None
-            height: 20
-            width: 60
-            font_size: 11
+            height: root.get_button_height()
+            width: root.get_button_width()
+            font_size: root.get_button_font_size()
             on_release: root.translateButtonPressed()
             background_normal: root.get_accent_button()
             background_down: root.get_accent_button_down()
             color: root.get_button_text_color()
-	AnchorLayout:
+	BoxLayout:
         id: anchorLayout2
-		anchor_x: 'left'
-        anchor_y: 'bottom'
+        orientation: 'horizontal'
         size_hint: 1, None
-        height: 20
+        height: root.get_button_height()
         pos: 0, root.height-(self.height+root.top_layout.height+root.trans_btn_l.height)
-		Label:
-            id: resultsLabelID
-			text: "Results:"
-			size_hint: None, None
-            height: 20
-            width: 100
-            font_size: 13
-            halign: 'left'
-            color: root.get_text_color()
+		AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'bottom'
+            size_hint: None, 1
+            width: root.get_s_button_width()
+            Label:
+                id: resultsLabelID
+                text: "Results:"
+                size_hint: None, None
+                height: root.get_button_height()
+                width: root.get_button_width()
+                font_size: root.get_button_font_size()
+                halign: 'right'
+                color: root.get_text_color()
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'bottom'
+            Label:
+                id: inputLabelID
+                text: ""
+                size_hint: None, None
+                height: root.get_button_height()
+                width: root.get_button_width()
+                font_size: root.get_button_font_size()
+                halign: 'right'
+                color: root.get_text_color()
     ScrollView:
         id: scrollviewID
     	orientation: 'vertical'
-    	pos: 0, 25
+    	pos: 0, bottomLayID.height
     	size_hint: 1, None
         height: root.height-(root.bottom_lay.height+root.anchor_layout_2.height+\
             root.trans_btn_l.height+root.top_layout.height)
@@ -778,7 +867,7 @@ Builder.load_string("""
 		orientation: 'horizontal'
 		pos_hint: {'x': 0, 'y': 0}
 	    size_hint: 1, None
-        height: 25
+        height: '60dp'
 	    AnchorLayout:
 	    	anchor_x: 'left'
 	        anchor_y: 'center'
@@ -787,9 +876,9 @@ Builder.load_string("""
             	on_release: root.goBack()
 	    		text: 'Back'
 	            size_hint: None, None
-	            height: 20
-	            width: 40
-	            font_size: 11
+	            height: root.get_s_button_height()
+                width: root.get_s_button_width()
+                font_size: root.get_s_button_font_size()
                 background_normal: root.get_accent_button()
                 background_down: root.get_accent_button_down()
                 color: root.get_button_text_color()
@@ -804,9 +893,9 @@ Builder.load_string("""
                 text: 'Home'
                 on_release: root.goHome()
                 size_hint: None, None
-                height: 20
-                width: 40
-                font_size: 11
+                height: root.get_s_button_height()
+                width: root.get_s_button_width()
+                font_size: root.get_s_button_font_size()
                 background_normal: root.get_accent_button()
                 background_down: root.get_accent_button_down()
                 color: root.get_button_text_color()
@@ -831,7 +920,7 @@ Builder.load_string("""
         id: svID
         pos: 0, 40
         size_hint: 1, None
-        height: root.height-40
+        height: root.height-self.pos[1]
         bar_width: '6dp'
         bar_color: root.get_bar_color()
         AnchorLayout:
@@ -843,10 +932,10 @@ Builder.load_string("""
             GridLayout:
                 id: gridlayID
                 cols: 1
-                minimum_width: 200
+                minimum_width: '200dp'
                 size_hint: None, None
-                height: 400
-                width: (label3ID.texture_size[0] / 2.2) + 200
+                height: '400dp'
+                width: (label3ID.texture_size[0] / 2.2) + 380
                 BoxLayout:
                     id: boxlayout1ID
                     orientation: 'horizontal'
@@ -860,7 +949,7 @@ Builder.load_string("""
                         text_size: self.size
                         font_name: "DejaVuSans.ttf"
                         valign: 'middle'
-                        halign: 'left'
+                        halign: 'center'
                         color: root.get_text_color()
                 BoxLayout:
                     orientation: 'vertical'
@@ -873,7 +962,7 @@ Builder.load_string("""
                             #text: '>>'
                             size_hint: None, None
                             height: root.label_for_english.height
-                            width: 20
+                            width: '20'
                             color: root.get_text_color()
                         Label:
                             id: label2ID
@@ -888,7 +977,7 @@ Builder.load_string("""
                         Label:
                             text: ""
                             size_hint: None, 1
-                            width: 20
+                            width: '20'
                             color: root.get_text_color()
                     BoxLayout:
                         id: floatlayout2ID
@@ -896,18 +985,18 @@ Builder.load_string("""
                         Label:
                             text: ""
                             size_hint: None, 1
-                            width: 20
+                            width: '20'
                             color: root.get_text_color()
                         Label:
                             id: label3ID
                             text: 'entry.arabic'
                             font_name: "KacstOne.ttf"
-                            font_size: 20
+                            font_size: '20sp'
                             color: root.get_text_color()
                         Label:
                             #text: '<<'
                             size_hint: None, 1
-                            width: 20
+                            width: '20'
                             color: root.get_text_color()
                 BoxLayout:
                     orientation: 'vertical'
@@ -921,17 +1010,17 @@ Builder.load_string("""
                             Color:
                                 rgb: root.get_text_color()
                             Rectangle:
-                                pos: self.center_x-50, self.center_y-4
-                                size: 100, 1
+                                pos: self.center_x-75, self.center_y-4
+                                size: 150, 1
                         Label:
                             id: label4ID
                             text: 'entry.plural'
                             font_name: "KacstOne.ttf"
-                            font_size: 20
+                            font_size: '20sp'
                             color: root.get_text_color()
                         Label:
                             text: 'PLURAL'
-                            font_size: 12
+                            font_size: root.get_button_font_size()
                             color: root.get_text_color()
                     BoxLayout:
                         id: boxlayout3ID
@@ -941,18 +1030,18 @@ Builder.load_string("""
                             Color:
                                 rgb: root.get_text_color()
                             Rectangle:
-                                pos: self.center_x-50, self.center_y-4
-                                size: 100, 1
+                                pos: self.center_x-75, self.center_y-4
+                                size: 150, 1
                         Label:
                             id: label5ID
                             pos_hint: {'x': 0, 'y': 0}
                             text: 'entry.alt_plural'
                             font_name: "KacstOne.ttf"
-                            font_size: 20
+                            font_size: '20sp'
                             color: root.get_text_color()
                         Label:
                             text: 'ALTERNATIVE PLURAL'
-                            font_size: 12
+                            font_size: root.get_button_font_size()
                             color: root.get_text_color()
                     BoxLayout:
                         id: boxlayout4ID
@@ -962,18 +1051,18 @@ Builder.load_string("""
                             Color:
                                 rgb: root.get_text_color()
                             Rectangle:
-                                pos: self.center_x-50, self.center_y-4
-                                size: 100, 1
+                                pos: self.center_x-75, self.center_y-4
+                                size: 150, 1
                         Label:
                             id: label6ID
                             pos_hint: {'x': 0, 'y': 0}
                             text: 'entry.fem_sing'
                             font_name: "KacstOne.ttf"
-                            font_size: 20
+                            font_size: '20sp'
                             color: root.get_text_color()
                         Label:
                             text: 'FEMININE SINGULAR'
-                            font_size: 12
+                            font_size: root.get_button_font_size()
                             color: root.get_text_color()
                     BoxLayout:
                         id: boxlayout5ID
@@ -983,38 +1072,39 @@ Builder.load_string("""
                             Color:
                                 rgb: root.get_text_color()
                             Rectangle:
-                                pos: self.center_x-50, self.center_y-4
-                                size: 100, 1
+                                pos: self.center_x-75, self.center_y-4
+                                size: 150, 1
                         Label:
                             id: label7ID
                             pos_hint: {'x': 0, 'y': 0}
                             text: 'entry.fem_plural'
                             font_name: "KacstOne.ttf"
-                            font_size: 20
+                            font_size: '20sp'
                             color: root.get_text_color()
                         Label:
                             text: 'FEMININE PLURAL'
-                            font_size: 12
+                            font_size: root.get_button_font_size()
                             color: root.get_text_color()
     AnchorLayout:
         id: bottomBarID
         #pos_hint: {'x': 0, 'y': 0}
         #pos: 0, 0
         size_hint: 1, None
-        height: 40
+        height: '60dp'
         anchor_x: 'center'
         anchor_y: 'center'
         Button:
             id: doneButtonID
             text: 'Done'
             size_hint: None, None
-            height: 20
-            width: 40
-            font_size: 11
+            height: root.get_button_height()
+            width: root.get_button_width()
             on_release: root.done_button_pressed()
             background_normal: root.get_accent_button()
             background_down: root.get_accent_button_down()
             color: root.get_button_text_color()
+            font_size: root.get_button_font_size()
+
 <VerbChartScreen>:
     orientation: 'vertical'
     main_chart: mainChartID
@@ -1036,23 +1126,24 @@ Builder.load_string("""
         id: chartScrollID
         pos: 0, root.bottom_bar.height
         size_hint: 1, None
-        height: root.height-40
+        height: root.height-root.bottom_bar.height
         bar_width: '6dp'
         bar_color: root.get_bar_color()
         BoxLayout:
             orientation: 'vertical'
             size_hint: None, None
             width: root.big_box.width
-            height: root.big_box.height+40
+            height: root.big_box.height+root.bottom_bar.height
             BoxLayout:
                 size_hint: 1, None
-                height: 40
-                #pos: 0, root.chart_scroll.height-40
+                height: '60dp'
+                #pos: 0, (root.chart_scroll.height-self.height)
                 Label:
                     id: chartLabelID
                     font_name: "DejaVuSans.ttf"
                     text: 'eng : arabic'
                     color: root.get_text_color()
+                    font_size: root.get_button_font_size()
                     
             BoxLayout:
                 id: bigBoxID
@@ -1064,10 +1155,10 @@ Builder.load_string("""
                     size_hint: None, None
                     pos_hint: {'x': 0, 'y': 0}
                     cols: 6
-                    col_default_width: 100
+                    col_default_width: '100dp'
                     rows: 9
                     row_force_default: True
-                    row_default_height: 40
+                    row_default_height: '60dp'
                     height: self.rows * self.row_default_height
                     width: self.cols * self.col_default_width
                     minimum_height: self.height
@@ -1079,7 +1170,7 @@ Builder.load_string("""
                     orientation: 'vertical'
                     size_hint: None, None
                     height: root.main_chart.height
-                    width: 120 #self.label_1.width
+                    width: '180dp' #self.label_1.width
                     #pos_hint: {'x': .75, 'y': 0}
                     pos: root.main_chart.width, 0
                     Label:
@@ -1097,16 +1188,16 @@ Builder.load_string("""
         #pos_hint: {'x': 0, 'y': 0}
         #pos: 0, 0
         size_hint: 1, None
-        height: 40
+        height: '60dp'
         anchor_x: 'center'
         anchor_y: 'center'
         Button:
             id: doneButtonID
             text: 'Done'
             size_hint: None, None
-            height: 20
-            width: 40
-            font_size: 11
+            height: root.get_button_height()
+            width: root.get_button_width()
+            font_size: root.get_button_font_size()
             on_release: root.done_button_pressed()
             background_normal: root.get_accent_button()
             background_down: root.get_accent_button_down()
@@ -1142,16 +1233,38 @@ bar_color = (.6431, .8157, .7686, .9)
 po_title_color = (.9412, .9412, .9412)
 po_line_color = (.6431, .8157, .7686, 1)
 
+#class Sizes:
+    #def __init__(self):
+#print "Window height: ", Window.height
+#print "Window width: ", Window.width
+
+#print "DPI: ", EventLoop.dpi
+
+c_button_font_size = '20sp'
+c_label_font_size = '20sp'
+button_font_size = '15sp'
+button_height = '35dp'
+button_width = '100dp'
+title_font_size = '30sp'
+TI_height = '32dp'
+TI_font_size = '19sp'
+s_button_width = '60dp'
+s_button_height = '30dp'
+s_button_font_size = '15sp'
+chart_font_size = '26sp'
+
+
+
 def run_search(input_to_translate, *args):
     search_result = search_entries(input_to_translate)
-    sm.get_screen("results_screen").update_TI(input_to_translate)
+    #sm.get_screen("results_screen").update_TI(input_to_translate)
     #print "search_result:", search_result
     results_separator(search_result)
 
 def results_separator(search_result):
     results_list_tuples = []
     results_lbl_1 = " Results:"
-    results_lbl_2 = " Did you mean:"
+    results_lbl_2 = "      Did you mean:"
     #found = False
     for tupleOfEntryAndBool in search_result:
         the_entry = tupleOfEntryAndBool[0]
@@ -1199,6 +1312,8 @@ class CustomButton1(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton2(Button):
     def get_button(self):
         return button_image
@@ -1206,6 +1321,8 @@ class CustomButton2(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton3(Button):
     def get_button(self):
         return button_image
@@ -1213,6 +1330,8 @@ class CustomButton3(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton4(Button):
     def get_button(self):
         return button_image
@@ -1220,6 +1339,8 @@ class CustomButton4(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton5(Button):
     def get_button(self):
         return button_image
@@ -1227,6 +1348,8 @@ class CustomButton5(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton6(Button):
     def get_button(self):
         return button_image
@@ -1234,6 +1357,8 @@ class CustomButton6(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton7(Button):
     def get_button(self):
         return button_image
@@ -1241,6 +1366,8 @@ class CustomButton7(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton8(Button):
     def get_button(self):
         return button_image
@@ -1248,6 +1375,8 @@ class CustomButton8(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton9(Button):
     def get_button(self):
         return button_image
@@ -1255,6 +1384,8 @@ class CustomButton9(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton10(Button):
     def get_button(self):
         return button_image
@@ -1262,6 +1393,8 @@ class CustomButton10(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton11(Button):
     def get_button(self):
         return button_image
@@ -1269,6 +1402,8 @@ class CustomButton11(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton12(Button):
     def get_button(self):
         return button_image
@@ -1276,6 +1411,8 @@ class CustomButton12(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton13(Button):
     def get_button(self):
         return button_image
@@ -1283,6 +1420,8 @@ class CustomButton13(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton14(Button):
     def get_button(self):
         return button_image
@@ -1290,6 +1429,8 @@ class CustomButton14(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton15(Button):
     def get_button(self):
         return button_image
@@ -1297,6 +1438,8 @@ class CustomButton15(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton16(Button):
     def get_button(self):
         return button_image
@@ -1304,6 +1447,8 @@ class CustomButton16(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton17(Button):
     def get_button(self):
         return button_image
@@ -1311,6 +1456,8 @@ class CustomButton17(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton18(Button):
     def get_button(self):
         return button_image
@@ -1318,6 +1465,8 @@ class CustomButton18(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton19(Button):
     def get_button(self):
         return button_image
@@ -1325,6 +1474,8 @@ class CustomButton19(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton20(Button):
     def get_button(self):
         return button_image
@@ -1332,6 +1483,8 @@ class CustomButton20(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton21(Button):
     def get_button(self):
         return button_image
@@ -1339,6 +1492,8 @@ class CustomButton21(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton22(Button):
     def get_button(self):
         return button_image
@@ -1346,6 +1501,8 @@ class CustomButton22(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton23(Button):
     def get_button(self):
         return button_image
@@ -1353,6 +1510,8 @@ class CustomButton23(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton24(Button):
     def get_button(self):
         return button_image
@@ -1360,6 +1519,8 @@ class CustomButton24(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton25(Button):
     def get_button(self):
         return button_image
@@ -1367,6 +1528,8 @@ class CustomButton25(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton26(Button):
     def get_button(self):
         return button_image
@@ -1374,6 +1537,8 @@ class CustomButton26(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton27(Button):
     def get_button(self):
         return button_image
@@ -1381,6 +1546,8 @@ class CustomButton27(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton28(Button):
     def get_button(self):
         return button_image
@@ -1388,6 +1555,8 @@ class CustomButton28(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton29(Button):
     def get_button(self):
         return button_image
@@ -1395,6 +1564,8 @@ class CustomButton29(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 class CustomButton30(Button):
     def get_button(self):
         return button_image
@@ -1402,97 +1573,159 @@ class CustomButton30(Button):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_c_button_font_size(self):
+        return c_button_font_size
 
 class CustomLabel1(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel2(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel3(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel4(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel5(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel6(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel7(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel8(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel9(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel10(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel11(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel12(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel13(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel14(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel15(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel16(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel17(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel18(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel19(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel20(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel21(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel22(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel23(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel24(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel25(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel26(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel27(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel28(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel29(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 class CustomLabel30(Label):
     def get_text_color(self):
         return rs_text_color
+    def get_c_label_font_size(self):
+        return c_label_font_size
 
 class MyContentLayout(BoxLayout):
     content_lbl = ObjectProperty(None)
@@ -1514,6 +1747,10 @@ class MyContentLayout(BoxLayout):
         return button_text_color
     def get_bar_color(self):
         return bar_color
+    def get_button_height(self):
+        return button_height
+    def get_button_width(self):
+        return button_width
 
 class MyPopup(Popup):
     my_content = MyContentLayout()
@@ -1548,6 +1785,10 @@ class CustomDropDown(DropDown):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_button_font_size(self):
+        return button_font_size
+    def get_button_height(self):
+        return button_height
     
     def FeaturesButtonPressed(self):
         file_object = open('features_content.txt', 'r')
@@ -1603,6 +1844,10 @@ class CustomDropDown2(DropDown):
         return button_image_down
     def get_button_text_color(self):
         return button_text_color
+    def get_button_font_size(self):
+        return button_font_size
+    def get_button_height(self):
+        return button_height
     
     def ArabicButtonPressed(self):
         file_object = open('arabic_content.txt', 'r')
@@ -1645,10 +1890,15 @@ class HomeScreen(Screen):
     dd_btn = ObjectProperty(None)
     drop_down = CustomDropDown()
     drop_down2 = CustomDropDown2()
-    '''
+    my_window = ObjectProperty(None)
+    #my_window_2 = ObjectProperty(None)
+    
     def __init__(self, **kwargs):
         super(HomeScreen, self).__init__(**kwargs)
 
+        textinput = self.translateInput
+        textinput.bind(focus=self.on_focus)
+    '''
         mytextinput = self.translateInput
         mytextinput.bind(text=self.on_text)
 
@@ -1673,6 +1923,16 @@ class HomeScreen(Screen):
             #mytextinput.text = reshaped_text
     '''
 
+    def on_focus(self, value, *args):
+        scrn = self.my_window
+        if value.focus == True:
+            #print('User focused', value.focus)
+            scrn.height = '190dp'
+
+        else:
+            #print('User defocused', value.focus)
+            scrn.height = self.height
+
     def get_background(self):
         return BG_color
 
@@ -1694,9 +1954,44 @@ class HomeScreen(Screen):
     def get_button_text_color(self):
         return button_text_color
 
+    def get_button_font_size(self):
+        return button_font_size
+
+    def get_button_height(self):
+        return button_height
+
+    def get_button_width(self):
+        return button_width
+
+    def get_s_button_height(self):
+        return s_button_height
+
+    def get_s_button_width(self):
+        return s_button_width
+
+    def get_TI_height(self):
+        return TI_height
+
+    def get_TI_font_size(self):
+        return TI_font_size
+
+    def get_title_font_size(self):
+        return title_font_size
+
     def translateButtonPressed(self):
-    	input_to_translate = self.translateInput.text
+    	user_input = self.translateInput.text
+        valid_utf8 = True
+        try:
+            uni_input = unicode(user_input, 'utf-8')
+        except TypeError:
+            valid_utf8 = False
+        if valid_utf8 == True:
+            input_to_translate = uni_input
+        else:
+            input_to_translate = self.translateInput.text
         if len(input_to_translate) >= 1:
+            self.translateInput.text = ''
+            self.translateInput.focus = False
             searches.append(input_to_translate)
             run_search(input_to_translate)
 
@@ -1706,6 +2001,7 @@ class ResultsScreen(Screen):
     results_label = ObjectProperty(None)
     more_btn_lay = ObjectProperty(None)
     not_found_lay = NotFoundLayout()
+    input_label = ObjectProperty(None)
 
     def get_background(self):
         return BG_color
@@ -1731,6 +2027,30 @@ class ResultsScreen(Screen):
     def get_bar_color(self):
         return bar_color
 
+    def get_button_font_size(self):
+        return button_font_size
+
+    def get_button_height(self):
+        return button_height
+
+    def get_button_width(self):
+        return button_width
+
+    def get_s_button_height(self):
+        return s_button_height
+
+    def get_s_button_width(self):
+        return s_button_width
+
+    def get_s_button_font_size(self):
+        return s_button_font_size
+
+    def get_TI_height(self):
+        return TI_height
+
+    def get_TI_font_size(self):
+        return TI_font_size
+
     def run_not_found(self):
         new_results_label = ""
         self.change_results_label(new_results_label)
@@ -1747,11 +2067,14 @@ class ResultsScreen(Screen):
         self.results_label.text = new_results_label
 
     def update_TI(self, input_to_translate):
-        self.text_input_2.text = input_to_translate
+        self.input_label.text = input_to_translate
         
     def getArabicResults(self, results_list, new_results_label):
-        btn = Button(size_hint=(None, None), height=20, width=40, \
-            font_size=11, text='More', \
+        btn = Button(size_hint=(None, None), \
+            height=self.get_s_button_height(), \
+            width=self.get_s_button_width(), \
+            font_size=self.get_s_button_font_size(), \
+            text='More', \
             background_normal=self.get_accent_button(), \
             background_down=self.get_accent_button_down(), \
             color=self.get_button_text_color())
@@ -1769,8 +2092,11 @@ class ResultsScreen(Screen):
         self.getCloseResultsButtons(results_list, alignment)
 
     def getEnglishResults(self, results_list, new_results_label):
-        btn = Button(size_hint=(None, None), height=20, width=40, \
-            font_size=11, text='More', \
+        btn = Button(size_hint=(None, None), \
+            height=self.get_s_button_height(), \
+            width=self.get_s_button_width(), \
+            font_size=self.get_s_button_font_size(), \
+            text='More', \
             background_normal=self.get_accent_button(), \
             background_down=self.get_accent_button_down(), \
             color=self.get_button_text_color())
@@ -1789,9 +2115,20 @@ class ResultsScreen(Screen):
 
     def translateButtonPressed(self):
         input_to_translate_2 = self.text_input_2.text
-        if len(input_to_translate_2) >= 1:
-            searches.append(input_to_translate_2)
-            return run_search(input_to_translate_2)
+        user_input = self.text_input_2.text
+        valid_utf8 = True
+        try:
+            uni_input = unicode(user_input, 'utf-8')
+        except TypeError:
+            valid_utf8 = False
+        if valid_utf8 == True:
+            input_to_translate = uni_input
+        else:
+            input_to_translate = self.text_input_2.text
+        if len(input_to_translate) >= 1:
+            searches.append(input_to_translate)
+            self.text_input_2.focus = False
+            return run_search(input_to_translate)
     
     def full_entry_button_pressed(self, entry, *args):
         sm.get_screen("entry_viewer").replace_labels(entry)
@@ -1838,8 +2175,8 @@ class ResultsScreen(Screen):
         # because I cannot achieve the same behavior in Python.
 
         layout1 = GridLayout(cols=2, spacing=0, size_hint=(1, None), \
-            row_force_default=False, row_default_height=25)#, cols_minimum={0, 60})
-
+            row_force_default=False, row_default_height=self.get_button_height())
+            #, cols_minimum={0, 60})
         layout1.bind(minimum_height=layout1.setter('height'),
                      minimum_width=layout1.setter('width'))
         #print results_list_tuples
@@ -1863,7 +2200,8 @@ class ResultsScreen(Screen):
                 btn.text = reshaped_label
                 #btn.bind(halign=partial(get_alignment, alignment))
 
-                lbl2 = Label(size_hint_x=None, width=70, text= "1.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "1.", \
                     color=self.get_text_color())
                 lbl = CustomLabel1()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -1875,7 +2213,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -1885,7 +2224,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -1903,7 +2243,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "2.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "2.", \
                     color=self.get_text_color())
                 lbl = CustomLabel2()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -1915,7 +2256,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -1925,7 +2267,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -1943,7 +2286,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "3.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "3.", \
                     color=self.get_text_color())
                 lbl = CustomLabel3()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -1955,7 +2299,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -1965,7 +2310,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -1983,7 +2329,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "4.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "4.", \
                     color=self.get_text_color())
                 lbl = CustomLabel4()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -1995,7 +2342,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2005,7 +2353,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2023,7 +2372,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "5.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "5.", \
                     color=self.get_text_color())
                 lbl = CustomLabel5()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2035,7 +2385,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2045,7 +2396,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2063,7 +2415,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "6.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "6.", \
                     color=self.get_text_color())
                 lbl = CustomLabel6()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2075,7 +2428,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2085,7 +2439,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2103,7 +2458,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "7.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "7.", \
                     color=self.get_text_color())
                 lbl = CustomLabel7()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2115,7 +2471,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2125,7 +2482,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2143,7 +2501,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "8.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "8.", \
                     color=self.get_text_color())
                 lbl = CustomLabel8()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2155,7 +2514,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2165,7 +2525,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2183,7 +2544,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "9.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "9.", \
                     color=self.get_text_color())
                 lbl = CustomLabel9()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2195,7 +2557,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2205,7 +2568,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2223,7 +2587,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "10.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "10.", \
                     color=self.get_text_color())
                 lbl = CustomLabel10()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2235,7 +2600,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2245,7 +2611,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2263,7 +2630,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "11.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "11.", \
                     color=self.get_text_color())
                 lbl = CustomLabel11()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2275,7 +2643,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2285,7 +2654,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2303,7 +2673,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "12.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "12.", \
                     color=self.get_text_color())
                 lbl = CustomLabel12()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2315,7 +2686,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2325,7 +2697,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2343,7 +2716,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "13.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "13.", \
                     color=self.get_text_color())
                 lbl = CustomLabel13()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2355,7 +2729,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2365,7 +2740,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2383,7 +2759,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "14.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "14.", \
                     color=self.get_text_color())
                 lbl = CustomLabel14()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2395,7 +2772,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2405,7 +2783,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2423,7 +2802,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "15.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "15.", \
                     color=self.get_text_color())
                 lbl = CustomLabel15()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2435,7 +2815,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2445,7 +2826,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2463,7 +2845,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "16.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "16.", \
                     color=self.get_text_color())
                 lbl = CustomLabel16()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2475,7 +2858,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2485,7 +2869,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2503,7 +2888,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "17.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "17.", \
                     color=self.get_text_color())
                 lbl = CustomLabel17()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2515,7 +2901,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2525,7 +2912,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2543,7 +2931,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "18.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "18.", \
                     color=self.get_text_color())
                 lbl = CustomLabel18()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2555,7 +2944,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2565,7 +2955,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2583,7 +2974,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "19.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "19.", \
                     color=self.get_text_color())
                 lbl = CustomLabel19()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2595,7 +2987,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2605,7 +2998,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2623,7 +3017,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "20.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "20.", \
                     color=self.get_text_color())
                 lbl = CustomLabel20()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2635,7 +3030,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2645,7 +3041,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2663,7 +3060,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "21.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "21.", \
                     color=self.get_text_color())
                 lbl = CustomLabel21()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2675,7 +3073,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2685,7 +3084,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2703,7 +3103,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "22.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "22.", \
                     color=self.get_text_color())
                 lbl = CustomLabel22()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2715,7 +3116,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2725,7 +3127,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2743,7 +3146,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "23.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "23.", \
                     color=self.get_text_color())
                 lbl = CustomLabel23()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2755,7 +3159,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2765,7 +3170,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2783,7 +3189,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "24.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "24.", \
                     color=self.get_text_color())
                 lbl = CustomLabel24()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2795,7 +3202,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2805,7 +3213,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2823,7 +3232,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "25.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "25.", \
                     color=self.get_text_color())
                 lbl = CustomLabel25()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2835,7 +3245,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2845,7 +3256,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2863,7 +3275,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "26.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "26.", \
                     color=self.get_text_color())
                 lbl = CustomLabel26()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2875,7 +3288,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2885,7 +3299,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2903,7 +3318,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "27.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "27.", \
                     color=self.get_text_color())
                 lbl = CustomLabel27()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2915,7 +3331,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2925,7 +3342,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2943,7 +3361,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "28.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "28.", \
                     color=self.get_text_color())
                 lbl = CustomLabel28()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2955,7 +3374,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2965,7 +3385,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -2983,7 +3404,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "29.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "29.", \
                     color=self.get_text_color())
                 lbl = CustomLabel29()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -2995,7 +3417,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -3005,7 +3428,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -3023,7 +3447,8 @@ class ResultsScreen(Screen):
                 btn.bind(on_release=partial(self.result_button_pressed, word))
                 btn.text = reshaped_label
                 
-                lbl2 = Label(size_hint_x=None, width=70, text= "30.", \
+                lbl2 = Label(size_hint_x=None, width=self.get_s_button_width(), \
+                    text= "30.", \
                     color=self.get_text_color())
                 lbl = CustomLabel30()
                 filtered_lbl = filter_main_diacritics(matched_string)
@@ -3035,7 +3460,8 @@ class ResultsScreen(Screen):
                 
                 if entry.part_of_speech == "v":
                     btn_v = Button(text="Verb Chart", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -3045,7 +3471,8 @@ class ResultsScreen(Screen):
                     layout1.add_widget(btn_v)
                 else:
                     btn_e = Button(text="Full Entry", size_hint_x=None,
-                             width=(70), font_size=12, \
+                             width=self.get_s_button_width(), \
+                             font_size=self.get_s_button_font_size(), \
                              valign ='middle', background_normal=self.get_button(), \
                              background_down=self.get_button_down(), \
                              color=self.get_button_text_color())
@@ -3066,8 +3493,8 @@ class ResultsScreen(Screen):
         # because I cannot achieve the same behavior in Python.
         
         layout1 = GridLayout(cols=1, spacing=0, size_hint=(1, None), \
-            row_force_default=False, row_default_height=25)#, cols_minimum={0, 60})
-
+            row_force_default=False, row_default_height=self.get_button_height())
+            #, cols_minimum={0, 60})
         layout1.bind(minimum_height=layout1.setter('height'),
                      minimum_width=layout1.setter('width'))
 
@@ -3411,6 +3838,15 @@ class EntryScreen(Screen):
     def get_bar_color(self):
         return bar_color
 
+    def get_button_font_size(self):
+        return button_font_size
+
+    def get_button_height(self):
+        return button_height
+
+    def get_button_width(self):
+        return button_width
+
     def replace_labels(self, entry):
         self.label_for_pos.text = " " + "Part of Speech: "+ entry.part_of_speech
         self.label_for_english.text = entry.english
@@ -3470,6 +3906,18 @@ class VerbChartScreen(Screen):
     def get_bar_color(self):
         return bar_color
 
+    def get_button_font_size(self):
+        return button_font_size
+
+    def get_button_height(self):
+        return button_height
+
+    def get_button_width(self):
+        return button_width
+
+    def get_chart_font_size(self):
+        return chart_font_size
+
     def refresh_verb_chart(self, entry, *args):
         verb = entry.arabic
         reshaped_verb = get_display(arabic_reshaper.reshape(verb))
@@ -3495,7 +3943,8 @@ class VerbChartScreen(Screen):
             reshaped_title = get_display(arabic_reshaper.reshape(title))
             #print reshaped_title
             lbl1 = Button(text=reshaped_title, font_name="DejaVuSans.ttf", \
-                font_size=14, background_normal='plain_white.png', \
+                font_size=self.get_button_font_size(), \
+                background_normal='plain_white.png', \
                 background_down='plain_white.png', \
                 background_color=verb_chart_tinting, color=self.get_text_color())
             self.main_chart.add_widget(lbl1)
@@ -3513,7 +3962,8 @@ class VerbChartScreen(Screen):
             reshaped_info = get_display(arabic_reshaper.reshape(info))
             #print reshaped_info
             lbl2 = Label(text=reshaped_info, font_name="KacstOne.ttf", \
-                font_size=22, color=self.get_text_color())
+                font_size=self.get_chart_font_size(), \
+                color=self.get_text_color())
             self.extras_box.add_widget(lbl2)
 
         self.chart_scroll.scroll_y = 1
@@ -3524,7 +3974,8 @@ class VerbChartScreen(Screen):
             reshaped_conj = get_display(arabic_reshaper.reshape(conj))
             #print reshaped_conj
             lbl1 = Button(text=reshaped_conj, font_name="KacstOne.ttf", \
-                font_size=22, background_normal='plain_white.png', \
+                font_size=self.get_chart_font_size(), \
+                background_normal='plain_white.png', \
                 background_down='plain_white.png', \
                 background_color=verb_chart_tinting, color=self.get_text_color())
             self.main_chart.add_widget(lbl1)
@@ -3534,7 +3985,8 @@ class VerbChartScreen(Screen):
             reshaped_conj = get_display(arabic_reshaper.reshape(conj))
             #print reshaped_conj
             lbl1 = Button(text=reshaped_conj, font_name="KacstOne.ttf", \
-                font_size=22, background_normal=self.get_bg_color(), \
+                font_size=self.get_chart_font_size(), \
+                background_normal=self.get_bg_color(), \
                 background_down=self.get_bg_color(), color=self.get_text_color())
             self.main_chart.add_widget(lbl1)
 
