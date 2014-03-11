@@ -24,10 +24,12 @@ from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
 from kivy.core.window import Window
 from kivy.base import EventLoop
+#from kivy.uix.switch import switch
 
 from algorithm import get_display
 import arabic_reshaper
 from functools import partial
+import get_pronunciation
 
 #import sys
 #sys.path.append('../')
@@ -579,20 +581,41 @@ Builder.load_string("""
             size: self.parent.width, self.texture_size[1]
 
 <NotFoundLayout>:
-    the_lbl: theLblID
+    the_lbl_1: theLbl_1ID
+    the_lbl_2: theLbl_2ID
+    the_lbl_3: theLbl_3ID
     cols: 1
     spacing: 0
     size_hint_y: None
-    height: theLblID.texture_size[1]
-
+    height: theLbl_1ID.texture_size[1] + theLbl_2ID.texture_size[1] + theLbl_3ID.texture_size[1]
+    orientation: 'vertical'
     Label:
-        id: theLblID
+        id: theLbl_1ID
         size_hint: (1, None)
         size: self.parent.width, self.texture_size[1]
-        text: 'whatever whatever whatever whatever whatever'
+        text: 'The word...'
         text_size: self.width, None
         halign: 'center'
         color: root.get_text_color()
+        font_name: "DejaVuSans.ttf"
+    Label:
+        id: theLbl_2ID
+        size_hint: (1, None)
+        size: self.parent.width, self.texture_size[1]
+        text: 'whatever whatever whatever whatever whatever'
+        #text_size: self.width, None
+        halign: 'center'
+        color: root.get_text_color()
+        font_name: "DejaVuSans.ttf"
+    Label:
+        id: theLbl_3ID
+        size_hint: (1, None)
+        size: self.parent.width, self.texture_size[1]
+        text: "...is not found.  Please see the suggestions under 'Usage Notes' on the home page."
+        text_size: self.width, None
+        halign: 'center'
+        color: root.get_text_color()
+        font_name: "DejaVuSans.ttf"
 
 <CustomDropDown>:
     id: cdd
@@ -775,7 +798,9 @@ Builder.load_string("""
     top_layout: topLayoutID
     trans_btn_l: transBtnLID
     bottom_lay: bottomLayID
-    input_label: inputLabelID
+    #input_label: inputLabelID
+    my_switch: my_switch_ID
+    phon_lbl_lay: phon_lbl_lay_ID
     canvas:
         Color:
             rgb: root.get_background()
@@ -802,34 +827,56 @@ Builder.load_string("""
             on_text_validate: root.translateButtonPressed()
             hint_text: 'English or Arabic'
 
-    AnchorLayout:
+    BoxLayout:
         id: transBtnLID
         size_hint: 1, None
-        height: '60dp'
+        height: root.get_button_height()
         pos: 0, root.height-(self.height+root.top_layout.height)
-        anchor_x: 'center'
-        anchor_y: 'top'
-        Button:
-            id: translateButtonKV
-            text: 'Translate'
-            size_hint: None, None
-            height: root.get_button_height()
-            width: root.get_button_width()
-            font_size: root.get_button_font_size()
-            on_release: root.translateButtonPressed()
-            background_normal: root.get_accent_button()
-            background_down: root.get_accent_button_down()
-            color: root.get_button_text_color()
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'top'
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'top'
+            Button:
+                id: translateButtonKV
+                text: 'Translate'
+                size_hint: None, None
+                height: root.get_button_height()
+                width: root.get_button_width()
+                font_size: root.get_button_font_size()
+                on_release: root.translateButtonPressed()
+                background_normal: root.get_accent_button()
+                background_down: root.get_accent_button_down()
+                color: root.get_button_text_color()
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'bottom'
+    BoxLayout:
+        id: phon_lbl_lay_ID
+        size_hint: 1, None
+        height: '25dp'
+        pos: 0, root.height-(self.height+root.top_layout.height+root.trans_btn_l.height)
+        Label:
+            text: "Phonetic Translation: "
+            font_size: '12sp'
+            halign: 'right'
+            text_size: self.width-10, None
+            size_hint: (1, None)
+            height: self.texture_size[1]+8
+            font_name: "DejaVuSans.ttf"
+            color: root.get_text_color()
 	BoxLayout:
         id: anchorLayout2
         orientation: 'horizontal'
         size_hint: 1, None
         height: root.get_button_height()
-        pos: 0, root.height-(self.height+root.top_layout.height+root.trans_btn_l.height)
+        pos: 0, root.height-(self.height+root.top_layout.height+root.trans_btn_l.height\
+            +phon_lbl_lay_ID.height)
 		AnchorLayout:
             anchor_x: 'left'
             anchor_y: 'bottom'
-            size_hint: None, 1
+            size_hint: 1, 1
             width: root.get_s_button_width()
             Label:
                 id: resultsLabelID
@@ -840,25 +887,25 @@ Builder.load_string("""
                 font_size: root.get_button_font_size()
                 halign: 'right'
                 color: root.get_text_color()
+        
         AnchorLayout:
-            anchor_x: 'left'
+            size_hint: 1, 1
+            width: root.get_s_button_width()
+            anchor_x: 'right'
             anchor_y: 'bottom'
-            Label:
-                id: inputLabelID
-                text: ""
+            Switch:
+                id: my_switch_ID
                 size_hint: None, None
-                height: root.get_button_height()
-                width: root.get_button_width()
-                font_size: root.get_button_font_size()
-                halign: 'right'
-                color: root.get_text_color()
+                height: '35dp'
+                width: '90dp'
+
     ScrollView:
         id: scrollviewID
     	orientation: 'vertical'
     	pos: 0, bottomLayID.height
     	size_hint: 1, None
         height: root.height-(root.bottom_lay.height+root.anchor_layout_2.height+\
-            root.trans_btn_l.height+root.top_layout.height)
+            root.trans_btn_l.height+root.top_layout.height+phon_lbl_lay_ID.height)
         bar_width: '6dp'
         bar_color: root.get_bar_color()
         
@@ -1205,8 +1252,6 @@ Builder.load_string("""
 
 """)
 
-searches = []
-
 BG_color = (.9412, .9412, .9412)
 
 button_image = 'buttonwithborder3.png'
@@ -1253,7 +1298,11 @@ s_button_height = '30dp'
 s_button_font_size = '15sp'
 chart_font_size = '26sp'
 
-
+searches = []
+current_response_code = []
+current_results_list_tuples = []
+results_lbl_1 = " Results:"
+results_lbl_2 = "      Did you mean:"
 
 def run_search(input_to_translate, *args):
     search_result = search_entries(input_to_translate)
@@ -1262,44 +1311,59 @@ def run_search(input_to_translate, *args):
     results_separator(search_result)
 
 def results_separator(search_result):
-    results_list_tuples = []
-    results_lbl_1 = " Results:"
-    results_lbl_2 = "      Did you mean:"
-    #found = False
+    del current_results_list_tuples[:]
     for tupleOfEntryAndBool in search_result:
         the_entry = tupleOfEntryAndBool[0]
         responseCode = tupleOfEntryAndBool[1]
         #print "entry:", entry
         #print "response code:", responseCode
         if responseCode == 0:
-            results_list_tuples.append((the_entry.arabic, the_entry.retrieve_just_arabic(), \
+            current_results_list_tuples.append((the_entry.arabic, \
+                the_entry.retrieve_just_arabic(), \
                 the_entry, the_entry.english))
+            del current_response_code[:]
+            current_response_code.append('0')
         elif responseCode == 1:
-            results_list_tuples.append((the_entry.english, the_entry.retrieve_english(), \
+            current_results_list_tuples.append((the_entry.english, \
+                the_entry.retrieve_english(), \
                 the_entry))
+            del current_response_code[:]
+            current_response_code.append('1')
         elif responseCode == 2:
             real_entry = the_entry[0]
             word = the_entry[1]
-            results_list_tuples.append((real_entry.english, real_entry.retrieve_english(), \
+            current_results_list_tuples.append((real_entry.english, \
+                real_entry.retrieve_english(), \
                 real_entry, real_entry.arabic))
+            del current_response_code[:]
+            current_response_code.append('2')
         elif responseCode == 3:
             real_entry = the_entry[0]
             word = the_entry[1]
             part_of_sp = real_entry.part_of_speech
             button_label = " " + part_of_sp + ": " + word
-            results_list_tuples.append((word, button_label, real_entry))
+            current_results_list_tuples.append((word, button_label, real_entry))
+            del current_response_code[:]
+            current_response_code.append('3')
+        else:
+            del current_response_code[:]
+            current_response_code.append('4')
             
     if search_result[0][1] == 0:
-        sm.get_screen("results_screen").getArabicResults(results_list_tuples, results_lbl_1)
+        sm.get_screen("results_screen").getArabicResults(current_results_list_tuples, \
+            results_lbl_1)
         sm.current = 'results_screen'
     elif search_result[0][1] == 1:
-        sm.get_screen("results_screen").getCloseEnglishResults(results_list_tuples, results_lbl_2)
+        sm.get_screen("results_screen").getCloseEnglishResults(current_results_list_tuples, \
+            results_lbl_2)
         sm.current = 'results_screen'
     elif search_result[0][1] == 2:
-        sm.get_screen("results_screen").getEnglishResults(results_list_tuples, results_lbl_1)
+        sm.get_screen("results_screen").getEnglishResults(current_results_list_tuples, \
+            results_lbl_1)
         sm.current = 'results_screen'
     elif search_result[0][1] == 3:
-        sm.get_screen("results_screen").getCloseArabicResults(results_list_tuples, results_lbl_2)
+        sm.get_screen("results_screen").getCloseArabicResults(current_results_list_tuples, \
+            results_lbl_2)
         sm.current = 'results_screen'
     else:
         sm.get_screen("results_screen").run_not_found()
@@ -1767,10 +1831,12 @@ class MyScrollView(ScrollView):
     pass
 
 class NotFoundLayout(GridLayout):
-    the_lbl = ObjectProperty(None)
+    the_lbl_1 = ObjectProperty(None)
+    the_lbl_2 = ObjectProperty(None)
+    the_lbl_3 = ObjectProperty(None)
 
     def change_lbl_text(self, new_text):
-        self.the_lbl.text = new_text
+        self.the_lbl_2.text = new_text
 
     def get_text_color(self):
         return rs_text_color
@@ -2002,6 +2068,13 @@ class ResultsScreen(Screen):
     more_btn_lay = ObjectProperty(None)
     not_found_lay = NotFoundLayout()
     input_label = ObjectProperty(None)
+    my_switch = ObjectProperty(None)
+
+    def __init__(self, **kwargs):
+        super(ResultsScreen, self).__init__(**kwargs)
+
+        switch = self.my_switch
+        switch.bind(active=self.switch_callback)        
 
     def get_background(self):
         return BG_color
@@ -2051,13 +2124,23 @@ class ResultsScreen(Screen):
     def get_TI_font_size(self):
         return TI_font_size
 
+    def switch_callback(self, value, *args):
+        #print('the switch', self, 'is', value.active)
+        #print current_response_code
+        if current_response_code[0] == '0':
+            self.getArabicResults(current_results_list_tuples, results_lbl_1)
+        else:
+            pass
+
     def run_not_found(self):
         new_results_label = ""
         self.change_results_label(new_results_label)
 
-        new_text = "Word not found." + "\n" + \
-        "Please see the suggestions under 'Usage Notes' on the home page."
-        self.not_found_lay.change_lbl_text(new_text)
+        #new_text = "The word... \n '%s' \n ... is not found." % searches[-1] + "\n" + \
+        #"Please see the suggestions under 'Usage Notes' on the home page."
+        new_text = "'%s'" % searches[-1]
+        resh_new_text = get_display(arabic_reshaper.reshape(new_text))
+        self.not_found_lay.change_lbl_text(resh_new_text)
         scrollview1 = self.scroll_view
         scrollview1.clear_widgets()
         scrollview1.add_widget(self.not_found_lay)
@@ -2080,10 +2163,23 @@ class ResultsScreen(Screen):
             color=self.get_button_text_color())
         btn.bind(on_release=self.moreButton_pressed)
         self.more_btn_lay.add_widget(btn)
+        my_swi = self.my_switch.active
+        results_list_2 = []
+        if my_swi == True:
+            for result in results_list:
+                word = result[0]
+                btn_lbl = result[1]
+                entry = result[2]
+                matched_string = result[3]
+
+                btn_lbl = get_pronunciation.get_eng_phonetics(btn_lbl)
+                results_list_2.append((word, btn_lbl, entry, matched_string))
+        else:
+            results_list_2 = results_list
         alignment = 'left'
         self.change_results_label(new_results_label)
         self.scroll_view.scroll_y = 1
-        self.getResultsButtons(results_list, alignment)
+        self.getResultsButtons(results_list_2, alignment)
 
     def getCloseEnglishResults(self, results_list, new_results_label):
         alignment = 'left'
