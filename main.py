@@ -2069,6 +2069,7 @@ class ResultsScreen(Screen):
     not_found_lay = NotFoundLayout()
     input_label = ObjectProperty(None)
     my_switch = ObjectProperty(None)
+    switch_callback_just_happened = False
 
     def __init__(self, **kwargs):
         super(ResultsScreen, self).__init__(**kwargs)
@@ -2127,6 +2128,7 @@ class ResultsScreen(Screen):
     def switch_callback(self, value, *args):
         #print('the switch', self, 'is', value.active)
         #print current_response_code
+        self.switch_callback_just_happened = True
         if current_response_code[0] == '0':
             self.getArabicResults(current_results_list_tuples, results_lbl_1)
         else:
@@ -2163,6 +2165,14 @@ class ResultsScreen(Screen):
             color=self.get_button_text_color())
         btn.bind(on_release=self.moreButton_pressed)
         self.more_btn_lay.add_widget(btn)
+
+        scroll_y_value = self.scroll_view.scroll_y
+        if self.switch_callback_just_happened == True:
+            self.scroll_view.scroll_y = scroll_y_value
+            self.switch_callback_just_happened = False
+        else:
+            self.scroll_view.scroll_y = 1
+
         my_swi = self.my_switch.active
         results_list_2 = []
         if my_swi == True:
@@ -2178,7 +2188,6 @@ class ResultsScreen(Screen):
             results_list_2 = results_list
         alignment = 'left'
         self.change_results_label(new_results_label)
-        self.scroll_view.scroll_y = 1
         self.getResultsButtons(results_list_2, alignment)
 
     def getCloseEnglishResults(self, results_list, new_results_label):

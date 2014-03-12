@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import re
+
 def get_fatha_transl(arabic):
 	#re.sub(pattern, repl, string, count=0, flags=0)
 	# This match includes waw, hah, kaaf, daal, lam, sheen, seen, dhal
@@ -18,6 +20,36 @@ def get_eng_phonetics(arabic):
 	ara_letters = list(arabic)
 	x = len(ara_letters)
 	transliteration = [None] * x
+	arabic = arabic.replace(u'\u064e\u0648\u0652', "ow")
+	arabic = arabic.replace(u'\u0629\u064b', "tuhn")
+	arabic = arabic.replace(u'\u0627\u064b', "uhn")
+	arabic = arabic.replace(u'\u0627\u0648\u0652', "ou")
+	arabic = arabic.replace(u'\u064f\u0648\u0652', "oo")
+	arabic = arabic.replace(u'\u0650\u064a\u0652', "ee")
+	arabic = arabic.replace(u'\u064e\u064a\u0652', "ay")
+	arabic = arabic.replace(u'\u064e\u064a', "ay")
+	arabic = arabic.replace(u'\u0627\u064a\u0652', "ay")
+	arabic = arabic.replace(u'\u0627\u064a', "ay")
+
+	arabic = re.sub(ur'(^)\u0627\u0644', "'il-", \
+		arabic, count=0, flags=0)
+	arabic = re.sub(ur'(\s)\u0627\u0644', " 'il-", arabic)
+	arabic = re.sub(ur'^[\u0627\u0625]\u0650?', "'i", arabic)
+	arabic = re.sub(ur'\s[\u0627\u0625]\u0650?', " 'i", arabic)
+	arabic = re.sub(ur'^[\u0623]\u064e?', "'a", arabic, re.U)
+	arabic = re.sub(ur'\s[\u0623]\u064e?', " 'a", arabic, re.U)
+	arabic = re.sub(ur'\b\u0641\u064a\b', "fee", arabic)
+	# (?=...) This is a lookahead assertion.
+	# (?!...) This is a negative lookahead assertion.
+	# (?<=...) This is a positive lookbehind assertion.
+	# (?<!...) This is a negative lookbehind assertion.
+
+	#arabic = re.sub(ur'\u064f\u0648(?=...)', " 'i", arabic)
+	arabic = re.sub(ur'\u064f\u0648(?![\u064e\u064f\u0650\u0651])', "oo", arabic)
+	arabic = re.sub(ur'\u0650\u064a(?![\u064e\u064f\u0650\u0651])', "ee", arabic)
+	#arabic = re.sub(ur'\u064e\u064a(?![\u064e\u064f\u0650\u0651])', "ay", arabic)
+	#arabic = re.sub(ur'\u0627\u064a(?![\u064e\u064f\u0650\u0651])', "ay", arabic)
+
 	fatha = u'\u064e'
 	#if fatha in arabic:
 		#get_fatha_transl(arabic)
@@ -27,29 +59,91 @@ def get_eng_phonetics(arabic):
 	kasra = u'\u0650'
 	arabic = arabic.replace(kasra, "i")
 
+	# m = re.match(r"(..)+", "a1b2c3")  # Matches 3 times.
+	# m.group(1)
 	shadda = u'\u0651'
-	arabic = arabic.replace(shadda, "")
+	#arabic = re.sub(ur'(?<=(?P<double>\w))\u0651', '\g<double>', arabic)
+	m1 = re.search(ur"\w(?=\u0651)", arabic, re.U)
+	if m1 != None:
+		#if m1.group(0):
+		try:
+			foo = 3#print "0: " + m1.group(0)
+			x = m1.group(0) + shadda
+			foo = 3#print x
+			arabic = re.sub(x, m1.group(0)*2, arabic, re.U)
+			foo = 3#print arabic
+		except IndexError:
+			pass
+		#if m1.group(1):
+		try:
+			foo = 3#print "1: " + m1.group(1)
+		except IndexError:
+			pass
+		#if m1.group(2):
+		try:
+			foo = 3#print "2: " + m1.group(2)
+		except IndexError:
+			pass
+	
+	m2 = re.search(ur"\w(?=\u0651)", arabic, re.U)
+	if m2 != None:
+		#if m2.group(0):
+		try:
+			foo = 3#print "0: " + m2.group(0)
+			x = m2.group(0) + shadda
+			foo = 3#print x
+			arabic = re.sub(x, m2.group(0)*2, arabic, re.U)
+			foo = 3#print arabic
+		except IndexError:
+			pass
+	m3 = re.search(ur"\w(?=\u0651)", arabic, re.U)
+	if m3 != None:
+		#if m3.group(0):
+		try:
+			foo = 3#print "0: " + m3.group(0)
+			x = m3.group(0) + shadda
+			foo = 3#print x
+			arabic = re.sub(x, m3.group(0)*2, arabic, re.U)
+			foo = 3#print arabic
+		except IndexError:
+			pass
+	m4 = re.search(ur"\w(?=\u0651)", arabic, re.U)
+	if m4 != None:
+		#if m4.group(0):
+		try:
+			foo = 3#print "0: " + m4.group(0)
+			x = m4.group(0) + shadda
+			foo = 3#print x
+			arabic = re.sub(x, m4.group(0)*2, arabic, re.U)
+			foo = 3#print arabic
+		except IndexError:
+			pass
+		
+
+	#arabic = arabic.replace(shadda, "")
+	#arabic = re.sub(ur'\u0650\u064a(?![\u064e\u064f\u0650\u0651])', "ee", arabic)
+
 	sukun = u'\u0652'
-	arabic = arabic.replace(sukun, "-")
+	arabic = arabic.replace(sukun, "")
 	maddah = u'\u0653'
 	hamza_above = u'\u0654'
 	hamza_below = u'\u0655'
 
 	alif_maddah = u'\u0622'
-	arabic = arabic.replace(alif_maddah, "aa")
+	arabic = arabic.replace(alif_maddah, "'aa")
 	alif_hamza_above = u'\u0623'
 	arabic = arabic.replace(alif_hamza_above, "'")
 	alif_hamza_below = u'\u0625'
 	arabic = arabic.replace(alif_hamza_below, "'")
 	alif = u'\u0627'
-	arabic = arabic.replace(alif, "A")
+	arabic = arabic.replace(alif, "aa")
 
 	hamza_on_alif_maksura = u'\u0626'
 	arabic = arabic.replace(hamza_on_alif_maksura, "'")
 	yah = u'\u064a'
 	arabic = arabic.replace(yah, "y")
 	waw = u'\u0648'
-	arabic = arabic.replace(waw, "oo")
+	arabic = arabic.replace(waw, "w")
 	meem = u'\u0645'
 	arabic = arabic.replace(meem, "m")
 	bah = u'\u0628'
