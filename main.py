@@ -1299,12 +1299,15 @@ s_button_font_size = '15sp'
 chart_font_size = '26sp'
 
 searches = []
+current_search = ['Kiya is themazing!']
 current_response_code = []
 current_results_list_tuples = []
-results_lbl_1 = " Results:"
+results_lbl_1 = " Results:" # "'%s'" % current_search[0]
 results_lbl_2 = "      Did you mean:"
 
 def run_search(input_to_translate, *args):
+    del current_search[:]
+    current_search.append(input_to_translate)
     search_result = search_entries(input_to_translate)
     #sm.get_screen("results_screen").update_TI(input_to_translate)
     #print "search_result:", search_result
@@ -2058,7 +2061,8 @@ class HomeScreen(Screen):
         if len(input_to_translate) >= 1:
             self.translateInput.text = ''
             self.translateInput.focus = False
-            searches.append(input_to_translate)
+            if input_to_translate != current_search[0]:
+                searches.append(input_to_translate)
             run_search(input_to_translate)
 
 class ResultsScreen(Screen):
@@ -2140,7 +2144,7 @@ class ResultsScreen(Screen):
 
         #new_text = "The word... \n '%s' \n ... is not found." % searches[-1] + "\n" + \
         #"Please see the suggestions under 'Usage Notes' on the home page."
-        new_text = "'%s'" % searches[-1]
+        new_text = "'%s'" % current_search[0]
         resh_new_text = get_display(arabic_reshaper.reshape(new_text))
         self.not_found_lay.change_lbl_text(resh_new_text)
         scrollview1 = self.scroll_view
@@ -2231,7 +2235,9 @@ class ResultsScreen(Screen):
         else:
             input_to_translate = self.text_input_2.text
         if len(input_to_translate) >= 1:
-            searches.append(input_to_translate)
+            self.text_input_2.text = ''
+            if input_to_translate != current_search[0]:
+                searches.append(input_to_translate)
             self.text_input_2.focus = False
             return run_search(input_to_translate)
     
@@ -2244,14 +2250,15 @@ class ResultsScreen(Screen):
         sm.current = 'verb_chart'
 
     def result_button_pressed(self, word, *args):
-        searches.append(word)
+        if word != current_search[0]:
+            searches.append(word)
         run_search(word)
 
     def goBack(self):
         if len(searches) == 0:
             sm.current = 'home'
         else:
-            if searches[-1] == self.text_input_2.text:
+            if searches[-1] == current_search[0]:
                 del searches[-1]
 
             if len(searches) == 0:
@@ -2265,8 +2272,8 @@ class ResultsScreen(Screen):
 
     def moreButton_pressed(self, *args):
         self.more_btn_lay.clear_widgets()
-        search_term = self.text_input_2.text
-        searches.append(search_term)
+        search_term = current_search[0]
+        #searches.append(search_term)
         #print search_term
         results = all_regex_searches(search_term)
         #print results

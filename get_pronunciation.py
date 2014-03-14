@@ -2,24 +2,10 @@
 
 import re
 
-def get_fatha_transl(arabic):
-	#re.sub(pattern, repl, string, count=0, flags=0)
-	# This match includes waw, hah, kaaf, daal, lam, sheen, seen, dhal
-	#for m in re.finditer((?<=[u'\u0648\u0647\u0643\u062f\u0644\u0634\u0633\u0630'])u'\u064e'(?=[u'\u0648\u0647\u0643\u062f\u0644\u0634\u0633\u0630']), \
-		#arabic):
-		#print '%02d-%02d: %s' % (m.start(), m.end(), m.group(0))
-
-
-	'''>>> text = "He was carefully disguised but captured quickly by police."
-	>>> for m in re.finditer(r"\w+ly", text):
-	...     print '%02d-%02d: %s' % (m.start(), m.end(), m.group(0))
-	07-16: carefully
-	40-47: quickly'''
-
 def get_eng_phonetics(arabic):
-	ara_letters = list(arabic)
-	x = len(ara_letters)
-	transliteration = [None] * x
+	#ara_letters = list(arabic)
+	#x = len(ara_letters)
+	#transliteration = [None] * x
 	arabic = arabic.replace(u'\u064e\u0648\u0652', "ow")
 	arabic = arabic.replace(u'\u0629\u064b', "tuhn")
 	arabic = arabic.replace(u'\u0627\u064b', "uhn")
@@ -36,6 +22,8 @@ def get_eng_phonetics(arabic):
 	arabic = re.sub(ur'(\s)\u0627\u0644', " 'il-", arabic)
 	arabic = re.sub(ur'^[\u0627\u0625]\u0650?', "'i", arabic)
 	arabic = re.sub(ur'\s[\u0627\u0625]\u0650?', " 'i", arabic)
+	arabic = re.sub(ur'^[\u0623]\u064f', "'oo", arabic, re.U)
+	arabic = re.sub(ur'\s[\u0623]\u064f', " 'oo", arabic, re.U)
 	arabic = re.sub(ur'^[\u0623]\u064e?', "'a", arabic, re.U)
 	arabic = re.sub(ur'\s[\u0623]\u064e?', " 'a", arabic, re.U)
 	arabic = re.sub(ur'\b\u0641\u064a\b', "fee", arabic)
@@ -119,7 +107,6 @@ def get_eng_phonetics(arabic):
 		except IndexError:
 			pass
 		
-
 	#arabic = arabic.replace(shadda, "")
 	#arabic = re.sub(ur'\u0650\u064a(?![\u064e\u064f\u0650\u0651])', "ee", arabic)
 
@@ -210,6 +197,6 @@ def get_eng_phonetics(arabic):
 	Daa = u'\u0636'
 	arabic = arabic.replace(Daa, "D")
 
-	ara_letters.append('foo')
-	phonetics = ''.join(ara_letters)
+	#ara_letters.append('foo')
+	#phonetics = ''.join(ara_letters)
 	return arabic

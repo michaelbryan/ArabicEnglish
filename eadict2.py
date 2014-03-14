@@ -23,12 +23,18 @@ def reverse_search_entries(search_term):
 
 def arabic_regex_search_1(ial):
     #print "===== arabic_regex_search_1"
-    filler = "(.)?"
+    filler = ur'(\u0651)?(.?)'
     #print filler
     arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
-    #del arabic_regex_list[-1]
-    begin_word = "^"
-    end_word = "$"
+    del arabic_regex_list[-1]
+    poss_ara_endings = ur'[\u064b\u0647(\u064f\u0647)]?'
+    #arabic_regex_list.append(ur'[ًّه]?')
+        ## Above is a fathatan, or hah that might end a word.
+    def_article = ur'\u0627\u0644'
+    #def_article = u'ال'
+        ## Above is an alif and lam, which may begin a word.
+    begin_word = def_article
+    end_word = poss_ara_endings
     arabic_regex_list.insert(0, begin_word)
     arabic_regex_list.append(end_word)
     #print arabic_regex_list
@@ -51,7 +57,7 @@ def arabic_regex_search_1(ial):
                             arabic_matched_words.append(entry.arabic)
                             arabic_matched_entries_1.append((entry, arabic_word))
     return arabic_matched_entries_1
-
+'''
 def arabic_regex_search_2(ial):
     #print "===== arabic_regex_search_2"
     filler = "(.){0,2}"
@@ -120,7 +126,7 @@ def arabic_regex_search_3(ial):
 
 def arabic_regex_search_4(ial):
     #print "===== arabic_regex_search_4"
-    filler = "(.{0,3})"
+    filler = "(.{0,2})"
     #print filler
     arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
     del arabic_regex_list[-1]
@@ -180,14 +186,14 @@ def arabic_regex_search_5(ial):
                             arabic_matched_words.append(entry.arabic)
                             arabic_matched_entries_5.append((entry, arabic_word))
     return arabic_matched_entries_5
-
+    '''
 def incl_arab_matches(search_term):
     ial = arabic_regex_term(search_term)
-    filler = ur'(\u0651)?(.{0,1})'
+    filler = ur'(\u0651)?[\u064e\u064f\u0650\u0652]?'
     #print filler  (\u0651)?
     arabic_regex_list = list(itertools.chain.from_iterable(zip(ial, [filler] * len(ial))))
     del arabic_regex_list[-1]
-    arabic_regex_list.append(ur'[\u064b\u0647]?')
+    arabic_regex_list.append(ur'[\u064b\u0647(\u064f\u0647)]?')
     #arabic_regex_list.append(ur'[ًّه]?')
         ## Above is a fathatan, or hah that might end a word.
     def_article = ur'\u0627\u0644'
@@ -262,24 +268,27 @@ def search_entries(search_term):
             ara_entries_found.append((match, 2))
         unique_entries = remove_dup(ara_entries_found)
         return unique_entries
-
+    
     regex_results = all_regex_searches(search_term)
     if len(regex_results) > 0:
         return regex_results
+        
 
     else:
         #print "The word \"%s\" was not found." % search_term
+        
         return [(None, 4)]
 
 def all_regex_searches(search_term):
     search_term_2 = remove_punct(search_term)
+    
     matched_regex_entries_1 = regex_search_1(search_term_2)
     matched_regex_entries_2 = regex_search_2(search_term_2)
-    matched_regex_entries_3 = regex_search_3(search_term_2)
+    #matched_regex_entries_3 = regex_search_3(search_term_2)
     matched_regex_entries_4 = regex_search_4(search_term_2)
     #matched_regex_entries_5 = regex_search_5(search_term_2)
     all_matched_regex_entries = matched_regex_entries_1 + matched_regex_entries_2 + \
-    matched_regex_entries_3 + matched_regex_entries_4# + matched_regex_entries_5
+    matched_regex_entries_4 # + matched_regex_entries_5
     unique_matched_regex_entries = remove_dup(all_matched_regex_entries)
     if len(unique_matched_regex_entries) > 0:
         entries_found = []
@@ -287,16 +296,17 @@ def all_regex_searches(search_term):
             #print "Did you mean: %s" % entry.retrieve_english()
             entries_found.append((entry, 1))
         return entries_found
+        
 
     important_arabic_letters = arabic_regex_term(search_term_2)
     arabic_matched_entries_1 = arabic_regex_search_1(important_arabic_letters)
-    arabic_matched_entries_2 = arabic_regex_search_2(important_arabic_letters)
-    arabic_matched_entries_3 = arabic_regex_search_3(important_arabic_letters)
-    arabic_matched_entries_4 = arabic_regex_search_4(important_arabic_letters)
-    arabic_matched_entries_5 = arabic_regex_search_5(important_arabic_letters)
+    #arabic_matched_entries_2 = arabic_regex_search_2(important_arabic_letters)
+    #arabic_matched_entries_3 = arabic_regex_search_3(important_arabic_letters)
+    #arabic_matched_entries_4 = arabic_regex_search_4(important_arabic_letters)
+    #arabic_matched_entries_5 = arabic_regex_search_5(important_arabic_letters)
     #These are now all tuples!  The entry AND the matching arabic word from within that entry.
-    all_arabic_matched_entries = arabic_matched_entries_1 + arabic_matched_entries_2 + \
-    arabic_matched_entries_3 + arabic_matched_entries_4 + arabic_matched_entries_5
+    all_arabic_matched_entries = arabic_matched_entries_1 #+ arabic_matched_entries_2 + \
+    #arabic_matched_entries_3 + arabic_matched_entries_4 + arabic_matched_entries_5
     unique_arabic_matched_entries = remove_dup(all_arabic_matched_entries)
     if len(unique_arabic_matched_entries) > 0:
         entries_found = []
@@ -307,7 +317,7 @@ def all_regex_searches(search_term):
         return entries_found
 
     else:
-        return []
+        return [((None, None), 4)]
 
 def filter_main_diacritics(search_term):
     fatha = u'\u064e'
@@ -413,7 +423,7 @@ def get_regex_term(search_term):
     new_search_term = "".join(with_filler_list)
     #print new_search_term
     return new_search_term
-
+'''
 def regex_search_5(search_term):
     #print "regex_search_5:", search_term
     new_endings = replace_endings(search_term)
@@ -436,7 +446,7 @@ def regex_search_5(search_term):
                             matched_regex_entries_5.append(entry)
     ##print matched_regex_entries_5
     return matched_regex_entries_5
-
+    '''
 def regex_search_4(search_term):
     #print "regex_search_4:", search_term
     new_endings = replace_endings(search_term)
@@ -458,7 +468,7 @@ def regex_search_4(search_term):
                             matched_regex_entries_4.append(entry)
     #print matched_regex_entries_4
     return matched_regex_entries_4
-
+'''
 def regex_search_3(search_term):
     #print "regex_search_3:", search_term
     new_endings = replace_endings(search_term)
@@ -481,7 +491,7 @@ def regex_search_3(search_term):
                             matched_regex_entries_3.append(entry)
     #print matched_regex_entries_3
     return matched_regex_entries_3
-
+    '''
 def regex_search_2(search_term):
     #print "regex_search_2:", search_term
     new_endings = replace_endings(search_term)
@@ -528,7 +538,7 @@ def regex_search_1(search_term):
                             #print entry
     #print matched_regex_entries_1
     return matched_regex_entries_1
-
+    
 def contained_matches(search_term):
     new_search_term = replace_asterisk_in_english_string(search_term)
     new_search_term_2 = replace_endings(new_search_term)
@@ -550,9 +560,10 @@ def contained_matches(search_term):
                         additional_matches.append(entry)
                         #print entry
 
-    new_search_term_5 = r'\b' + new_search_term_3 + r'\b'
-    compiled_regex_2 = re.compile(new_search_term_5, re.I)
-    #print new_search_term_5
+    new_search_term_5 = remove_punct(new_search_term_3)
+    new_search_term_6 = r'\b' + new_search_term_5 + r'\b'
+    compiled_regex_2 = re.compile(new_search_term_6, re.I)
+    #print new_search_term_6
     #print compiled_regex_2
 
     for key in gAllEntries.keys():
